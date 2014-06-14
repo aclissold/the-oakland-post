@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		22464415194BE612000F5568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464414194BE612000F5568 /* AppDelegate.swift */; };
-		22464417194BE612000F5568 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* MasterViewController.swift */; };
+		22464417194BE612000F5568 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* HomeViewController.swift */; };
 		22464419194BE612000F5568 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464418194BE612000F5568 /* DetailViewController.swift */; };
 		2246441C194BE612000F5568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246441A194BE612000F5568 /* Main.storyboard */; };
-		2246441E194BE612000F5568 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2246441D194BE612000F5568 /* Images.xcassets */; };
+		22464436194BEC1A000F5568 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22464435194BEC1A000F5568 /* Images.xcassets */; };
+		22464438194BEE6C000F5568 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464437194BEE6C000F5568 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2246440F194BE612000F5568 /* The Oakland Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oakland Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22464413194BE612000F5568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22464414194BE612000F5568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22464416194BE612000F5568 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		22464416194BE612000F5568 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		22464418194BE612000F5568 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2246441B194BE612000F5568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2246441D194BE612000F5568 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		22464435194BEC1A000F5568 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		22464437194BEE6C000F5568 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,10 +57,10 @@
 			isa = PBXGroup;
 			children = (
 				22464414194BE612000F5568 /* AppDelegate.swift */,
-				22464416194BE612000F5568 /* MasterViewController.swift */,
+				22464437194BEE6C000F5568 /* Constants.swift */,
+				22464416194BE612000F5568 /* HomeViewController.swift */,
 				22464418194BE612000F5568 /* DetailViewController.swift */,
 				2246441A194BE612000F5568 /* Main.storyboard */,
-				2246441D194BE612000F5568 /* Images.xcassets */,
 				22464412194BE612000F5568 /* Supporting Files */,
 			);
 			path = "The Oakland Post";
@@ -67,6 +69,7 @@
 		22464412194BE612000F5568 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22464435194BEC1A000F5568 /* Images.xcassets */,
 				22464413194BE612000F5568 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -130,7 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2246441C194BE612000F5568 /* Main.storyboard in Resources */,
-				2246441E194BE612000F5568 /* Images.xcassets in Resources */,
+				22464436194BEC1A000F5568 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,7 +145,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				22464419194BE612000F5568 /* DetailViewController.swift in Sources */,
-				22464417194BE612000F5568 /* MasterViewController.swift in Sources */,
+				22464417194BE612000F5568 /* HomeViewController.swift in Sources */,
+				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
 				22464415194BE612000F5568 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +283,7 @@
 				2246442F194BE612000F5568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,5 +1,5 @@
 //
-//  MasterViewController.swift
+//  HomeViewController.swift
 //  The Oakland Post
 //
 //  Created by Andrew Clissold on 6/13/14.
@@ -8,27 +8,18 @@
 
 import UIKit
 
-class MasterViewController: UITableViewController {
+class HomeViewController: UITableViewController {
 
     var objects = NSMutableArray()
 
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.navigationItem.leftBarButtonItem = self.editButtonItem()
 
+        self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        self.navigationController.navigationBar.barTintColor = oaklandPostBlue
+        self.navigationController.navigationBar.barStyle = .Black
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func insertNewObject(sender: AnyObject) {
@@ -38,6 +29,10 @@ class MasterViewController: UITableViewController {
         objects.insertObject(NSDate.date(), atIndex: 0)
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+    }
+
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 
     // #pragma mark - Segues
