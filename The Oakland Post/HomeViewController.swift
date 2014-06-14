@@ -8,21 +8,56 @@
 
 import UIKit
 
-class HomeViewController: UITableViewController {
+class HomeViewController: UITableViewController, MWFeedParserDelegate {
+
+    let feedURL = NSURL(string: "http://www.oaklandpostonline.com/search/" +
+        "?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=" +
+        "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
 
     var objects = NSMutableArray()
+    var parsedItems = Array<MWFeedItem>()
+    var dateFormatter = NSDateFormatter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Theme
         self.navigationController.navigationBar.barTintColor = oaklandPostBlue
         self.navigationController.navigationBar.barStyle = .Black
+
+        self.dateFormatter.dateStyle = .ShortStyle
+
+        downloadFeed()
+    }
+
+    func downloadFeed() {
+        var feedParser = MWFeedParser(feedURL: feedURL)
+        feedParser.delegate = self
+        feedParser.feedParseType = ParseTypeFull
+        feedParser.connectionType = ConnectionTypeAsynchronously
+        feedParser.parse()
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
     }
 
-    // #pragma mark - Segues
+    // MARK: MWFeedParserDelegate methods
+
+    func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
+        parsedItems.append(item)
+    }
+
+    func feedParserDidFinish(parser: MWFeedParser) {
+        let sortedItems = sort(parsedItems) { $0.date.timeIntervalSinceDate($1.date) > 0 }
+        for item in sortedItems {
+            let date = dateFormatter.stringFromDate(item.date)
+            let title = item.title
+            println("\(date): \(title)")
+        }
+    }
+
+    // MARK: Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
@@ -32,7 +67,7 @@ class HomeViewController: UITableViewController {
         }
     }
 
-    // #pragma mark - Table View
+    // MARK: Table View
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
