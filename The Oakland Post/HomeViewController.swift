@@ -14,7 +14,6 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         "?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=" +
         "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
 
-    var objects = NSMutableArray()
     var parsedItems = Array<MWFeedItem>()
     var dateFormatter = NSDateFormatter()
 
@@ -49,12 +48,8 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     }
 
     func feedParserDidFinish(parser: MWFeedParser) {
-        let sortedItems = sort(parsedItems) { $0.date.timeIntervalSinceDate($1.date) > 0 }
-        for item in sortedItems {
-            let date = dateFormatter.stringFromDate(item.date)
-            let title = item.title
-            println("\(date): \(title)")
-        }
+        parsedItems = sort(parsedItems) { $0.date.timeIntervalSinceDate($1.date) > 0 }
+        tableView.reloadData()
     }
 
     // MARK: Segues
@@ -62,8 +57,8 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             let indexPath = self.tableView.indexPathForSelectedRow()
-            let object = objects[indexPath.row] as NSDate
-            (segue.destinationViewController as DetailViewController).detailItem = object
+            let item = parsedItems[indexPath.row] as MWFeedItem
+            (segue.destinationViewController as DetailViewController).detailItem = item
         }
     }
 
@@ -74,14 +69,15 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return parsedItems.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TableViewCell
 
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel.text = object.description
+        let item = parsedItems[indexPath.row] as MWFeedItem
+
+        cell.descriptionLabel.text = item.title
         return cell
     }
 
