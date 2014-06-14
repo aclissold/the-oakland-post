@@ -1,0 +1,18 @@
+PODS:
+  - MWFeedParser (1.0.1):
+    - MWFeedParser/FeedParser
+    - MWFeedParser/NSDate+InternetDateTime
+    - MWFeedParser/NSString+HTML
+  - MWFeedParser/FeedParser (1.0.1):
+    - MWFeedParser/NSDate+InternetDateTime
+    - MWFeedParser/NSString+HTML
+  - MWFeedParser/NSDate+InternetDateTime (1.0.1)
+  - MWFeedParser/NSString+HTML (1.0.1)
+
+DEPENDENCIES:
+  - MWFeedParser
+
+SPEC CHECKSUMS:
+  MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
+
+COCOAPODS: 0.33.1

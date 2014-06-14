@@ -14,7 +14,6 @@ class HomeViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationController.navigationBar.barTintColor = oaklandPostBlue
         self.navigationController.navigationBar.barStyle = .Black
     }
