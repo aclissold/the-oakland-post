@@ -13,10 +13,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
         // Override point for customization after application launch.
         UINavigationBar.appearance().titleTextAttributes = [UITextAttributeTextColor:UIColor.whiteColor()]
+        UITabBar.appearance().tintColor = oaklandPostBlue
         return true
     }
 
