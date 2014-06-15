@@ -77,7 +77,17 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
         let item = parsedItems[indexPath.row] as MWFeedItem
 
+        // Set the cell's thumbnail image
+        if item.enclosures != nil && item.enclosures[0] is NSDictionary {
+            let enclosures = item.enclosures[0] as NSDictionary
+            if enclosures["type"].containsString("image") {
+                let URL = NSURL(string: enclosures["url"] as String)
+                cell.thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
+            }
+        }
+
         cell.descriptionLabel.text = item.title
+
         return cell
     }
 
