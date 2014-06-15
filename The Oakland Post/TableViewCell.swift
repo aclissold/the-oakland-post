@@ -13,10 +13,4 @@ class TableViewCell: UITableViewCell {
     @IBOutlet var thumbnail : UIImageView
     @IBOutlet var descriptionLabel: UILabel
 
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
