@@ -25,7 +25,7 @@
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Home" id="pGg-6v-bdr" customClass="HomeViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -38,6 +38,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
+                                            <rect key="frame" x="131" y="9" width="316" height="98"/>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView appearanceType="aqua" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RiT-iM-rcd">
                                             <rect key="frame" x="0.0" y="-2" width="123" height="123"/>
                                             <constraints>
@@ -49,12 +55,6 @@
                                                 </constraint>
                                             </constraints>
                                         </imageView>
-                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
-                                            <rect key="frame" x="131" y="9" width="316" height="98"/>
-                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="qF9-a1-kMm" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="9eO-Fn-ceT">
@@ -64,7 +64,9 @@
                                             <variation key="heightClass=regular-widthClass=compact" constant="5"/>
                                         </constraint>
                                         <constraint firstItem="RiT-iM-rcd" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" id="d29-of-7XE"/>
-                                        <constraint firstItem="RiT-iM-rcd" firstAttribute="centerY" secondItem="qF9-a1-kMm" secondAttribute="centerY" constant="1.5" id="iiR-6V-1nA"/>
+                                        <constraint firstItem="RiT-iM-rcd" firstAttribute="centerY" secondItem="qF9-a1-kMm" secondAttribute="centerY" constant="1.5" id="iiR-6V-1nA">
+                                            <variation key="heightClass=regular-widthClass=compact"/>
+                                        </constraint>
                                         <constraint firstAttribute="trailing" secondItem="qF9-a1-kMm" secondAttribute="trailing" id="jDG-B3-x2z"/>
                                         <constraint firstItem="qF9-a1-kMm" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="9" id="zT5-Z8-oHH">
                                             <variation key="heightClass=regular-widthClass=compact" constant="5"/>
