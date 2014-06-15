@@ -16,6 +16,7 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     var parsedItems = Array<MWFeedItem>()
     var dateFormatter = NSDateFormatter()
+    var lastIndexPath: NSIndexPath? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +90,24 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         cell.descriptionLabel.text = item.title
 
         return cell
+    }
+
+    // MARK: Bugfix for UITableViewCells getting stuck as selected
+
+    override func viewWillAppear(animated: Bool)  {
+        if lastIndexPath != nil {
+            tableView.deselectRowAtIndexPath(lastIndexPath, animated: true)
+        }
+    }
+
+    override func viewDidDisappear(animated: Bool)  {
+        if lastIndexPath != nil {
+            tableView.selectRowAtIndexPath(lastIndexPath, animated: false, scrollPosition: .None)
+        }
+    }
+
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+        lastIndexPath = indexPath
     }
 
 }
