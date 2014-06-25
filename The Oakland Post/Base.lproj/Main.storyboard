@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eNY-en-6ZS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eNY-en-6ZS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller - Home-->
@@ -24,53 +24,53 @@
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Home" id="pGg-6v-bdr" customClass="HomeViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="95" sectionHeaderHeight="22" sectionFooterHeight="22" id="mLL-gJ-YKr">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="96" id="m0d-ak-lc9" customClass="TableViewCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="m0d-ak-lc9" customClass="TableViewCell" customModule="The_Oakland_Post" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur." lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="183" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
-                                            <rect key="frame" x="131" y="9" width="316" height="98"/>
+                                        <imageView appearanceType="aqua" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RiT-iM-rcd">
+                                            <rect key="frame" x="0.0" y="-2" width="123" height="123"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="123" id="OpL-Em-tdJ"/>
+                                                <constraint firstAttribute="height" constant="123" id="gwn-Kg-TS1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhq-ey-HDh">
+                                            <rect key="frame" x="423" y="101" width="39" height="15"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="143" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
+                                            <rect key="frame" x="131" y="2" width="323" height="98"/>
+                                            <string key="text">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView appearanceType="aqua" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RiT-iM-rcd">
-                                            <rect key="frame" x="0.0" y="-2" width="123" height="123"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="123" id="fzo-FR-BwG">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="96"/>
-                                                </constraint>
-                                                <constraint firstAttribute="height" constant="123" id="ntF-x8-zHd">
-                                                    <variation key="heightClass=regular-widthClass=compact" constant="96"/>
-                                                </constraint>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="qF9-a1-kMm" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="9eO-Fn-ceT">
+                                        <constraint firstItem="qF9-a1-kMm" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="2" id="8ID-TQ-FCv"/>
+                                        <constraint firstItem="qF9-a1-kMm" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="LSn-Gd-yrf"/>
+                                        <constraint firstItem="RiT-iM-rcd" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" id="d29-of-7XE"/>
+                                        <constraint firstItem="RiT-iM-rcd" firstAttribute="centerY" secondItem="qF9-a1-kMm" secondAttribute="centerY" constant="8.5" id="iiR-6V-1nA">
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                         </constraint>
-                                        <constraint firstAttribute="bottom" secondItem="qF9-a1-kMm" secondAttribute="bottom" constant="7" id="SSh-hB-OJm">
-                                            <variation key="heightClass=regular-widthClass=compact" constant="5"/>
-                                        </constraint>
-                                        <constraint firstItem="RiT-iM-rcd" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" id="d29-of-7XE"/>
-                                        <constraint firstItem="RiT-iM-rcd" firstAttribute="centerY" secondItem="qF9-a1-kMm" secondAttribute="centerY" constant="1.5" id="iiR-6V-1nA">
-                                            <variation key="heightClass=regular-widthClass=compact"/>
-                                        </constraint>
-                                        <constraint firstAttribute="trailing" secondItem="qF9-a1-kMm" secondAttribute="trailing" id="jDG-B3-x2z"/>
-                                        <constraint firstItem="qF9-a1-kMm" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="9" id="zT5-Z8-oHH">
-                                            <variation key="heightClass=regular-widthClass=compact" constant="5"/>
-                                        </constraint>
+                                        <constraint firstAttribute="trailing" secondItem="qF9-a1-kMm" secondAttribute="trailing" constant="20" id="jDG-B3-x2z"/>
+                                        <constraint firstAttribute="bottom" secondItem="qF9-a1-kMm" secondAttribute="bottom" constant="20" id="lDm-8W-klT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Fhq-ey-HDh" secondAttribute="trailing" constant="-8" id="qdN-H9-dDu"/>
+                                        <constraint firstAttribute="bottom" secondItem="Fhq-ey-HDh" secondAttribute="bottom" constant="4" id="rwa-nI-dXN"/>
                                     </constraints>
+                                    <variation key="heightClass=regular-widthClass=compact"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -81,6 +81,9 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
+                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
+                        </variation>
                         <connections>
                             <outlet property="dataSource" destination="pGg-6v-bdr" id="P41-gY-KXY"/>
                             <outlet property="delegate" destination="pGg-6v-bdr" id="Y6K-Cp-Qkv"/>
@@ -101,7 +104,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cn-md-YlS" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="522.75"/>
+            <point key="canvasLocation" x="1812" y="522"/>
         </scene>
         <!--Detail View Controller - Detail-->
         <scene sceneID="Cn3-H9-jdl">

@@ -10,10 +10,10 @@ import UIKit
 
 class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
+    // http://www.oaklandpostonline.com/search/?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections
     let feedURL = NSURL(string: "http://www.oaklandpostonline.com/search/" +
         "?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=" +
         "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
-
     var feedParser: MWFeedParser? = nil
 
     var parsedItems = Array<MWFeedItem>()
@@ -106,6 +106,10 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         cell.descriptionLabel.text = item.title
 
         return cell
+    }
+
+    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return tableViewRowHeight;
     }
 
     // MARK: Bugfix for UITableViewCells getting stuck as selected
