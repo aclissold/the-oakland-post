@@ -82,6 +82,9 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        </variation>
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
                         </variation>
@@ -121,10 +124,28 @@
                     <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-bh-BVf">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
+                                </variation>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7aF-bh-BVf" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" id="WMd-0a-kbo"/>
+                            <constraint firstAttribute="trailing" secondItem="7aF-bh-BVf" secondAttribute="trailing" id="avn-CH-t7a"/>
+                            <constraint firstAttribute="bottom" secondItem="7aF-bh-BVf" secondAttribute="bottom" id="gwM-mI-wba"/>
+                            <constraint firstItem="7aF-bh-BVf" firstAttribute="top" secondItem="MMQ-IT-qOo" secondAttribute="top" id="omp-u6-CGF"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="cra-N8-TIN"/>
+                    <connections>
+                        <outlet property="webView" destination="7aF-bh-BVf" id="Ufo-Yz-WTL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>

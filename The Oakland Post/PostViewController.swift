@@ -10,16 +10,26 @@ import UIKit
 
 class PostViewController: UIViewController {
 
+    @IBOutlet var webView: UIWebView
+
     var url: String? {
         didSet {
-            self.configureView()
+            url = url!.stringByReplacingOccurrencesOfString("//www", withString: "//m")
         }
     }
 
     func configureView() {
-        if let url = self.url {
-            println("view configured with \(url)")
+        if let string = self.url {
+            let URL = NSURL(string: string)
+            let request = NSURLRequest(URL: URL)
+            self.webView.loadRequest(request)
         }
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.configureView()
     }
 
 }
