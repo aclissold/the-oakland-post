@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		22464415194BE612000F5568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464414194BE612000F5568 /* AppDelegate.swift */; };
 		22464417194BE612000F5568 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* HomeViewController.swift */; };
-		22464419194BE612000F5568 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464418194BE612000F5568 /* DetailViewController.swift */; };
 		2246441C194BE612000F5568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246441A194BE612000F5568 /* Main.storyboard */; };
 		22464436194BEC1A000F5568 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22464435194BEC1A000F5568 /* Images.xcassets */; };
 		22464438194BEE6C000F5568 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464437194BEE6C000F5568 /* Constants.swift */; };
+		22471948195A64C70054D887 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22471947195A64C70054D887 /* PostViewController.swift */; };
 		229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B2541194D1AF500975671 /* ImageIO.framework */; };
 		22C0102E194CEF3200704CD7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0102D194CEF3200704CD7 /* TableViewCell.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
@@ -25,10 +25,10 @@
 		22464413194BE612000F5568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22464414194BE612000F5568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22464416194BE612000F5568 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		22464418194BE612000F5568 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2246441B194BE612000F5568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22464435194BEC1A000F5568 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22464437194BEE6C000F5568 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		22471947195A64C70054D887 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		229B2541194D1AF500975671 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		22C0102D194CEF3200704CD7 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -70,10 +70,11 @@
 			children = (
 				22464414194BE612000F5568 /* AppDelegate.swift */,
 				22464437194BEE6C000F5568 /* Constants.swift */,
-				22464416194BE612000F5568 /* HomeViewController.swift */,
-				22C0102D194CEF3200704CD7 /* TableViewCell.swift */,
-				22464418194BE612000F5568 /* DetailViewController.swift */,
 				2246441A194BE612000F5568 /* Main.storyboard */,
+				22471943195A62FE0054D887 /* Home */,
+				22471944195A630E0054D887 /* Sections */,
+				22471945195A63140054D887 /* Photos */,
+				22471946195A63160054D887 /* Blogs */,
 				22464412194BE612000F5568 /* Supporting Files */,
 			);
 			path = "The Oakland Post";
@@ -87,6 +88,37 @@
 				22464413194BE612000F5568 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22471943195A62FE0054D887 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				22464416194BE612000F5568 /* HomeViewController.swift */,
+				22C0102D194CEF3200704CD7 /* TableViewCell.swift */,
+				22471947195A64C70054D887 /* PostViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		22471944195A630E0054D887 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sections;
+			sourceTree = "<group>";
+		};
+		22471945195A63140054D887 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
+		22471946195A63160054D887 /* Blogs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Blogs;
 			sourceTree = "<group>";
 		};
 		3AA6A21ECE254B94830EFC0F /* Frameworks */ = {
@@ -203,10 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				22C0102E194CEF3200704CD7 /* TableViewCell.swift in Sources */,
-				22464419194BE612000F5568 /* DetailViewController.swift in Sources */,
 				22464417194BE612000F5568 /* HomeViewController.swift in Sources */,
 				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
 				22464415194BE612000F5568 /* AppDelegate.swift in Sources */,
+				22471948195A64C70054D887 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

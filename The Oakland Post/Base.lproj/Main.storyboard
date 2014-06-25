@@ -71,14 +71,13 @@
                                         <constraint firstAttribute="trailing" secondItem="qF9-a1-kMm" secondAttribute="trailing" id="jDG-B3-x2z"/>
                                         <constraint firstAttribute="bottom" secondItem="qF9-a1-kMm" secondAttribute="bottom" constant="20" id="lDm-8W-klT"/>
                                     </constraints>
-                                    <variation key="heightClass=regular-widthClass=compact"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dateLabel" destination="Fhq-ey-HDh" id="ss8-gm-Zpe"/>
                                     <outlet property="descriptionLabel" destination="qF9-a1-kMm" id="7eo-HD-mN8"/>
                                     <outlet property="thumbnail" destination="RiT-iM-rcd" id="pGd-a3-0RX"/>
-                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="showDetail" id="jUr-3t-vfg"/>
+                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPost" id="jUr-3t-vfg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -111,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="1812" y="522"/>
         </scene>
-        <!--Detail View Controller - Detail-->
+        <!--Post View Controller - Post-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
-                <viewController title="Detail" id="Ah7-4n-0Wa" customClass="DetailViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Post" id="Ah7-4n-0Wa" customClass="PostViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cIm-e0-J51"/>
                         <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
@@ -122,27 +121,10 @@
                     <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
-                                <rect key="frame" x="20" y="232" width="440" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" constant="20" symbolic="YES" id="62x-JV-TTJ"/>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="centerY" secondItem="MMQ-IT-qOo" secondAttribute="centerY" id="JzS-HC-Rnl"/>
-                            <constraint firstAttribute="trailing" secondItem="Lei-5M-9Gs" secondAttribute="trailing" constant="20" symbolic="YES" id="pXB-RP-Zz6"/>
-                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
-                    <connections>
-                        <outlet property="detailDescriptionLabel" destination="Lei-5M-9Gs" id="sCT-F7-F6f"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="Post" id="cra-N8-TIN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>

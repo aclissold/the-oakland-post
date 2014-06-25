@@ -72,10 +72,10 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     // MARK: Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showDetail" {
+        if segue.identifier == "readPost" {
             let indexPath = self.tableView.indexPathForSelectedRow()
             let item = parsedItems[indexPath.row] as MWFeedItem
-            (segue.destinationViewController as DetailViewController).detailItem = item
+            (segue.destinationViewController as PostViewController).url = item.link
         }
     }
 
