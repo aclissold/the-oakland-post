@@ -12,5 +12,6 @@ class TableViewCell: UITableViewCell {
 
     @IBOutlet var thumbnail : UIImageView
     @IBOutlet var descriptionLabel: UILabel
+    @IBOutlet var dateLabel: UILabel
 
 }
