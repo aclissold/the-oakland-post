@@ -13,6 +13,8 @@
 		22464436194BEC1A000F5568 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22464435194BEC1A000F5568 /* Images.xcassets */; };
 		22464438194BEE6C000F5568 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464437194BEE6C000F5568 /* Constants.swift */; };
 		22471948195A64C70054D887 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22471947195A64C70054D887 /* PostViewController.swift */; };
+		2263E6F11964F68F000C00F5 /* InfoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */; };
+		2263E6F41964F869000C00F5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E6F31964F869000C00F5 /* InfoViewController.swift */; };
 		229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B2541194D1AF500975671 /* ImageIO.framework */; };
 		22C0102E194CEF3200704CD7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0102D194CEF3200704CD7 /* TableViewCell.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
@@ -29,6 +31,8 @@
 		22464435194BEC1A000F5568 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22464437194BEE6C000F5568 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22471947195A64C70054D887 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoContentViewController.swift; sourceTree = "<group>"; };
+		2263E6F31964F869000C00F5 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		229B2541194D1AF500975671 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		22C0102D194CEF3200704CD7 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 				22464414194BE612000F5568 /* AppDelegate.swift */,
 				22464437194BEE6C000F5568 /* Constants.swift */,
 				2246441A194BE612000F5568 /* Main.storyboard */,
+				2263E6F21964F694000C00F5 /* Info */,
 				22471943195A62FE0054D887 /* Home */,
 				22471944195A630E0054D887 /* Sections */,
 				22471945195A63140054D887 /* Photos */,
@@ -119,6 +124,15 @@
 			children = (
 			);
 			name = Blogs;
+			sourceTree = "<group>";
+		};
+		2263E6F21964F694000C00F5 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				2263E6F31964F869000C00F5 /* InfoViewController.swift */,
+				2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */,
+			);
+			name = Info;
 			sourceTree = "<group>";
 		};
 		3AA6A21ECE254B94830EFC0F /* Frameworks */ = {
@@ -237,6 +251,8 @@
 				22C0102E194CEF3200704CD7 /* TableViewCell.swift in Sources */,
 				22464417194BE612000F5568 /* HomeViewController.swift in Sources */,
 				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
+				2263E6F41964F869000C00F5 /* InfoViewController.swift in Sources */,
+				2263E6F11964F68F000C00F5 /* InfoContentViewController.swift in Sources */,
 				22464415194BE612000F5568 /* AppDelegate.swift in Sources */,
 				22471948195A64C70054D887 /* PostViewController.swift in Sources */,
 			);

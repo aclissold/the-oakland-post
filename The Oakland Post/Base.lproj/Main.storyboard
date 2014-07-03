@@ -21,6 +21,79 @@
             </objects>
             <point key="canvasLocation" x="1207.5" y="522.75"/>
         </scene>
+        <!--Info Content View Controller-->
+        <scene sceneID="ajZ-SR-Fch">
+            <objects>
+                <viewController storyboardIdentifier="infoContentViewController" id="Ppa-Yv-Zls" customClass="InfoContentViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pka-3v-WKl"/>
+                        <viewControllerLayoutGuide type="bottom" id="avQ-oN-BIZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wau-di-bbz">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-4D-a9X">
+                                <rect key="frame" x="20" y="50" width="120" height="27"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="leading" secondItem="Wau-di-bbz" secondAttribute="leading" constant="20" id="sjW-TA-DV1"/>
+                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="top" secondItem="Pka-3v-WKl" secondAttribute="bottom" constant="30" id="vJG-6d-UYE"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="B2T-AK-NeQ">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="hHw-zw-hIG"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="titleLabel" destination="Sv8-4D-a9X" id="rQV-In-7Fp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1k-T0-enR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="-1384"/>
+        </scene>
+        <!--Info View Controller-->
+        <scene sceneID="Kas-4h-lSp">
+            <objects>
+                <viewController id="eys-uC-Y46" customClass="InfoViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5W5-rK-woF"/>
+                        <viewControllerLayoutGuide type="bottom" id="rEw-aC-Tos"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Myp-mp-5pG">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxO-Ck-Dam">
+                                <rect key="frame" x="20" y="427" width="42" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="eys-uC-Y46" eventType="touchUpInside" id="yn2-Mx-24X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45098039215686275" green="0.58039215686274503" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="rEw-aC-Tos" firstAttribute="top" secondItem="zxO-Ck-Dam" secondAttribute="bottom" constant="20" id="hvu-JX-0c6"/>
+                            <constraint firstItem="zxO-Ck-Dam" firstAttribute="leading" secondItem="Myp-mp-5pG" secondAttribute="leading" constant="20" id="wCL-VS-lHS"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1kh-MK-tqs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zl-ON-BqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1812" y="-106"/>
+        </scene>
         <!--Home View Controller - Home-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
@@ -97,14 +170,12 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="The Oakland Post" id="tQt-TN-PWz">
-                        <barButtonItem key="leftBarButtonItem" id="EAE-L5-tss">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="ljs-jb-HnN">
-                                <rect key="frame" x="16" y="7" width="22" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Circle">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" image="Circle" id="65R-Df-hsu">
+                            <connections>
+                                <segue destination="eys-uC-Y46" kind="popoverPresentation" identifier="showInfo" popoverAnchorBarButtonItem="65R-Df-hsu" id="1EI-tp-zHE">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" title="Log In" id="F5Q-if-uHe"/>
                     </navigationItem>
