@@ -18,8 +18,8 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
         pageTitles = ["About Us", "Contact Us", "Staff"]
 
-        pageViewController = storyboard.instantiateViewControllerWithIdentifier(
-            pageViewControllerID) as UIPageViewController
+        pageViewController = UIPageViewController(transitionStyle: .Scroll,
+            navigationOrientation: .Horizontal, options: nil)
         pageViewController.dataSource = self
 
         let startingViewController = viewControllerAtIndex(0)
@@ -28,26 +28,20 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
             direction: .Forward, animated: false, completion: nil)
 
         pageViewController.view.frame = CGRect(x: 0.0, y: 0.0,
-            width: view.frame.size.width, height: view.frame.size.height - 30.0)
+            width: view.frame.size.width, height: view.frame.size.height - 50.0)
         addChildViewController(pageViewController)
         view.addSubview(pageViewController.view)
         pageViewController.didMoveToParentViewController(self)
+    }
+
+    @IBAction func dismiss() {
+        dismissModalViewControllerAnimated(true)
     }
 
     // MARK: UIPageViewControllerDataSource
 
     func pageViewController(pageViewController: UIPageViewController!,
         viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
-            var index = (viewController as InfoContentViewController).pageIndex
-            if index == 0 || index == NSNotFound {
-                return nil
-            }
-            index = index - 1
-            return viewControllerAtIndex(index)
-    }
-
-    func pageViewController(pageViewController: UIPageViewController!,
-        viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
             var index = (viewController as InfoContentViewController).pageIndex
             if index == NSNotFound {
                 return nil
@@ -56,6 +50,16 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
             if index == pageTitles.count {
                 return nil
             }
+            return viewControllerAtIndex(index)
+    }
+
+    func pageViewController(pageViewController: UIPageViewController!,
+        viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
+            var index = (viewController as InfoContentViewController).pageIndex
+            if index == 0 || index == NSNotFound {
+                return nil
+            }
+            index = index - 1
             return viewControllerAtIndex(index)
     }
 

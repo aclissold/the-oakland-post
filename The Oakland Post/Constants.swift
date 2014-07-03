@@ -11,4 +11,3 @@ import UIKit
 let oaklandPostBlue    = UIColor(red: 115.0/255.0, green: 148.0/255.0, blue: 175.0/255.0, alpha: 1.0)
 let tableViewRowHeight = 120.0
 let infoContentViewControllerID = "infoContentViewController"
-let pageViewControllerID = "pageViewController"
