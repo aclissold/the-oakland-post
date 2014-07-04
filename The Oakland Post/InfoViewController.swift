@@ -43,7 +43,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController!,
         viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
             var index = (viewController as InfoContentViewController).pageIndex
-            if index == NSNotFound {
+            if index == Foundation.NSNotFound {
                 return nil
             }
             index = index + 1
@@ -56,7 +56,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController!,
         viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
             var index = (viewController as InfoContentViewController).pageIndex
-            if index == 0 || index == NSNotFound {
+            if index == 0 || index == Foundation.NSNotFound {
                 return nil
             }
             index = index - 1
