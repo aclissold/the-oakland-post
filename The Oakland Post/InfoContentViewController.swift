@@ -11,12 +11,28 @@ import UIKit
 class InfoContentViewController: UIViewController {
 
     @IBOutlet var titleLabel: UILabel
+    @IBOutlet var infoText: UITextView
 
     var pageIndex: Int!
     var titleText: String!
 
     override func viewDidLoad() {
+        let fileURL = NSURL(fileURLWithPath:
+            NSBundle.mainBundle().pathForResource(titleText, ofType: "html")
+        )
+
         titleLabel.text = titleText
+
+        infoText.attributedText = NSAttributedString(
+            fileURL: fileURL,
+            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
+                      NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding],
+            documentAttributes: nil, error: nil
+        )
+    }
+
+    @IBAction func dismiss() {
+        dismissModalViewControllerAnimated(true)
     }
 
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
-    // http://www.oaklandpostonline.com/search/?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections
+    // http://goo.gl/54udFz
     let feedURL = NSURL(string: "http://www.oaklandpostonline.com/search/" +
         "?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=" +
         "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")

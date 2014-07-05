@@ -33,30 +33,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tB7-FC-WLt">
+                                <rect key="frame" x="20" y="69" width="440" height="391"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <attributes>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
+                                <variation key="heightClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="20" y="69" width="440" height="231"/>
+                                </variation>
+                                <variation key="heightClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="20" y="69" width="440" height="551"/>
+                                </variation>
+                                <variation key="widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="20" y="69" width="280" height="391"/>
+                                </variation>
+                                <variation key="widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="20" y="69" width="600" height="391"/>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
+                                    <rect key="frame" x="20" y="69" width="280" height="231"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                                    <rect key="frame" x="20" y="69" width="600" height="551"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                </variation>
+                            </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-4D-a9X">
-                                <rect key="frame" x="20" y="50" width="120" height="27"/>
-                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <rect key="frame" x="180" y="28" width="121" height="33"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                                <color key="textColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jr-8z-bGA">
+                                <rect key="frame" x="20" y="28" width="42" height="33"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="Ppa-Yv-Zls" eventType="touchUpInside" id="6m9-2V-ADY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="leading" secondItem="Wau-di-bbz" secondAttribute="leading" constant="20" id="sjW-TA-DV1"/>
-                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="top" secondItem="Pka-3v-WKl" secondAttribute="bottom" constant="30" id="vJG-6d-UYE"/>
+                            <constraint firstItem="tB7-FC-WLt" firstAttribute="leading" secondItem="9jr-8z-bGA" secondAttribute="leading" id="7lV-R7-48K"/>
+                            <constraint firstItem="tB7-FC-WLt" firstAttribute="leading" secondItem="Wau-di-bbz" secondAttribute="leading" constant="20" id="EIo-xU-Whm"/>
+                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="centerY" secondItem="9jr-8z-bGA" secondAttribute="centerY" id="HAu-4Q-KwJ"/>
+                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="top" secondItem="Pka-3v-WKl" secondAttribute="bottom" constant="8" id="K4w-Va-Piw"/>
+                            <constraint firstItem="tB7-FC-WLt" firstAttribute="top" secondItem="Sv8-4D-a9X" secondAttribute="bottom" constant="8" id="aaF-g1-hTK"/>
+                            <constraint firstAttribute="centerX" secondItem="Sv8-4D-a9X" secondAttribute="centerX" id="f8P-Cx-Klb"/>
+                            <constraint firstItem="avQ-oN-BIZ" firstAttribute="top" secondItem="tB7-FC-WLt" secondAttribute="bottom" constant="20" id="ne5-Kz-Rqv"/>
+                            <constraint firstAttribute="trailing" secondItem="tB7-FC-WLt" secondAttribute="trailing" constant="20" id="xPF-Ii-qYs"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="9jr-8z-bGA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="7lV-R7-48K"/>
+                                <exclude reference="HAu-4Q-KwJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular"/>
                     </view>
                     <navigationItem key="navigationItem" id="B2T-AK-NeQ">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="hHw-zw-hIG"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="infoText" destination="tB7-FC-WLt" id="jwd-2T-GSr"/>
                         <outlet property="titleLabel" destination="Sv8-4D-a9X" id="rQV-In-7Fp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1k-T0-enR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="-1384"/>
+            <point key="canvasLocation" x="1806" y="-726"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="Kas-4h-lSp">
@@ -69,30 +155,14 @@
                     <view key="view" contentMode="scaleToFill" id="Myp-mp-5pG">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zxO-Ck-Dam">
-                                <rect key="frame" x="20" y="427" width="42" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismiss" destination="eys-uC-Y46" eventType="touchUpInside" id="yn2-Mx-24X"/>
-                                </connections>
-                            </button>
-                        </subviews>
                         <color key="backgroundColor" red="0.45098039215686275" green="0.58039215686274503" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="rEw-aC-Tos" firstAttribute="top" secondItem="zxO-Ck-Dam" secondAttribute="bottom" constant="20" id="hvu-JX-0c6"/>
-                            <constraint firstItem="zxO-Ck-Dam" firstAttribute="leading" secondItem="Myp-mp-5pG" secondAttribute="leading" constant="20" id="wCL-VS-lHS"/>
-                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="1kh-MK-tqs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zl-ON-BqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="-106"/>
+            <point key="canvasLocation" x="1806" y="-100"/>
         </scene>
         <!--Home View Controller - Home-->
         <scene sceneID="VgW-fR-Quf">
@@ -119,12 +189,12 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhq-ey-HDh">
-                                            <rect key="frame" x="415" y="101" width="39" height="15"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <rect key="frame" x="415" y="99" width="39" height="17"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="323" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="483" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
                                             <rect key="frame" x="131" y="2" width="323" height="98"/>
                                             <string key="text">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
@@ -155,14 +225,29 @@
                             </tableViewCell>
                         </prototypes>
                         <sections/>
+                        <variation key="heightClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        </variation>
+                        <variation key="heightClass=regular" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
+                        </variation>
                         <variation key="widthClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        </variation>
+                        <variation key="widthClass=regular" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
                         </variation>
                         <connections>
                             <outlet property="dataSource" destination="pGg-6v-bdr" id="P41-gY-KXY"/>
@@ -172,7 +257,7 @@
                     <navigationItem key="navigationItem" title="The Oakland Post" id="tQt-TN-PWz">
                         <barButtonItem key="leftBarButtonItem" image="Circle" id="65R-Df-hsu">
                             <connections>
-                                <segue destination="eys-uC-Y46" kind="popoverPresentation" identifier="showInfo" popoverAnchorBarButtonItem="65R-Df-hsu" id="1EI-tp-zHE">
+                                <segue destination="eys-uC-Y46" kind="popoverPresentation" identifier="showInfo" popoverAnchorBarButtonItem="65R-Df-hsu" id="1vo-D7-D4Y">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>

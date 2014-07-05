@@ -13,6 +13,9 @@
 		22464436194BEC1A000F5568 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22464435194BEC1A000F5568 /* Images.xcassets */; };
 		22464438194BEE6C000F5568 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464437194BEE6C000F5568 /* Constants.swift */; };
 		22471948195A64C70054D887 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22471947195A64C70054D887 /* PostViewController.swift */; };
+		224796FA196616CA00329210 /* About Us.html in Resources */ = {isa = PBXBuildFile; fileRef = 224796F9196616CA00329210 /* About Us.html */; };
+		224796FE196730B500329210 /* Contact Us.html in Resources */ = {isa = PBXBuildFile; fileRef = 224796FD196730B500329210 /* Contact Us.html */; };
+		22479700196730BE00329210 /* Staff.html in Resources */ = {isa = PBXBuildFile; fileRef = 224796FF196730BE00329210 /* Staff.html */; };
 		2263E6F11964F68F000C00F5 /* InfoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */; };
 		2263E6F41964F869000C00F5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E6F31964F869000C00F5 /* InfoViewController.swift */; };
 		229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B2541194D1AF500975671 /* ImageIO.framework */; };
@@ -31,6 +34,9 @@
 		22464435194BEC1A000F5568 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22464437194BEE6C000F5568 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		22471947195A64C70054D887 /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		224796F9196616CA00329210 /* About Us.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "About Us.html"; sourceTree = "<group>"; };
+		224796FD196730B500329210 /* Contact Us.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Contact Us.html"; sourceTree = "<group>"; };
+		224796FF196730BE00329210 /* Staff.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = Staff.html; sourceTree = "<group>"; };
 		2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoContentViewController.swift; sourceTree = "<group>"; };
 		2263E6F31964F869000C00F5 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		229B2541194D1AF500975671 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -131,6 +137,9 @@
 			children = (
 				2263E6F31964F869000C00F5 /* InfoViewController.swift */,
 				2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */,
+				224796F9196616CA00329210 /* About Us.html */,
+				224796FD196730B500329210 /* Contact Us.html */,
+				224796FF196730BE00329210 /* Staff.html */,
 			);
 			name = Info;
 			sourceTree = "<group>";
@@ -203,7 +212,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				224796FA196616CA00329210 /* About Us.html in Resources */,
 				2246441C194BE612000F5568 /* Main.storyboard in Resources */,
+				224796FE196730B500329210 /* Contact Us.html in Resources */,
+				22479700196730BE00329210 /* Staff.html in Resources */,
 				22464436194BEC1A000F5568 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
