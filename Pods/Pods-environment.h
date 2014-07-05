@@ -30,6 +30,12 @@
 #define COCOAPODS_VERSION_MINOR_MWFeedParser_NSString_HTML 0
 #define COCOAPODS_VERSION_PATCH_MWFeedParser_NSString_HTML 1
 
+// NHBalancedFlowLayout
+#define COCOAPODS_POD_AVAILABLE_NHBalancedFlowLayout
+#define COCOAPODS_VERSION_MAJOR_NHBalancedFlowLayout 0
+#define COCOAPODS_VERSION_MINOR_NHBalancedFlowLayout 2
+#define COCOAPODS_VERSION_PATCH_NHBalancedFlowLayout 0
+
 // SDWebImage
 #define COCOAPODS_POD_AVAILABLE_SDWebImage
 #define COCOAPODS_VERSION_MAJOR_SDWebImage 3

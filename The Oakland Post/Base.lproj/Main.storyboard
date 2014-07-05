@@ -64,10 +64,8 @@
                                     <rect key="frame" x="20" y="69" width="280" height="231"/>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
-                                    <rect key="frame" x="20" y="69" width="600" height="551"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="20" y="69" width="600" height="551"/>
                                 </variation>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-4D-a9X">
@@ -109,17 +107,12 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="9jr-8z-bGA"/>
                             </mask>
@@ -130,7 +123,11 @@
                                 <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
-                        <variation key="heightClass=regular-widthClass=regular"/>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="B2T-AK-NeQ">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="hHw-zw-hIG"/>
@@ -194,7 +191,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="483" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="323" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
                                             <rect key="frame" x="131" y="2" width="323" height="98"/>
                                             <string key="text">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
@@ -357,55 +354,60 @@
             </objects>
             <point key="canvasLocation" x="1207.5" y="1104.75"/>
         </scene>
-        <!--View Controller - Photos-->
-        <scene sceneID="TRT-eX-SBk">
+        <!--Photos View Controller - Photos-->
+        <scene sceneID="RxA-0d-8RA">
             <objects>
-                <viewController id="N10-Sf-gIT" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9ur-3K-8dV"/>
-                        <viewControllerLayoutGuide type="bottom" id="YQm-Vn-iyC"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qnD-EK-v7Y">
+                <collectionViewController id="Raa-h3-04V" customClass="PhotosViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="l2T-e0-BxK">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSS-Q0-2Fm">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="qSS-Q0-2Fm" secondAttribute="centerX" constant="-0.5" id="85G-LN-ER1"/>
-                            <constraint firstAttribute="centerY" secondItem="qSS-Q0-2Fm" secondAttribute="centerY" constant="0.5" id="JGV-In-qyK"/>
-                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="qSS-Q0-2Fm"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="85G-LN-ER1"/>
-                                <exclude reference="JGV-In-qyK"/>
-                            </mask>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JMe-GN-Pyt" customClass="NHBalancedFlowLayout">
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="94J-Mo-GHz" customClass="PhotoCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rWj-1p-dmN">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="rWj-1p-dmN" secondAttribute="bottom" id="3Lb-nV-7Jh"/>
+                                    <constraint firstItem="rWj-1p-dmN" firstAttribute="top" secondItem="94J-Mo-GHz" secondAttribute="top" id="J0Q-eM-0Ea"/>
+                                    <constraint firstItem="rWj-1p-dmN" firstAttribute="leading" secondItem="94J-Mo-GHz" secondAttribute="leading" id="Ph4-PA-kZS"/>
+                                    <constraint firstAttribute="trailing" secondItem="rWj-1p-dmN" secondAttribute="trailing" id="dYi-l1-s8X"/>
+                                </constraints>
+                                <variation key="heightClass=regular-widthClass=regular"/>
+                                <connections>
+                                    <outlet property="imageView" destination="rWj-1p-dmN" id="xsj-EA-zb8"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
                         </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="qSS-Q0-2Fm"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="85G-LN-ER1"/>
-                                <include reference="JGV-In-qyK"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Photos" image="Circle" id="FRh-qS-Fw2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7WD-sm-HkB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Raa-h3-04V" id="uJw-1W-f6L"/>
+                            <outlet property="delegate" destination="Raa-h3-04V" id="6OF-sF-IaI"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Photos" id="mgP-l3-InP"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="780-B9-kvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207.5" y="1691.25"/>
+            <point key="canvasLocation" x="1899" y="1681"/>
         </scene>
         <!--View Controller - Blogs-->
         <scene sceneID="uRP-Du-ftg">
@@ -470,13 +472,32 @@
                     <connections>
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="viewControllers" id="J7J-6E-bBU"/>
                         <segue destination="V2f-rC-Klu" kind="relationship" relationship="viewControllers" id="Fe3-Vr-BwF"/>
-                        <segue destination="N10-Sf-gIT" kind="relationship" relationship="viewControllers" id="Mbo-gc-LsS"/>
+                        <segue destination="cqt-06-l5o" kind="relationship" relationship="viewControllers" id="gkK-DO-feT"/>
                         <segue destination="C1m-50-T1M" kind="relationship" relationship="viewControllers" id="4e4-E5-XeR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FC9-2L-h4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="397.5" y="1380.75"/>
+        </scene>
+        <!--Navigation Controller - Photos-->
+        <scene sceneID="4kL-8d-Jtv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqt-06-l5o" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Photos" image="Circle" id="g6d-wg-kAT"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zQk-qr-wli">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Raa-h3-04V" kind="relationship" relationship="rootViewController" id="r8G-JO-UIN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Owk-q2-IhI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1207" y="1681"/>
         </scene>
     </scenes>
     <resources>
