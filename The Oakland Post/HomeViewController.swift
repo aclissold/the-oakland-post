@@ -108,10 +108,10 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         // Figure out and set the cell's date label
         var time = -item.date.timeIntervalSinceNow / 60.0
         var unit = "m"
-        if time > 59.0 {
+        if time >= 60.0 {
             time /= 60.0
             unit = "h"
-            if time > 23.0 {
+            if time >= 24.0 {
                 time /= 24.0
                 unit = "d"
             }
