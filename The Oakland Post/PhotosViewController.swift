@@ -23,6 +23,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
         feedParser.parseInitial()
+
+        collectionView.addInfiniteScrollingWithActionHandler(feedParser.parseMore)
     }
 
     // MARK: MWFeedParserDelegate methods
@@ -33,10 +35,20 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         let data = NSData(contentsOfURL: URL)
         let image = UIImage(data: data)
         photos.append(image)
+
     }
 
     func feedParserDidFinish(parser: MWFeedParser) {
-        collectionView.reloadData()
+        var indexPaths = NSIndexPath[]()
+        let start = feedParser.offset
+        let end = start + feedParser.length
+        for index in start..end {
+            indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
+        }
+        collectionView.performBatchUpdates({
+                self.collectionView.insertItemsAtIndexPaths(indexPaths)
+            }, completion: nil)
+        collectionView.infiniteScrollingView.stopAnimating()
     }
 
     // MARK: NHBalancedFlowLayoutDelegate

@@ -11,12 +11,14 @@ import UIKit
 // Wraps MWFeedParser with a default configuration and "parseMore" functionality.
 class FeedParser {
 
-    // private properties
+    // readonly properties
     let length: Int
+    var offset = 0
+
+    // private properties
     var baseURL: String
     var delegate: MWFeedParserDelegate
     var parser: MWFeedParser!
-    var offset = 0
     var feedURL: NSURL {
     get {
         return NSURL(string: "\(baseURL)&o=\(offset)&l=\(length)")
