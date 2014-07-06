@@ -12,6 +12,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, MWFeedParserDelegate {
 
     let baseURL = "http://www.oaklandpostonline.com/search/?t=image&sd=desc&f=rss"
+    let cache = SDImageCache.sharedImageCache()
 
     var photos: UIImage[] = []
     var feedParser: FeedParser!
@@ -31,10 +32,17 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
         let enclosures = item.enclosures[0] as NSDictionary
-        let URL = NSURL(string: enclosures["url"] as String)
-        let data = NSData(contentsOfURL: URL)
-        let image = UIImage(data: data)
-        photos.append(image)
+        let URLString = enclosures["url"] as String
+
+        if cache.diskImageExistsWithKey(URLString) {
+            photos.append(cache.imageFromDiskCacheForKey(URLString))
+        } else {
+            let URL = NSURL(string: URLString)
+            let data = NSData(contentsOfURL: URL)
+            let image = UIImage(data: data)
+            cache.storeImage(image, forKey: URLString)
+            photos.append(image)
+        }
 
     }
 
