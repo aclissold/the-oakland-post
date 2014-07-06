@@ -14,11 +14,11 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     let feedURL = NSURL(string: "http://www.oaklandpostonline.com/search/" +
         "?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=" +
         "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
-    var feedParser: MWFeedParser? = nil
+    var feedParser: MWFeedParser!
 
-    var parsedItems = Array<MWFeedItem>()
-    var dateFormatter = NSDateFormatter()
-    var lastIndexPath: NSIndexPath? = nil
+    var parsedItems = MWFeedItem[]()
+    var dateFormatter: NSDateFormatter!
+    var lastIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,24 +32,25 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
 
-        self.dateFormatter.dateStyle = .ShortStyle
+        dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .ShortStyle
 
         setUpParser()
     }
 
     func setUpParser() {
         feedParser = MWFeedParser(feedURL: feedURL)
-        feedParser!.delegate = self
-        feedParser!.feedParseType = ParseTypeFull
-        feedParser!.connectionType = ConnectionTypeAsynchronously
-        feedParser!.parse()
+        feedParser.delegate = self
+        feedParser.feedParseType = ParseTypeFull
+        feedParser.connectionType = ConnectionTypeAsynchronously
+        feedParser.parse()
     }
 
     func refresh() {
         tableView.userInteractionEnabled = false
         parsedItems.removeAll()
-        feedParser!.stopParsing()
-        feedParser!.parse()
+        feedParser.stopParsing()
+        feedParser.parse()
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -63,7 +64,6 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     }
 
     func feedParserDidFinish(parser: MWFeedParser) {
-        parsedItems = sort(parsedItems) { $0.date.timeIntervalSinceDate($1.date) > 0 }
         tableView.reloadData()
         refreshControl.endRefreshing()
         tableView.userInteractionEnabled = true
