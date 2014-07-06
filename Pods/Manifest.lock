@@ -12,15 +12,18 @@ PODS:
   - SDWebImage (3.6):
     - SDWebImage/Core
   - SDWebImage/Core (3.6)
+  - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - MWFeedParser (~> 1.0.1)
   - NHBalancedFlowLayout (~> 0.2)
   - SDWebImage (~> 3.6)
+  - SVPullToRefresh (~> 0.4.1)
 
 SPEC CHECKSUMS:
   MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
   NHBalancedFlowLayout: be3c297b54f74c27607aaa04563270ecbd2d8e38
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
 
 COCOAPODS: 0.33.1
