@@ -10,10 +10,17 @@ import UIKit
 
 class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
-    // http://goo.gl/54udFz
-    let feedURL = NSURL(string: "http://www.oaklandpostonline.com/search/" +
-        "?mode=article&q=&nsa=eedition&t=article&l=15&s=start_time&sd=desc&f=rss&d=&d1=&d2=" +
-        "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
+    let offsetAmount = 15
+
+    var offset = 0
+    var feedURL: NSURL {
+    get {
+        // http://goo.gl/jqzaQQ
+        return NSURL(string: "http://www.oaklandpostonline.com/search/?mode=article&q=" +
+            "&nsa=eedition&t=article&o=\(offset)&l=\(offsetAmount)&s=start_time&sd=desc&f=rss&d=" +
+            "&d1=&d2=&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
+    }
+    }
     var feedParser: MWFeedParser!
 
     var parsedItems = MWFeedItem[]()
@@ -35,10 +42,12 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
 
-        setUpParser()
+        createParserAndParse()
+
+        tableView.addInfiniteScrollingWithActionHandler(loadMorePosts)
     }
 
-    func setUpParser() {
+    func createParserAndParse() {
         feedParser = MWFeedParser(feedURL: feedURL)
         feedParser.delegate = self
         feedParser.feedParseType = ParseTypeFull
@@ -48,13 +57,20 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     func refresh() {
         tableView.userInteractionEnabled = false
+        offset = 0
         parsedItems.removeAll()
         feedParser.stopParsing()
-        feedParser.parse()
+        createParserAndParse()
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
+    }
+
+    func loadMorePosts() {
+        tableView.userInteractionEnabled = false
+        offset += offsetAmount
+        createParserAndParse()
     }
 
     // MARK: MWFeedParserDelegate methods
@@ -67,6 +83,7 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         tableView.reloadData()
         refreshControl.endRefreshing()
         tableView.userInteractionEnabled = true
+        tableView.infiniteScrollingView.stopAnimating()
     }
 
     // MARK: Segues
