@@ -10,18 +10,13 @@ import UIKit
 
 class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
-    let offsetAmount = 15
+    // http://goo.gl/jqzaQQ
+    let baseURL =
+        "http://www.oaklandpostonline.com/search/?mode=article&q=&nsa=eedition" +
+        "&t=article&s=start_time&sd=desc&f=rss" +
+        "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*"
 
-    var offset = 0
-    var feedURL: NSURL {
-    get {
-        // http://goo.gl/jqzaQQ
-        return NSURL(string: "http://www.oaklandpostonline.com/search/?mode=article&q=" +
-            "&nsa=eedition&t=article&o=\(offset)&l=\(offsetAmount)&s=start_time&sd=desc&f=rss&d=" +
-            "&d1=&d2=&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*")
-    }
-    }
-    var feedParser: MWFeedParser!
+    var feedParser: FeedParser!
 
     var parsedItems = MWFeedItem[]()
     var dateFormatter: NSDateFormatter!
@@ -42,25 +37,16 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
 
-        createParserAndParse()
+        feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
+        feedParser.parseInitial()
 
         tableView.addInfiniteScrollingWithActionHandler(loadMorePosts)
     }
 
-    func createParserAndParse() {
-        feedParser = MWFeedParser(feedURL: feedURL)
-        feedParser.delegate = self
-        feedParser.feedParseType = ParseTypeFull
-        feedParser.connectionType = ConnectionTypeAsynchronously
-        feedParser.parse()
-    }
-
     func refresh() {
         tableView.userInteractionEnabled = false
-        offset = 0
         parsedItems.removeAll()
-        feedParser.stopParsing()
-        createParserAndParse()
+        feedParser.parseInitial()
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -69,8 +55,7 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     func loadMorePosts() {
         tableView.userInteractionEnabled = false
-        offset += offsetAmount
-        createParserAndParse()
+        feedParser.parseMore()
     }
 
     // MARK: MWFeedParserDelegate methods
