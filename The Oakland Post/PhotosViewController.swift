@@ -8,26 +8,35 @@
 
 import UIKit
 
-class PhotosViewController: UICollectionViewController,
-    UICollectionViewDelegateFlowLayout, NHBalancedFlowLayoutDelegate, UICollectionViewDataSource {
+class PhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
+    NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, MWFeedParserDelegate {
+
+    let baseURL = "http://www.oaklandpostonline.com/search/?t=image&sd=desc&f=rss"
 
     var photos: UIImage[] = []
+    var feedParser: FeedParser!
 
     override func viewDidLoad() {
         // Theme
         self.navigationController.navigationBar.barTintColor = oaklandPostBlue
         self.navigationController.navigationBar.barStyle = .Black
 
-        // TODO dynamically load images instead
-        for URLString in
-            ["http://goo.gl/1Y8DhC",
-             "http://goo.gl/uRKI3h",
-             "http://goo.gl/Xkiskw"] {
-                let URL = NSURL(string: URLString)
-                let data = NSData(contentsOfURL: URL)
-                let image = UIImage(data: data)
-                photos.append(image)
-        }
+        feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
+        feedParser.parseInitial()
+    }
+
+    // MARK: MWFeedParserDelegate methods
+
+    func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
+        let enclosures = item.enclosures[0] as NSDictionary
+        let URL = NSURL(string: enclosures["url"] as String)
+        let data = NSData(contentsOfURL: URL)
+        let image = UIImage(data: data)
+        photos.append(image)
+    }
+
+    func feedParserDidFinish(parser: MWFeedParser) {
+        collectionView.reloadData()
     }
 
     // MARK: NHBalancedFlowLayoutDelegate
