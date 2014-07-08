@@ -105,6 +105,9 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
                     cell.thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
                 }
             }
+        } else {
+            // Set it to nil so a dequeued cell's image isn't displayed
+            cell.thumbnail.image = nil
         }
 
         cell.descriptionLabel.text = item.title
