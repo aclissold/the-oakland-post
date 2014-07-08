@@ -14,7 +14,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     let baseURL = "http://www.oaklandpostonline.com/search/?t=image&sd=desc&f=rss"
     let cache = SDImageCache.sharedImageCache()
 
-    var photos: UIImage[] = []
+    var photos: [UIImage] = []
     var feedParser: FeedParser!
 
     override func viewDidLoad() {
@@ -30,7 +30,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     // MARK: MWFeedParserDelegate methods
 
-    func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
+    func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
         let enclosures = item.enclosures[0] as NSDictionary
         let URLString = enclosures["url"] as String
 
@@ -46,11 +46,11 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     }
 
-    func feedParserDidFinish(parser: MWFeedParser) {
-        var indexPaths = NSIndexPath[]()
+    func feedParserDidFinish(parser: MWFeedParser!) {
+        var indexPaths = [NSIndexPath]()
         let start = feedParser.offset
         let end = start + feedParser.length
-        for index in start..end {
+        for index in start..<end {
             indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
         }
         collectionView.performBatchUpdates({

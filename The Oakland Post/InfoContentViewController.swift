@@ -32,7 +32,7 @@ class InfoContentViewController: UIViewController {
     }
 
     @IBAction func dismiss() {
-        dismissModalViewControllerAnimated(true)
+        println("temporarily disabled")
     }
 
 }

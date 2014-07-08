@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eNY-en-6ZS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="eNY-en-6ZS">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Home-->
+        <!--Home-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                                 <color key="textColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jr-8z-bGA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jr-8z-bGA">
                                 <rect key="frame" x="20" y="28" width="42" height="33"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Done">
@@ -96,7 +96,6 @@
                             <constraint firstItem="avQ-oN-BIZ" firstAttribute="top" secondItem="tB7-FC-WLt" secondAttribute="bottom" constant="20" id="ne5-Kz-Rqv"/>
                             <constraint firstAttribute="trailing" secondItem="tB7-FC-WLt" secondAttribute="trailing" constant="20" id="xPF-Ii-qYs"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="9jr-8z-bGA"/>
@@ -118,14 +117,14 @@
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -153,7 +152,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.45098039215686275" green="0.58039215686274503" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="1kh-MK-tqs"/>
                 </viewController>
@@ -161,7 +159,7 @@
             </objects>
             <point key="canvasLocation" x="1806" y="-100"/>
         </scene>
-        <!--Home View Controller - Home-->
+        <!--Home-->
         <scene sceneID="VgW-fR-Quf">
             <objects>
                 <tableViewController title="Home" id="pGg-6v-bdr" customClass="HomeViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
@@ -169,7 +167,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="m0d-ak-lc9" customClass="TableViewCell" customModule="The_Oakland_Post" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
@@ -186,13 +183,13 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhq-ey-HDh">
-                                            <rect key="frame" x="415" y="99" width="39" height="17"/>
+                                            <rect key="frame" x="408" y="99" width="39" height="17"/>
                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="323" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
-                                            <rect key="frame" x="131" y="2" width="323" height="98"/>
+                                        <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="316" translatesAutoresizingMaskIntoConstraints="NO" id="qF9-a1-kMm">
+                                            <rect key="frame" x="131" y="2" width="316" height="98"/>
                                             <string key="text">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
                                             <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -266,7 +263,7 @@
             </objects>
             <point key="canvasLocation" x="1812" y="522"/>
         </scene>
-        <!--Post View Controller - Post-->
+        <!--Post-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
                 <viewController title="Post" id="Ah7-4n-0Wa" customClass="PostViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
@@ -293,7 +290,6 @@
                             <constraint firstAttribute="bottom" secondItem="7aF-bh-BVf" secondAttribute="bottom" id="gwM-mI-wba"/>
                             <constraint firstItem="7aF-bh-BVf" firstAttribute="top" secondItem="MMQ-IT-qOo" secondAttribute="top" id="omp-u6-CGF"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post" id="cra-N8-TIN"/>
                     <connections>
@@ -304,7 +300,7 @@
             </objects>
             <point key="canvasLocation" x="2416.5" y="522.75"/>
         </scene>
-        <!--View Controller - Sections-->
+        <!--Sections-->
         <scene sceneID="nUx-Qo-2hD">
             <objects>
                 <viewController id="V2f-rC-Klu" sceneMemberID="viewController">
@@ -328,7 +324,6 @@
                             <constraint firstAttribute="centerY" secondItem="HzC-Y1-nIB" secondAttribute="centerY" constant="0.5" id="2vp-vL-sf3"/>
                             <constraint firstAttribute="centerX" secondItem="HzC-Y1-nIB" secondAttribute="centerX" constant="-0.5" id="tec-zT-k0g"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="HzC-Y1-nIB"/>
@@ -354,7 +349,7 @@
             </objects>
             <point key="canvasLocation" x="1207.5" y="1104.75"/>
         </scene>
-        <!--Photos View Controller - Photos-->
+        <!--Photos-->
         <scene sceneID="RxA-0d-8RA">
             <objects>
                 <collectionViewController id="Raa-h3-04V" customClass="PhotosViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
@@ -362,7 +357,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JMe-GN-Pyt" customClass="NHBalancedFlowLayout">
                             <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -389,12 +383,14 @@
                                     <constraint firstItem="rWj-1p-dmN" firstAttribute="leading" secondItem="94J-Mo-GHz" secondAttribute="leading" id="Ph4-PA-kZS"/>
                                     <constraint firstAttribute="trailing" secondItem="rWj-1p-dmN" secondAttribute="trailing" id="dYi-l1-s8X"/>
                                 </constraints>
-                                <variation key="heightClass=regular-widthClass=regular"/>
                                 <connections>
                                     <outlet property="imageView" destination="rWj-1p-dmN" id="xsj-EA-zb8"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        </variation>
                         <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
                         </variation>
@@ -409,7 +405,7 @@
             </objects>
             <point key="canvasLocation" x="1899" y="1681"/>
         </scene>
-        <!--View Controller - Blogs-->
+        <!--Blogs-->
         <scene sceneID="uRP-Du-ftg">
             <objects>
                 <viewController id="C1m-50-T1M" sceneMemberID="viewController">
@@ -433,7 +429,6 @@
                             <constraint firstAttribute="centerX" secondItem="Q4R-hg-qtd" secondAttribute="centerX" id="XGe-g2-Zh7"/>
                             <constraint firstAttribute="centerY" secondItem="Q4R-hg-qtd" secondAttribute="centerY" constant="0.5" id="u27-QW-OQA"/>
                         </constraints>
-                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="Q4R-hg-qtd"/>
@@ -480,7 +475,7 @@
             </objects>
             <point key="canvasLocation" x="397.5" y="1380.75"/>
         </scene>
-        <!--Navigation Controller - Photos-->
+        <!--Photos-->
         <scene sceneID="4kL-8d-Jtv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqt-06-l5o" sceneMemberID="viewController">

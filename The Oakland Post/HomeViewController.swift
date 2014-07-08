@@ -18,7 +18,7 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     var feedParser: FeedParser!
 
-    var parsedItems = MWFeedItem[]()
+    var parsedItems = [MWFeedItem]()
     var dateFormatter: NSDateFormatter!
     var lastIndexPath: NSIndexPath?
 
@@ -60,11 +60,11 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     // MARK: MWFeedParserDelegate methods
 
-    func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
+    func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
         parsedItems.append(item)
     }
 
-    func feedParserDidFinish(parser: MWFeedParser) {
+    func feedParserDidFinish(parser: MWFeedParser!) {
         tableView.reloadData()
         refreshControl.endRefreshing()
         tableView.userInteractionEnabled = true
@@ -73,7 +73,7 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     // MARK: Segues
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
         if segue.identifier == "readPost" {
             let indexPath = self.tableView.indexPathForSelectedRow()
             let item = parsedItems[indexPath.row] as MWFeedItem
@@ -83,25 +83,27 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     // MARK: Table View
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return parsedItems.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TableViewCell
 
         let item = parsedItems[indexPath.row] as MWFeedItem
 
         // Set the cell's thumbnail image
-        if item.enclosures != nil && item.enclosures[0] is NSDictionary {
-            let enclosures = item.enclosures[0] as NSDictionary
-            if enclosures["type"].containsString("image") {
-                let URL = NSURL(string: enclosures["url"] as String)
-                cell.thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
+        if let enclosures = item.enclosures {
+            if enclosures[0] is NSDictionary {
+                let dict = item.enclosures[0] as NSDictionary
+                if dict["type"].containsString("image") {
+                    let URL = NSURL(string: dict["url"] as String)
+                    cell.thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
+                }
             }
         }
 

@@ -10,10 +10,10 @@ import UIKit
 
 class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
-    let pageTitles: String[] = ["About Us", "Contact Us", "Staff"]
+    let pageTitles: [String] = ["About Us", "Contact Us", "Staff"]
 
     var pageViewController: UIPageViewController!
-    var viewControllers: InfoContentViewController[] = []
+    var viewControllers: [InfoContentViewController] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
