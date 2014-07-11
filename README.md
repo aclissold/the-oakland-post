@@ -2,7 +2,15 @@ The Oakland Post App
 ====================
 
 The mobile companion for [The Oakland Post](http://www.oaklandpostonline.com)
-website.
+website!
+
+Screenshots
+-----------
+![Screenshot 1](https://raw.githubusercontent.com/aclissold/The-Oakland-Post/master/The%20Oakland%20Post/Screenshots/Screenshot%201.png)
+
+![Screenshot 2](https://raw.githubusercontent.com/aclissold/The-Oakland-Post/master/The%20Oakland%20Post/Screenshots/Screenshot%202.png)
+
+![Screenshot 3](https://raw.githubusercontent.com/aclissold/The-Oakland-Post/master/The%20Oakland%20Post/Screenshots/Screenshot%203.png)
 
 Conventions
 -----------
