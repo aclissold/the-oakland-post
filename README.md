@@ -12,6 +12,13 @@ Screenshots
 
 ![Screenshot 3](https://raw.githubusercontent.com/aclissold/The-Oakland-Post/master/The%20Oakland%20Post/Screenshots/Screenshot%203.png)
 
+Compiling
+---------
+
+Just clone, open `The Oakland Post.xcworkspace`, and build & run. A CocoaPods
+installation is not necessary since the dependencies are vendored in
+`Pods/`.
+
 Conventions
 -----------
 
@@ -22,8 +29,8 @@ Each issue is assigned exactly three labels of the form
     severity  = major | minor .
     type      = bug | enhancement | feature .
     component = global | home | sections | photos | blogs | info | login .
-    
-### Commits
+
+### Commit Messages
 I follow the recommendations from the [Git book], e.g.
 
 `Home: heighten rows and add placeholder date label`
