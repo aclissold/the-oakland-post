@@ -49,8 +49,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     func feedParserDidFinish(parser: MWFeedParser!) {
         var indexPaths = [NSIndexPath]()
         let start = feedParser.offset
-        let end = start + feedParser.length + 1
-        for index in start...end {
+        let end = start + feedParser.length
+        for index in start..<end {
             indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
         }
         collectionView.performBatchUpdates({
