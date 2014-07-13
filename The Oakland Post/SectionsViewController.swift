@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SectionsViewController: UITableViewController {
+class SectionsViewController: BugFixTableViewController {
 
     let titles = ["News", "Life", "Sports", "Arts & Entertainment", "Opinion", "Satire"]
     let baseURLs = [

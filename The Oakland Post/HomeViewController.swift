@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UITableViewController, MWFeedParserDelegate {
+class HomeViewController: BugFixTableViewController, MWFeedParserDelegate {
 
     // http://goo.gl/jqzaQQ
     let baseURL =
@@ -20,7 +20,6 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
 
     var parsedItems = [MWFeedItem]()
     var dateFormatter: NSDateFormatter!
-    var lastIndexPath: NSIndexPath?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -128,23 +127,4 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
         return tableViewRowHeight;
     }
 
-    // MARK: Bugfix for UITableViewCells getting stuck as selected
-
-    override func viewWillAppear(animated: Bool)  {
-        if lastIndexPath != nil {
-            tableView.deselectRowAtIndexPath(lastIndexPath, animated: true)
-        }
-    }
-
-    override func viewDidDisappear(animated: Bool)  {
-        if lastIndexPath != nil {
-            tableView.selectRowAtIndexPath(lastIndexPath, animated: false, scrollPosition: .None)
-        }
-    }
-
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        lastIndexPath = indexPath
-    }
-
 }
-
