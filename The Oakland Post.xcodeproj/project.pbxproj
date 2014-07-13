@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22464415194BE612000F5568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464414194BE612000F5568 /* AppDelegate.swift */; };
-		22464417194BE612000F5568 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* HomeViewController.swift */; };
+		22464417194BE612000F5568 /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* PostTableViewController.swift */; };
 		2246441C194BE612000F5568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246441A194BE612000F5568 /* Main.storyboard */; };
 		22464436194BEC1A000F5568 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22464435194BEC1A000F5568 /* Images.xcassets */; };
 		22464438194BEE6C000F5568 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464437194BEE6C000F5568 /* Constants.swift */; };
@@ -22,6 +22,7 @@
 		224F90FD197221C000A59278 /* BugFixTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224F90FC197221C000A59278 /* BugFixTableViewController.swift */; };
 		2263E6F11964F68F000C00F5 /* InfoContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */; };
 		2263E6F41964F869000C00F5 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2263E6F31964F869000C00F5 /* InfoViewController.swift */; };
+		227EFC4519723ECC00023C2A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227EFC4419723ECC00023C2A /* HomeViewController.swift */; };
 		229B058519687EC70091120C /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B058419687EC70091120C /* PhotosViewController.swift */; };
 		229B0587196886470091120C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B0586196886470091120C /* PhotoCell.swift */; };
 		229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B2541194D1AF500975671 /* ImageIO.framework */; };
@@ -36,7 +37,7 @@
 		2246440F194BE612000F5568 /* The Oakland Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oakland Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22464413194BE612000F5568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22464414194BE612000F5568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22464416194BE612000F5568 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		22464416194BE612000F5568 /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
 		2246441B194BE612000F5568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22464435194BEC1A000F5568 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		22464437194BEE6C000F5568 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -50,6 +51,7 @@
 		224F90FC197221C000A59278 /* BugFixTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BugFixTableViewController.swift; sourceTree = "<group>"; };
 		2263E6F01964F68F000C00F5 /* InfoContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoContentViewController.swift; sourceTree = "<group>"; };
 		2263E6F31964F869000C00F5 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		227EFC4419723ECC00023C2A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		229B058419687EC70091120C /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		229B0586196886470091120C /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		229B2541194D1AF500975671 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -119,7 +121,7 @@
 		22471943195A62FE0054D887 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				22464416194BE612000F5568 /* HomeViewController.swift */,
+				227EFC4419723ECC00023C2A /* HomeViewController.swift */,
 				22C0102D194CEF3200704CD7 /* TableViewCell.swift */,
 				22471947195A64C70054D887 /* PostViewController.swift */,
 			);
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				22D6B39B1969A8AC00DD664E /* FeedParser.swift */,
+				22464416194BE612000F5568 /* PostTableViewController.swift */,
 				224F90FC197221C000A59278 /* BugFixTableViewController.swift */,
 				224F90FA19721A9900A59278 /* ThemedNavigationController.swift */,
 			);
@@ -291,8 +294,9 @@
 			files = (
 				22C0102E194CEF3200704CD7 /* TableViewCell.swift in Sources */,
 				229B0587196886470091120C /* PhotoCell.swift in Sources */,
+				227EFC4519723ECC00023C2A /* HomeViewController.swift in Sources */,
 				229B058519687EC70091120C /* PhotosViewController.swift in Sources */,
-				22464417194BE612000F5568 /* HomeViewController.swift in Sources */,
+				22464417194BE612000F5568 /* PostTableViewController.swift in Sources */,
 				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
 				224F90F91972013500A59278 /* SectionsCell.swift in Sources */,
 				224F90F7197200AD00A59278 /* SectionsViewController.swift in Sources */,
