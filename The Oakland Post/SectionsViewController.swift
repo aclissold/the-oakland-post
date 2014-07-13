@@ -39,4 +39,25 @@ class SectionsViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        let ownHeight = view.bounds.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+        let navigationBarHeight = navigationController.navigationBar.bounds.height
+        let tabBarHeight = tabBarController.tabBar.frame.height
+
+        let availableHeight = ownHeight - statusBarHeight - navigationBarHeight - tabBarHeight
+
+        return availableHeight / CGFloat(titles.count)
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        // Create an Array of each cells' index path.
+        let indexPaths = (0..<titles.count).map { NSIndexPath(forRow: $0, inSection: 0) }
+
+        tableView.beginUpdates()
+        // Convince the table view to query the row heights again.
+        tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Fade)
+        tableView.endUpdates()
+    }
+
 }
