@@ -41,12 +41,14 @@ class PostViewController: UIViewController, UIWebViewDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if loadCount > 0 {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             SVProgressHUD.show()
         }
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         SVProgressHUD.dismiss()
     }
 
@@ -62,6 +64,7 @@ class PostViewController: UIViewController, UIWebViewDelegate {
         --loadCount
         if loadCount == 0 {
             UIView.animateWithDuration(0.15) { webView.alpha = 1 }
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             SVProgressHUD.dismiss()
         }
     }

@@ -37,6 +37,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     }
 
     func refresh() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         tableView.userInteractionEnabled = false
         parsedItems.removeAll()
         feedParser.parseInitial()
@@ -47,6 +48,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     }
 
     func loadMorePosts() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         tableView.userInteractionEnabled = false
         feedParser.parseMore()
     }
@@ -59,6 +61,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
 
     func feedParserDidFinish(parser: MWFeedParser!) {
         tableView.reloadData()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         refreshControl.endRefreshing()
         tableView.userInteractionEnabled = true
         tableView.infiniteScrollingView.stopAnimating()
