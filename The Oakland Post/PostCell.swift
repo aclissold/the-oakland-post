@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  PostCell.swift
 //  The Oakland Post
 //
 //  Created by Andrew Clissold on 6/14/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class PostCell: UITableViewCell {
 
     @IBOutlet var thumbnail : UIImageView
     @IBOutlet var descriptionLabel: UILabel

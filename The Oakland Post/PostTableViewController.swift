@@ -85,7 +85,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     }
 
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PostCell
 
         let item = parsedItems[indexPath.row] as MWFeedItem
 
