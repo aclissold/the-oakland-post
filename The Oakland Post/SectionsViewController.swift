@@ -12,15 +12,6 @@ class SectionsViewController: UITableViewController {
 
     let titles = ["News", "Life", "Sports", "Arts & Entertainment", "Opinion", "Satire"]
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Theme
-        self.navigationController.navigationBar.barTintColor = oaklandPostBlue
-        self.navigationController.navigationBar.barStyle = .Black
-
-    }
-
     // MARK: UITableViewDataSource
 
     override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {

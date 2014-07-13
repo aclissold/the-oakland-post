@@ -25,10 +25,6 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Theme
-        self.navigationController.navigationBar.barTintColor = oaklandPostBlue
-        self.navigationController.navigationBar.barStyle = .Black
-
         // Pull to refresh
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
@@ -74,7 +70,7 @@ class HomeViewController: UITableViewController, MWFeedParserDelegate {
     // MARK: Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if segue.identifier == "readPost" {
+        if segue.identifier == readPostFromHomeID {
             let indexPath = self.tableView.indexPathForSelectedRow()
             let item = parsedItems[indexPath.row] as MWFeedItem
             (segue.destinationViewController as PostViewController).url = item.link

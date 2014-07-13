@@ -16,3 +16,6 @@ let infoContentViewControllerID = "infoContentViewController"
 
 // UITableViewCell identifiers
 let sectionsCellID = "sectionsCell", photoCellID = "photoCell"
+
+// Storyboard segue identifiers
+let readPostFromHomeID = "readPostFromHome", readPostFromSectionID = "readPostFromSection"

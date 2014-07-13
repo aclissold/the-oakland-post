@@ -8,7 +8,7 @@
         <!--Home-->
         <scene sceneID="cUi-kZ-frf">
             <objects>
-                <navigationController id="rS3-R9-Ivy" sceneMemberID="viewController">
+                <navigationController id="rS3-R9-Ivy" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Home" image="Circle" id="SgX-Hh-jhH"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
@@ -123,14 +123,14 @@
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -220,7 +220,7 @@
                                     <outlet property="dateLabel" destination="Fhq-ey-HDh" id="ss8-gm-Zpe"/>
                                     <outlet property="descriptionLabel" destination="qF9-a1-kMm" id="7eo-HD-mN8"/>
                                     <outlet property="thumbnail" destination="RiT-iM-rcd" id="pGd-a3-0RX"/>
-                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPost" id="jUr-3t-vfg"/>
+                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPostFromHome" id="jUr-3t-vfg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -297,9 +297,16 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="titleLabel" destination="JA2-3p-kqg" id="SSK-kM-Ocn"/>
+                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPostFromSection" id="XPa-kv-5Y8"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
+                        <variation key="heightClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        </variation>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        </variation>
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
                         </variation>
@@ -349,7 +356,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2580" y="522"/>
+            <point key="canvasLocation" x="2582" y="826"/>
         </scene>
         <!--Photos-->
         <scene sceneID="RxA-0d-8RA">
@@ -390,6 +397,9 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <variation key="heightClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                        </variation>
                         <variation key="widthClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         </variation>
@@ -413,7 +423,7 @@
             </objects>
             <point key="canvasLocation" x="1899" y="1681"/>
         </scene>
-        <!--Blogs-->
+        <!--View Controller-->
         <scene sceneID="uRP-Du-ftg">
             <objects>
                 <viewController id="C1m-50-T1M" sceneMemberID="viewController">
@@ -426,7 +436,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label appearanceType="aqua" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blogs" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4R-hg-qtd">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <rect key="frame" x="218" y="229" width="44" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -437,30 +447,13 @@
                             <constraint firstAttribute="centerX" secondItem="Q4R-hg-qtd" secondAttribute="centerX" id="XGe-g2-Zh7"/>
                             <constraint firstAttribute="centerY" secondItem="Q4R-hg-qtd" secondAttribute="centerY" constant="0.5" id="u27-QW-OQA"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Q4R-hg-qtd"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="XGe-g2-Zh7"/>
-                                <exclude reference="u27-QW-OQA"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Q4R-hg-qtd"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="XGe-g2-Zh7"/>
-                                <include reference="u27-QW-OQA"/>
-                            </mask>
-                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Blogs" image="Circle" id="qQ8-DV-iLZ"/>
+                    <navigationItem key="navigationItem" id="gAz-qg-kB2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yy8-cC-Cyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1207.5" y="2257.5"/>
+            <point key="canvasLocation" x="1899" y="2257"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9a1-DL-nsG">
@@ -476,7 +469,7 @@
                         <segue destination="rS3-R9-Ivy" kind="relationship" relationship="viewControllers" id="J7J-6E-bBU"/>
                         <segue destination="Grq-To-beC" kind="relationship" relationship="viewControllers" id="thY-PU-NYL"/>
                         <segue destination="cqt-06-l5o" kind="relationship" relationship="viewControllers" id="gkK-DO-feT"/>
-                        <segue destination="C1m-50-T1M" kind="relationship" relationship="viewControllers" id="4e4-E5-XeR"/>
+                        <segue destination="dUq-WQ-F8s" kind="relationship" relationship="viewControllers" id="4e4-E5-XeR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FC9-2L-h4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,7 +479,7 @@
         <!--Photos-->
         <scene sceneID="4kL-8d-Jtv">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqt-06-l5o" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqt-06-l5o" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Photos" image="Circle" id="g6d-wg-kAT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zQk-qr-wli">
@@ -505,7 +498,7 @@
         <!--Sections-->
         <scene sceneID="EtH-PO-AGL">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Grq-To-beC" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Grq-To-beC" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sections" image="Circle" id="aFX-R6-ju4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WXv-MI-RHo">
@@ -521,9 +514,31 @@
             </objects>
             <point key="canvasLocation" x="1207" y="1100"/>
         </scene>
+        <!--Blogs-->
+        <scene sceneID="cIO-Fz-dcv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dUq-WQ-F8s" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Blogs" image="Circle" id="qQ8-DV-iLZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U5N-x0-CXB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="C1m-50-T1M" kind="relationship" relationship="rootViewController" id="3V1-VO-gxE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7h-QL-DoQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1207" y="2257"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Circle" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jUr-3t-vfg"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

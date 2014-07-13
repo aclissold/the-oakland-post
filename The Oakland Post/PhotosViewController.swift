@@ -18,10 +18,6 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     var feedParser: FeedParser!
 
     override func viewDidLoad() {
-        // Theme
-        self.navigationController.navigationBar.barTintColor = oaklandPostBlue
-        self.navigationController.navigationBar.barStyle = .Black
-
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
         feedParser.parseInitial()
 
