@@ -21,8 +21,13 @@ class SectionsViewController: BugFixTableViewController {
     ]
 
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        let section = (sender as SectionsCell).titleLabel.text
-        println("Should segue with baseURL \(baseURLs[section])") // TODO
+        if segue.identifier == showSectionID {
+            let postTableViewController = segue.destinationViewController as PostTableViewController
+
+            let section = (sender as SectionsCell).titleLabel.text
+            postTableViewController.baseURL = baseURLs[section]
+            postTableViewController.navigationItem.title = section
+        }
     }
 
     // MARK: UITableViewDataSource

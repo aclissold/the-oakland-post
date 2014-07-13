@@ -67,7 +67,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     // MARK: Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        if segue.identifier == readPostFromHomeID {
+        if segue.identifier == readPostID {
             let indexPath = self.tableView.indexPathForSelectedRow()
             let item = parsedItems[indexPath.row] as MWFeedItem
             (segue.destinationViewController as PostViewController).url = item.link

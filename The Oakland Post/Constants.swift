@@ -18,4 +18,4 @@ let infoContentViewControllerID = "infoContentViewController"
 let sectionsCellID = "sectionsCell", photoCellID = "photoCell"
 
 // Storyboard segue identifiers
-let readPostFromHomeID = "readPostFromHome", readPostFromSectionID = "readPostFromSection"
+let readPostID = "readPost", showSectionID = "showSection"
