@@ -12,18 +12,25 @@ PODS:
   - SDWebImage (3.6):
     - SDWebImage/Core
   - SDWebImage/Core (3.6)
+  - SVProgressHUD (1.0)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - MWFeedParser (~> 1.0.1)
   - NHBalancedFlowLayout (~> 0.2)
   - SDWebImage (~> 3.6)
+  - SVProgressHUD (from `https://github.com/dkasper/SVProgressHUD`)
   - SVPullToRefresh (~> 0.4.1)
+
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/dkasper/SVProgressHUD
 
 SPEC CHECKSUMS:
   MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
   NHBalancedFlowLayout: be3c297b54f74c27607aaa04563270ecbd2d8e38
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
 
 COCOAPODS: 0.33.1
