@@ -13,4 +13,6 @@ let oaklandPostBlue = UIColor(
 )
 let tableViewRowHeight: CGFloat = 120.0
 let infoContentViewControllerID = "infoContentViewController"
-let photoCellID                 = "photoCell"
+
+// UITableViewCell identifiers
+let sectionsCellID = "sectionsCell", photoCellID = "photoCell"
