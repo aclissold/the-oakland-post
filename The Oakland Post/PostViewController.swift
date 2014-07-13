@@ -8,10 +8,11 @@
 
 import UIKit
 
-class PostViewController: UIViewController {
+class PostViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet var webView: UIWebView
 
+    var loadCount = 0
     var url: String? {
         didSet {
             url = url!.stringByReplacingOccurrencesOfString("//www", withString: "//m")
@@ -29,7 +30,40 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        webView.delegate = self
+        webView.alpha = 0
+
         self.configureView()
+    }
+
+    // MARK: SVProgressHUD management
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if loadCount > 0 {
+            SVProgressHUD.show()
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        SVProgressHUD.dismiss()
+    }
+
+    func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
+        --loadCount
+    }
+
+    func webViewDidStartLoad(webView: UIWebView!) {
+        ++loadCount
+    }
+
+    func webViewDidFinishLoad(webView: UIWebView!) {
+        --loadCount
+        if loadCount == 0 {
+            UIView.animateWithDuration(0.15) { webView.alpha = 1 }
+            SVProgressHUD.dismiss()
+        }
     }
 
 }
