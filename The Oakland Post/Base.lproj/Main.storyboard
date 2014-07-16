@@ -112,17 +112,12 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="9jr-8z-bGA"/>
                             </mask>
@@ -131,6 +126,11 @@
                             <mask key="constraints">
                                 <include reference="7lV-R7-48K"/>
                                 <include reference="HAu-4Q-KwJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
                             </mask>
                         </variation>
                     </view>
@@ -284,8 +284,8 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JA2-3p-kqg">
-                                            <rect key="frame" x="20" y="13" width="95" height="24"/>
-                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                            <rect key="frame" x="20" y="15" width="92" height="19"/>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>

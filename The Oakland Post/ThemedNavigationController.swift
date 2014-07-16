@@ -15,6 +15,7 @@ class ThemedNavigationController: UINavigationController {
 
         navigationBar.barTintColor = oaklandPostBlue
         navigationBar.barStyle = .Black
+        navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AvenirNext-Medium", size: 17)]
     }
 
 }
