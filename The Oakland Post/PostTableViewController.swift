@@ -17,6 +17,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     var baseURL: String!
     var feedParser: FeedParser!
     var parsedItems = [MWFeedItem]()
+    var finishedParsing = false
     var dateFormatter: NSDateFormatter!
 
     override func viewDidLoad() {
@@ -34,6 +35,20 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
         feedParser.parseInitial()
 
         tableView.addInfiniteScrollingWithActionHandler(loadMorePosts)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !finishedParsing {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            SVProgressHUD.show()
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        SVProgressHUD.dismiss()
     }
 
     func refresh() {
@@ -60,11 +75,13 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     }
 
     func feedParserDidFinish(parser: MWFeedParser!) {
+        finishedParsing = true
         tableView.reloadData()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        SVProgressHUD.dismiss()
         refreshControl.endRefreshing()
-        tableView.userInteractionEnabled = true
         tableView.infiniteScrollingView.stopAnimating()
+        tableView.userInteractionEnabled = true
     }
 
     // MARK: Segues

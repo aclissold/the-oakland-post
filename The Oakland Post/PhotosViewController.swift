@@ -17,11 +17,32 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     var photos: [UIImage] = []
     var feedParser: FeedParser!
 
+    var finishedParsing = false
+
     override func viewDidLoad() {
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
         feedParser.parseInitial()
 
-        collectionView.addInfiniteScrollingWithActionHandler(feedParser.parseMore)
+        collectionView.addInfiniteScrollingWithActionHandler(parseMore)
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !finishedParsing {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            SVProgressHUD.show()
+        }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        SVProgressHUD.dismiss()
+    }
+
+    func parseMore() {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        feedParser.parseMore()
     }
 
     // MARK: MWFeedParserDelegate methods
@@ -43,6 +64,10 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func feedParserDidFinish(parser: MWFeedParser!) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        SVProgressHUD.dismiss()
+        finishedParsing = true
+
         var indexPaths = [NSIndexPath]()
         let start = feedParser.offset
         let end = start + feedParser.length
