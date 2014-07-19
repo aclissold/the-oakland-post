@@ -13,6 +13,7 @@ class PostViewController: UIViewController, UIWebViewDelegate {
     @IBOutlet var webView: UIWebView
 
     var loadCount = 0
+    var finishedLoading = false
     var url: String? {
         didSet {
             url = url!.stringByReplacingOccurrencesOfString("//www", withString: "//m")
@@ -55,13 +56,39 @@ class PostViewController: UIViewController, UIWebViewDelegate {
         }
     }
 
+    // MARK: UIWebViewDelegate
+
+    // private
+    let script = "document.getElementById('mobile-header').style.display = 'none';" +
+        "document.getElementById('mobile-search-bar').style.display = 'none';" +
+        "document.getElementsByClassName('menu not-iphone')[0].style.display = 'none';"
+
     func webViewDidFinishLoad(webView: UIWebView!) {
         --loadCount
         if loadCount == 0 {
-            UIView.animateWithDuration(0.15) { webView.alpha = 1 }
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            SVProgressHUD.dismiss()
+            finishedLoading = true
+
+            // Hide the header and footer
+            webView.stringByEvaluatingJavaScriptFromString(script)
+
+            // Emulate a callback waiting for the web view to finish drawing
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 62_000_000), dispatch_get_main_queue()) {
+                UIView.animateWithDuration(0.15) { webView.alpha = 1 }
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                SVProgressHUD.dismiss()
+            }
         }
+    }
+
+    func webView(webView: UIWebView!,
+        shouldStartLoadWithRequest request: NSURLRequest!,
+        navigationType: UIWebViewNavigationType) -> Bool {
+            if !finishedLoading {
+                return true
+            } else {
+                println("Should open URL in Safari: \(request.URL.absoluteString)")
+                return false
+            }
     }
 
 }
