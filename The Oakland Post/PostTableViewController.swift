@@ -119,8 +119,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
                 }
             }
         } else {
-            // Set it to nil so a dequeued cell's image isn't displayed
-            cell.thumbnail.image = nil
+            cell.thumbnail.image = UIImage(named: "Placeholder")
         }
 
         cell.descriptionLabel.text = item.title
