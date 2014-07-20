@@ -15,9 +15,12 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     let cache = SDImageCache.sharedImageCache()
 
     var photos: [UIImage] = []
-    var feedParser: FeedParser!
+    var enlargedPhoto: UIImageView?
 
+    var feedParser: FeedParser!
     var finishedParsing = false
+
+    // MARK: Lifecycle
 
     override func viewDidLoad() {
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
@@ -40,9 +43,59 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         SVProgressHUD.dismiss()
     }
 
+    override func viewWillLayoutSubviews() {
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
+        if let photo = enlargedPhoto {
+            photo.frame = window.frame
+        }
+    }
+
+    // MARK: Miscellaneous
+
     func parseMore() {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         feedParser.parseMore()
+    }
+
+    // MARK: Enlarged Photo Handling
+
+    var shouldHideStatusBar = false
+    let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
+    override func prefersStatusBarHidden() -> Bool {
+        return shouldHideStatusBar
+    }
+
+    @IBAction func addEnlargedPhoto(sender: UIButton) {
+        let image = sender.backgroundImageForState(.Normal)
+        enlargedPhoto = UIImageView(image: image)
+        enlargedPhoto!.contentMode = UIViewContentMode.ScaleAspectFit
+        enlargedPhoto!.clipsToBounds = true
+        enlargedPhoto!.backgroundColor = UIColor.blackColor()
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
+        enlargedPhoto!.frame = window.frame
+        enlargedPhoto!.alpha = 0
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "removeEnlargedPhoto")
+        enlargedPhoto!.addGestureRecognizer(tapGestureRecognizer)
+        enlargedPhoto!.userInteractionEnabled = true
+
+        shouldHideStatusBar = true
+        setNeedsStatusBarAppearanceUpdate()
+        navigationController.navigationBar.frame.size.height += statusBarHeight
+        UIView.animateWithDuration(0.15) {
+            self.enlargedPhoto!.alpha = 1
+        }
+
+        window.addSubview(enlargedPhoto)
+    }
+
+    func removeEnlargedPhoto() {
+        shouldHideStatusBar = false
+        setNeedsStatusBarAppearanceUpdate()
+        UIView.animateWithDuration(0.15,
+            animations: {
+                self.enlargedPhoto!.alpha = 0
+            },
+            completion: { _ in self.enlargedPhoto = nil })
     }
 
     // MARK: MWFeedParserDelegate methods
@@ -103,7 +156,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoCellID,
                 forIndexPath: indexPath) as PhotoCell
-            cell.imageView.image = photos[indexPath.item]
+            cell.imageButton.setBackgroundImage(photos[indexPath.item], forState: .Normal)
             return cell
     }
 

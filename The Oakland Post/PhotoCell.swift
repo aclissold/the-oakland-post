@@ -10,6 +10,6 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
 
-    @IBOutlet var imageView: UIImageView
+    @IBOutlet var imageButton: UIButton
 
 }

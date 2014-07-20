@@ -112,25 +112,25 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
+                            <mask key="subviews">
+                                <include reference="9jr-8z-bGA"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="9jr-8z-bGA"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="7lV-R7-48K"/>
+                                <include reference="HAu-4Q-KwJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -380,20 +380,26 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rWj-1p-dmN">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z87-we-Pnm">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
-                                        </imageView>
+                                            <state key="normal">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="addEnlargedPhoto:" destination="Raa-h3-04V" eventType="touchUpInside" id="v2N-uK-EOQ"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="rWj-1p-dmN" secondAttribute="bottom" id="3Lb-nV-7Jh"/>
-                                    <constraint firstItem="rWj-1p-dmN" firstAttribute="top" secondItem="94J-Mo-GHz" secondAttribute="top" id="J0Q-eM-0Ea"/>
-                                    <constraint firstItem="rWj-1p-dmN" firstAttribute="leading" secondItem="94J-Mo-GHz" secondAttribute="leading" id="Ph4-PA-kZS"/>
-                                    <constraint firstAttribute="trailing" secondItem="rWj-1p-dmN" secondAttribute="trailing" id="dYi-l1-s8X"/>
+                                    <constraint firstItem="z87-we-Pnm" firstAttribute="top" secondItem="94J-Mo-GHz" secondAttribute="top" id="C98-L9-IHD"/>
+                                    <constraint firstItem="z87-we-Pnm" firstAttribute="leading" secondItem="94J-Mo-GHz" secondAttribute="leading" id="eF1-tw-55r"/>
+                                    <constraint firstAttribute="bottom" secondItem="z87-we-Pnm" secondAttribute="bottom" id="gCf-py-j7S"/>
+                                    <constraint firstAttribute="trailing" secondItem="z87-we-Pnm" secondAttribute="trailing" id="nHK-tz-ssc"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="imageView" destination="rWj-1p-dmN" id="xsj-EA-zb8"/>
+                                    <outlet property="imageButton" destination="z87-we-Pnm" id="yeG-1v-NVa"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
