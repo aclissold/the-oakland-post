@@ -79,13 +79,22 @@ class PostViewController: UIViewController, UIWebViewDelegate {
         }
     }
 
+    // MARK: Handling External Links
+
+    var delegate: LinkAlertDelegate!
+
     func webView(webView: UIWebView!,
         shouldStartLoadWithRequest request: NSURLRequest!,
         navigationType: UIWebViewNavigationType) -> Bool {
             if !finishedLoading {
                 return true
             } else {
-                println("Should open URL in Safari: \(request.URL.absoluteString)")
+                delegate = LinkAlertDelegate(URL: request.URL)
+                UIAlertView(title: "Open External Link?",
+                    message: request.URL.absoluteString,
+                    delegate: delegate,
+                    cancelButtonTitle: "No",
+                    otherButtonTitles: "Yes").show()
                 return false
             }
     }

@@ -29,6 +29,7 @@
 		229B0587196886470091120C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B0586196886470091120C /* PhotoCell.swift */; };
 		229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B2541194D1AF500975671 /* ImageIO.framework */; };
 		22C0102E194CEF3200704CD7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0102D194CEF3200704CD7 /* PostCell.swift */; };
+		22CBE1F7197C92AF0069BB5F /* LinkAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */; };
 		22D6B39C1969A8AC00DD664E /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B39B1969A8AC00DD664E /* FeedParser.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		229B0586196886470091120C /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		229B2541194D1AF500975671 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		22C0102D194CEF3200704CD7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAlertDelegate.swift; sourceTree = "<group>"; };
 		22D6B39B1969A8AC00DD664E /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -175,6 +177,7 @@
 				22464416194BE612000F5568 /* PostTableViewController.swift */,
 				22471947195A64C70054D887 /* PostViewController.swift */,
 				22C0102D194CEF3200704CD7 /* PostCell.swift */,
+				22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */,
 			);
 			name = Posts;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				224F90F91972013500A59278 /* SectionsCell.swift in Sources */,
 				224F90F7197200AD00A59278 /* SectionsViewController.swift in Sources */,
 				2263E6F41964F869000C00F5 /* InfoViewController.swift in Sources */,
+				22CBE1F7197C92AF0069BB5F /* LinkAlertDelegate.swift in Sources */,
 				224F90FB19721A9900A59278 /* ThemedNavigationController.swift in Sources */,
 				22940C08197775E000C14046 /* BlogsViewController.swift in Sources */,
 				2263E6F11964F68F000C00F5 /* InfoContentViewController.swift in Sources */,
