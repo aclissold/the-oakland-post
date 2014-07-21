@@ -20,6 +20,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     var feedParser: FeedParser!
     var finishedParsing = false
 
+    var shouldScrollToTop = false
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -31,10 +33,15 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        shouldScrollToTop = true
         if !finishedParsing {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             SVProgressHUD.show()
         }
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        shouldScrollToTop = false
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -55,6 +62,13 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     func parseMore() {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         feedParser.parseMore()
+    }
+
+    func scrollToTop() {
+        if shouldScrollToTop {
+            let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+            collectionView.scrollRectToVisible(rect, animated: true)
+        }
     }
 
     // MARK: Enlarged Photo Handling

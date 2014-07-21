@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: PostTableViewController {
 
+    var shouldScrollToTop = false
+
     override func viewDidLoad() {
         // http://goo.gl/jqzaQQ
         baseURL =
@@ -19,4 +21,20 @@ class HomeViewController: PostTableViewController {
 
         super.viewDidLoad()
     }
+
+    override func viewDidAppear(animated: Bool) {
+        shouldScrollToTop = true
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        shouldScrollToTop = false
+    }
+
+    func scrollToTop() {
+        if shouldScrollToTop {
+            let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+            tableView.scrollRectToVisible(rect, animated: true)
+        }
+    }
+
 }

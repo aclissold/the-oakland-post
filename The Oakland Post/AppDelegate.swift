@@ -9,20 +9,34 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegate {
                             
     var window: UIWindow?
 
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
-        // Global theming
+        var tabBarController = window!.rootViewController as UITabBarController
+        tabBarController.delegate = self
         UITabBar.appearance().tintColor = oaklandPostBlue
 
         SVProgressHUD.setBackgroundColor(UIColor.clearColor())
         SVProgressHUD.setForegroundColor(oaklandPostBlue)
         SVProgressHUD.setRingThickness(5)
 
+
         return true
     }
 
-}
+    func tabBarController(tabBarController: UITabBarController!, didSelectViewController viewController: UIViewController!) {
+        let childViewController: AnyObject = viewController.childViewControllers[0]
 
+        // Scroll to top if possible
+        if let topScrollableViewController = childViewController as? HomeViewController {
+            topScrollableViewController.scrollToTop()
+        } else if let topScrollableViewController = childViewController as? PhotosViewController {
+            topScrollableViewController.scrollToTop()
+        } else if let topScrollableViewController = childViewController as? BlogsViewController {
+            topScrollableViewController.scrollToTop()
+        }
+    }
+
+}
