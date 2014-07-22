@@ -10,8 +10,8 @@ import UIKit
 
 class PostCell: UITableViewCell {
 
-    @IBOutlet var thumbnail : UIImageView
-    @IBOutlet var descriptionLabel: UILabel
-    @IBOutlet var dateLabel: UILabel
+    @IBOutlet weak var thumbnail: UIImageView!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
 
 }

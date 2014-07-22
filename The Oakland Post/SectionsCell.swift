@@ -10,6 +10,6 @@ import UIKit
 
 class SectionsCell: UITableViewCell {
 
-    @IBOutlet var titleLabel: UILabel
+    @IBOutlet weak var titleLabel: UILabel!
 
 }

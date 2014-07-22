@@ -10,8 +10,8 @@ import UIKit
 
 class InfoContentViewController: UIViewController {
 
-    @IBOutlet var titleLabel: UILabel
-    @IBOutlet var infoText: UITextView
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var infoText: UITextView!
 
     var pageIndex: Int!
     var titleText: String!

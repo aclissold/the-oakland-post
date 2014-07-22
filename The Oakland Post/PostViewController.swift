@@ -10,7 +10,7 @@ import UIKit
 
 class PostViewController: UIViewController, UIWebViewDelegate {
 
-    @IBOutlet var webView: UIWebView
+    @IBOutlet weak var webView: UIWebView!
 
     var loadCount = 0
     var finishedLoading = false
