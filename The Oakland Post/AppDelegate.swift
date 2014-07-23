@@ -27,15 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
 
     func tabBarController(tabBarController: UITabBarController!, didSelectViewController viewController: UIViewController!) {
-        let childViewController: AnyObject = viewController.childViewControllers[0]
+        let childViewController = viewController.childViewControllers[0] as UIViewController
 
-        // Scroll to top if possible
-        if let topScrollableViewController = childViewController as? HomeViewController {
-            topScrollableViewController.scrollToTop()
-        } else if let topScrollableViewController = childViewController as? PhotosViewController {
-            topScrollableViewController.scrollToTop()
-        } else if let topScrollableViewController = childViewController as? BlogsViewController {
-            topScrollableViewController.scrollToTop()
+        if let topScrollable = childViewController as? TopScrollable {
+            if topScrollable.canScrollToTop {
+                topScrollable.scrollToTop()
+            }
         }
     }
 

@@ -8,9 +8,9 @@
 
 import UIKit
 
-class HomeViewController: PostTableViewController {
+class HomeViewController: PostTableViewController, TopScrollable {
 
-    var shouldScrollToTop = false
+    var canScrollToTop = false
 
     override func viewDidLoad() {
         // http://goo.gl/jqzaQQ
@@ -23,18 +23,16 @@ class HomeViewController: PostTableViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        shouldScrollToTop = true
+        canScrollToTop = true
     }
 
     override func viewDidDisappear(animated: Bool) {
-        shouldScrollToTop = false
+        canScrollToTop = true
     }
 
     func scrollToTop() {
-        if shouldScrollToTop {
-            let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
-            tableView.scrollRectToVisible(rect, animated: true)
-        }
+        let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+        tableView.scrollRectToVisible(rect, animated: true)
     }
 
 }

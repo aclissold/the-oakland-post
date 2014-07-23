@@ -8,9 +8,9 @@
 
 import UIKit
 
-class BlogsViewController: PostTableViewController {
+class BlogsViewController: PostTableViewController, TopScrollable {
 
-    var shouldScrollToTop = false
+    var canScrollToTop = false
 
     override func viewDidLoad() {
         baseURL = "http://www.oaklandpostonline.com/search/?mode=article&q=&t=article&sd=desc&c[]=blogs*&f=rss"
@@ -18,17 +18,15 @@ class BlogsViewController: PostTableViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-        shouldScrollToTop = true
+        canScrollToTop = true
     }
 
     override func viewDidDisappear(animated: Bool) {
-        shouldScrollToTop = false
+        canScrollToTop = false
     }
 
     func scrollToTop() {
-        if shouldScrollToTop {
-            let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
-            tableView.scrollRectToVisible(rect, animated: true)
-        }
+        let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+        tableView.scrollRectToVisible(rect, animated: true)
     }
 }

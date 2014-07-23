@@ -9,7 +9,7 @@
 import UIKit
 
 class PhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
-    NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, MWFeedParserDelegate {
+    NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, MWFeedParserDelegate, TopScrollable {
 
     let baseURL = "http://www.oaklandpostonline.com/search/?t=image&sd=desc&f=rss"
     let cache = SDImageCache.sharedImageCache()
@@ -20,7 +20,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     var feedParser: FeedParser!
     var finishedParsing = false
 
-    var shouldScrollToTop = false
+    var canScrollToTop = false
 
     // MARK: Lifecycle
 
@@ -33,7 +33,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        shouldScrollToTop = true
+        canScrollToTop = true
         if !finishedParsing {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             SVProgressHUD.show()
@@ -41,7 +41,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     override func viewDidDisappear(animated: Bool) {
-        shouldScrollToTop = false
+        canScrollToTop = false
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -65,10 +65,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func scrollToTop() {
-        if shouldScrollToTop {
-            let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
-            collectionView.scrollRectToVisible(rect, animated: true)
-        }
+        let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+        collectionView.scrollRectToVisible(rect, animated: true)
     }
 
     // MARK: Enlarged Photo Handling
