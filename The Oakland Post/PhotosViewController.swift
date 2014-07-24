@@ -80,7 +80,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         enlargedPhoto = EnlargedPhoto(image: sender.backgroundImageForState(.Normal))
-        enlargedPhoto!.delegate = enlargedPhotoDelegate
+        enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
+        enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "removeEnlargedPhoto")
         enlargedPhoto!.addGestureRecognizer(tapGestureRecognizer)

@@ -8,8 +8,12 @@
 
 class EnlargedPhotoDelegate: NSObject, UIScrollViewDelegate {
 
-    func viewForZoomingInScrollView(enlargedPhoto: EnlargedPhoto!) -> UIView! {
-        return enlargedPhoto.imageView
+    var zoomView: UIView!
+
+    init() {}
+
+    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+        return zoomView
     }
 
 }
