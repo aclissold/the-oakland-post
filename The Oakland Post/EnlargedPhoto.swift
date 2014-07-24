@@ -9,23 +9,12 @@
 
 class EnlargedPhoto: UIScrollView {
 
-    private let scrollViewDelegate = ScrollViewDelegate()
-
-    private class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
-
-        func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
-            return (scrollView as EnlargedPhoto).imageView
-        }
-
-    }
-
     let imageView: UIImageView
 
     init(image: UIImage!) {
-        let window = UIApplication.sharedApplication().windows[0] as UIWindow
-
         imageView = UIImageView(image: image)
 
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
         super.init(frame: window.frame)
 
         imageView.backgroundColor = UIColor.blackColor()
@@ -36,7 +25,6 @@ class EnlargedPhoto: UIScrollView {
 
         alpha = 0
         contentSize = imageView.frame.size
-        delegate = scrollViewDelegate
         maximumZoomScale = 2
         minimumZoomScale = 1
 

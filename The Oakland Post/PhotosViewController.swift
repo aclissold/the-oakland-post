@@ -72,6 +72,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     // MARK: Enlarged Photo Handling
 
     var shouldHideStatusBar = false
+    let enlargedPhotoDelegate = EnlargedPhotoDelegate()
     let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
     override func prefersStatusBarHidden() -> Bool {
         return shouldHideStatusBar
@@ -79,6 +80,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         enlargedPhoto = EnlargedPhoto(image: sender.backgroundImageForState(.Normal))
+        enlargedPhoto!.delegate = enlargedPhotoDelegate
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "removeEnlargedPhoto")
         enlargedPhoto!.addGestureRecognizer(tapGestureRecognizer)
@@ -102,7 +104,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             animations: {
                 self.enlargedPhoto!.alpha = 0
             },
-            completion: { _ in self.enlargedPhoto!.removeFromSuperview() })
+            completion: { _ in self.enlargedPhoto = nil })
     }
 
     // MARK: MWFeedParserDelegate methods
