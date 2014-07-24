@@ -14,7 +14,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     let baseURL = "http://www.oaklandpostonline.com/search/?t=image&sd=desc&f=rss"
     let cache = SDImageCache.sharedImageCache()
 
-    var photos: [UIImage] = []
+    var photos = [UIImage]()
     var enlargedPhoto: UIImageView?
 
     var feedParser: FeedParser!
