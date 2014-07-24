@@ -7,21 +7,40 @@
 //
 
 
-class EnlargedPhoto: UIImageView {
+class EnlargedPhoto: UIScrollView {
+
+    private let scrollViewDelegate = ScrollViewDelegate()
+
+    private class ScrollViewDelegate: NSObject, UIScrollViewDelegate {
+
+        func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+            return (scrollView as EnlargedPhoto).imageView
+        }
+
+    }
+
+    let imageView: UIImageView
 
     init(image: UIImage!) {
-        super.init(image: image)
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
+
+        imageView = UIImageView(image: image)
+
+        super.init(frame: window.frame)
+
+        imageView.backgroundColor = UIColor.blackColor()
+        imageView.clipsToBounds = true
+        imageView.contentMode = .ScaleAspectFit
+        imageView.frame = bounds
+        imageView.userInteractionEnabled = true
 
         alpha = 0
-        clipsToBounds = true
-        backgroundColor = UIColor.blackColor()
+        contentSize = imageView.frame.size
+        delegate = scrollViewDelegate
+        maximumZoomScale = 2
+        minimumZoomScale = 1
 
-        contentMode = UIViewContentMode.ScaleAspectFit
-
-        let window = UIApplication.sharedApplication().windows[0] as UIWindow
-        frame = window.frame
-
-        userInteractionEnabled = true
+        addSubview(imageView)
     }
 
 }
