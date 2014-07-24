@@ -15,7 +15,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     let cache = SDImageCache.sharedImageCache()
 
     var photos = [UIImage]()
-    var enlargedPhoto: UIImageView?
+    var enlargedPhoto: EnlargedPhoto?
 
     var feedParser: FeedParser!
     var finishedParsing = false
@@ -78,26 +78,21 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
-        let image = sender.backgroundImageForState(.Normal)
-        enlargedPhoto = UIImageView(image: image)
-        enlargedPhoto!.contentMode = UIViewContentMode.ScaleAspectFit
-        enlargedPhoto!.clipsToBounds = true
-        enlargedPhoto!.backgroundColor = UIColor.blackColor()
-        let window = UIApplication.sharedApplication().windows[0] as UIWindow
-        enlargedPhoto!.frame = window.frame
-        enlargedPhoto!.alpha = 0
+        enlargedPhoto = EnlargedPhoto(image: sender.backgroundImageForState(.Normal))
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "removeEnlargedPhoto")
         enlargedPhoto!.addGestureRecognizer(tapGestureRecognizer)
-        enlargedPhoto!.userInteractionEnabled = true
+
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
+        window.addSubview(enlargedPhoto)
 
         shouldHideStatusBar = true
         setNeedsStatusBarAppearanceUpdate()
         navigationController.navigationBar.frame.size.height += statusBarHeight
+
         UIView.animateWithDuration(0.15) {
             self.enlargedPhoto!.alpha = 1
         }
-
-        window.addSubview(enlargedPhoto)
     }
 
     func removeEnlargedPhoto() {
@@ -107,7 +102,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             animations: {
                 self.enlargedPhoto!.alpha = 0
             },
-            completion: { _ in self.enlargedPhoto = nil })
+            completion: { _ in self.enlargedPhoto!.removeFromSuperview() })
     }
 
     // MARK: MWFeedParserDelegate methods

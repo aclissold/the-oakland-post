@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		222EA4DB1980634C00F9CE31 /* TopScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA4DA1980634C00F9CE31 /* TopScrollable.swift */; };
+		222EA53919809D1100F9CE31 /* EnlargedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */; };
 		22464415194BE612000F5568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464414194BE612000F5568 /* AppDelegate.swift */; };
 		22464417194BE612000F5568 /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* PostTableViewController.swift */; };
 		2246441C194BE612000F5568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246441A194BE612000F5568 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* Begin PBXFileReference section */
 		08AAF408A02D41FBBE1EBE82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		222EA4DA1980634C00F9CE31 /* TopScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScrollable.swift; sourceTree = "<group>"; };
+		222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhoto.swift; sourceTree = "<group>"; };
 		2231F83E194CDBDA007C7467 /* The Oakland Post-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Oakland Post-Bridging-Header.h"; sourceTree = "<group>"; };
 		2246440F194BE612000F5568 /* The Oakland Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oakland Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22464413194BE612000F5568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			children = (
 				229B058419687EC70091120C /* PhotosViewController.swift */,
 				229B0586196886470091120C /* PhotoCell.swift */,
+				222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */,
 			);
 			name = Photos;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				22C0102E194CEF3200704CD7 /* PostCell.swift in Sources */,
 				229B0587196886470091120C /* PhotoCell.swift in Sources */,
 				222EA4DB1980634C00F9CE31 /* TopScrollable.swift in Sources */,
+				222EA53919809D1100F9CE31 /* EnlargedPhoto.swift in Sources */,
 				227EFC4519723ECC00023C2A /* HomeViewController.swift in Sources */,
 				229B058519687EC70091120C /* PhotosViewController.swift in Sources */,
 				22464417194BE612000F5568 /* PostTableViewController.swift in Sources */,
