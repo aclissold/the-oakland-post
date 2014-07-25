@@ -44,12 +44,11 @@ class EnlargedPhoto: UIView {
     func downloadImage() {
         if !originatingURL { return }
 
-        dispatch_async(dispatch_get_main_queue()) {
+        onMain {
             SVProgressHUD.showProgress(0)
         }
 
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-        dispatch_async(queue) {
+        onDefault {
             // Find the image URL
             let HTMLData = NSData(contentsOfURL: NSURL(string: self.originatingURL))
             let dataString = NSString(data: HTMLData, encoding: NSUTF8StringEncoding)
@@ -68,13 +67,11 @@ class EnlargedPhoto: UIView {
 
     func downloadProgressed(receivedSize: Int, expectedSize: Int) {
         let progress = Float(receivedSize) / Float(expectedSize)
-        dispatch_async(dispatch_get_main_queue()) {
-            SVProgressHUD.showProgress(progress)
-        }
+        onMain { SVProgressHUD.showProgress(progress) }
     }
 
     func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, finished: Bool) {
-        dispatch_async(dispatch_get_main_queue()) {
+        onMain {
             SVProgressHUD.dismiss()
             self.imageView.image = image
         }

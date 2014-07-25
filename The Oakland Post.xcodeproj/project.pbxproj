@@ -11,6 +11,7 @@
 		222EA53919809D1100F9CE31 /* EnlargedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */; };
 		222EA53B1980A96700F9CE31 /* EnlargedPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */; };
 		222EA53D1981DE9600F9CE31 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 222EA53C1981DE9600F9CE31 /* libxml2.dylib */; };
+		222EA53F1982014300F9CE31 /* GCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53E1982014300F9CE31 /* GCD.swift */; };
 		22464415194BE612000F5568 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464414194BE612000F5568 /* AppDelegate.swift */; };
 		22464417194BE612000F5568 /* PostTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22464416194BE612000F5568 /* PostTableViewController.swift */; };
 		2246441C194BE612000F5568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2246441A194BE612000F5568 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhoto.swift; sourceTree = "<group>"; };
 		222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhotoDelegate.swift; sourceTree = "<group>"; };
 		222EA53C1981DE9600F9CE31 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		222EA53E1982014300F9CE31 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
 		2231F83E194CDBDA007C7467 /* The Oakland Post-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Oakland Post-Bridging-Header.h"; sourceTree = "<group>"; };
 		2246440F194BE612000F5568 /* The Oakland Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oakland Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22464413194BE612000F5568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				22940C0419730CFD00C14046 /* Posts */,
 				22D6B39B1969A8AC00DD664E /* FeedParser.swift */,
+				222EA53E1982014300F9CE31 /* GCD.swift */,
 				224F90FC197221C000A59278 /* BugFixTableViewController.swift */,
 				224F90FA19721A9900A59278 /* ThemedNavigationController.swift */,
 				222EA4DA1980634C00F9CE31 /* TopScrollable.swift */,
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222EA53F1982014300F9CE31 /* GCD.swift in Sources */,
 				22C0102E194CEF3200704CD7 /* PostCell.swift in Sources */,
 				229B0587196886470091120C /* PhotoCell.swift in Sources */,
 				222EA4DB1980634C00F9CE31 /* TopScrollable.swift in Sources */,
