@@ -11,10 +11,11 @@ import UIKit
 class PhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
     NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, MWFeedParserDelegate, TopScrollable {
 
-    let baseURL = "http://www.oaklandpostonline.com/search/?t=image&sd=desc&f=rss"
+    let baseURL = "http://www.oaklandpostonline.com/search/?t=article&sd=desc&f=rss"
     let cache = SDImageCache.sharedImageCache()
 
     var photos = [UIImage]()
+    var URLs = [String]()
     var enlargedPhoto: EnlargedPhoto?
 
     var feedParser: FeedParser!
@@ -79,7 +80,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
-        enlargedPhoto = EnlargedPhoto(image: sender.backgroundImageForState(.Normal))
+        enlargedPhoto = EnlargedPhoto(image: photos[sender.tag], highResImageURL: URLs[sender.tag])
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
@@ -111,6 +112,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     // MARK: MWFeedParserDelegate methods
 
     func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
+        if !item.enclosures { return }
+
         let enclosures = item.enclosures[0] as NSDictionary
         let URLString = enclosures["url"] as String
 
@@ -124,22 +127,32 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             photos.append(image)
         }
 
+        URLs.append(item.link)
     }
 
+    var insertedIndexPaths = 0
     func feedParserDidFinish(parser: MWFeedParser!) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         SVProgressHUD.dismiss()
         finishedParsing = true
 
         var indexPaths = [NSIndexPath]()
-        let start = feedParser.offset
-        let end = start + feedParser.length
+        let start = insertedIndexPaths
+        let end = photos.count
         for index in start..<end {
             indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
         }
+
         collectionView.performBatchUpdates({
                 self.collectionView.insertItemsAtIndexPaths(indexPaths)
-            }, completion: nil)
+            }, completion: { (completed: Bool) in
+                if completed {
+                    self.insertedIndexPaths += indexPaths.count
+                } else {
+                    fatalError("failed to insert items")
+                }
+            })
+
         collectionView.infiniteScrollingView.stopAnimating()
     }
 
@@ -167,6 +180,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoCellID,
                 forIndexPath: indexPath) as PhotoCell
             cell.imageButton.setBackgroundImage(photos[indexPath.item], forState: .Normal)
+            cell.imageButton.tag = indexPath.item
             return cell
     }
 

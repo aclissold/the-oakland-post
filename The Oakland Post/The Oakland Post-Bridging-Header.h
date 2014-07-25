@@ -6,5 +6,6 @@
 #import "NHBalancedFlowLayout.h"
 #import "NHLinearPartition.h"
 #import "SVProgressHUD.h"
+#import "TFHpple.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "UIImageView+WebCache.h"

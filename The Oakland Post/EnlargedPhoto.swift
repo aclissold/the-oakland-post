@@ -11,7 +11,7 @@ class EnlargedPhoto: UIView {
 
     var imageView: UIImageView
     let scrollView: UIScrollView
-    let highResImageURL: String?
+    let originatingURL: String?
     var highResImageView: UIImageView!
 
 
@@ -20,7 +20,7 @@ class EnlargedPhoto: UIView {
 
         imageView = UIImageView(image: image)
         scrollView = UIScrollView(frame: window.frame)
-        self.highResImageURL = highResImageURL
+        self.originatingURL = highResImageURL
 
         imageView.backgroundColor = UIColor.blackColor()
         imageView.clipsToBounds = true
@@ -42,18 +42,32 @@ class EnlargedPhoto: UIView {
     }
 
     func downloadImage() {
-        if let URLString = highResImageURL {
-            let URL = NSURL(string: highResImageURL)
+        if !originatingURL { return }
+
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(queue) {
+            // Find the image URL
+            let HTMLData = NSData(contentsOfURL: NSURL(string: self.originatingURL))
+            let dataString = NSString(data: HTMLData, encoding: NSUTF8StringEncoding)
+            let hpple = TFHpple(HTMLData: HTMLData)
+            let XPathQuery = "//meta[@property='og:image']"
+            let elements = hpple.searchWithXPathQuery(XPathQuery) as [TFHppleElement]
+            let imageURL = elements[0].objectForKey("content")
+
+            // Download the image at that URL
+            let URL = NSURL(string: imageURL)
             SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-                URL, options: SDWebImageDownloaderOptions.fromRaw(0)!, progress: downloadProgressed, completed: downloadFinished)
+                URL, options: SDWebImageDownloaderOptions.fromRaw(0)!,
+                progress: self.downloadProgressed, completed: self.downloadFinished)
         }
     }
 
     func downloadProgressed(receivedSize: Int, expectedSize: Int) {
+//        println("received \(receivedSize) of \(expectedSize)")
     }
 
     func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, finished: Bool) {
-        imageView.image = image
+        dispatch_async(dispatch_get_main_queue()) { self.imageView.image = image }
     }
 
 }
