@@ -9,10 +9,10 @@
 
 class EnlargedPhoto: UIView {
 
-    var imageView: UIImageView
+    let imageView: UIImageView
     let scrollView: UIScrollView
     let originatingURL: String?
-    var highResImageView: UIImageView!
+    let highResImageView: UIImageView!
 
 
     init(image: UIImage!, highResImageURL: String? = nil) {
@@ -44,6 +44,10 @@ class EnlargedPhoto: UIView {
     func downloadImage() {
         if !originatingURL { return }
 
+        dispatch_async(dispatch_get_main_queue()) {
+            SVProgressHUD.showProgress(0)
+        }
+
         let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
         dispatch_async(queue) {
             // Find the image URL
@@ -63,11 +67,17 @@ class EnlargedPhoto: UIView {
     }
 
     func downloadProgressed(receivedSize: Int, expectedSize: Int) {
-//        println("received \(receivedSize) of \(expectedSize)")
+        let progress = Float(receivedSize) / Float(expectedSize)
+        dispatch_async(dispatch_get_main_queue()) {
+            SVProgressHUD.showProgress(progress)
+        }
     }
 
     func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, finished: Bool) {
-        dispatch_async(dispatch_get_main_queue()) { self.imageView.image = image }
+        dispatch_async(dispatch_get_main_queue()) {
+            SVProgressHUD.dismiss()
+            self.imageView.image = image
+        }
     }
 
 }

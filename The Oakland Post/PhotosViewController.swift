@@ -80,6 +80,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
+        if enlargedPhoto { return } // the user probably tapped two at once
+
         enlargedPhoto = EnlargedPhoto(image: photos[sender.tag], highResImageURL: URLs[sender.tag])
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
@@ -103,10 +105,9 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         shouldHideStatusBar = false
         setNeedsStatusBarAppearanceUpdate()
         UIView.animateWithDuration(0.15,
-            animations: {
-                self.enlargedPhoto!.alpha = 0
-            },
-            completion: { _ in self.enlargedPhoto = nil })
+            animations: { self.enlargedPhoto!.alpha = 0 },
+            completion: { _ in self.enlargedPhoto = nil }
+        )
     }
 
     // MARK: MWFeedParserDelegate methods
