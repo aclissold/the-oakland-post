@@ -9,14 +9,18 @@
 
 class EnlargedPhoto: UIView {
 
+    var imageView: UIImageView
     let scrollView: UIScrollView
-    let imageView: UIImageView
+    let highResImageURL: String?
+    var highResImageView: UIImageView!
 
-    init(image: UIImage!) {
+
+    init(image: UIImage!, highResImageURL: String? = nil) {
         let window = UIApplication.sharedApplication().windows[0] as UIWindow
 
         imageView = UIImageView(image: image)
         scrollView = UIScrollView(frame: window.frame)
+        self.highResImageURL = highResImageURL
 
         imageView.backgroundColor = UIColor.blackColor()
         imageView.clipsToBounds = true
@@ -33,6 +37,23 @@ class EnlargedPhoto: UIView {
         alpha = 0
         backgroundColor = UIColor.blackColor()
         addSubview(scrollView)
+
+        downloadImage()
+    }
+
+    func downloadImage() {
+        if let URLString = highResImageURL {
+            let URL = NSURL(string: highResImageURL)
+            SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
+                URL, options: SDWebImageDownloaderOptions.fromRaw(0)!, progress: downloadProgressed, completed: downloadFinished)
+        }
+    }
+
+    func downloadProgressed(receivedSize: Int, expectedSize: Int) {
+    }
+
+    func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, finished: Bool) {
+        imageView.image = image
     }
 
 }
