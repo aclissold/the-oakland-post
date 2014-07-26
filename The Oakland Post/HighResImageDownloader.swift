@@ -12,7 +12,8 @@ private var canceled = false
 
 class HighResImageDownloader {
 
-    class func downloadFromURL(URL: String, forEnlargedPhoto enlargedPhoto: EnlargedPhoto) {
+    class func downloadFromURL(URL: String,
+        forEnlargedPhoto enlargedPhoto: EnlargedPhoto, sender: UIButton, finished: (UIImage, Int) -> ()) {
 
         canceled = false // reset
 
@@ -21,10 +22,12 @@ class HighResImageDownloader {
             onMain { SVProgressHUD.showProgress(progress) }
         }
 
-        func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, finished: Bool) {
+        func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, _: Bool) {
             onMain {
                 SVProgressHUD.dismiss()
                 enlargedPhoto.imageView.image = image
+                sender.setBackgroundImage(image, forState: .Normal)
+                finished(image!, sender.tag)
             }
         }
 

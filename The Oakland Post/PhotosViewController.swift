@@ -79,11 +79,17 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         return shouldHideStatusBar
     }
 
+    func receivePhoto(photo: UIImage, forIndex index: Int) {
+        // Update the photos array with the high-res version for reuse in dequeued cells
+        photos[index] = photo
+    }
+
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         if enlargedPhoto { return } // the user probably tapped two at once
 
         enlargedPhoto = EnlargedPhoto(image: photos[sender.tag])
-        HighResImageDownloader.downloadFromURL(URLs[sender.tag], forEnlargedPhoto: enlargedPhoto!)
+        HighResImageDownloader.downloadFromURL(URLs[sender.tag],
+            forEnlargedPhoto: enlargedPhoto!, sender: sender, finished: self.receivePhoto)
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
