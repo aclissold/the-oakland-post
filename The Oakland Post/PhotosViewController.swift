@@ -82,7 +82,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         if enlargedPhoto { return } // the user probably tapped two at once
 
-        enlargedPhoto = EnlargedPhoto(image: photos[sender.tag], highResImageURL: URLs[sender.tag])
+        enlargedPhoto = EnlargedPhoto(image: photos[sender.tag])
+        HighResImageDownloader.downloadFromURL(URLs[sender.tag], forEnlargedPhoto: enlargedPhoto!)
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
@@ -107,7 +108,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         UIView.animateWithDuration(0.15,
             animations: { self.enlargedPhoto!.alpha = 0 },
             completion: { _ in
-                self.enlargedPhoto!.removeFromSuperview()
+                HighResImageDownloader.cancel()
                 self.enlargedPhoto = nil
             }
         )

@@ -11,17 +11,13 @@ class EnlargedPhoto: UIView {
 
     let imageView: UIImageView
     let scrollView: UIScrollView
-    let originatingURL: String?
     let highResImageView: UIImageView!
-    var downloadOperation: SDWebImageOperation?
-    var canceled = false
 
-    init(image: UIImage!, highResImageURL: String? = nil) {
+    init(image: UIImage!) {
         let window = UIApplication.sharedApplication().windows[0] as UIWindow
 
         imageView = UIImageView(image: image)
         scrollView = UIScrollView(frame: window.frame)
-        self.originatingURL = highResImageURL
 
         imageView.backgroundColor = UIColor.blackColor()
         imageView.clipsToBounds = true
@@ -38,53 +34,6 @@ class EnlargedPhoto: UIView {
         alpha = 0
         backgroundColor = UIColor.blackColor()
         addSubview(scrollView)
-
-        downloadImage()
-    }
-
-    func downloadImage() {
-        if !originatingURL { return }
-
-        onMain {
-            SVProgressHUD.showProgress(0)
-        }
-
-        onDefault {
-            // Find the image URL
-            let HTMLData = NSData(contentsOfURL: NSURL(string: self.originatingURL))
-            let dataString = NSString(data: HTMLData, encoding: NSUTF8StringEncoding)
-            let hpple = TFHpple(HTMLData: HTMLData)
-            let XPathQuery = "//meta[@property='og:image']"
-            let elements = hpple.searchWithXPathQuery(XPathQuery) as [TFHppleElement]
-            let imageURL = elements[0].objectForKey("content")
-
-            // Download the image at that URL
-            let URL = NSURL(string: imageURL)
-            if !self.canceled {
-                self.downloadOperation = SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-                    URL, options: SDWebImageDownloaderOptions.fromRaw(0)!,
-                    progress: self.downloadProgressed, completed: self.downloadFinished)
-            }
-        }
-    }
-
-    func downloadProgressed(receivedSize: Int, expectedSize: Int) {
-        let progress = Float(receivedSize) / Float(expectedSize)
-        onMain { SVProgressHUD.showProgress(progress) }
-    }
-
-    func downloadFinished(image: UIImage?, data: NSData?, error: NSError?, finished: Bool) {
-        onMain {
-            SVProgressHUD.dismiss()
-            self.imageView.image = image
-        }
-    }
-
-    override func removeFromSuperview() {
-        SVProgressHUD.dismiss()
-        downloadOperation?.cancel()
-        canceled = true
-        super.removeFromSuperview()
     }
 
 }
