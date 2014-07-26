@@ -13,7 +13,9 @@ class EnlargedPhoto: UIView {
     let scrollView: UIScrollView
     let highResImageView: UIImageView!
 
-    init(image: UIImage!) {
+    var index: Int!
+
+    init(image: UIImage!, index: Int) {
         let window = UIApplication.sharedApplication().windows[0] as UIWindow
 
         imageView = UIImageView(image: image)
@@ -33,6 +35,7 @@ class EnlargedPhoto: UIView {
         super.init(frame: window.frame)
         alpha = 0
         backgroundColor = UIColor.blackColor()
+        self.index = index
         addSubview(scrollView)
     }
 

@@ -87,18 +87,19 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         if enlargedPhoto { return } // the user probably tapped two at once
 
-        if let highResPhoto = highResPhotos[sender.tag] {
-            enlargedPhoto = EnlargedPhoto(image: highResPhoto)
+        let index = sender.tag
+
+        if let highResPhoto = highResPhotos[index] {
+            enlargedPhoto = EnlargedPhoto(image: highResPhoto, index: index)
         } else {
-            enlargedPhoto = EnlargedPhoto(image: photos[sender.tag])
-            HighResImageDownloader.downloadFromURL(URLs[sender.tag],
+            enlargedPhoto = EnlargedPhoto(image: photos[index], index: index)
+            HighResImageDownloader.downloadFromURL(URLs[index],
                 forEnlargedPhoto: enlargedPhoto!, sender: sender, finished: self.receivePhoto)
         }
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "removeEnlargedPhoto")
-        enlargedPhoto!.addGestureRecognizer(tapGestureRecognizer)
+        addGestureRecognizersToEnlargedPhoto(enlargedPhoto!)
 
         let window = UIApplication.sharedApplication().windows[0] as UIWindow
         window.addSubview(enlargedPhoto)
@@ -112,13 +113,57 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         }
     }
 
+    func addGestureRecognizersToEnlargedPhoto(enlargedPhoto: EnlargedPhoto) {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived")
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived")
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUpReceived")
+
+        swipeUpGestureRecognizer.direction = .Up
+        doubleTapGestureRecognizer.numberOfTapsRequired = 2
+        tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
+
+        enlargedPhoto.addGestureRecognizer(tapGestureRecognizer)
+        enlargedPhoto.addGestureRecognizer(doubleTapGestureRecognizer)
+        enlargedPhoto.addGestureRecognizer(swipeUpGestureRecognizer)
+    }
+
+
+    func singleTapReceived() {
+        removeEnlargedPhoto()
+    }
+
+    func doubleTapReceived() {
+        // TODO: zoom enlargedPhoto.scrollView
+    }
+
+    func swipeUpReceived() {
+        removeEnlargedPhoto()
+    }
+
     func removeEnlargedPhoto() {
+        let indexPath = NSIndexPath(forItem: enlargedPhoto!.index, inSection: 0)
+        let photoCell = collectionView.cellForItemAtIndexPath(indexPath)
+        let attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath)
+        let frame = view.convertRect(attributes.frame, fromView: collectionView)
+
         shouldHideStatusBar = false
         setNeedsStatusBarAppearanceUpdate()
-        UIView.animateWithDuration(0.15,
-            animations: { self.enlargedPhoto!.alpha = 0 },
+
+        photoCell.hidden = true
+        self.enlargedPhoto!.imageView.backgroundColor = nil
+        UIView.animateWithDuration(0.4,
+            delay: 0,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0.5,
+            options: .AllowUserInteraction,
+            animations: {
+                self.enlargedPhoto!.imageView.frame = frame
+                self.enlargedPhoto!.backgroundColor = nil
+            },
             completion: { _ in
                 HighResImageDownloader.cancel()
+                photoCell.hidden = false
+                self.enlargedPhoto!.removeFromSuperview()
                 self.enlargedPhoto = nil
             }
         )
