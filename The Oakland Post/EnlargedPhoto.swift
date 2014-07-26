@@ -13,7 +13,8 @@ class EnlargedPhoto: UIView {
     let scrollView: UIScrollView
     let originatingURL: String?
     let highResImageView: UIImageView!
-
+    var downloadOperation: SDWebImageOperation?
+    var canceled = false
 
     init(image: UIImage!, highResImageURL: String? = nil) {
         let window = UIApplication.sharedApplication().windows[0] as UIWindow
@@ -59,9 +60,11 @@ class EnlargedPhoto: UIView {
 
             // Download the image at that URL
             let URL = NSURL(string: imageURL)
-            SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-                URL, options: SDWebImageDownloaderOptions.fromRaw(0)!,
-                progress: self.downloadProgressed, completed: self.downloadFinished)
+            if !self.canceled {
+                self.downloadOperation = SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
+                    URL, options: SDWebImageDownloaderOptions.fromRaw(0)!,
+                    progress: self.downloadProgressed, completed: self.downloadFinished)
+            }
         }
     }
 
@@ -75,6 +78,13 @@ class EnlargedPhoto: UIView {
             SVProgressHUD.dismiss()
             self.imageView.image = image
         }
+    }
+
+    override func removeFromSuperview() {
+        SVProgressHUD.dismiss()
+        downloadOperation?.cancel()
+        canceled = true
+        super.removeFromSuperview()
     }
 
 }

@@ -106,7 +106,10 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         setNeedsStatusBarAppearanceUpdate()
         UIView.animateWithDuration(0.15,
             animations: { self.enlargedPhoto!.alpha = 0 },
-            completion: { _ in self.enlargedPhoto = nil }
+            completion: { _ in
+                self.enlargedPhoto!.removeFromSuperview()
+                self.enlargedPhoto = nil
+            }
         )
     }
 
