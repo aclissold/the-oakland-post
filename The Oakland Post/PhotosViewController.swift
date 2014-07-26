@@ -15,6 +15,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     let cache = SDImageCache.sharedImageCache()
 
     var photos = [UIImage]()
+    var highResPhotos = [Int: UIImage]()
     var URLs = [String]()
     var enlargedPhoto: EnlargedPhoto?
 
@@ -80,16 +81,19 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func receivePhoto(photo: UIImage, forIndex index: Int) {
-        // Update the photos array with the high-res version for reuse in dequeued cells
-        photos[index] = photo
+        highResPhotos[index] = photo
     }
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         if enlargedPhoto { return } // the user probably tapped two at once
 
-        enlargedPhoto = EnlargedPhoto(image: photos[sender.tag])
-        HighResImageDownloader.downloadFromURL(URLs[sender.tag],
-            forEnlargedPhoto: enlargedPhoto!, sender: sender, finished: self.receivePhoto)
+        if let highResPhoto = highResPhotos[sender.tag] {
+            enlargedPhoto = EnlargedPhoto(image: highResPhoto)
+        } else {
+            enlargedPhoto = EnlargedPhoto(image: photos[sender.tag])
+            HighResImageDownloader.downloadFromURL(URLs[sender.tag],
+                forEnlargedPhoto: enlargedPhoto!, sender: sender, finished: self.receivePhoto)
+        }
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
@@ -190,7 +194,11 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoCellID,
                 forIndexPath: indexPath) as PhotoCell
-            cell.imageButton.setBackgroundImage(photos[indexPath.item], forState: .Normal)
+            if let highResPhoto = highResPhotos[indexPath.item] {
+                cell.imageButton.setBackgroundImage(highResPhoto, forState: .Normal)
+            } else {
+                cell.imageButton.setBackgroundImage(photos[indexPath.item], forState: .Normal)
+            }
             cell.imageButton.tag = indexPath.item
             return cell
     }
