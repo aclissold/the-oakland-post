@@ -31,6 +31,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         feedParser.parseInitial()
 
         collectionView.addInfiniteScrollingWithActionHandler(parseMore)
+
+        navigationController.navigationBar.layer.zPosition = 1
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -101,8 +103,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
         addGestureRecognizersToEnlargedPhoto(enlargedPhoto!)
 
-        let window = UIApplication.sharedApplication().windows[0] as UIWindow
-        window.addSubview(enlargedPhoto)
+        navigationController.view.addSubview(enlargedPhoto)
 
         shouldHideStatusBar = true
         setNeedsStatusBarAppearanceUpdate()
@@ -110,6 +111,10 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
         UIView.animateWithDuration(0.15) {
             self.enlargedPhoto!.alpha = 1
+            self.navigationController.navigationBar.frame.origin.y -=
+                self.navigationController.navigationBar.frame.size.height
+            self.tabBarController.tabBar.frame.origin.y +=
+                self.tabBarController.tabBar.frame.size.height
         }
     }
 
@@ -186,6 +191,10 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
                 self.enlargedPhoto = nil
             }
         )
+        UIView.animateWithDuration(0.15) {
+            self.tabBarController.tabBar.frame.origin.y -=
+                self.tabBarController.tabBar.frame.size.height
+        }
     }
 
     // MARK: MWFeedParserDelegate methods
