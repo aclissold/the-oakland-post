@@ -9,10 +9,9 @@
 import UIKit
 
 class PhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
-    NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, MWFeedParserDelegate, TopScrollable {
+    NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, TopScrollable {
 
     let baseURL = "http://www.oaklandpostonline.com/search/?t=article&sd=desc&f=rss"
-    let cache = SDImageCache.sharedImageCache()
 
     var photos = [UIImage]()
     var highResPhotos = [Int: UIImage]()
@@ -27,7 +26,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     // MARK: Lifecycle
 
     override func viewDidLoad() {
-        feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
+        let delegate = PhotosFeedParserDelegate(delegator: self)
+        feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: delegate)
         feedParser.parseInitial()
 
         collectionView.addInfiniteScrollingWithActionHandler(parseMore)
@@ -195,53 +195,6 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             self.tabBarController.tabBar.frame.origin.y -=
                 self.tabBarController.tabBar.frame.size.height
         }
-    }
-
-    // MARK: MWFeedParserDelegate methods
-
-    func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
-        if !item.enclosures { return }
-
-        let enclosures = item.enclosures[0] as NSDictionary
-        let URLString = enclosures["url"] as String
-
-        if cache.diskImageExistsWithKey(URLString) {
-            photos.append(cache.imageFromDiskCacheForKey(URLString))
-        } else {
-            let URL = NSURL(string: URLString)
-            let data = NSData(contentsOfURL: URL)
-            let image = UIImage(data: data)
-            cache.storeImage(image, forKey: URLString)
-            photos.append(image)
-        }
-
-        URLs.append(item.link)
-    }
-
-    var insertedIndexPaths = 0
-    func feedParserDidFinish(parser: MWFeedParser!) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        SVProgressHUD.dismiss()
-        finishedParsing = true
-
-        var indexPaths = [NSIndexPath]()
-        let start = insertedIndexPaths
-        let end = photos.count
-        for index in start..<end {
-            indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
-        }
-
-        collectionView.performBatchUpdates({
-                self.collectionView.insertItemsAtIndexPaths(indexPaths)
-            }, completion: { (completed: Bool) in
-                if completed {
-                    self.insertedIndexPaths += indexPaths.count
-                } else {
-                    fatalError("failed to insert items")
-                }
-            })
-
-        collectionView.infiniteScrollingView.stopAnimating()
     }
 
     // MARK: NHBalancedFlowLayoutDelegate
