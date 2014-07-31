@@ -114,9 +114,9 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func addGestureRecognizersToEnlargedPhoto(enlargedPhoto: EnlargedPhoto) {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived")
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived")
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUpReceived")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived:")
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived:")
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUpReceived:")
 
         swipeUpGestureRecognizer.direction = .Up
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
@@ -128,16 +128,32 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
 
-    func singleTapReceived() {
-        removeEnlargedPhoto()
+    func singleTapReceived(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .Ended {
+            if enlargedPhoto!.scrollView.zoomScale == 1.0 {
+                removeEnlargedPhoto()
+            } else {
+                enlargedPhoto!.scrollView.zoomToRect(enlargedPhoto!.frame, animated: true)
+            }
+        }
     }
 
-    func doubleTapReceived() {
-        // TODO: zoom enlargedPhoto.scrollView
+    func doubleTapReceived(recognizer: UITapGestureRecognizer) {
+        if recognizer.state == .Ended {
+            switch enlargedPhoto!.scrollView.zoomScale {
+            case 1.0:
+                let point = recognizer.locationOfTouch(0, inView: enlargedPhoto!)
+                enlargedPhoto!.scrollView.zoomToPoint(point, withScale: 2.0, animated: true)
+            default:
+                enlargedPhoto!.scrollView.zoomToRect(enlargedPhoto!.frame, animated: true)
+            }
+        }
     }
 
-    func swipeUpReceived() {
-        removeEnlargedPhoto()
+    func swipeUpReceived(recognizer: UISwipeGestureRecognizer) {
+        if recognizer.state == .Ended {
+            removeEnlargedPhoto()
+        }
     }
 
     func removeEnlargedPhoto() {
