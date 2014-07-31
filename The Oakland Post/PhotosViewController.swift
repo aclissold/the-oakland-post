@@ -157,6 +157,9 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func removeEnlargedPhoto() {
+        for recognizer in enlargedPhoto!.gestureRecognizers as [UIGestureRecognizer] {
+            enlargedPhoto!.removeGestureRecognizer(recognizer)
+        }
         let indexPath = NSIndexPath(forItem: enlargedPhoto!.index, inSection: 0)
         let photoCell = collectionView.cellForItemAtIndexPath(indexPath)
         let attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath)
