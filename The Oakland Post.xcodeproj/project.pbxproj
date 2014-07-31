@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		22250D2E1989BB90006816C2 /* ZoomToPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22250D2D1989BB90006816C2 /* ZoomToPoint.swift */; };
 		22250D301989DD03006816C2 /* PhotosFeedParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22250D2F1989DD03006816C2 /* PhotosFeedParserDelegate.swift */; };
+		22250D321989DFB6006816C2 /* EnlargedPhotoGestureRecognizers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22250D311989DFB6006816C2 /* EnlargedPhotoGestureRecognizers.swift */; };
 		222EA4DB1980634C00F9CE31 /* TopScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA4DA1980634C00F9CE31 /* TopScrollable.swift */; };
 		222EA53919809D1100F9CE31 /* EnlargedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */; };
 		222EA53B1980A96700F9CE31 /* EnlargedPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */; };
@@ -46,6 +47,7 @@
 		08AAF408A02D41FBBE1EBE82 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		22250D2D1989BB90006816C2 /* ZoomToPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomToPoint.swift; sourceTree = "<group>"; };
 		22250D2F1989DD03006816C2 /* PhotosFeedParserDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosFeedParserDelegate.swift; sourceTree = "<group>"; };
+		22250D311989DFB6006816C2 /* EnlargedPhotoGestureRecognizers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhotoGestureRecognizers.swift; sourceTree = "<group>"; };
 		222EA4DA1980634C00F9CE31 /* TopScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScrollable.swift; sourceTree = "<group>"; };
 		222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhoto.swift; sourceTree = "<group>"; };
 		222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhotoDelegate.swift; sourceTree = "<group>"; };
@@ -171,10 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				229B058419687EC70091120C /* PhotosViewController.swift */,
-				22250D2F1989DD03006816C2 /* PhotosFeedParserDelegate.swift */,
 				229B0586196886470091120C /* PhotoCell.swift */,
+				22250D2F1989DD03006816C2 /* PhotosFeedParserDelegate.swift */,
 				222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */,
 				222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */,
+				22250D311989DFB6006816C2 /* EnlargedPhotoGestureRecognizers.swift */,
 				222EA5581983E87700F9CE31 /* HighResImageDownloader.swift */,
 			);
 			name = Photos;
@@ -363,6 +366,7 @@
 				22940C08197775E000C14046 /* BlogsViewController.swift in Sources */,
 				2263E6F11964F68F000C00F5 /* InfoContentViewController.swift in Sources */,
 				224F90FD197221C000A59278 /* BugFixTableViewController.swift in Sources */,
+				22250D321989DFB6006816C2 /* EnlargedPhotoGestureRecognizers.swift in Sources */,
 				22D6B39C1969A8AC00DD664E /* FeedParser.swift in Sources */,
 				222EA53B1980A96700F9CE31 /* EnlargedPhotoDelegate.swift in Sources */,
 				22464415194BE612000F5568 /* AppDelegate.swift in Sources */,

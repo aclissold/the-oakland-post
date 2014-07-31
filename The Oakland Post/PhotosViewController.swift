@@ -16,7 +16,9 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     var photos = [UIImage]()
     var highResPhotos = [Int: UIImage]()
     var URLs = [String]()
+
     var enlargedPhoto: EnlargedPhoto?
+    var gestureRecognizers: EnlargedPhotoGestureRecognizers!
 
     var feedParser: FeedParser!
     var finishedParsing = false
@@ -31,6 +33,8 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         feedParser.parseInitial()
 
         collectionView.addInfiniteScrollingWithActionHandler(parseMore)
+
+        gestureRecognizers = EnlargedPhotoGestureRecognizers(photosViewController: self)
 
         navigationController.navigationBar.layer.zPosition = 1
     }
@@ -101,7 +105,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
-        addGestureRecognizersToEnlargedPhoto(enlargedPhoto!)
+        gestureRecognizers.addToEnlargedPhoto(enlargedPhoto!)
 
         navigationController.view.addSubview(enlargedPhoto)
 
@@ -114,85 +118,6 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             self.navigationController.navigationBar.frame.origin.y -=
                 self.navigationController.navigationBar.frame.size.height
             self.tabBarController.tabBar.frame.origin.y +=
-                self.tabBarController.tabBar.frame.size.height
-        }
-    }
-
-    func addGestureRecognizersToEnlargedPhoto(enlargedPhoto: EnlargedPhoto) {
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived:")
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived:")
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUpReceived:")
-
-        swipeUpGestureRecognizer.direction = .Up
-        doubleTapGestureRecognizer.numberOfTapsRequired = 2
-        tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
-
-        enlargedPhoto.addGestureRecognizer(tapGestureRecognizer)
-        enlargedPhoto.addGestureRecognizer(doubleTapGestureRecognizer)
-        enlargedPhoto.addGestureRecognizer(swipeUpGestureRecognizer)
-    }
-
-
-    func singleTapReceived(recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .Ended {
-            if enlargedPhoto!.scrollView.zoomScale == 1.0 {
-                removeEnlargedPhoto()
-            } else {
-                enlargedPhoto!.scrollView.zoomToRect(enlargedPhoto!.frame, animated: true)
-            }
-        }
-    }
-
-    func doubleTapReceived(recognizer: UITapGestureRecognizer) {
-        if recognizer.state == .Ended {
-            switch enlargedPhoto!.scrollView.zoomScale {
-            case 1.0:
-                let point = recognizer.locationOfTouch(0, inView: enlargedPhoto!)
-                enlargedPhoto!.scrollView.zoomToPoint(point, withScale: 2.0, animated: true)
-            default:
-                enlargedPhoto!.scrollView.zoomToRect(enlargedPhoto!.frame, animated: true)
-            }
-        }
-    }
-
-    func swipeUpReceived(recognizer: UISwipeGestureRecognizer) {
-        if recognizer.state == .Ended {
-            removeEnlargedPhoto()
-        }
-    }
-
-    func removeEnlargedPhoto() {
-        for recognizer in enlargedPhoto!.gestureRecognizers as [UIGestureRecognizer] {
-            enlargedPhoto!.removeGestureRecognizer(recognizer)
-        }
-        let indexPath = NSIndexPath(forItem: enlargedPhoto!.index, inSection: 0)
-        let photoCell = collectionView.cellForItemAtIndexPath(indexPath)
-        let attributes = collectionView.layoutAttributesForItemAtIndexPath(indexPath)
-        let frame = view.convertRect(attributes.frame, fromView: collectionView)
-
-        shouldHideStatusBar = false
-        setNeedsStatusBarAppearanceUpdate()
-
-        photoCell.hidden = true
-        self.enlargedPhoto!.imageView.backgroundColor = nil
-        UIView.animateWithDuration(0.4,
-            delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0.5,
-            options: .AllowUserInteraction,
-            animations: {
-                self.enlargedPhoto!.imageView.frame = frame
-                self.enlargedPhoto!.backgroundColor = nil
-            },
-            completion: { _ in
-                HighResImageDownloader.cancel()
-                photoCell.hidden = false
-                self.enlargedPhoto!.removeFromSuperview()
-                self.enlargedPhoto = nil
-            }
-        )
-        UIView.animateWithDuration(0.15) {
-            self.tabBarController.tabBar.frame.origin.y -=
                 self.tabBarController.tabBar.frame.size.height
         }
     }
