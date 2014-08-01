@@ -124,7 +124,15 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func showPost(sender: UIButton) {
-        println("Should show \(URLs[sender.tag])")
+        performSegueWithIdentifier("showPost", sender: NSNumber.numberWithInt(Int32(sender.tag)))
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+        if segue.identifier == "showPost" {
+            let navigationController = (segue.destinationViewController as UINavigationController)
+            let postViewController = (navigationController.childViewControllers[0] as PostViewController)
+            postViewController.URL = URLs[(sender as NSNumber).integerValue]
+        }
     }
 
     // MARK: NHBalancedFlowLayoutDelegate

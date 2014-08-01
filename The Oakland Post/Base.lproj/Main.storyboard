@@ -323,7 +323,7 @@
         <!--Post-->
         <scene sceneID="Cn3-H9-jdl">
             <objects>
-                <viewController title="Post" id="Ah7-4n-0Wa" customClass="PostViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="postViewController" title="Post" id="Ah7-4n-0Wa" customClass="PostViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cIm-e0-J51"/>
                         <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
@@ -352,7 +352,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3550" y="510"/>
+            <point key="canvasLocation" x="3608" y="1328"/>
+        </scene>
+        <!--Themed Navigation Controller-->
+        <scene sceneID="z9a-iA-lxi">
+            <objects>
+                <navigationController storyboardIdentifier="modalThemedNavigationController" id="ZAx-jn-r4E" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ruL-zY-YQw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ah7-4n-0Wa" kind="relationship" relationship="rootViewController" id="FLW-HB-ENC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRL-t0-OqY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2788" y="1745"/>
         </scene>
         <!--Photos-->
         <scene sceneID="RxA-0d-8RA">
@@ -420,6 +436,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Photos" id="mgP-l3-InP"/>
+                    <connections>
+                        <segue destination="ZAx-jn-r4E" kind="presentation" identifier="showPost" id="QuL-og-P80"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="780-B9-kvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -691,14 +710,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHa-Y4-NBD" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="1745"/>
+            <point key="canvasLocation" x="2788" y="2545"/>
         </scene>
     </scenes>
     <resources>
         <image name="Circle" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jUr-3t-vfg"/>
+        <segue reference="FLW-HB-ENC"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
