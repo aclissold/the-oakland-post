@@ -12,8 +12,13 @@ class EnlargedPhoto: UIView {
     let imageView: UIImageView
     let scrollView: UIScrollView
     let highResImageView: UIImageView!
-
+    var linkButton: UIButton!
     var index: Int!
+    private let text = NSAttributedString(string: "View post ➔",
+        attributes: [
+            NSFontAttributeName: UIFont(name: sansSerifName, size: 17),
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ])
 
     init(image: UIImage!, index: Int) {
         let window = UIApplication.sharedApplication().windows[0] as UIWindow
@@ -27,6 +32,12 @@ class EnlargedPhoto: UIView {
         imageView.frame = window.frame
         imageView.userInteractionEnabled = true
 
+        linkButton = UIButton()
+        linkButton.setAttributedTitle(text, forState: .Normal)
+        linkButton.contentHorizontalAlignment = .Left
+        linkButton.frame.size = CGSize(width: window.frame.size.width, height: 30)
+        linkButton.frame.origin = CGPoint(x: 8, y: window.frame.size.height - linkButton.frame.size.height)
+
         scrollView.contentSize = imageView.frame.size
         scrollView.maximumZoomScale = 2
         scrollView.minimumZoomScale = 1
@@ -37,6 +48,7 @@ class EnlargedPhoto: UIView {
         backgroundColor = UIColor.blackColor()
         self.index = index
         addSubview(scrollView)
+        addSubview(linkButton)
     }
 
 }
