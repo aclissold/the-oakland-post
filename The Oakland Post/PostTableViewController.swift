@@ -90,7 +90,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
         if segue.identifier == readPostID {
             let indexPath = self.tableView.indexPathForSelectedRow()
             let item = parsedItems[indexPath.row] as MWFeedItem
-            (segue.destinationViewController as PostViewController).url = item.link
+            (segue.destinationViewController as PostViewController).URL = item.link
         }
     }
 

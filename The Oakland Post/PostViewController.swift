@@ -14,14 +14,14 @@ class PostViewController: UIViewController, UIWebViewDelegate {
 
     var loadCount = 0
     var finishedLoading = false
-    var url: String? {
+    var URL: String? {
         didSet {
-            url = url!.stringByReplacingOccurrencesOfString("//www", withString: "//m")
+            URL = URL!.stringByReplacingOccurrencesOfString("//www", withString: "//m")
         }
     }
 
     func configureView() {
-        if let string = self.url {
+        if let string = self.URL {
             let URL = NSURL(string: string)
             let request = NSURLRequest(URL: URL)
             self.webView.loadRequest(request)
