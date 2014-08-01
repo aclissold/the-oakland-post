@@ -105,6 +105,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
+        enlargedPhoto!.linkButton.addTarget(self, action: "showPost:", forControlEvents: .TouchUpInside)
         gestureRecognizers.addToEnlargedPhoto(enlargedPhoto!)
 
         navigationController.view.addSubview(enlargedPhoto)
@@ -120,6 +121,10 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             self.tabBarController.tabBar.frame.origin.y +=
                 self.tabBarController.tabBar.frame.size.height
         }
+    }
+
+    func showPost(sender: UIButton) {
+        println("Should show \(URLs[sender.tag])")
     }
 
     // MARK: NHBalancedFlowLayoutDelegate

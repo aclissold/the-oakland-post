@@ -33,6 +33,7 @@ class EnlargedPhoto: UIView {
         imageView.userInteractionEnabled = true
 
         linkButton = UIButton()
+        linkButton.tag = index
         linkButton.setAttributedTitle(text, forState: .Normal)
         linkButton.contentHorizontalAlignment = .Left
         linkButton.frame.size = CGSize(width: window.frame.size.width, height: 30)
