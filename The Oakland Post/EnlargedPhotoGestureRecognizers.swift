@@ -21,15 +21,18 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived:")
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived:")
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeUpReceived:")
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeReceived:")
+        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeReceived:")
         
-        swipeUpGestureRecognizer.direction = .Up
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
+        swipeUpGestureRecognizer.direction = .Up
+        swipeDownGestureRecognizer.direction = .Down
         
         photo.addGestureRecognizer(tapGestureRecognizer)
         photo.addGestureRecognizer(doubleTapGestureRecognizer)
         photo.addGestureRecognizer(swipeUpGestureRecognizer)
+        photo.addGestureRecognizer(swipeDownGestureRecognizer)
     }
     
     
@@ -55,7 +58,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         }
     }
     
-    func swipeUpReceived(recognizer: UISwipeGestureRecognizer) {
+    func swipeReceived(recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .Ended {
             removeEnlargedPhoto()
         }
