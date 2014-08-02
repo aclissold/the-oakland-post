@@ -49,6 +49,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
         canScrollToTop = false
     }
 
@@ -113,14 +114,20 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         shouldHideStatusBar = true
         setNeedsStatusBarAppearanceUpdate()
         navigationController.navigationBar.frame.size.height += statusBarHeight
-
-        UIView.animateWithDuration(0.15) {
-            self.enlargedPhoto!.alpha = 1
-            self.navigationController.navigationBar.frame.origin.y -=
-                self.navigationController.navigationBar.frame.size.height
-            self.tabBarController.tabBar.frame.origin.y +=
-                self.tabBarController.tabBar.frame.size.height
-        }
+        
+        UIView.animateWithDuration(0.15,
+            delay: 0,
+            options: nil,
+            animations: {
+                self.enlargedPhoto!.alpha = 1
+                self.navigationController.navigationBar.frame.origin.y -=
+                    self.navigationController.navigationBar.frame.size.height
+                self.tabBarController.tabBar.frame.origin.y +=
+                    self.tabBarController.tabBar.frame.size.height
+            },
+            completion: { _ in
+                self.navigationController.navigationBarHidden = true
+            })
     }
 
     func showPost(sender: UIButton) {
@@ -129,10 +136,16 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
         if segue.identifier == "showPost" {
-            let navigationController = (segue.destinationViewController as UINavigationController)
-            let postViewController = (navigationController.childViewControllers[0] as PostViewController)
+            let themedNavigationController = (segue.destinationViewController as ThemedNavigationController)
+            let postViewController = (themedNavigationController.childViewControllers[0] as PostViewController)
+            postViewController.navigationItem.rightBarButtonItem =
+                UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismissModalPost")
             postViewController.URL = URLs[(sender as NSNumber).integerValue]
         }
+    }
+
+    func dismissModalPost() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: NHBalancedFlowLayoutDelegate

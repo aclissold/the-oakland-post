@@ -71,10 +71,14 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         let indexPath = NSIndexPath(forItem: photo.index, inSection: 0)
         let photoCell = photosViewController.collectionView.cellForItemAtIndexPath(indexPath)
         let attributes = photosViewController.collectionView.layoutAttributesForItemAtIndexPath(indexPath)
-        let frame = photosViewController.view.convertRect(attributes.frame, fromView: photosViewController.collectionView)
+        var frame = photosViewController.view.convertRect(attributes.frame, fromView: photosViewController.collectionView)
+        let navigationBarHeight = photosViewController.navigationController.navigationBar.frame.size.height
+        let statusBarHeight = 20 // hard-coded because it's invisible at this point, i.e. 0.0
+        frame.origin.y += (navigationBarHeight + statusBarHeight)
         
         photosViewController.shouldHideStatusBar = false
         photosViewController.setNeedsStatusBarAppearanceUpdate()
+        photosViewController.navigationController.setNavigationBarHidden(false, animated: false)
         
         photoCell.hidden = true
         photo.imageView.backgroundColor = nil
