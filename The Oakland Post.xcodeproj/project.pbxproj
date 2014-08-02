@@ -132,6 +132,7 @@
 				22464437194BEE6C000F5568 /* Constants.swift */,
 				2246441A194BE612000F5568 /* Main.storyboard */,
 				22D6B39D1969A8BD00DD664E /* Global */,
+				22940C0419730CFD00C14046 /* Posts */,
 				2263E6F21964F694000C00F5 /* Info */,
 				22471943195A62FE0054D887 /* Home */,
 				22471944195A630E0054D887 /* Sections */,
@@ -217,9 +218,8 @@
 		22D6B39D1969A8BD00DD664E /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				22940C0419730CFD00C14046 /* Posts */,
-				22D6B39B1969A8AC00DD664E /* FeedParser.swift */,
 				22250D2C1989BB80006816C2 /* Extensions */,
+				22D6B39B1969A8AC00DD664E /* FeedParser.swift */,
 				222EA53E1982014300F9CE31 /* GCD.swift */,
 				224F90FC197221C000A59278 /* BugFixTableViewController.swift */,
 				224F90FA19721A9900A59278 /* ThemedNavigationController.swift */,
