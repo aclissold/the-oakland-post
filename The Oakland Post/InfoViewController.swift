@@ -10,10 +10,12 @@ import UIKit
 
 class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
-    let pageTitles: [String] = ["About Us", "Contact Us", "Staff"]
+    let pageTitles = ["About Us", "Contact Us", "Staff"]
 
     var pageViewController: UIPageViewController!
     var viewControllers = [InfoContentViewController]()
+    var titleLabel: UILabel!
+    var toolbar: UIToolbar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +43,15 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         addChildViewController(pageViewController)
         pageViewController.didMoveToParentViewController(self)
         view.addSubview(pageViewController.view)
+    }
 
-        // Set up the toolbar.
-        let toolbar = UIToolbar()
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        addToolbar()
+    }
+
+    func addToolbar() {
+        toolbar = UIToolbar()
         toolbar.frame.size.width = view.frame.size.width
         toolbar.frame.size.height = toolbarHeight
         view.addSubview(toolbar)
@@ -51,6 +59,15 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
         doneButton.tintColor = oaklandPostBlue
         toolbar.items = [doneButton]
+
+        titleLabel = UILabel()
+        titleLabel.frame = toolbar.frame
+        titleLabel.frame.size.height -= 17
+        titleLabel.frame.origin.y += 17
+        let text = toolbarTitleText((viewControllerAtIndex(0) as InfoContentViewController).titleText)
+        titleLabel.textAlignment = .Center
+        titleLabel.attributedText = text
+        toolbar.addSubview(titleLabel)
     }
 
     func dismiss() {

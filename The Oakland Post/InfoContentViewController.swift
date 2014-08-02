@@ -32,6 +32,34 @@ class InfoContentViewController: UIViewController {
         infoText.scrollIndicatorInsets = insets
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        swapOutTitleLabel()
+    }
+
+    func swapOutTitleLabel() {
+        let infoViewController = (parentViewController.parentViewController as InfoViewController)
+        let titleLabel = infoViewController.titleLabel
+        if titleLabel != nil && titleLabel.text != titleText {
+            UIView.animateWithDuration(0.15,
+                animations: {
+                    infoViewController.titleLabel.frame.origin.y -= toolbarHeight
+                },
+                completion: { finished in
+                    if !finished { return }
+                    infoViewController.titleLabel.attributedText = toolbarTitleText(self.titleText)
+                    UIView.animateWithDuration(0.4,
+                        delay: 0,
+                        usingSpringWithDamping: 0.6,
+                        initialSpringVelocity: 0.0,
+                        options: .AllowUserInteraction,
+                        animations: {
+                            infoViewController.titleLabel.frame.origin.y += toolbarHeight
+                        }, completion: nil)
+                })
+        }
+    }
+
     deinit {
         view.removeFromSuperview()
     }

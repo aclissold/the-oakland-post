@@ -11,6 +11,7 @@ import UIKit
 // Theming
 let serifName = "Palatino-Medium"
 let sansSerifName = "AvenirNext-Medium"
+let boldSansSerifName = "AvenirNext-DemiBold"
 let oaklandPostBlue = UIColor(
     red: 115.0/255.0, green: 148.0/255.0, blue: 175.0/255.0, alpha: 1.0
 )
