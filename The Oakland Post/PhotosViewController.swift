@@ -25,12 +25,16 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     var canScrollToTop = false
 
+    var enlargedPhotoDelegate: EnlargedPhotoDelegate!
+
     // MARK: Lifecycle
 
     override func viewDidLoad() {
         let delegate = PhotosFeedParserDelegate(delegator: self)
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: delegate)
         feedParser.parseInitial()
+
+        enlargedPhotoDelegate = EnlargedPhotoDelegate(delegator: self)
 
         collectionView.addInfiniteScrollingWithActionHandler(parseMore)
 
@@ -81,7 +85,6 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     // MARK: Enlarged Photo Handling
 
     var shouldHideStatusBar = false
-    let enlargedPhotoDelegate = EnlargedPhotoDelegate()
     let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
     override func prefersStatusBarHidden() -> Bool {
         return shouldHideStatusBar
@@ -103,7 +106,6 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             HighResImageDownloader.downloadFromURL(URLs[index],
                 forEnlargedPhoto: enlargedPhoto!, sender: sender, finished: self.receivePhoto)
         }
-        enlargedPhotoDelegate.zoomView = enlargedPhoto!.imageView
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
         enlargedPhoto!.linkButton.addTarget(self, action: "showPost:", forControlEvents: .TouchUpInside)
@@ -114,7 +116,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         shouldHideStatusBar = true
         setNeedsStatusBarAppearanceUpdate()
         navigationController.navigationBar.frame.size.height += statusBarHeight
-        
+
         UIView.animateWithDuration(0.15,
             delay: 0,
             options: nil,

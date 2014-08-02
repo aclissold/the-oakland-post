@@ -7,35 +7,35 @@
 //
 
 class EnlargedPhotoGestureRecognizers: NSObject {
-    
+
     let photosViewController: PhotosViewController
     var photo: EnlargedPhoto!
-    
+
     init(photosViewController: PhotosViewController) {
         self.photosViewController = photosViewController
         super.init()
     }
-    
+
     func addToEnlargedPhoto(enlargedPhoto: EnlargedPhoto) {
         photo = enlargedPhoto
-        
+
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived:")
         let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived:")
         let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeReceived:")
         let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeReceived:")
-        
+
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
         swipeUpGestureRecognizer.direction = .Up
         swipeDownGestureRecognizer.direction = .Down
-        
+
         photo.addGestureRecognizer(tapGestureRecognizer)
         photo.addGestureRecognizer(doubleTapGestureRecognizer)
         photo.addGestureRecognizer(swipeUpGestureRecognizer)
         photo.addGestureRecognizer(swipeDownGestureRecognizer)
     }
-    
-    
+
+
     func singleTapReceived(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .Ended {
             if photo.scrollView.zoomScale == 1.0 {
@@ -45,7 +45,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
             }
         }
     }
-    
+
     func doubleTapReceived(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .Ended {
             switch photo.scrollView.zoomScale {
@@ -57,7 +57,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
             }
         }
     }
-    
+
     func swipeReceived(recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .Ended {
             removeEnlargedPhoto()
@@ -75,11 +75,11 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         let navigationBarHeight = photosViewController.navigationController.navigationBar.frame.size.height
         let statusBarHeight = 20 // hard-coded because it's invisible at this point, i.e. 0.0
         frame.origin.y += (navigationBarHeight + statusBarHeight)
-        
+
         photosViewController.shouldHideStatusBar = false
         photosViewController.setNeedsStatusBarAppearanceUpdate()
         photosViewController.navigationController.setNavigationBarHidden(false, animated: false)
-        
+
         photoCell.hidden = true
         photo.imageView.backgroundColor = nil
         UIView.animateWithDuration(0.4,
