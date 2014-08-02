@@ -32,7 +32,11 @@ class InfoContentViewController: UIViewController {
     }
 
     @IBAction func dismiss() {
-        println("temporarily disabled")
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    deinit {
+        view.removeFromSuperview()
     }
 
 }
