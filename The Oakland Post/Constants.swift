@@ -16,6 +16,7 @@ let oaklandPostBlue = UIColor(
 )
 
 let tableViewRowHeight: CGFloat = 120.0
+let toolbarHeight: CGFloat = 64.0
 let infoContentViewControllerID = "infoContentViewController"
 
 // UITableViewCell identifiers

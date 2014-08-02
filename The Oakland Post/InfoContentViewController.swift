@@ -10,7 +10,6 @@ import UIKit
 
 class InfoContentViewController: UIViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var infoText: UITextView!
 
     var pageIndex: Int!
@@ -21,18 +20,16 @@ class InfoContentViewController: UIViewController {
             NSBundle.mainBundle().pathForResource(titleText, ofType: "html")
         )
 
-        titleLabel.text = titleText
-
         infoText.attributedText = NSAttributedString(
             fileURL: fileURL,
             options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
                       NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding],
             documentAttributes: nil, error: nil
         )
-    }
 
-    @IBAction func dismiss() {
-        dismissViewControllerAnimated(true, completion: nil)
+        let insets = UIEdgeInsets(top: toolbarHeight, left: 0, bottom: 0, right: 0)
+        infoText.contentInset = insets
+        infoText.scrollIndicatorInsets = insets
     }
 
     deinit {

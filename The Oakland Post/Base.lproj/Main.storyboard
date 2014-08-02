@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tB7-FC-WLt">
-                                <rect key="frame" x="20" y="69" width="560" height="511"/>
+                                <rect key="frame" x="20" y="20" width="560" height="560"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
@@ -54,9 +54,6 @@
                                 <variation key="heightClass=regular" ambiguous="YES">
                                     <rect key="frame" x="20" y="69" width="440" height="551"/>
                                 </variation>
-                                <variation key="widthClass=compact" ambiguous="YES">
-                                    <rect key="frame" x="20" y="69" width="280" height="391"/>
-                                </variation>
                                 <variation key="widthClass=regular" ambiguous="YES">
                                     <rect key="frame" x="20" y="69" width="600" height="391"/>
                                 </variation>
@@ -74,68 +71,20 @@
                                     <rect key="frame" x="20" y="69" width="600" height="551"/>
                                 </variation>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Us" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv8-4D-a9X">
-                                <rect key="frame" x="240" y="28" width="121" height="33"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
-                                <color key="textColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9jr-8z-bGA">
-                                <rect key="frame" x="20" y="28" width="42" height="33"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <state key="normal" title="Done">
-                                    <color key="titleColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="dismiss" destination="Ppa-Yv-Zls" eventType="touchUpInside" id="6m9-2V-ADY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tB7-FC-WLt" firstAttribute="leading" secondItem="9jr-8z-bGA" secondAttribute="leading" id="7lV-R7-48K"/>
+                            <constraint firstItem="tB7-FC-WLt" firstAttribute="top" secondItem="Pka-3v-WKl" secondAttribute="bottom" id="0Zs-T2-gih"/>
                             <constraint firstItem="tB7-FC-WLt" firstAttribute="leading" secondItem="Wau-di-bbz" secondAttribute="leading" constant="20" id="EIo-xU-Whm"/>
-                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="centerY" secondItem="9jr-8z-bGA" secondAttribute="centerY" id="HAu-4Q-KwJ"/>
-                            <constraint firstItem="Sv8-4D-a9X" firstAttribute="top" secondItem="Pka-3v-WKl" secondAttribute="bottom" constant="8" id="K4w-Va-Piw"/>
-                            <constraint firstItem="tB7-FC-WLt" firstAttribute="top" secondItem="Sv8-4D-a9X" secondAttribute="bottom" constant="8" id="aaF-g1-hTK"/>
-                            <constraint firstAttribute="centerX" secondItem="Sv8-4D-a9X" secondAttribute="centerX" id="f8P-Cx-Klb"/>
                             <constraint firstItem="avQ-oN-BIZ" firstAttribute="top" secondItem="tB7-FC-WLt" secondAttribute="bottom" constant="20" id="ne5-Kz-Rqv"/>
                             <constraint firstAttribute="trailing" secondItem="tB7-FC-WLt" secondAttribute="trailing" constant="20" id="xPF-Ii-qYs"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="9jr-8z-bGA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="7lV-R7-48K"/>
-                                <exclude reference="HAu-4Q-KwJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="9jr-8z-bGA"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="7lV-R7-48K"/>
-                                <include reference="HAu-4Q-KwJ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="B2T-AK-NeQ">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="hHw-zw-hIG"/>
                     </navigationItem>
                     <connections>
                         <outlet property="infoText" destination="tB7-FC-WLt" id="jwd-2T-GSr"/>
-                        <outlet property="titleLabel" destination="Sv8-4D-a9X" id="rQV-In-7Fp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1k-T0-enR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -145,6 +94,7 @@
         <!--Info View Controller-->
         <scene sceneID="Kas-4h-lSp">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7zl-ON-BqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="eys-uC-Y46" customClass="InfoViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5W5-rK-woF"/>
@@ -157,7 +107,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="1kh-MK-tqs"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7zl-ON-BqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2788" y="-600"/>
         </scene>
@@ -226,9 +175,6 @@
                         </variation>
                         <variation key="heightClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
-                        </variation>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         </variation>
                         <variation key="widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
@@ -299,9 +245,6 @@
                         </prototypes>
                         <variation key="heightClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                        </variation>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
@@ -417,9 +360,6 @@
                         </cells>
                         <variation key="heightClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
-                        </variation>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="320"/>
@@ -588,9 +528,6 @@
                         <variation key="heightClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
                         </variation>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        </variation>
                         <variation key="widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                         </variation>
@@ -683,9 +620,6 @@
                         <variation key="heightClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
                         </variation>
-                        <variation key="widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        </variation>
                         <variation key="widthClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                         </variation>
@@ -717,7 +651,7 @@
         <image name="Circle" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FLW-HB-ENC"/>
+        <segue reference="jUr-3t-vfg"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

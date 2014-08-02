@@ -41,6 +41,20 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         addChildViewController(pageViewController)
         pageViewController.didMoveToParentViewController(self)
         view.addSubview(pageViewController.view)
+
+        // Set up the toolbar.
+        let toolbar = UIToolbar()
+        toolbar.frame.size.width = view.frame.size.width
+        toolbar.frame.size.height = toolbarHeight
+        view.addSubview(toolbar)
+
+        let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
+        doneButton.tintColor = oaklandPostBlue
+        toolbar.items = [doneButton]
+    }
+
+    func dismiss() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     // MARK: UIPageViewControllerDataSource
