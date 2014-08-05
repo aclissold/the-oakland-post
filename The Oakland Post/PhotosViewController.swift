@@ -95,7 +95,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     @IBAction func addEnlargedPhoto(sender: UIButton) {
-        if enlargedPhoto { return } // the user probably tapped two at once
+        if enlargedPhoto != nil { return } // the user probably tapped two at once
 
         let index = sender.tag
 
@@ -111,7 +111,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         enlargedPhoto!.linkButton.addTarget(self, action: "showPost:", forControlEvents: .TouchUpInside)
         gestureRecognizers.addToEnlargedPhoto(enlargedPhoto!)
 
-        navigationController.view.addSubview(enlargedPhoto)
+        navigationController.view.addSubview(enlargedPhoto!)
 
         shouldHideStatusBar = true
         setNeedsStatusBarAppearanceUpdate()

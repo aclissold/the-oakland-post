@@ -10,7 +10,7 @@ import UIKit
 
 class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
 
-    init(coder aDecoder: NSCoder!) {
+    override init(coder aDecoder: NSCoder!) {
         super.init(coder: aDecoder)
     }
 
