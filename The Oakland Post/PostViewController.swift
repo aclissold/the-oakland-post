@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostViewController: UIViewController, UIWebViewDelegate {
+class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
 
@@ -33,6 +33,7 @@ class PostViewController: UIViewController, UIWebViewDelegate {
 
         webView.delegate = self
         webView.alpha = 0
+        webView.scrollView.delegate = self
 
         self.configureView()
     }
@@ -77,6 +78,55 @@ class PostViewController: UIViewController, UIWebViewDelegate {
                 SVProgressHUD.dismiss()
             }
         }
+    }
+
+    // MARK: Bar Hiding Animations
+
+    var didAppear = false
+
+    var minDelta: CGFloat = 0
+    var maxDelta: CGFloat!
+    var previousPosition: CGFloat = 0
+    var totalDelta: CGFloat = 0
+    var originalY: CGFloat!
+
+    override func viewDidAppear(animated: Bool) {
+        didAppear = true
+        maxDelta = tabBarController.tabBar.frame.size.height
+        originalY = tabBarController.tabBar.frame.origin.y
+    }
+
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        updateTabBarPosition(scrollView)
+    }
+
+    func updateTabBarPosition(scrollView: UIScrollView!) {
+        if !didAppear { return } // ignore scrolling that occurs between willAppear and didAppear
+
+        let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
+        let delta = currentPosition - previousPosition
+        totalDelta += delta
+        if totalDelta < minDelta { totalDelta = minDelta }
+        if totalDelta > maxDelta { totalDelta = maxDelta }
+
+        previousPosition = currentPosition
+
+        if currentPosition < 0 {
+            previousPosition = 0
+            totalDelta = 0
+        }
+
+        tabBarController?.tabBar.frame.origin.y = originalY + totalDelta
+    }
+
+    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            println("resetPosition?")
+        }
+    }
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+        println("resetPosition?")
     }
 
     // MARK: Handling External Links
