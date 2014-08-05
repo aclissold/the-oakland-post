@@ -85,10 +85,12 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     var didAppear = false
 
     var minDelta: CGFloat = 0
-    var maxDelta: CGFloat!
+    var maxDelta: CGFloat = 0
     var previousPosition: CGFloat = 0
     var totalDelta: CGFloat = 0
-    var originalY: CGFloat!
+    var originalY: CGFloat = 0
+
+    var wasDecelerating = false
 
     override func viewDidAppear(animated: Bool) {
         didAppear = true
@@ -114,19 +116,47 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         if currentPosition < 0 {
             previousPosition = 0
             totalDelta = 0
-        }
+        } // TODO: handle bottom of screen as well
 
         tabBarController?.tabBar.frame.origin.y = originalY + totalDelta
     }
 
     func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
-        if !decelerate {
-            println("resetPosition?")
+        if !decelerate && minDelta < totalDelta && totalDelta < maxDelta {
+            resetTabBarPosition()
         }
+        self.wasDecelerating = decelerate
     }
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-        println("resetPosition?")
+        if wasDecelerating && (minDelta < totalDelta && totalDelta < maxDelta) {
+            resetTabBarPosition()
+        }
+    }
+
+    func resetTabBarPosition() {
+        if tabBarController == nil { return } // TODO
+
+        let amountHidden = totalDelta / maxDelta
+
+        var y: CGFloat
+        if amountHidden < 0.5 {
+            y = originalY
+            totalDelta = 0
+        } else {
+            y = originalY + maxDelta
+            totalDelta = maxDelta
+        }
+
+        let duration = NSTimeInterval(0.1 * amountHidden)
+        UIView.animateWithDuration(duration) {
+            self.tabBarController.tabBar.frame.origin.y = y
+        }
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetTabBarPosition()
     }
 
     // MARK: Handling External Links
