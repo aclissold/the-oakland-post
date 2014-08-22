@@ -94,8 +94,10 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     override func viewDidAppear(animated: Bool) {
         didAppear = true
-        maxDelta = tabBarController.tabBar.frame.size.height
-        originalY = tabBarController.tabBar.frame.origin.y
+        if tabBarController != nil { // no tab bar if coming from Photos
+            maxDelta = tabBarController.tabBar.frame.size.height
+            originalY = tabBarController.tabBar.frame.origin.y
+        }
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView!) {
@@ -103,7 +105,8 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     }
 
     func updateTabBarPosition(scrollView: UIScrollView!) {
-        if !didAppear { return } // ignore scrolling that occurs between willAppear and didAppear
+        // Ignore scrolling that occurs between willAppear and didAppear.
+        if !didAppear || tabBarController == nil { return }
 
         let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
         let delta = currentPosition - previousPosition
