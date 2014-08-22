@@ -44,6 +44,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         super.viewWillDisappear(animated)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         SVProgressHUD.dismiss()
+        resetTabBarPosition() // see the Bar Hiding Animations MARK
     }
 
     func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
@@ -92,22 +93,24 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     var wasDecelerating = false
 
+    var retainedTabBarController: UITabBarController!
+
     override func viewDidAppear(animated: Bool) {
         didAppear = true
         if tabBarController != nil { // no tab bar if coming from Photos
             maxDelta = tabBarController.tabBar.frame.size.height
             originalY = tabBarController.tabBar.frame.origin.y
+            retainedTabBarController = tabBarController
         }
     }
 
     func scrollViewDidScroll(scrollView: UIScrollView!) {
-        updateTabBarPosition(scrollView)
+        if didAppear { // ignore scrolling that occurs between willAppear and didAppear.
+            updateTabBarPosition(scrollView)
+        }
     }
 
     func updateTabBarPosition(scrollView: UIScrollView!) {
-        // Ignore scrolling that occurs between willAppear and didAppear.
-        if !didAppear || tabBarController == nil { return }
-
         let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
         let delta = currentPosition - previousPosition
         totalDelta += delta
@@ -138,28 +141,26 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     }
 
     func resetTabBarPosition() {
-        if tabBarController == nil { return } // TODO
-
         let amountHidden = totalDelta / maxDelta
 
         var y: CGFloat
-        if amountHidden < 0.5 {
+        switch (amountHidden) {
+        case 0.0...0.5:
             y = originalY
             totalDelta = 0
-        } else {
+        case 1.0:
+            y = originalY
+        default:
             y = originalY + maxDelta
             totalDelta = maxDelta
         }
 
+        previousPosition = y
+
         let duration = NSTimeInterval(0.1 * amountHidden)
         UIView.animateWithDuration(duration) {
-            self.tabBarController.tabBar.frame.origin.y = y
+            self.retainedTabBarController.tabBar.frame.origin.y = y
         }
-    }
-
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        resetTabBarPosition()
     }
 
     // MARK: Handling External Links
