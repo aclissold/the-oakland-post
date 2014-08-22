@@ -171,7 +171,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
             } else {
                 delegate = LinkAlertDelegate(URL: request.URL)
                 UIAlertView(title: "Open External Link?",
-                    message: request.URL.absoluteString,
+                    message: request.URL.absoluteString!,
                     delegate: delegate,
                     cancelButtonTitle: "No",
                     otherButtonTitles: "Yes").show()

@@ -10,7 +10,7 @@ import UIKit
 
 class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
 
-    override init(coder aDecoder: NSCoder!) {
+    override init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -113,7 +113,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
         if let enclosures = item.enclosures {
             if enclosures[0] is NSDictionary {
                 let dict = item.enclosures[0] as NSDictionary
-                if dict["type"].containsString("image") {
+                if (dict["type"] as String).hasPrefix("image") {
                     let URL = NSURL(string: dict["url"] as String)
                     cell.thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
                 }

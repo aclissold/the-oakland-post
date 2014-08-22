@@ -17,7 +17,7 @@ class InfoContentViewController: UIViewController {
 
     override func viewDidLoad() {
         let fileURL = NSURL(fileURLWithPath:
-            NSBundle.mainBundle().pathForResource(titleText, ofType: "html")
+            NSBundle.mainBundle().pathForResource(titleText, ofType: "html")!
         )
 
         infoText.attributedText = NSAttributedString(

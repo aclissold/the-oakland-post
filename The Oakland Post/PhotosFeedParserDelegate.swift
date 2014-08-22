@@ -17,7 +17,7 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
     }
 
     func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
-        if !item.enclosures { return }
+        if !(item.enclosures != nil) { return }
 
         let enclosures = item.enclosures[0] as NSDictionary
         let URLString = enclosures["url"] as String

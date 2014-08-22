@@ -9,7 +9,7 @@
 
 class EnlargedPhoto: UIView {
 
-    required init(coder aDecoder: NSCoder!) { fatalError("wrong initializer") }
+    required init(coder aDecoder: NSCoder) { fatalError("wrong initializer") }
 
     let imageView: UIImageView
     let scrollView: UIScrollView
