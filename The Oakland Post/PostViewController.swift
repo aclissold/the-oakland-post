@@ -155,7 +155,9 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
             totalDelta = maxDelta
         }
 
-        previousPosition = y
+        if y == 0 || y == 1 {
+            previousPosition = y
+        }
 
         let duration = NSTimeInterval(0.1 * amountHidden)
         UIView.animateWithDuration(duration) {
