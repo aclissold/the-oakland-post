@@ -27,7 +27,7 @@ class HomeViewController: PostTableViewController, TopScrollable {
     }
 
     override func viewDidDisappear(animated: Bool) {
-        canScrollToTop = true
+        canScrollToTop = false
     }
 
     func scrollToTop() {
