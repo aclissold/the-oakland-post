@@ -52,8 +52,6 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
             }, completion: { (completed: Bool) in
                 if completed {
                     self.insertedIndexPaths += indexPaths.count
-                } else {
-                    fatalError("failed to insert items")
                 }
             })
 
