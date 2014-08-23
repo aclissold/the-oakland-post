@@ -41,6 +41,7 @@
 		22CBE1F7197C92AF0069BB5F /* LinkAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */; };
 		22D6B39C1969A8AC00DD664E /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B39B1969A8AC00DD664E /* FeedParser.swift */; };
 		22E3D5F7198DA75F00756ED7 /* ToolbarTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */; };
+		22EC39A319A9260C0058BD2E /* p.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39A219A9260C0058BD2E /* p.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAlertDelegate.swift; sourceTree = "<group>"; };
 		22D6B39B1969A8AC00DD664E /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarTitleText.swift; sourceTree = "<group>"; };
+		22EC39A219A9260C0058BD2E /* p.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = p.swift; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,8 +222,9 @@
 		22D6B39D1969A8BD00DD664E /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */,
 				22250D2C1989BB80006816C2 /* Extensions */,
+				22EC39A219A9260C0058BD2E /* p.swift */,
+				22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */,
 				22D6B39B1969A8AC00DD664E /* FeedParser.swift */,
 				222EA53E1982014300F9CE31 /* GCD.swift */,
 				224F90FC197221C000A59278 /* BugFixTableViewController.swift */,
@@ -361,6 +364,7 @@
 				229B058519687EC70091120C /* PhotosViewController.swift in Sources */,
 				22464417194BE612000F5568 /* PostTableViewController.swift in Sources */,
 				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
+				22EC39A319A9260C0058BD2E /* p.swift in Sources */,
 				224F90F91972013500A59278 /* SectionsCell.swift in Sources */,
 				22E3D5F7198DA75F00756ED7 /* ToolbarTitleText.swift in Sources */,
 				224F90F7197200AD00A59278 /* SectionsViewController.swift in Sources */,
