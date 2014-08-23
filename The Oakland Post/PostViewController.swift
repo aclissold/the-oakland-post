@@ -44,7 +44,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         super.viewWillDisappear(animated)
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         SVProgressHUD.dismiss()
-        resetTabBarPosition() // see the Bar Hiding Animations MARK
+        resetTabBarPosition(.Original) // see the Bar Hiding Animations MARK
     }
 
     func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
@@ -92,6 +92,11 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     var originalY: CGFloat = 0
 
     var wasDecelerating = false
+    var reachedBottom = false
+
+    var overage: CGFloat {
+        return webView.scrollView.contentOffset.y - (webView.scrollView.contentSize.height - view.frame.size.height)
+    }
 
     var retainedTabBarController: UITabBarController!
 
@@ -120,43 +125,74 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         previousPosition = currentPosition
 
         if currentPosition < 0 {
-            previousPosition = 0
             totalDelta = 0
-        } // TODO: handle bottom of screen as well
+        }
 
-        tabBarController?.tabBar.frame.origin.y = originalY + totalDelta
+        if overage < 0 {
+            reachedBottom = false
+        }
+
+        if reachedBottom { return }
+
+        if overage > 0 {
+            let tabBar: UITabBar! = tabBarController?.tabBar
+
+            if overage > tabBar.frame.size.height {
+                reachedBottom = true
+            }
+
+            let atTop = tabBar.frame.origin.y == originalY
+            if !atTop && (delta > 0 || !reachedBottom) {
+                tabBar.frame.origin.y = max(originalY + tabBar.frame.size.height - overage, originalY)
+            } else {
+                tabBar.frame.origin.y = originalY
+            }
+        } else {
+            tabBarController?.tabBar.frame.origin.y = originalY + totalDelta
+        }
     }
 
     func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
         if !decelerate && minDelta < totalDelta && totalDelta < maxDelta {
-            resetTabBarPosition()
+            resetTabBarPosition(.Nearest)
         }
-        self.wasDecelerating = decelerate
+
+        if overage > 0 {
+            resetTabBarPosition(.Original)
+        }
+
+        wasDecelerating = decelerate
     }
 
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
         if wasDecelerating && (minDelta < totalDelta && totalDelta < maxDelta) {
-            resetTabBarPosition()
+            if overage > 0 {
+                resetTabBarPosition(.Original)
+            } else {
+                resetTabBarPosition(.Nearest)
+            }
         }
     }
 
-    func resetTabBarPosition() {
+    enum TabBarPosition {
+        case Original, Nearest
+    }
+
+    func resetTabBarPosition(position: TabBarPosition) {
         let amountHidden = totalDelta / maxDelta
 
         var y: CGFloat
-        switch (amountHidden) {
-        case 0.0...0.5:
+        switch position {
+        case .Original:
             y = originalY
-            totalDelta = 0
-        case 1.0:
-            y = originalY
-        default:
-            y = originalY + maxDelta
-            totalDelta = maxDelta
-        }
-
-        if y == 0 || y == 1 {
-            previousPosition = y
+        case .Nearest:
+            if amountHidden < 0.5 {
+                y = originalY
+                totalDelta = 0
+            } else {
+                y = originalY + maxDelta
+                totalDelta = maxDelta
+            }
         }
 
         let duration = NSTimeInterval(0.1 * amountHidden)
