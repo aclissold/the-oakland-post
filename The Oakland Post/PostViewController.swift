@@ -102,7 +102,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     override func viewDidAppear(animated: Bool) {
         didAppear = true
-        if tabBarController != nil { // no tab bar if coming from Photos
+        if tabBarController != nil {
             maxDelta = tabBarController.tabBar.frame.size.height
             originalY = tabBarController.tabBar.frame.origin.y
             retainedTabBarController = tabBarController
@@ -116,6 +116,8 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     }
 
     func updateTabBarPosition(scrollView: UIScrollView!) {
+        if tabBarController == nil { return }
+
         let currentPosition = scrollView.contentOffset.y + scrollView.contentInset.top
         let delta = currentPosition - previousPosition
         totalDelta += delta
@@ -135,7 +137,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         if reachedBottom { return }
 
         if overage > 0 {
-            let tabBar: UITabBar! = tabBarController?.tabBar
+            let tabBar: UITabBar! = tabBarController.tabBar
 
             if overage > tabBar.frame.size.height {
                 reachedBottom = true
@@ -148,7 +150,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
                 tabBar.frame.origin.y = originalY
             }
         } else {
-            tabBarController?.tabBar.frame.origin.y = originalY + totalDelta
+            tabBarController.tabBar.frame.origin.y = originalY + totalDelta
         }
     }
 
@@ -179,6 +181,8 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     }
 
     func resetTabBarPosition(position: TabBarPosition) {
+        if retainedTabBarController == nil { return }
+
         let amountHidden = totalDelta / maxDelta
 
         var y: CGFloat
