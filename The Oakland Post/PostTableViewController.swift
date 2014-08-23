@@ -107,7 +107,14 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PostCell
 
-        let item = parsedItems[indexPath.row] as MWFeedItem
+        var item: MWFeedItem!
+        if indexPath.row > countElements(parsedItems) {
+            item = MWFeedItem()
+            item.title = "Loading…"
+            item.date = NSDate(timeIntervalSinceNow: 0)
+        } else {
+            item = parsedItems[indexPath.row] as MWFeedItem
+        }
 
         // Set the cell's thumbnail image
         if let enclosures = item.enclosures {
