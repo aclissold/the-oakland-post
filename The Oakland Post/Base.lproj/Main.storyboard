@@ -113,7 +113,7 @@
         <!--Log In-->
         <scene sceneID="Wia-bl-drf">
             <objects>
-                <viewController id="bhq-R5-DH6" sceneMemberID="viewController">
+                <viewController id="bhq-R5-DH6" customClass="LoginViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nkE-Bj-96p"/>
                         <viewControllerLayoutGuide type="bottom" id="LbH-sq-4eX"/>
