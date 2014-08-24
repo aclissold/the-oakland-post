@@ -10,11 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
+
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -150, right: 0)
     }
 
     func dismiss(sender: UIButton) {
