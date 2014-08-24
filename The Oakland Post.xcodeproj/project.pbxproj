@@ -55,6 +55,7 @@
 		22EC39CB19A96A300058BD2E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39CA19A96A300058BD2E /* SystemConfiguration.framework */; };
 		22EC39D119A976300058BD2E /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39D019A976300058BD2E /* Accounts.framework */; };
 		22EC39D319A976350058BD2E /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39D219A976350058BD2E /* Social.framework */; };
+		22EC39D519A979560058BD2E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22EC39D419A979560058BD2E /* Keys.plist */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +112,7 @@
 		22EC39CA19A96A300058BD2E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		22EC39D019A976300058BD2E /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		22EC39D219A976350058BD2E /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		22EC39D419A979560058BD2E /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 			children = (
 				22464435194BEC1A000F5568 /* Images.xcassets */,
 				2231F83E194CDBDA007C7467 /* The Oakland Post-Bridging-Header.h */,
+				22EC39D419A979560058BD2E /* Keys.plist */,
 				22464413194BE612000F5568 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -357,6 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				224796FA196616CA00329210 /* About Us.html in Resources */,
+				22EC39D519A979560058BD2E /* Keys.plist in Resources */,
 				2246441C194BE612000F5568 /* Main.storyboard in Resources */,
 				224796FE196730B500329210 /* Contact Us.html in Resources */,
 				22479700196730BE00329210 /* Staff.html in Resources */,

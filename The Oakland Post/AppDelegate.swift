@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         SVProgressHUD.setForegroundColor(oaklandPostBlue)
         SVProgressHUD.setRingThickness(5)
 
+        let file = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!
+        let keys = NSDictionary(contentsOfFile: file)
+
+        Parse.setApplicationId(keys["applicationId"] as String, clientKey: keys["clientKey"] as String)
 
         return true
     }
