@@ -170,6 +170,9 @@
                                             <color key="titleColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="cHu-kj-579" kind="show" identifier="signUp" id="Lyt-13-pq7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -204,6 +207,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sS4-as-muQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4420" y="-600"/>
+        </scene>
+        <!--Sign Up View Controller-->
+        <scene sceneID="LEQ-rW-7i5">
+            <objects>
+                <viewController id="cHu-kj-579" customClass="SignUpViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wfw-bB-0wh"/>
+                        <viewControllerLayoutGuide type="bottom" id="85l-6e-WDR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zfk-zR-bBK">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL7-j2-OsK">
+                                <rect key="frame" x="269" y="289" width="62" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="dL7-j2-OsK" secondAttribute="centerY" constant="0.5" id="UnN-G0-TKx"/>
+                            <constraint firstAttribute="centerX" secondItem="dL7-j2-OsK" secondAttribute="centerX" id="p2U-J0-XNE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sXD-dF-ls4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5238" y="-600"/>
         </scene>
         <!--Home-->
         <scene sceneID="VgW-fR-Quf">
