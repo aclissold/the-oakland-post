@@ -13,6 +13,8 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.title = "Sign Up"
+
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
     }
