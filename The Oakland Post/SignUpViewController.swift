@@ -8,15 +8,40 @@
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
+
+    @IBOutlet weak var scrollView: UIScrollView!
+
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+
+    let defaultInsets = UIEdgeInsets(top: 0, left: 0, bottom: -170, right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Sign Up"
-
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
+
+        scrollView.contentInset = defaultInsets
+
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
+        emailTextField.delegate = self
+    }
+
+    func textFieldDidBeginEditing(textField: UITextField!) {
+        scrollView.contentInset = UIEdgeInsetsZero
+        // TODO: compute these rather than hard-coding to iPhone 5s dimensions
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 218, right: 0)
+    }
+
+    func textFieldDidEndEditing(textField: UITextField!) {
+        scrollView.contentInset = defaultInsets
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
     }
 
     func dismiss(sender: UIButton) {
