@@ -41,17 +41,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if let nextResponder = textField.superview?.viewWithTag(textField.tag + 1) {
             nextResponder.becomeFirstResponder()
         } else if textField === passwordTextField {
-            textField.resignFirstResponder()
-            UIView.animateWithDuration(0.3) {
-                self.scrollView.contentInset = self.defaultInsets
-                self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
-            }
+            hideKeyboardAndLogIn()
         }
 
         return false
     }
 
+    @IBAction func hideKeyboardAndLogIn() {
+        findAndResignFirstResponder()
+        UIView.animateWithDuration(0.3) {
+            self.scrollView.contentInset = self.defaultInsets
+            self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+        }
+
+        let username = usernameTextField.text
+        let password = passwordTextField.text
+        p("should log in with \(username), \(password)")
+    }
+
+    func findAndResignFirstResponder() {
+        for textField in [usernameTextField, passwordTextField] {
+            if textField.isFirstResponder() {
+                textField.resignFirstResponder()
+                return
+            }
+        }
+    }
+
     func dismiss(sender: UIButton) {
+        findAndResignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
     }
 

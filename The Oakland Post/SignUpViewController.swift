@@ -45,17 +45,37 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if let nextResponder = textField.superview?.viewWithTag(textField.tag + 1) {
             nextResponder.becomeFirstResponder()
         } else if textField === emailTextField {
-            textField.resignFirstResponder()
-            UIView.animateWithDuration(0.3) {
-                self.scrollView.contentInset = self.defaultInsets
-                self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
-            }
+            hideKeyboardAndSignUp()
         }
 
         return false
     }
 
+    @IBAction func hideKeyboardAndSignUp() {
+        findAndResignFirstResponder()
+        UIView.animateWithDuration(0.3) {
+            self.scrollView.contentInset = self.defaultInsets
+            self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+        }
+
+        let username = usernameTextField.text
+        let password = passwordTextField.text
+        // TODO: check == confirmPassword
+        let email = emailTextField.text
+        p("should log in with \(username), \(password), \(email)")
+    }
+
+    func findAndResignFirstResponder() {
+        for textField in [usernameTextField, passwordTextField, confirmPasswordTextField, emailTextField] {
+            if textField.isFirstResponder() {
+                textField.resignFirstResponder()
+                return
+            }
+        }
+    }
+
     func dismiss(sender: UIButton) {
+        findAndResignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
     }
 
