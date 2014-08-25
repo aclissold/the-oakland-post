@@ -218,7 +218,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="sjy-vo-O5z"/>
                     <connections>
+                        <outlet property="passwordTextField" destination="Hbh-Iz-hQY" id="c18-wv-8gM"/>
                         <outlet property="scrollView" destination="mf9-r7-MLY" id="cKx-vb-AKk"/>
+                        <outlet property="usernameTextField" destination="xSX-Js-Xdy" id="jGc-Ev-Dq1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sS4-as-muQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,7 +427,9 @@ you need to reset your password.</string>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log In" id="F5Q-if-uHe">
                             <connections>
-                                <segue destination="Rvy-hN-ueu" kind="presentation" identifier="logIn" id="Y05-Ph-nir"/>
+                                <segue destination="Rvy-hN-ueu" kind="popoverPresentation" identifier="logIn" popoverAnchorBarButtonItem="F5Q-if-uHe" id="Y05-Ph-nir">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

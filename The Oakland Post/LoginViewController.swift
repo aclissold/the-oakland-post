@@ -8,9 +8,14 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
+
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+
+    let defaultInsets = UIEdgeInsets(top: 0, left: 0, bottom: -170, right: 0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +23,21 @@ class LoginViewController: UIViewController {
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
 
-        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: -150, right: 0)
+        scrollView.contentInset = defaultInsets
+
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+    }
+
+    func textFieldDidBeginEditing(textField: UITextField!) {
+        scrollView.contentInset = UIEdgeInsetsZero
+        // TODO: compute these rather than hard-coding to iPhone 5s dimensions
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 218, right: 0)
+    }
+
+    func textFieldDidEndEditing(textField: UITextField!) {
+        scrollView.contentInset = defaultInsets
+        scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
     }
 
     func dismiss(sender: UIButton) {
