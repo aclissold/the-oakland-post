@@ -34,9 +34,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(textField: UITextField!) {
-        scrollView.contentInset = UIEdgeInsetsZero
-        // TODO: compute these rather than hard-coding to iPhone 5s dimensions
-        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 218, right: 0)
+        UIView.animateWithDuration(0.3) {
+            self.scrollView.contentInset = UIEdgeInsetsZero
+            // TODO: compute these rather than hard-coding to iPhone 5s dimensions
+            self.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 218, right: 0)
+        }
     }
 
     func textFieldDidEndEditing(textField: UITextField!) {
