@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
+            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
 
         scrollView.contentInset = defaultInsets
 
@@ -56,7 +56,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         let username = usernameTextField.text
         let password = passwordTextField.text
-        p("should log in with \(username), \(password)")
+        PFUser.logInWithUsernameInBackground(username, password: password) {
+            [weak self] (user, error) in
+            if user != nil {
+                self?.dismiss()
+            } else {
+                if error.code == kPFErrorObjectNotFound {
+                    p("invalid credentials") // TODO
+                }
+            }
+        }
     }
 
     func findAndResignFirstResponder() {
@@ -68,7 +77,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func dismiss(sender: UIButton) {
+    func dismiss() {
         findAndResignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
     }

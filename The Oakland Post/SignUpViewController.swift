@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
+            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
 
         scrollView.contentInset = defaultInsets
 
@@ -62,7 +62,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let password = passwordTextField.text
         // TODO: check == confirmPassword
         let email = emailTextField.text
-        p("should log in with \(username), \(password), \(email)")
+//        p("should sign up with \(username), \(password), \(email)")
     }
 
     func findAndResignFirstResponder() {
@@ -74,7 +74,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func dismiss(sender: UIButton) {
+    func dismiss() {
         findAndResignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
     }

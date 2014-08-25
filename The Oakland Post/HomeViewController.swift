@@ -19,6 +19,10 @@ class HomeViewController: PostTableViewController, TopScrollable {
             "&t=article&s=start_time&sd=desc&f=rss" +
             "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*"
 
+        if let user = PFUser.currentUser() {
+            p("found logged in user; should replace Log In button") // TODO
+        }
+
         super.viewDidLoad()
     }
 
