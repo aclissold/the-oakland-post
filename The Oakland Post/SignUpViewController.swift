@@ -41,9 +41,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func textFieldDidEndEditing(textField: UITextField!) {
-        scrollView.contentInset = defaultInsets
-        scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        if let nextResponder = textField.superview?.viewWithTag(textField.tag + 1) {
+            nextResponder.becomeFirstResponder()
+        } else if textField === emailTextField {
+            textField.resignFirstResponder()
+            UIView.animateWithDuration(0.3) {
+                self.scrollView.contentInset = self.defaultInsets
+                self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
+            }
+        }
+
+        return false
     }
 
     func dismiss(sender: UIButton) {
