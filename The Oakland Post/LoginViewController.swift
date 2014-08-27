@@ -15,25 +15,42 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
-    let defaultInsets = UIEdgeInsets(top: 0, left: 0, bottom: -170, right: 0)
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
 
-        scrollView.contentInset = defaultInsets
-
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+
+        registerForKeyboardNotifications()
     }
 
-    func textFieldDidBeginEditing(textField: UITextField!) {
-        UIView.animateWithDuration(0.3) {
-            self.scrollView.contentInset = UIEdgeInsetsZero
-            // TODO: compute these rather than hard-coding to iPhone 5s dimensions
-            self.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 218, right: 0)
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    func keyboardDidShow(notification: NSNotification) {
+//        let info = notification.userInfo!
+//        let size = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+    }
+
+    var count = 0
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if (++count == 2) {
+            let viewHeight = view.frame.size.height
+            let viewWidth = view.frame.size.width
+            let barHeight = navigationController.navigationBar.frame.size.height
+
+            scrollView.contentSize = CGSize(width: viewWidth, height: viewHeight-barHeight)
         }
     }
 
@@ -49,10 +66,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func hideKeyboardAndLogIn() {
         findAndResignFirstResponder()
-        UIView.animateWithDuration(0.3) {
-            self.scrollView.contentInset = self.defaultInsets
-            self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
-        }
 
         let username = usernameTextField.text
         let password = passwordTextField.text
