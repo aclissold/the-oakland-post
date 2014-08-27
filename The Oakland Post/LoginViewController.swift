@@ -24,7 +24,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.delegate = self
         passwordTextField.delegate = self
 
-        registerForKeyboardNotifications()
+        if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+            registerForKeyboardNotifications()
+        }
     }
 
     func registerForKeyboardNotifications() {
@@ -35,11 +37,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     func keyboardDidShow(notification: NSNotification) {
-//        let info = notification.userInfo!
-//        let size = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size
+        let info = notification.userInfo!
+        let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let top = statusBarHeight + navBarHeight
+        let bottom = keyboardHeight
+
+        let insets = UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
+        UIView.animateWithDuration(0.3) {
+            self.scrollView.contentInset = insets
+            self.scrollView.scrollIndicatorInsets = insets
+        }
     }
 
     func keyboardWillHide(notification: NSNotification) {
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let top = statusBarHeight + navBarHeight
+        p(top)
+        let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
     }
 
     var count = 0
@@ -48,9 +67,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (++count == 2) {
             let viewHeight = view.frame.size.height
             let viewWidth = view.frame.size.width
-            let barHeight = navigationController.navigationBar.frame.size.height
+            var navBarHeight = navigationController.navigationBar.frame.size.height
 
-            scrollView.contentSize = CGSize(width: viewWidth, height: viewHeight-barHeight)
+            if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+                let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+                navBarHeight += statusBarHeight
+            }
+
+            scrollView.contentSize = CGSize(width: viewWidth, height: viewHeight-navBarHeight)
         }
     }
 
