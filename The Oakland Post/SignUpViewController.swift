@@ -17,27 +17,94 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
 
-    let defaultInsets = UIEdgeInsets(top: 0, left: 0, bottom: -170, right: 0)
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
             UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
 
-        scrollView.contentInset = defaultInsets
-
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         confirmPasswordTextField.delegate = self
         emailTextField.delegate = self
+
     }
 
-    func textFieldDidBeginEditing(textField: UITextField!) {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+            registerForKeyboardNotifications()
+        }
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self, name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        findAndResignFirstResponder()
+    }
+
+    func registerForKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(
+            self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    var insets = UIEdgeInsetsZero
+    func keyboardDidShow(notification: NSNotification) {
+        if navigationController == nil {
+            // Occurs when a screen edge pan gesture is initiated but canceled,
+            // so insets will already have been set.
+            scrollView.contentInset = insets
+            scrollView.scrollIndicatorInsets = insets
+            return
+        }
+        let info = notification.userInfo!
+        let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let top = statusBarHeight + navBarHeight
+        let bottom = keyboardHeight
+
+        insets = UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
         UIView.animateWithDuration(0.3) {
-            self.scrollView.contentInset = UIEdgeInsetsZero
-            // TODO: compute these rather than hard-coding to iPhone 5s dimensions
-            self.scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 64, left: 0, bottom: 218, right: 0)
+            self.scrollView.contentInset = self.insets
+            self.scrollView.scrollIndicatorInsets = self.insets
+        }
+    }
+
+    func keyboardWillHide(notification: NSNotification) {
+        if navigationController == nil { return } // avoid crash
+        let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let top = statusBarHeight + navBarHeight
+        let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
+        scrollView.contentInset = insets
+        scrollView.scrollIndicatorInsets = insets
+    }
+
+    var count = 0
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if (++count == 2) {
+            let viewHeight = view.frame.size.height
+            let viewWidth = view.frame.size.width
+            var navBarHeight = navigationController.navigationBar.frame.size.height
+
+            if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
+                let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
+                navBarHeight += statusBarHeight
+            }
+
+            scrollView.contentSize = CGSize(width: viewWidth, height: viewHeight-navBarHeight)
         }
     }
 
@@ -53,10 +120,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func hideKeyboardAndSignUp() {
         findAndResignFirstResponder()
-        UIView.animateWithDuration(0.3) {
-            self.scrollView.contentInset = self.defaultInsets
-            self.scrollView.scrollIndicatorInsets = UIEdgeInsetsZero
-        }
 
         let username = usernameTextField.text
         let password = passwordTextField.text

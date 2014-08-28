@@ -23,10 +23,26 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+    }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
 
         if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
             registerForKeyboardNotifications()
         }
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self, name: UIKeyboardDidShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        findAndResignFirstResponder()
     }
 
     func registerForKeyboardNotifications() {
@@ -55,7 +71,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         let navBarHeight = navigationController.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
-        p(top)
         let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
         scrollView.contentInset = insets
         scrollView.scrollIndicatorInsets = insets
