@@ -24,4 +24,4 @@ let infoContentViewControllerID = "infoContentViewController"
 let sectionsCellID = "sectionsCell", photoCellID = "photoCell"
 
 // Storyboard segue identifiers
-let readPostID = "readPost", showSectionID = "showSection"
+let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"

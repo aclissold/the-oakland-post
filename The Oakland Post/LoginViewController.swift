@@ -15,6 +15,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    var notification: NSNotification?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,10 +29,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
-        if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
-            registerForKeyboardNotifications()
-        }
+        registerForKeyboardNotifications()
     }
 
     override func viewDidDisappear(animated: Bool) {
@@ -53,6 +52,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     func keyboardDidShow(notification: NSNotification) {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            self.notification = notification
+            return
+        }
         let info = notification.userInfo!
         let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
@@ -68,6 +71,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
 
     func keyboardWillHide(notification: NSNotification) {
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            self.notification = nil
+            return
+        }
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         let navBarHeight = navigationController.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
@@ -132,6 +139,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func dismiss() {
         findAndResignFirstResponder()
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+        if segue.identifier == signUpID {
+            if notification != nil && UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+                let signUpViewController = segue.destinationViewController as SignUpViewController
+                signUpViewController.keyboardWasPresent = true
+            }
+        }
     }
 
 }

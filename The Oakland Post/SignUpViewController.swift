@@ -17,6 +17,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
 
+    var keyboardWasPresent = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -94,7 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     var count = 0
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if (++count == 2) {
+        if ++count == 2 || (count == 4 && keyboardWasPresent) {
             let viewHeight = view.frame.size.height
             let viewWidth = view.frame.size.width
             var navBarHeight = navigationController.navigationBar.frame.size.height
