@@ -123,11 +123,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBAction func hideKeyboardAndSignUp() {
         findAndResignFirstResponder()
 
-        let username = usernameTextField.text
-        let password = passwordTextField.text
-        // TODO: check == confirmPassword
-        let email = emailTextField.text
-//        p("should sign up with \(username), \(password), \(email)")
+        var user = PFUser()
+        user.username = usernameTextField.text
+        user.password = passwordTextField.text
+        user.email = emailTextField.text
+        let confirmPassword = confirmPasswordTextField.text
+        if valid(user, confirmPassword) {
+            p("validation passed; should sign up")
+//            user.signUpInBackgroundWithBlock {
+//                (succeeded, error) in
+//                if succeeded {
+//                    p("new user created successfully! \(user.username)")
+//                } else {
+//                    p(error.code)
+//                }
+//            }
+        }
     }
 
     func findAndResignFirstResponder() {
