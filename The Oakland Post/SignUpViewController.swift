@@ -130,14 +130,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let confirmPassword = confirmPasswordTextField.text
         if valid(user, confirmPassword) {
             p("validation passed; should sign up")
-//            user.signUpInBackgroundWithBlock {
-//                (succeeded, error) in
-//                if succeeded {
-//                    p("new user created successfully! \(user.username)")
-//                } else {
-//                    p(error.code)
-//                }
-//            }
+            user.signUpInBackgroundWithBlock {
+                (succeeded, error) in
+                if succeeded {
+                    self.dismiss()
+                } else {
+                    showAlertForErrorCode(error.code)
+                }
+            }
         }
     }
 

@@ -116,13 +116,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let username = usernameTextField.text
         let password = passwordTextField.text
         PFUser.logInWithUsernameInBackground(username, password: password) {
-            [weak self] (user, error) in
+            (user, error) in
             if user != nil {
-                self?.dismiss()
+                self.dismiss()
             } else {
-                if error.code == kPFErrorObjectNotFound {
-                    p("invalid credentials") // TODO
-                }
+                showAlertForErrorCode(error.code)
             }
         }
     }
