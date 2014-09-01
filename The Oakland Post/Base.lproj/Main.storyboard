@@ -9,7 +9,7 @@
         <scene sceneID="cUi-kZ-frf">
             <objects>
                 <navigationController id="rS3-R9-Ivy" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="Circle" id="SgX-Hh-jhH"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home" id="SgX-Hh-jhH"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yXu-0R-QUA">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -314,7 +314,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="The Oakland Post" id="tQt-TN-PWz">
-                        <barButtonItem key="leftBarButtonItem" image="Circle" id="65R-Df-hsu">
+                        <barButtonItem key="leftBarButtonItem" image="Info" id="65R-Df-hsu">
                             <connections>
                                 <segue destination="eys-uC-Y46" kind="popoverPresentation" identifier="showInfo" popoverAnchorBarButtonItem="65R-Df-hsu" id="1vo-D7-D4Y">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -532,7 +532,7 @@
         <scene sceneID="4kL-8d-Jtv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cqt-06-l5o" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Photos" image="Circle" id="g6d-wg-kAT"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="Photos" id="g6d-wg-kAT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zQk-qr-wli">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -551,7 +551,7 @@
         <scene sceneID="EtH-PO-AGL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Grq-To-beC" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Sections" image="Circle" id="aFX-R6-ju4"/>
+                    <tabBarItem key="tabBarItem" title="Sections" image="Sections" id="aFX-R6-ju4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WXv-MI-RHo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -570,7 +570,7 @@
         <scene sceneID="cIO-Fz-dcv">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dUq-WQ-F8s" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Blogs" image="Circle" id="qQ8-DV-iLZ"/>
+                    <tabBarItem key="tabBarItem" title="Blogs" image="Blogs" id="qQ8-DV-iLZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="U5N-x0-CXB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -916,8 +916,12 @@ you need to reset your password.</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Circle" width="25" height="25"/>
+        <image name="Blogs" width="25" height="25"/>
+        <image name="Home" width="25" height="25"/>
+        <image name="Info" width="22" height="22"/>
         <image name="Logo" width="219" height="22"/>
+        <image name="Photos" width="25" height="25"/>
+        <image name="Sections" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>
