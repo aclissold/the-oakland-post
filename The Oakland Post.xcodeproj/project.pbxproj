@@ -60,6 +60,7 @@
 		22EC39D519A979560058BD2E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22EC39D419A979560058BD2E /* Keys.plist */; };
 		22EC39D719AA91950058BD2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39D619AA91950058BD2E /* LoginViewController.swift */; };
 		22EC39DA19AA93F60058BD2E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39D919AA93F60058BD2E /* SignUpViewController.swift */; };
+		22FE3C8019B4BAD200171C7D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +122,7 @@
 		22EC39D419A979560058BD2E /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		22EC39D619AA91950058BD2E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22EC39D919AA93F60058BD2E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				227EFC4419723ECC00023C2A /* HomeViewController.swift */,
+				22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				229B6CE119B3DF4E00827BEB /* ShowAlertForErrorCode.swift in Sources */,
 				222EA53919809D1100F9CE31 /* EnlargedPhoto.swift in Sources */,
 				222EA5591983E87700F9CE31 /* HighResImageDownloader.swift in Sources */,
+				22FE3C8019B4BAD200171C7D /* FavoritesViewController.swift in Sources */,
 				227EFC4519723ECC00023C2A /* HomeViewController.swift in Sources */,
 				229B058519687EC70091120C /* PhotosViewController.swift in Sources */,
 				22464417194BE612000F5568 /* PostTableViewController.swift in Sources */,

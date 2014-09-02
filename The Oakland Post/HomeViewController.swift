@@ -20,10 +20,11 @@ class HomeViewController: PostTableViewController, TopScrollable {
             "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*"
 
         if let user = PFUser.currentUser() {
-            p("found logged in user; should replace Log In button") // TODO
+            navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: UIImage(named: "Favorites"), style: .Plain, target: self, action: "showFavorites")
         }
 
-        super.viewDidLoad()
+        super.viewDidLoad() // must be called after baseURL is set
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -37,6 +38,12 @@ class HomeViewController: PostTableViewController, TopScrollable {
     func scrollToTop() {
         let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
         tableView.scrollRectToVisible(rect, animated: true)
+    }
+
+    func showFavorites() {
+        let favoritesViewController =
+            UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(favoritesID) as FavoritesViewController
+        navigationController.pushViewController(favoritesViewController, animated: true)
     }
 
 }

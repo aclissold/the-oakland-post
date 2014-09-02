@@ -23,5 +23,6 @@ let infoContentViewControllerID = "infoContentViewController"
 // UITableViewCell identifiers
 let sectionsCellID = "sectionsCell", photoCellID = "photoCell"
 
-// Storyboard segue identifiers
+// Storyboard identifiers
 let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"
+let favoritesID = "favoritesViewController"
