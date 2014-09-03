@@ -21,7 +21,7 @@ class FeedParser {
     var parser: MWFeedParser!
     var feedURL: NSURL {
     get {
-        return NSURL(string: "\(baseURL)&o=\(offset)&l=\(length)")
+        return NSURL(string: "\(baseURL)&o=\(offset)&l=\(length)&f=rss")
     }
     }
 

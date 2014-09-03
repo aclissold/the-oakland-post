@@ -14,11 +14,7 @@ class HomeViewController: PostTableViewController, TopScrollable {
     var logInBarButtonItem, favoritesBarButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
-        // http://goo.gl/jqzaQQ
-        baseURL =
-            "http://www.oaklandpostonline.com/search/?mode=article&q=&nsa=eedition" +
-            "&t=article&s=start_time&sd=desc&f=rss" +
-            "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*"
+        baseURL = "http://www.oaklandpostonline.com/search/?t=article"
 
         logInBarButtonItem = UIBarButtonItem(title: "Log In", style: .Bordered, target: self, action: "logIn")
         favoritesBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites"), style: .Bordered, target: self, action: "showFavorites")

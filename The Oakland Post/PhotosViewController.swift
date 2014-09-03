@@ -11,7 +11,7 @@ import UIKit
 class PhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
     NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, TopScrollable {
 
-    let baseURL = "http://www.oaklandpostonline.com/search/?t=article&sd=desc&f=rss"
+    let baseURL = "http://www.oaklandpostonline.com/search/?t=article"
 
     var photos = [UIImage]()
     var highResPhotos = [Int: UIImage]()

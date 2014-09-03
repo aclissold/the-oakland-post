@@ -13,7 +13,7 @@ class BlogsViewController: PostTableViewController, TopScrollable {
     var canScrollToTop = false
 
     override func viewDidLoad() {
-        baseURL = "http://www.oaklandpostonline.com/search/?mode=article&q=&t=article&sd=desc&c[]=blogs*&f=rss"
+        baseURL = "http://www.oaklandpostonline.com/search/?q=&t=article&c[]=blogs*"
         super.viewDidLoad()
     }
 

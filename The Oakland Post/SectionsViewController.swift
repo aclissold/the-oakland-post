@@ -8,16 +8,17 @@
 
 import UIKit
 
-class SectionsViewController: BugFixTableViewController {
+private let prefix = "http://www.oaklandpostonline.com/search/?t=article&l=15&c[]="
 
+class SectionsViewController: BugFixTableViewController {
     let titles = ["News", "Life", "Sports", "Arts & Entertainment", "Opinion", "Satire"]
     let baseURLs = [
-        "News": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=news,news/*&f=rss",
-        "Life": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=life,life/*&f=rss",
-        "Sports": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=sports,sports/*&f=rss",
-        "Arts & Entertainment": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=arts_and_entertainment,arts_and_entertainment/*&f=rss",
-        "Opinion": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=opinion,opinion/*&f=rss",
-        "Satire": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=satire,satire/*&f=rss",
+        "News": "\(prefix)news,news/*",
+        "Life": "\(prefix)life,life/*",
+        "Sports": "\(prefix)sports,sports/*",
+        "Arts & Entertainment": "\(prefix)arts_and_entertainment,arts_and_entertainment/*",
+        "Opinion": "\(prefix)opinion,opinion/*",
+        "Satire": "\(prefix)satire,satire/*",
     ]
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
