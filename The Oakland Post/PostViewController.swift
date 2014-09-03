@@ -103,8 +103,8 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     override func viewDidAppear(animated: Bool) {
         didAppear = true
         if tabBarController != nil {
-            maxDelta = tabBarController.tabBar.frame.size.height
-            originalY = tabBarController.tabBar.frame.origin.y
+            maxDelta = tabBarController!.tabBar.frame.size.height
+            originalY = tabBarController!.tabBar.frame.origin.y
             retainedTabBarController = tabBarController
         }
     }
@@ -137,7 +137,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         if reachedBottom { return }
 
         if overage > 0 {
-            let tabBar: UITabBar! = tabBarController.tabBar
+            let tabBar = tabBarController!.tabBar
 
             if overage > tabBar.frame.size.height {
                 reachedBottom = true
@@ -150,7 +150,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
                 tabBar.frame.origin.y = originalY
             }
         } else {
-            tabBarController.tabBar.frame.origin.y = originalY + totalDelta
+            tabBarController!.tabBar.frame.origin.y = originalY + totalDelta
         }
     }
 

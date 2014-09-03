@@ -79,16 +79,16 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
         tableView.reloadData()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         SVProgressHUD.dismiss()
-        refreshControl.endRefreshing()
+        refreshControl!.endRefreshing()
         tableView.infiniteScrollingView.stopAnimating()
         tableView.userInteractionEnabled = true
     }
 
     // MARK: Segues
 
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == readPostID {
-            let indexPath = self.tableView.indexPathForSelectedRow()
+            let indexPath = self.tableView.indexPathForSelectedRow()!
             let item = parsedItems[indexPath.row] as MWFeedItem
             (segue.destinationViewController as PostViewController).URL = item.link
         }
@@ -96,15 +96,15 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
 
     // MARK: Table View
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return parsedItems.count
     }
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PostCell
 
         var item: MWFeedItem!
@@ -147,7 +147,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
         return cell
     }
 
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return tableViewRowHeight;
     }
 

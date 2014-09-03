@@ -20,11 +20,11 @@ class SectionsViewController: BugFixTableViewController {
         "Satire": "http://www.oaklandpostonline.com/search/?q=&t=article&l=15&d=&s=start_time&sd=desc&c[]=satire,satire/*&f=rss",
     ]
 
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == showSectionID {
             let postTableViewController = segue.destinationViewController as PostTableViewController
 
-            let section = (sender as SectionsCell).titleLabel.text
+            let section = (sender as SectionsCell).titleLabel.text!
             postTableViewController.baseURL = baseURLs[section]
             postTableViewController.navigationItem.title = section
         }
@@ -32,15 +32,15 @@ class SectionsViewController: BugFixTableViewController {
 
     // MARK: UITableViewDataSource
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return titles.count
     }
 
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(sectionsCellID, forIndexPath: indexPath) as SectionsCell
 
         cell.titleLabel.text = titles[indexPath.row]
@@ -48,11 +48,11 @@ class SectionsViewController: BugFixTableViewController {
         return cell
     }
 
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let ownHeight = view.bounds.height
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
-        let navigationBarHeight = navigationController.navigationBar.bounds.height
-        let tabBarHeight = tabBarController.tabBar.frame.height
+        let navigationBarHeight = navigationController!.navigationBar.bounds.height
+        let tabBarHeight = tabBarController!.tabBar.frame.height
 
         let availableHeight = ownHeight - statusBarHeight - navigationBarHeight - tabBarHeight
 

@@ -72,7 +72,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let info = notification.userInfo!
         let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let navBarHeight = navigationController!.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
         let bottom = keyboardHeight
 
@@ -86,7 +86,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func keyboardWillHide(notification: NSNotification) {
         if navigationController == nil { return } // avoid crash
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let navBarHeight = navigationController!.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
         let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
         scrollView.contentInset = insets
@@ -99,7 +99,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if ++count == 2 || (count == 4 && keyboardWasPresent) {
             let viewHeight = view.frame.size.height
             let viewWidth = view.frame.size.width
-            var navBarHeight = navigationController.navigationBar.frame.size.height
+            var navBarHeight = navigationController!.navigationBar.frame.size.height
 
             if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
                 let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height

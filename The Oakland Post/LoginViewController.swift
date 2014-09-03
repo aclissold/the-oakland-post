@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let info = notification.userInfo!
         let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let navBarHeight = navigationController!.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
         let bottom = keyboardHeight
 
@@ -76,7 +76,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let navBarHeight = navigationController.navigationBar.frame.size.height
+        let navBarHeight = navigationController!.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
         let insets = UIEdgeInsets(top: top, left: 0, bottom: 0, right: 0)
         scrollView.contentInset = insets
@@ -89,7 +89,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if (++count == 2) {
             let viewHeight = view.frame.size.height
             let viewWidth = view.frame.size.width
-            var navBarHeight = navigationController.navigationBar.frame.size.height
+            var navBarHeight = navigationController!.navigationBar.frame.size.height
 
             if UIDevice.currentDevice().userInterfaceIdiom != .Pad {
                 let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
@@ -145,12 +145,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     func configureFavoritesButton() {
         let tabBarController = presentingViewController as UITabBarController
-        let navigationController = tabBarController.viewControllers[0] as UINavigationController
+        let navigationController = tabBarController.viewControllers![0] as UINavigationController
         let homeViewController = navigationController.childViewControllers[0] as HomeViewController
         homeViewController.navigationItem.rightBarButtonItem = homeViewController.favoritesBarButtonItem
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == signUpID {
             if notification != nil && UIDevice.currentDevice().userInterfaceIdiom == .Pad {
                 let signUpViewController = segue.destinationViewController as SignUpViewController

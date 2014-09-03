@@ -47,15 +47,15 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
             indexPaths.append(NSIndexPath(forItem: index, inSection: 0))
         }
 
-        delegator.collectionView.performBatchUpdates({
-                self.delegator.collectionView.insertItemsAtIndexPaths(indexPaths)
+        delegator.collectionView!.performBatchUpdates({
+                self.delegator.collectionView!.insertItemsAtIndexPaths(indexPaths)
             }, completion: { (completed: Bool) in
                 if completed {
                     self.insertedIndexPaths += indexPaths.count
                 }
             })
 
-        delegator.collectionView.infiniteScrollingView.stopAnimating()
+        delegator.collectionView!.infiniteScrollingView.stopAnimating()
     }
 
 }

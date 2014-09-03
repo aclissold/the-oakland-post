@@ -33,7 +33,7 @@ class HomeViewController: PostTableViewController, TopScrollable {
     }
 
     override func viewDidLayoutSubviews() {
-        if logInBarButtonItem == nil && navigationItem?.rightBarButtonItem?.title == "Log In" {
+        if logInBarButtonItem == nil && navigationItem.rightBarButtonItem?.title == "Log In" {
             logInBarButtonItem = navigationItem.rightBarButtonItem
         }
     }
@@ -56,9 +56,8 @@ class HomeViewController: PostTableViewController, TopScrollable {
     }
 
     func showFavorites() {
-        let favoritesViewController =
-            UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(favoritesID) as FavoritesViewController
-        navigationController.pushViewController(favoritesViewController, animated: true)
+        let favoritesViewController = storyboard!.instantiateViewControllerWithIdentifier(favoritesID) as FavoritesViewController
+        navigationController!.pushViewController(favoritesViewController, animated: true)
     }
 
 }

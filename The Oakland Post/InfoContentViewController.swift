@@ -38,7 +38,7 @@ class InfoContentViewController: UIViewController {
     }
 
     func swapOutTitleLabel() {
-        let infoViewController = (parentViewController.parentViewController as InfoViewController)
+        let infoViewController = (parentViewController!.parentViewController as InfoViewController)
         let titleLabel = infoViewController.titleLabel
         if titleLabel != nil && titleLabel.text != titleText {
             UIView.animateWithDuration(0.15,

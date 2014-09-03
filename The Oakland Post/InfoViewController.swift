@@ -27,7 +27,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
         // Create the three content view controllers for the page view controller.
         for (index, title) in enumerate(pageTitles) {
-            var infoContentViewController = storyboard.instantiateViewControllerWithIdentifier(
+            var infoContentViewController = storyboard!.instantiateViewControllerWithIdentifier(
                 infoContentViewControllerID) as InfoContentViewController
             infoContentViewController.titleText = title
             infoContentViewController.pageIndex = index
@@ -76,14 +76,14 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
     // MARK: UIPageViewControllerDataSource
 
-    func pageViewController(pageViewController: UIPageViewController!,
-        viewControllerAfterViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController,
+        viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
             let index = (viewController as InfoContentViewController).pageIndex
             return viewControllerAtIndex(index + 1)
     }
 
-    func pageViewController(pageViewController: UIPageViewController!,
-        viewControllerBeforeViewController viewController: UIViewController!) -> UIViewController! {
+    func pageViewController(pageViewController: UIPageViewController,
+        viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
             let index = (viewController as InfoContentViewController).pageIndex
             return viewControllerAtIndex(index - 1)
     }
@@ -96,11 +96,11 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         return viewControllers[index]
     }
 
-    func presentationCountForPageViewController(pageViewController: UIPageViewController!) -> Int {
+    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
         return pageTitles.count
     }
 
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController!) -> Int {
+    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return (pageViewController.viewControllers[0] as InfoContentViewController).pageIndex;
     }
 

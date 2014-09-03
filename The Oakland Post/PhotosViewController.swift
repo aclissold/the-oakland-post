@@ -36,11 +36,11 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
         enlargedPhotoDelegate = EnlargedPhotoDelegate(delegator: self)
 
-        collectionView.addInfiniteScrollingWithActionHandler(parseMore)
+        collectionView!.addInfiniteScrollingWithActionHandler(parseMore)
 
         gestureRecognizers = EnlargedPhotoGestureRecognizers(photosViewController: self)
 
-        navigationController.navigationBar.layer.zPosition = 1
+        navigationController!.navigationBar.layer.zPosition = 1
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -79,7 +79,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     func scrollToTop() {
         let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
-        collectionView.scrollRectToVisible(rect, animated: true)
+        collectionView!.scrollRectToVisible(rect, animated: true)
     }
 
     // MARK: Enlarged Photo Handling
@@ -111,24 +111,24 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         enlargedPhoto!.linkButton.addTarget(self, action: "showPost:", forControlEvents: .TouchUpInside)
         gestureRecognizers.addToEnlargedPhoto(enlargedPhoto!)
 
-        navigationController.view.addSubview(enlargedPhoto!)
+        navigationController!.view.addSubview(enlargedPhoto!)
 
         shouldHideStatusBar = true
         setNeedsStatusBarAppearanceUpdate()
-        navigationController.navigationBar.frame.size.height += statusBarHeight
+        navigationController!.navigationBar.frame.size.height += statusBarHeight
 
         UIView.animateWithDuration(0.15,
             delay: 0,
             options: nil,
             animations: {
                 self.enlargedPhoto!.alpha = 1
-                self.navigationController.navigationBar.frame.origin.y -=
-                    self.navigationController.navigationBar.frame.size.height
-                self.tabBarController.tabBar.frame.origin.y +=
-                    self.tabBarController.tabBar.frame.size.height
+                self.navigationController!.navigationBar.frame.origin.y -=
+                    self.navigationController!.navigationBar.frame.size.height
+                self.tabBarController!.tabBar.frame.origin.y +=
+                    self.tabBarController!.tabBar.frame.size.height
             },
             completion: { _ in
-                self.navigationController.navigationBarHidden = true
+                self.navigationController!.navigationBarHidden = true
             })
     }
 
@@ -136,7 +136,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         performSegueWithIdentifier("showPost", sender: NSNumber.numberWithInt(Int32(sender.tag)))
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showPost" {
             let themedNavigationController = (segue.destinationViewController as ThemedNavigationController)
             let postViewController = (themedNavigationController.childViewControllers[0] as PostViewController)
@@ -160,17 +160,17 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    override func collectionView(collectionView: UICollectionView!,
+    override func collectionView(collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
         return photos.count
     }
 
-    override func collectionView(collectionView: UICollectionView!,
-        cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+    override func collectionView(collectionView: UICollectionView,
+        cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoCellID,
                 forIndexPath: indexPath) as PhotoCell
             if let highResPhoto = highResPhotos[indexPath.item] {

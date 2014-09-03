@@ -40,13 +40,13 @@ class BugFixTableViewController: UITableViewController {
     // private
     var lastIndexPath: NSIndexPath?
 
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         lastIndexPath = indexPath
     }
 
     override func viewWillAppear(animated: Bool)  {
         if lastIndexPath != nil {
-            tableView.deselectRowAtIndexPath(lastIndexPath, animated: true)
+            tableView.deselectRowAtIndexPath(lastIndexPath!, animated: true)
         }
     }
 
@@ -58,7 +58,7 @@ class BugFixTableViewController: UITableViewController {
 
     override func viewDidDisappear(animated: Bool)  {
         if lastIndexPath != nil {
-            tableView.selectRowAtIndexPath(lastIndexPath, animated: false, scrollPosition: .None)
+            tableView.selectRowAtIndexPath(lastIndexPath!, animated: false, scrollPosition: .None)
         }
     }
 
