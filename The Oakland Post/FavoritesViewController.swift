@@ -14,7 +14,19 @@ class FavoritesViewController: UITableViewController {
 
     func logOut() {
         PFUser.logOut()
+        configureLogOutButton()
         navigationController.popViewControllerAnimated(true)
+    }
+
+    func configureLogOutButton() {
+        var homeViewController: HomeViewController!
+        for controller in navigationController.viewControllers {
+            if controller is HomeViewController { // probably viewControllers[0]
+                let homeViewController = controller as HomeViewController
+                homeViewController.navigationItem.rightBarButtonItem = homeViewController.logInBarButtonItem
+                break
+            }
+        }
     }
 
     override func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {

@@ -25,4 +25,4 @@ let sectionsCellID = "sectionsCell", photoCellID = "photoCell"
 
 // Storyboard identifiers
 let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"
-let favoritesID = "favoritesViewController"
+let logInID = "logIn", favoritesID = "favoritesViewController"

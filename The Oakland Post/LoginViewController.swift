@@ -21,7 +21,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
+            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -118,7 +118,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (user, error) in
             if user != nil {
-                self.dismiss()
+                self.dismiss(nil)
             } else {
                 showAlertForErrorCode(error.code)
             }
@@ -134,9 +134,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func dismiss() {
+    func dismiss(sender: UIBarButtonItem?) {
         findAndResignFirstResponder()
+        if sender == nil {
+            // Log In success (as opposed to Done button pressed)
+            configureFavoritesButton()
+        }
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func configureFavoritesButton() {
+        let tabBarController = presentingViewController as UITabBarController
+        let navigationController = tabBarController.viewControllers[0] as UINavigationController
+        let homeViewController = navigationController.childViewControllers[0] as HomeViewController
+        homeViewController.navigationItem.rightBarButtonItem = homeViewController.favoritesBarButtonItem
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {

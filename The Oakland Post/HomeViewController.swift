@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: PostTableViewController, TopScrollable {
 
     var canScrollToTop = false
+    var logInBarButtonItem, favoritesBarButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         // http://goo.gl/jqzaQQ
@@ -19,12 +20,22 @@ class HomeViewController: PostTableViewController, TopScrollable {
             "&t=article&s=start_time&sd=desc&f=rss" +
             "&c%5B%5D=news*%2Csports*%2Clife*%2Cbusiness*%2Copinion*%2Cspecial_sections*"
 
+        logInBarButtonItem = UIBarButtonItem(title: "Log In", style: .Bordered, target: self, action: "logIn")
+        favoritesBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites"), style: .Bordered, target: self, action: "showFavorites")
+
         if let user = PFUser.currentUser() {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                image: UIImage(named: "Favorites"), style: .Plain, target: self, action: "showFavorites")
+            navigationItem.rightBarButtonItem = favoritesBarButtonItem
+        } else {
+            navigationItem.rightBarButtonItem = logInBarButtonItem
         }
 
         super.viewDidLoad() // must be called after baseURL is set
+    }
+
+    override func viewDidLayoutSubviews() {
+        if logInBarButtonItem == nil && navigationItem?.rightBarButtonItem?.title == "Log In" {
+            logInBarButtonItem = navigationItem.rightBarButtonItem
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -38,6 +49,10 @@ class HomeViewController: PostTableViewController, TopScrollable {
     func scrollToTop() {
         let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
         tableView.scrollRectToVisible(rect, animated: true)
+    }
+
+    func logIn() {
+        performSegueWithIdentifier(logInID, sender: self)
     }
 
     func showFavorites() {

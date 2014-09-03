@@ -1015,7 +1015,7 @@ you need to reset your password.</string>
         <image name="Sections" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KNX-Iu-GcY"/>
+        <segue reference="jUr-3t-vfg"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
