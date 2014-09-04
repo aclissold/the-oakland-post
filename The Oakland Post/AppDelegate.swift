@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         let keys = NSDictionary(contentsOfFile: file)
 
         Parse.setApplicationId(keys["applicationId"] as String, clientKey: keys["clientKey"] as String)
+        PFACL.setDefaultACL(PFACL.ACL(), withAccessForCurrentUser: true)
 
         return true
     }
