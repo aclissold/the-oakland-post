@@ -68,8 +68,8 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         feedParser.parseMore()
     }
 
-    func didSelectStarButton(starButton: UIButton, atIndexPath indexPath: NSIndexPath) {
-        p("selected \((parsedItems[indexPath.row] as MWFeedItem).title)")
+    func didSelectStarButton(starButton: UIButton, withItem item: MWFeedItem, atIndexPath indexPath: NSIndexPath) {
+        p("selected \(item.title)")
         starButton.selected = !starButton.selected
     }
 
@@ -111,45 +111,12 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
+
         cell.delegate = self
         cell.indexPath = indexPath
-
-        var item: MWFeedItem!
-        if indexPath.row > countElements(parsedItems) {
-            item = MWFeedItem()
-            item.title = "Loading…"
-            item.date = NSDate(timeIntervalSinceNow: 0)
-        } else {
-            item = parsedItems[indexPath.row] as MWFeedItem
+        if indexPath.row <= countElements(parsedItems) {
+            cell.item = parsedItems[indexPath.row] as MWFeedItem
         }
-
-        // Set the cell's thumbnail image
-        if let enclosures = item.enclosures {
-            if enclosures[0] is NSDictionary {
-                let dict = item.enclosures[0] as NSDictionary
-                if (dict["type"] as String).hasPrefix("image") {
-                    let URL = NSURL(string: dict["url"] as String)
-                    cell.thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
-                }
-            }
-        } else {
-            cell.thumbnail.image = UIImage(named: "Placeholder")
-        }
-
-        cell.descriptionLabel.text = item.title
-
-        // Figure out and set the cell's date label
-        var time = -item.date.timeIntervalSinceNow / 60.0
-        var unit = "m"
-        if time >= 60.0 {
-            time /= 60.0
-            unit = "h"
-            if time >= 24.0 {
-                time /= 24.0
-                unit = "d"
-            }
-        }
-        cell.dateLabel.text = "\(Int(time))\(unit) ago"
 
         return cell
     }
