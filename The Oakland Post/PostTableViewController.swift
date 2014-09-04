@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
+class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, StarButtonDelegate {
 
     override init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -68,6 +68,11 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
         feedParser.parseMore()
     }
 
+    func didSelectStarButton(starButton: UIButton, atIndexPath indexPath: NSIndexPath) {
+        p("selected \((parsedItems[indexPath.row] as MWFeedItem).title)")
+        starButton.selected = !starButton.selected
+    }
+
     // MARK: MWFeedParserDelegate methods
 
     func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
@@ -105,7 +110,9 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PostCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
+        cell.delegate = self
+        cell.indexPath = indexPath
 
         var item: MWFeedItem!
         if indexPath.row > countElements(parsedItems) {

@@ -236,7 +236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="m0d-ak-lc9" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="m0d-ak-lc9" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="m0d-ak-lc9" id="d3P-M7-ByW">
@@ -263,11 +263,22 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uil-bG-3qQ">
+                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <state key="normal" image="StarHollow">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="StarSolid"/>
+                                            <connections>
+                                                <action selector="starButtonPressed:" destination="m0d-ak-lc9" eventType="touchUpInside" id="Kaj-WP-LOA"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="qF9-a1-kMm" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="2" id="8ID-TQ-FCv"/>
                                         <constraint firstItem="qF9-a1-kMm" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="LSn-Gd-yrf"/>
                                         <constraint firstAttribute="trailing" secondItem="Fhq-ey-HDh" secondAttribute="trailing" id="P5d-t0-b81"/>
+                                        <constraint firstItem="uil-bG-3qQ" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="cWa-1h-zLZ"/>
                                         <constraint firstItem="RiT-iM-rcd" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" id="d29-of-7XE"/>
                                         <constraint firstItem="RiT-iM-rcd" firstAttribute="centerY" secondItem="qF9-a1-kMm" secondAttribute="centerY" constant="8.5" id="iiR-6V-1nA">
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
@@ -275,12 +286,14 @@
                                         <constraint firstAttribute="bottom" secondItem="Fhq-ey-HDh" secondAttribute="bottom" constant="4" id="izO-cN-7xN"/>
                                         <constraint firstAttribute="trailing" secondItem="qF9-a1-kMm" secondAttribute="trailing" id="jDG-B3-x2z"/>
                                         <constraint firstAttribute="bottom" secondItem="qF9-a1-kMm" secondAttribute="bottom" constant="20" id="lDm-8W-klT"/>
+                                        <constraint firstItem="Fhq-ey-HDh" firstAttribute="bottom" secondItem="uil-bG-3qQ" secondAttribute="bottom" id="nOo-U3-6bd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dateLabel" destination="Fhq-ey-HDh" id="ss8-gm-Zpe"/>
                                     <outlet property="descriptionLabel" destination="qF9-a1-kMm" id="7eo-HD-mN8"/>
+                                    <outlet property="starButton" destination="uil-bG-3qQ" id="8jc-dA-wrN"/>
                                     <outlet property="thumbnail" destination="RiT-iM-rcd" id="wOi-k6-MYW"/>
                                     <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPost" id="jUr-3t-vfg"/>
                                 </connections>
@@ -594,7 +607,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="R0m-Y1-ldo" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="R0m-Y1-ldo" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="R0m-Y1-ldo" id="gU4-4i-sqB">
@@ -621,8 +634,20 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJS-g4-fU5">
+                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <state key="normal" image="StarHollow">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="StarSolid"/>
+                                            <connections>
+                                                <action selector="starButtonPressed:" destination="R0m-Y1-ldo" eventType="touchUpInside" id="Zv8-5s-kkG"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="8FB-hD-v98" firstAttribute="bottom" secondItem="SJS-g4-fU5" secondAttribute="bottom" id="Th1-LG-tTZ"/>
+                                        <constraint firstItem="SJS-g4-fU5" firstAttribute="leading" secondItem="ifu-Jv-v72" secondAttribute="trailing" constant="8" id="Z3E-OG-LGF"/>
                                         <constraint firstItem="lH2-Rl-1Ky" firstAttribute="leading" secondItem="ifu-Jv-v72" secondAttribute="trailing" constant="8" id="bI9-x2-6Ip"/>
                                         <constraint firstItem="ifu-Jv-v72" firstAttribute="centerY" secondItem="lH2-Rl-1Ky" secondAttribute="centerY" constant="8.5" id="bKL-Jy-2pk">
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
@@ -639,6 +664,7 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="8FB-hD-v98" id="mxR-fc-HA4"/>
                                     <outlet property="descriptionLabel" destination="lH2-Rl-1Ky" id="SRb-xm-7d1"/>
+                                    <outlet property="starButton" destination="SJS-g4-fU5" id="4dH-lR-eFr"/>
                                     <outlet property="thumbnail" destination="ifu-Jv-v72" id="Tft-6e-y0k"/>
                                     <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPost" id="6sw-eV-8Ag"/>
                                 </connections>
@@ -671,7 +697,7 @@
                             <outlet property="delegate" destination="SpL-6i-S88" id="Joh-Ic-SxW"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Section / Blogs" id="Pbe-g6-aGk"/>
+                    <navigationItem key="navigationItem" title="Section" id="Pbe-g6-aGk"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s64-05-76y" sceneMemberID="firstResponder"/>
             </objects>
@@ -686,7 +712,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="p6T-2c-CbH" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="p6T-2c-CbH" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p6T-2c-CbH" id="HYt-3t-PER">
@@ -713,14 +739,26 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-3X-clt">
+                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <state key="normal" image="StarHollow">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="StarSolid"/>
+                                            <connections>
+                                                <action selector="starButtonPressed:" destination="p6T-2c-CbH" eventType="touchUpInside" id="YxF-8c-MS0"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="YOy-iJ-Qjb" firstAttribute="centerY" secondItem="0K2-As-kjH" secondAttribute="centerY" constant="8.5" id="0ld-Dh-5Cs">
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                         </constraint>
                                         <constraint firstAttribute="trailing" secondItem="0K2-As-kjH" secondAttribute="trailing" id="Bqm-dF-tAU"/>
+                                        <constraint firstItem="Z7i-3X-clt" firstAttribute="leading" secondItem="YOy-iJ-Qjb" secondAttribute="trailing" constant="8" id="Ksu-g8-KaL"/>
                                         <constraint firstAttribute="bottom" secondItem="0K2-As-kjH" secondAttribute="bottom" constant="20" id="Owg-Dd-UrP"/>
                                         <constraint firstItem="YOy-iJ-Qjb" firstAttribute="leading" secondItem="HYt-3t-PER" secondAttribute="leading" id="alf-2f-3J1"/>
+                                        <constraint firstItem="Z7i-3X-clt" firstAttribute="bottom" secondItem="xft-xd-EWh" secondAttribute="bottom" id="fZq-S0-FJM"/>
                                         <constraint firstItem="0K2-As-kjH" firstAttribute="leading" secondItem="YOy-iJ-Qjb" secondAttribute="trailing" constant="8" id="jDW-Mr-Oii"/>
                                         <constraint firstAttribute="bottom" secondItem="xft-xd-EWh" secondAttribute="bottom" constant="4" id="qch-ZY-CEt"/>
                                         <constraint firstItem="0K2-As-kjH" firstAttribute="top" secondItem="HYt-3t-PER" secondAttribute="top" constant="2" id="sq8-dZ-GAA"/>
@@ -731,6 +769,7 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="xft-xd-EWh" id="27A-f2-aed"/>
                                     <outlet property="descriptionLabel" destination="0K2-As-kjH" id="7ok-zx-IeV"/>
+                                    <outlet property="starButton" destination="Z7i-3X-clt" id="x4B-KI-fCj"/>
                                     <outlet property="thumbnail" destination="YOy-iJ-Qjb" id="RaO-L2-hva"/>
                                     <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPost" id="KNX-Iu-GcY"/>
                                 </connections>
@@ -923,7 +962,7 @@ you need to reset your password.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="120" id="GGW-wK-qcP" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="GGW-wK-qcP" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GGW-wK-qcP" id="LCU-cA-ddD">
@@ -950,6 +989,16 @@ you need to reset your password.</string>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfz-Xg-JJW">
+                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <state key="normal" image="StarHollow">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="StarSolid"/>
+                                            <connections>
+                                                <action selector="starButtonPressed:" destination="GGW-wK-qcP" eventType="touchUpInside" id="nX8-Ez-pQm"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="06s-uF-wNj" secondAttribute="trailing" id="0c5-Nc-HIA"/>
@@ -959,7 +1008,9 @@ you need to reset your password.</string>
                                         <constraint firstItem="06s-uF-wNj" firstAttribute="top" secondItem="LCU-cA-ddD" secondAttribute="top" constant="2" id="7Xl-qN-Q47"/>
                                         <constraint firstAttribute="trailing" secondItem="fmb-P5-iJC" secondAttribute="trailing" id="Bad-ws-Cot"/>
                                         <constraint firstItem="06s-uF-wNj" firstAttribute="leading" secondItem="yBr-4U-vme" secondAttribute="trailing" constant="8" id="E0N-7d-58B"/>
+                                        <constraint firstItem="fmb-P5-iJC" firstAttribute="bottom" secondItem="pfz-Xg-JJW" secondAttribute="bottom" id="SoN-qd-Rsp"/>
                                         <constraint firstAttribute="bottom" secondItem="06s-uF-wNj" secondAttribute="bottom" constant="20" id="Za6-xI-DgU"/>
+                                        <constraint firstItem="pfz-Xg-JJW" firstAttribute="leading" secondItem="yBr-4U-vme" secondAttribute="trailing" constant="8" id="cAb-Oi-C8U"/>
                                         <constraint firstAttribute="bottom" secondItem="fmb-P5-iJC" secondAttribute="bottom" constant="4" id="d7P-xA-dll"/>
                                         <constraint firstItem="yBr-4U-vme" firstAttribute="leading" secondItem="LCU-cA-ddD" secondAttribute="leading" id="dV1-Tq-o6V"/>
                                     </constraints>
@@ -968,6 +1019,7 @@ you need to reset your password.</string>
                                 <connections>
                                     <outlet property="dateLabel" destination="fmb-P5-iJC" id="Vi0-WA-GDH"/>
                                     <outlet property="descriptionLabel" destination="06s-uF-wNj" id="uH6-2Q-anc"/>
+                                    <outlet property="starButton" destination="pfz-Xg-JJW" id="Lf7-Oa-KAc"/>
                                     <outlet property="thumbnail" destination="yBr-4U-vme" id="gnO-jC-khX"/>
                                 </connections>
                             </tableViewCell>
@@ -1013,6 +1065,8 @@ you need to reset your password.</string>
         <image name="Logo" width="219" height="22"/>
         <image name="Photos" width="25" height="25"/>
         <image name="Sections" width="25" height="25"/>
+        <image name="StarHollow" width="22" height="22"/>
+        <image name="StarSolid" width="22" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>
