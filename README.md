@@ -1,8 +1,8 @@
 The Oakland Post App
 ====================
 
-The mobile companion for [The Oakland Post](http://www.oaklandpostonline.com)
-website!
+The mobile companion for [The Oakland Post](http://www.oaklandpostonline.com)'s
+website, written entirely in Swift!
 
 Screenshots
 -----------
