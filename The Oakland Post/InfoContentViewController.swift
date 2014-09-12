@@ -37,6 +37,11 @@ class InfoContentViewController: UIViewController {
         swapOutTitleLabel()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoText.frame.origin.y = 20 // bugfix for it jumping from 0 to this value on-screen
+    }
+
     func swapOutTitleLabel() {
         let infoViewController = (parentViewController!.parentViewController as InfoViewController)
         let titleLabel = infoViewController.titleLabel
