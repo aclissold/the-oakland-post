@@ -2,13 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "StarHollow.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "StarHollow@2x.png"
+      "filename" : "StarHollow.pdf"
     }
   ],
   "info" : {

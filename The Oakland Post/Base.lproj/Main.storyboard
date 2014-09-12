@@ -264,7 +264,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uil-bG-3qQ">
-                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -635,7 +635,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJS-g4-fU5">
-                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -740,7 +740,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-3X-clt">
-                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -990,7 +990,7 @@ you need to reset your password.</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pfz-Xg-JJW">
-                                            <rect key="frame" x="131" y="94" width="22" height="22"/>
+                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -1064,9 +1064,9 @@ you need to reset your password.</string>
         <image name="Info" width="22" height="22"/>
         <image name="Logo" width="219" height="22"/>
         <image name="Photos" width="25" height="25"/>
-        <image name="Sections" width="25" height="25"/>
-        <image name="StarHollow" width="22" height="22"/>
-        <image name="StarSolid" width="22" height="22"/>
+        <image name="Sections" width="24" height="13"/>
+        <image name="StarHollow" width="15" height="14"/>
+        <image name="StarSolid" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>

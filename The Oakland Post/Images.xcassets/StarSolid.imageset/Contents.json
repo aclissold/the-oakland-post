@@ -2,13 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "StarSolid.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "StarSolid@2x.png"
+      "filename" : "StarSolid.pdf"
     }
   ],
   "info" : {

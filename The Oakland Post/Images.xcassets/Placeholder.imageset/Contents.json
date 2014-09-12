@@ -1,9 +1,6 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
-    },
-    {
       "idiom" : "universal",
       "scale" : "1x",
       "filename" : "Placeholder.png"
@@ -12,6 +9,11 @@
       "idiom" : "universal",
       "scale" : "2x",
       "filename" : "Placeholder@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "Placeholder@3x.png"
     }
   ],
   "info" : {
