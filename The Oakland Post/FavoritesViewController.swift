@@ -8,19 +8,8 @@
 
 class FavoritesViewController: UITableViewController, StarButtonDelegate {
 
-    var objects: [AnyObject]!
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: "logOut")
-        let query = PFQuery(className: "Item")
-        query.limit = 1000
-        query.findObjectsInBackgroundWithBlock { (objects, error) in
-            if error != nil {
-                showAlertForErrorCode(error.code)
-            } else {
-                self.objects = objects
-                self.tableView.reloadData()
-            }
-        }
     }
 
     func logOut() {
@@ -30,41 +19,38 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
     }
 
     func configureLogOutButton() {
-        var homeViewController: HomeViewController!
-        for controller in navigationController!.viewControllers {
-            if controller is HomeViewController { // probably viewControllers[0]
-                let homeViewController = controller as HomeViewController
-                homeViewController.navigationItem.rightBarButtonItem = homeViewController.logInBarButtonItem
-                break
-            }
-        }
+        homeViewController.navigationItem.rightBarButtonItem = homeViewController.logInBarButtonItem
+        homeViewController.tableView.reloadData()
     }
 
     func didSelectStarButton(starButton: UIButton, withItem item: MWFeedItem, atIndexPath indexPath: NSIndexPath) {
         starButton.selected = !starButton.selected
         if starButton.selected {
             // Send the new favorite to Parse.
-            PFObject(className: "Item", dictionary: [
+            let object = PFObject(className: "Item", dictionary: [
                 "identifier": item.identifier,
                      "title": item.title,
                       "link": item.link,
                       "date": item.date,
                    "summary": item.summary,
                     "author": item.author,
-                "enclosures": item.enclosures]).saveEventually()
+                "enclosures": item.enclosures])
+            object.saveEventually()
+            starredPosts.append(object)
         } else {
-            // Delete it from the server.
+            deleteStarredPostWithIdentifier(item.identifier)
+            homeViewController.reloadData()
         }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects?.count ?? 0
+        return starredPosts.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
         let item = MWFeedItem()
-        let object = objects[indexPath.row] as PFObject
+        let object = starredPosts[indexPath.row] as PFObject
 
         item.identifier = object["identifier"] as String
         item.title = object["title"] as String
@@ -79,6 +65,7 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
         cell.delegate = self
         cell.indexPath = indexPath
         cell.item = item
+        cell.starButton.selected = true
 
         return cell
 

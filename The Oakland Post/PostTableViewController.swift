@@ -69,23 +69,26 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
     }
 
     func didSelectStarButton(starButton: UIButton, withItem item: MWFeedItem, atIndexPath indexPath: NSIndexPath) {
-        p("selected \(item.title)")
         starButton.selected = !starButton.selected
+
         if starButton.selected {
-            // Send the new favorite to Parse.
+
             let object = PFObject(className: "Item", dictionary: [
                 "identifier": item.identifier,
-                     "title": item.title,
-                      "link": item.link,
-                      "date": item.date,
-                   "summary": item.summary,
-                    "author": item.author])
+                "title": item.title,
+                "link": item.link,
+                "date": item.date,
+                "summary": item.summary,
+                "author": item.author,
+                "starred": starButton.selected])
             if item.enclosures != nil {
                 object["enclosures"] = item.enclosures
             }
+
             object.saveEventually()
+            starredPosts.append(object)
         } else {
-            // Delete it from the server.
+            deleteStarredPostWithIdentifier(item.identifier)
         }
     }
 
@@ -97,6 +100,10 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
 
     func feedParserDidFinish(parser: MWFeedParser!) {
         finishedParsing = true
+        reloadData()
+    }
+
+    func reloadData() {
         tableView.reloadData()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         SVProgressHUD.dismiss()
@@ -132,6 +139,10 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         cell.indexPath = indexPath
         if indexPath.row <= countElements(parsedItems) {
             cell.item = parsedItems[indexPath.row] as MWFeedItem
+            cell.starButton.hidden = PFUser.currentUser() == nil
+            if !cell.starButton.hidden {
+                cell.starButton.selected = contains(starredPostIdentifiers, cell.item.identifier)
+            }
         }
 
         return cell

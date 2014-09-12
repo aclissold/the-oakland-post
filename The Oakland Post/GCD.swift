@@ -23,6 +23,11 @@ func onMain(block: dispatch_block_t?) {
     dispatch_async(queue, block)
 }
 
+func onHigh(block: dispatch_block_t?) {
+    let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)
+    dispatch_async(queue, block)
+}
+
 func onDefault(block: dispatch_block_t?) {
     let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
     dispatch_async(queue, block)

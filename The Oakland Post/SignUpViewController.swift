@@ -129,7 +129,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         user.email = emailTextField.text
         let confirmPassword = confirmPasswordTextField.text
         if valid(user, confirmPassword) {
-            p("validation passed; should sign up")
             user.signUpInBackgroundWithBlock {
                 (succeeded, error) in
                 if succeeded {

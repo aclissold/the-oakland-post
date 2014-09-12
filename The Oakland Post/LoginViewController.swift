@@ -119,6 +119,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             (user, error) in
             if user != nil {
                 self.dismiss(nil)
+                homeViewController.tableView.reloadData()
             } else {
                 showAlertForErrorCode(error.code)
             }
