@@ -20,6 +20,8 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        homeViewController.tableView.scrollsToTop = false
+
         // Create the page view controller.
         pageViewController = UIPageViewController(transitionStyle: .Scroll,
             navigationOrientation: .Horizontal, options: nil)
@@ -71,6 +73,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     }
 
     func dismiss() {
+        homeViewController.tableView.scrollsToTop = true
         dismissViewControllerAnimated(true, completion: nil)
     }
 

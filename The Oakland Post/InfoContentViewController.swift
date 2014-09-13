@@ -23,7 +23,13 @@ class InfoContentViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        infoText.scrollsToTop = true
         swapOutTitleLabel()
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        infoText.scrollsToTop = false
     }
 
     var setAttributedText = false
@@ -31,6 +37,11 @@ class InfoContentViewController: UIViewController {
         super.viewDidLayoutSubviews()
         if !setAttributedText {
             infoText.attributedText = infoTexts[titleText]
+
+            // Bugfix for the scrollView not starting at the top.
+            let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+            infoText.scrollRectToVisible(rect, animated: false)
+
             setAttributedText = true
         }
         infoText.frame.origin.y = 20 // bugfix for it jumping from 0 to this value on-screen
