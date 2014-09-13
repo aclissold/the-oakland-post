@@ -13,7 +13,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     let pageTitles = ["About Us", "Contact Us", "Staff"]
 
     var pageViewController: UIPageViewController!
-    var viewControllers = [InfoContentViewController]()
+    var viewControllers: [InfoContentViewController?] = [nil, nil, nil]
     var titleLabel: UILabel!
     var toolbar: UIToolbar!
 
@@ -27,18 +27,8 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
             navigationOrientation: .Horizontal, options: nil)
         pageViewController.dataSource = self
 
-        // Create the three content view controllers for the page view controller.
-        for (index, title) in enumerate(pageTitles) {
-            var infoContentViewController = storyboard!.instantiateViewControllerWithIdentifier(
-                infoContentViewControllerID) as InfoContentViewController
-            infoContentViewController.titleText = title
-            infoContentViewController.pageIndex = index
-
-            viewControllers.append(infoContentViewController)
-        }
-
         // Set the initially displayed InfoContentViewController.
-        pageViewController.setViewControllers([viewControllers[0]],
+        pageViewController.setViewControllers([viewControllerAtIndex(0)],
             direction: .Forward, animated: false, completion: nil
         )
 
@@ -94,6 +84,15 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     func viewControllerAtIndex(index: Int) -> UIViewController! {
         if index < 0 || index >= pageTitles.count {
             return nil
+        }
+
+        if viewControllers[index] == nil {
+            let infoContentViewController = storyboard!.instantiateViewControllerWithIdentifier(
+                infoContentViewControllerID) as InfoContentViewController
+            infoContentViewController.pageIndex = index
+            infoContentViewController.titleText = pageTitles[index]
+
+            viewControllers[index] = infoContentViewController
         }
 
         return viewControllers[index]
