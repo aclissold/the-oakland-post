@@ -8,8 +8,12 @@
 
 class FavoritesViewController: UITableViewController, StarButtonDelegate {
 
+    var cellNib: UINib!
+
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: "logOut")
+        cellNib = UINib(nibName: "PostCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: cellID)
     }
 
     func logOut() {
