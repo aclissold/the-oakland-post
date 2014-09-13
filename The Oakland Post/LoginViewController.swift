@@ -15,6 +15,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var logInActivityIndicator: UIActivityIndicatorView!
+
     var notification: NSNotification?
 
     override func viewDidLoad() {
@@ -113,6 +116,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func hideKeyboardAndLogIn() {
         findAndResignFirstResponder()
 
+        logInButton.enabled = false
+        logInActivityIndicator.startAnimating()
+
         let username = usernameTextField.text
         let password = passwordTextField.text
         PFUser.logInWithUsernameInBackground(username, password: password) {
@@ -122,6 +128,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 homeViewController.tableView.reloadData()
             } else {
                 showAlertForErrorCode(error.code)
+                self.logInButton.enabled = true
+                self.logInActivityIndicator.stopAnimating()
             }
         }
     }

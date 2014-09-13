@@ -17,6 +17,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
 
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var signUpActivityIndicator: UIActivityIndicatorView!
+
     var keyboardWasPresent = false
 
     override func viewDidLoad() {
@@ -122,12 +125,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func hideKeyboardAndSignUp() {
         findAndResignFirstResponder()
+        signUpButton.enabled = false
+        signUpActivityIndicator.startAnimating()
 
         var user = PFUser()
         user.username = usernameTextField.text
         user.password = passwordTextField.text
         user.email = emailTextField.text
         let confirmPassword = confirmPasswordTextField.text
+
         if valid(user, confirmPassword) {
             user.signUpInBackgroundWithBlock {
                 (succeeded, error) in
@@ -135,8 +141,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.dismiss()
                 } else {
                     showAlertForErrorCode(error.code)
+                    self.signUpActivityIndicator.stopAnimating()
+                    self.signUpButton.enabled = true
                 }
             }
+        } else {
+            self.signUpActivityIndicator.stopAnimating()
+            self.signUpButton.enabled = true
         }
     }
 

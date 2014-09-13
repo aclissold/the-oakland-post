@@ -176,12 +176,18 @@
                                                     <segue destination="ODk-Qb-slx" kind="show" identifier="signUp" id="Jmf-VQ-HHm"/>
                                                 </connections>
                                             </button>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="4rD-va-0tJ">
+                                                <rect key="frame" x="343" y="217" width="20" height="20"/>
+                                                <color key="color" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="0Ny-hj-D0f" firstAttribute="top" secondItem="ew5-my-Yhg" secondAttribute="top" constant="20" id="5bx-Bn-PLM"/>
+                                            <constraint firstItem="4rD-va-0tJ" firstAttribute="centerY" secondItem="DZV-vW-630" secondAttribute="centerY" constant="0.5" id="6Mr-PX-MfP"/>
                                             <constraint firstItem="xSX-Js-Xdy" firstAttribute="top" secondItem="0Ny-hj-D0f" secondAttribute="bottom" constant="31" id="8jz-oX-yDk"/>
                                             <constraint firstItem="LVV-6C-3Vq" firstAttribute="centerX" secondItem="DZV-vW-630" secondAttribute="centerX" id="8qU-Mm-XVj"/>
+                                            <constraint firstItem="4rD-va-0tJ" firstAttribute="leading" secondItem="DZV-vW-630" secondAttribute="trailing" constant="8" id="EIx-ZV-0hh"/>
                                             <constraint firstAttribute="height" constant="314" id="FlJ-5v-beE"/>
                                             <constraint firstItem="Hbh-Iz-hQY" firstAttribute="centerX" secondItem="xSX-Js-Xdy" secondAttribute="centerX" id="Gjd-6w-W2s"/>
                                             <constraint firstAttribute="centerX" secondItem="0Ny-hj-D0f" secondAttribute="centerX" constant="-0.5" id="MJU-3l-kNK"/>
@@ -218,6 +224,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="sjy-vo-O5z"/>
                     <connections>
+                        <outlet property="logInActivityIndicator" destination="4rD-va-0tJ" id="Wau-GS-3vG"/>
+                        <outlet property="logInButton" destination="ew5-my-Yhg" id="w8E-6M-D33"/>
                         <outlet property="passwordTextField" destination="Hbh-Iz-hQY" id="c18-wv-8gM"/>
                         <outlet property="scrollView" destination="mf9-r7-MLY" id="cKx-vb-AKk"/>
                         <outlet property="usernameTextField" destination="xSX-Js-Xdy" id="jGc-Ev-Dq1"/>
@@ -746,10 +754,15 @@ you need to reset your password.</string>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                             </textField>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="lu2-Rt-aHQ">
+                                                <rect key="frame" x="352" y="282" width="20" height="20"/>
+                                                <color key="color" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.96999999999999997" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="5zf-hN-Y0o" firstAttribute="top" secondItem="EHF-Ps-rVa" secondAttribute="top" constant="20" id="5sB-7b-ZTS"/>
+                                            <constraint firstItem="lu2-Rt-aHQ" firstAttribute="centerY" secondItem="TLn-h5-S1i" secondAttribute="centerY" constant="0.5" id="5z1-1W-WKz"/>
                                             <constraint firstItem="nwZ-X5-v5b" firstAttribute="top" secondItem="gkf-I4-UwH" secondAttribute="bottom" constant="8" id="8aE-Ud-110"/>
                                             <constraint firstItem="7se-UD-BxM" firstAttribute="top" secondItem="5zf-hN-Y0o" secondAttribute="bottom" constant="31" id="9Al-7t-aPH"/>
                                             <constraint firstItem="udb-AO-hO9" firstAttribute="top" secondItem="7se-UD-BxM" secondAttribute="bottom" constant="8" id="FO2-MR-Awa"/>
@@ -757,6 +770,7 @@ you need to reset your password.</string>
                                             <constraint firstItem="gkf-I4-UwH" firstAttribute="top" secondItem="hc6-r4-AZH" secondAttribute="bottom" constant="8" id="MzH-RR-Wfn"/>
                                             <constraint firstItem="udb-AO-hO9" firstAttribute="centerX" secondItem="hc6-r4-AZH" secondAttribute="centerX" id="RtO-ue-WNU"/>
                                             <constraint firstAttribute="height" constant="314" id="UdW-7m-IeY"/>
+                                            <constraint firstItem="lu2-Rt-aHQ" firstAttribute="leading" secondItem="TLn-h5-S1i" secondAttribute="trailing" constant="8" id="YO9-zw-e5V"/>
                                             <constraint firstItem="5zf-hN-Y0o" firstAttribute="centerX" secondItem="7se-UD-BxM" secondAttribute="centerX" id="Zis-bC-Vo8"/>
                                             <constraint firstItem="udb-AO-hO9" firstAttribute="centerX" secondItem="7se-UD-BxM" secondAttribute="centerX" id="aq0-Vy-kXe"/>
                                             <constraint firstItem="udb-AO-hO9" firstAttribute="width" secondItem="7se-UD-BxM" secondAttribute="width" id="bmJ-m3-l6J"/>
@@ -796,6 +810,8 @@ you need to reset your password.</string>
                         <outlet property="emailTextField" destination="gkf-I4-UwH" id="xiM-Rd-U77"/>
                         <outlet property="passwordTextField" destination="udb-AO-hO9" id="jOk-08-EU1"/>
                         <outlet property="scrollView" destination="ZYu-yD-ZhO" id="Pz1-Tk-ilY"/>
+                        <outlet property="signUpActivityIndicator" destination="lu2-Rt-aHQ" id="A9q-mJ-DqJ"/>
+                        <outlet property="signUpButton" destination="TLn-h5-S1i" id="yJL-GL-3E6"/>
                         <outlet property="usernameTextField" destination="7se-UD-BxM" id="YYb-Fe-wnb"/>
                     </connections>
                 </viewController>
