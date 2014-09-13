@@ -100,7 +100,7 @@ private var aboutUs: NSAttributedString {
 
         extraSpace,
 
-        (heading, "Network with The Oakland Post"),
+        (heading, "Network with\nThe Oakland Post"),
         (text, "facebook.com/theoakpost\n" +
          "twitter.com/theoaklandpost\n" +
          "youtube.com/theoaklandpostonline\n" +
@@ -132,4 +132,87 @@ private var contactUs: NSAttributedString {
     return contentFromComponents(components)
 }
 
-private let staff = NSAttributedString(string: "Staff")
+private var staff: NSAttributedString {
+    let components: [Component] = [
+        (subheading, "Editor-in-Chief"),
+        (text, "Oona Goodin-Smith\n" +
+         "(248) 370-4268\n" +
+         "editor@oaklandpostonline.com"),
+
+        (subheading, "Managing Editor"),
+        (text, "Kaylee Kean\n" +
+         "(248) 370-2537\n" +
+         "managing@oaklandpostonline.com"),
+
+        (subheading, "Web Editor"),
+        (text, "Jake Alsko\n" +
+         "web@oaklandpostonline.com"),
+
+        (subheading, "Life, Arts & Entertainment Editor"),
+        (text, "Andrew Wernette\n" +
+         "life@oaklandpostonline.com"),
+
+        (subheading, "Campus & Administration Editor"),
+        (text, "Ali DeRees\n" +
+         "campus@oaklandpostonline.com"),
+
+        (subheading, "Sports Editor"),
+        (text, "Jackson Gilbert\n" +
+         "sports@oaklandpostonline.com"),
+
+        (subheading, "Photo Editor"),
+        (text, "Salwan Georges\n" +
+         "photos@oaklandpostonline.com"),
+
+        (subheading, "Chief Copy Editor"),
+        (text, "Haley Kotwicki"),
+
+        (subheading, "Copy Editors"),
+        (text, "Josh Soltman"),
+
+        (subheading, "Graphic Design"),
+        (text, "Kelly Lara\n" +
+         "Benjamin DerMiner"),
+
+        (subheading, "Photographers"),
+        (text, "Michael Ferdinande\n" +
+         "Danielle Cojocari\n" +
+         "Katherine Snoad\n" +
+         "Shannon Wilson"),
+
+        (subheading, "Staff Reporters"),
+        (text, "Matt Saulino\n" +
+         "Sam Schlenner\n" +
+         "Sean Miller\n" +
+         "Joseph Bach\n" +
+         "Kaseb Ahmad\n" +
+         "Scott Davis\n" +
+         "Jessie DiBattista"),
+
+        (subheading, "Staff Interns/Bloggers"),
+        (text, "Michael Pulis\n" +
+         "Johnny Oldani\n" +
+         "Bobby Boutin"),
+
+        (subheading, "Distribution"),
+        (text, "Andrew Greer - Distribution Director\n" +
+         "Brian Murray - Distribution Manager\n" +
+         "Ted Tansley\n" +
+         "Jacob Chessrown"),
+
+        (subheading, "Advertising"),
+        (text, "ads@oaklandpostonline.com\n" +
+         "(248) 370-4269"),
+
+        (subheading, "Advisers"),
+        (text, "Holly Gilbert\n" +
+         "(248) 370-4138\n" +
+         "shreve@oakland.edu\n" +
+         "\n" +
+         "Don Ritenburgh\n" +
+         "(248) 370-2533\n" +
+         "ritenbur@oakland.edu")
+     ]
+
+    return contentFromComponents(components)
+}
