@@ -20,8 +20,13 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
     var finishedParsing = false
     var dateFormatter: NSDateFormatter!
 
+    var cellNib: UINib!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        cellNib = UINib(nibName: "PostCell", bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: cellID)
 
         // Pull to refresh
         let refreshControl = UIRefreshControl()
