@@ -107,5 +107,17 @@ private var aboutUs: NSAttributedString {
     return contentFromComponents(components)
 }
 
-private let contactUs = NSAttributedString(string: "Contact Us")
+private var contactUs: NSAttributedString {
+    let components: [Component] = [
+        (subheading, "Address"),
+        (text, "The Oakland Post\n61 Oakland Center\nRochester, MI 48306"),
+        (subheading, "Email"),
+        (text, "editor@oaklandpostonline.com\nmanaging@oaklandpostonline.com"),
+        (subheading, "Phone"),
+        (text, "248.370.4268\n248.370.2537")
+     ]
+
+    return contentFromComponents(components)
+}
+
 private let staff = NSAttributedString(string: "Staff")
