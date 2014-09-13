@@ -9,7 +9,7 @@
 import UIKit
 
 // Theming
-let serifName = "Palatino-Medium"
+let serifName = "Palatino"
 let sansSerifName = "AvenirNext-Medium"
 let boldSansSerifName = "AvenirNext-DemiBold"
 let oaklandPostBlue = UIColor(

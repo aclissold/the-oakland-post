@@ -16,17 +16,6 @@ class InfoContentViewController: UIViewController {
     var titleText: String!
 
     override func viewDidLoad() {
-        let fileURL = NSURL(fileURLWithPath:
-            NSBundle.mainBundle().pathForResource(titleText, ofType: "html")!
-        )
-
-        infoText.attributedText = NSAttributedString(
-            fileURL: fileURL,
-            options: [NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-                      NSCharacterEncodingDocumentAttribute: NSUTF8StringEncoding],
-            documentAttributes: nil, error: nil
-        )
-
         let insets = UIEdgeInsets(top: toolbarHeight, left: 0, bottom: 0, right: 0)
         infoText.contentInset = insets
         infoText.scrollIndicatorInsets = insets
@@ -39,6 +28,9 @@ class InfoContentViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
+        infoText.attributedText = infoTexts[titleText]
+
         infoText.frame.origin.y = 20 // bugfix for it jumping from 0 to this value on-screen
     }
 
