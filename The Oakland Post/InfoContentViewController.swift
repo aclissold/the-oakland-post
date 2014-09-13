@@ -26,11 +26,13 @@ class InfoContentViewController: UIViewController {
         swapOutTitleLabel()
     }
 
+    var setAttributedText = false
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
-        infoText.attributedText = infoTexts[titleText]
-
+        if !setAttributedText {
+            infoText.attributedText = infoTexts[titleText]
+            setAttributedText = true
+        }
         infoText.frame.origin.y = 20 // bugfix for it jumping from 0 to this value on-screen
     }
 
