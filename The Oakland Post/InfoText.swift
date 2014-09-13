@@ -46,7 +46,7 @@ private let text = [
 // An ordered array of (style, text) tuples.
 typealias Component = (attributes: [NSObject: AnyObject], string: String)
 
-private let space: Component = (text, "")
+private let extraSpace: Component = (text, "")
 
 private func contentFromComponents(components: [Component]) -> NSAttributedString {
     var attributedString = NSMutableAttributedString()
@@ -72,16 +72,22 @@ private var aboutUs: NSAttributedString {
         (text, "The Post is located in the basement of the Oakland Center next " +
          "to the radio station and the Student Congress office. Visitors can " +
          "park at metered spots in parking lot 2 or along Wilson Boulevard."),
-        space,
+
+        extraSpace,
+
         (subheading, "Mailing Address"),
         (text, "The Oakland Post\n61 Oakland Center\nRochester, MI 48306"),
-        space,
+
+        extraSpace,
+
         (subheading, "Letter Policy"),
         (text, "Writers must provide full name, class rank or " +
          "university/community affiliation, phone number and field of study (if " +
          "applicable). Please limit letters to 250 words or less. Letters may be " +
          "edited for content, length and grammar."),
-        space,
+
+        extraSpace,
+
         (subheading, "Comment Policy"),
         (text, "The Oakland Post welcomes comments from readers of the " +
          "oaklandpostonline.com, but we want the site to be a place where people " +
@@ -91,14 +97,18 @@ private var aboutUs: NSAttributedString {
          "Policy, we ask that you use your full name and email (OU address if " +
          "you’re a student) when commenting. Comments close after 14 days of " +
          "publication."),
-        space,
+
+        extraSpace,
+
         (heading, "Network with The Oakland Post"),
         (text, "facebook.com/theoakpost\n" +
          "twitter.com/theoaklandpost\n" +
          "youtube.com/theoaklandpostonline\n" +
          "flickr.com/photos/theoaklandpost\n" +
          "instagram.com/theoaklandpost"),
-        space,
+
+        extraSpace,
+
         (heading, "Employment"),
         (text, "Submit résumé, clips and cover letter to " +
          "editor@oaklandpostonline.com and managing@oaklandpostonline.com.")
@@ -111,10 +121,12 @@ private var contactUs: NSAttributedString {
     let components: [Component] = [
         (subheading, "Address"),
         (text, "The Oakland Post\n61 Oakland Center\nRochester, MI 48306"),
+
         (subheading, "Email"),
         (text, "editor@oaklandpostonline.com\nmanaging@oaklandpostonline.com"),
+
         (subheading, "Phone"),
-        (text, "248.370.4268\n248.370.2537")
+        (text, "(248) 370-4268\n(248) 370-2537")
      ]
 
     return contentFromComponents(components)
