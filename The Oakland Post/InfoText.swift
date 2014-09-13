@@ -12,12 +12,17 @@ var infoTexts: [String: NSAttributedString] = [
          "Staff": staff
 ]
 
-private let contactUs = NSAttributedString(string: "Contact Us")
-private let staff = NSAttributedString(string: "Staff")
+// MARK: Text Styles
 
 private func centeredParagraphStyle() -> NSMutableParagraphStyle {
     let style = NSMutableParagraphStyle()
     style.alignment = .Center
+    return style
+}
+
+private func lineSpacingParagraphStyle() -> NSMutableParagraphStyle {
+    let style = NSMutableParagraphStyle()
+    style.lineSpacing = 1.5
     return style
 }
 
@@ -28,29 +33,22 @@ private let heading = [
 ]
 
 private let subheading = [
-    NSFontAttributeName: UIFont(name: boldSansSerifName, size: CGFloat(20.0)),
-    NSForegroundColorAttributeName: oaklandPostBlue,
+    NSFontAttributeName: UIFont(name: boldSansSerifName, size: CGFloat(18.0))
 ]
 
 private let text = [
-    NSFontAttributeName: UIFont(name: serifName, size: CGFloat(16.0))
+    NSFontAttributeName: UIFont(name: serifName, size: CGFloat(16.0)),
+    NSParagraphStyleAttributeName: lineSpacingParagraphStyle()
 ]
 
-// MARK: Generating Text
+// MARK: Content
 
 // An ordered array of (style, text) tuples.
-typealias Components = [(attributes: [NSObject: AnyObject], string: String)]
+typealias Component = (attributes: [NSObject: AnyObject], string: String)
 
-private var aboutUs: NSAttributedString {
-    let components: Components = [
-        (heading, "Heading Text"),
-        (text, "A normal paragraph of text. Let's see if this works.")
-    ]
+private let space: Component = (text, "")
 
-    return contentFromComponents(components)
-}
-
-private func contentFromComponents(components: Components) -> NSAttributedString {
+private func contentFromComponents(components: [Component]) -> NSAttributedString {
     var attributedString = NSMutableAttributedString()
 
     for component in components {
@@ -60,3 +58,54 @@ private func contentFromComponents(components: Components) -> NSAttributedString
 
     return attributedString
 }
+
+private var aboutUs: NSAttributedString {
+    let components: [Component] = [
+        (text, "The Oakland Post is the student-run newspaper at Oakland " +
+         "University in Rochester, Mich. Founded in 1973, The Post has provided " +
+         "an independent source of news for students, faculty and alumni for " +
+         "decades."),
+        (text, "Released every Wednesday throughout the fall and winter " +
+         "semesters (as well as monthly over the summer), The Post can be found " +
+         "in nearly all buildings on campus and in several off-campus locations " +
+         "in the surrounding area."),
+        (text, "The Post is located in the basement of the Oakland Center next " +
+         "to the radio station and the Student Congress office. Visitors can " +
+         "park at metered spots in parking lot 2 or along Wilson Boulevard."),
+        space,
+        (subheading, "Mailing Address"),
+        (text, "The Oakland Post\n61 Oakland Center\nRochester, MI 48306"),
+        space,
+        (subheading, "Letter Policy"),
+        (text, "Writers must provide full name, class rank or " +
+         "university/community affiliation, phone number and field of study (if " +
+         "applicable). Please limit letters to 250 words or less. Letters may be " +
+         "edited for content, length and grammar."),
+        space,
+        (subheading, "Comment Policy"),
+        (text, "The Oakland Post welcomes comments from readers of the " +
+         "oaklandpostonline.com, but we want the site to be a place where people " +
+         "can debate issues vigorously and remain respectful. In that respect, " +
+         "we ask that commenters refrain from personal attacks and profanity or " +
+         "language offensive to ordinary sensibility. Just like our Letter " +
+         "Policy, we ask that you use your full name and email (OU address if " +
+         "you’re a student) when commenting. Comments close after 14 days of " +
+         "publication."),
+        space,
+        (heading, "Network with The Oakland Post"),
+        (text, "facebook.com/theoakpost\n" +
+         "twitter.com/theoaklandpost\n" +
+         "youtube.com/theoaklandpostonline\n" +
+         "flickr.com/photos/theoaklandpost\n" +
+         "instagram.com/theoaklandpost"),
+        space,
+        (heading, "Employment"),
+        (text, "Submit résumé, clips and cover letter to " +
+         "editor@oaklandpostonline.com and managing@oaklandpostonline.com.")
+     ]
+
+    return contentFromComponents(components)
+}
+
+private let contactUs = NSAttributedString(string: "Contact Us")
+private let staff = NSAttributedString(string: "Staff")
