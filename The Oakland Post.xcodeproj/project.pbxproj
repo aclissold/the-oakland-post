@@ -13,6 +13,7 @@
 		222CC7E319C372E000C4670D /* StarredPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC7E219C372E000C4670D /* StarredPosts.swift */; };
 		222CC7E519C3860700C4670D /* InfoText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC7E419C3860700C4670D /* InfoText.swift */; };
 		222CC7E719C4DB2700C4670D /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 222CC7E619C4DB2700C4670D /* PostCell.xib */; };
+		222CC7E919C4E67A00C4670D /* ParseAndMWFeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222CC7E819C4E67A00C4670D /* ParseAndMWFeedItem.swift */; };
 		222EA4DB1980634C00F9CE31 /* TopScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA4DA1980634C00F9CE31 /* TopScrollable.swift */; };
 		222EA53919809D1100F9CE31 /* EnlargedPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */; };
 		222EA53B1980A96700F9CE31 /* EnlargedPhotoDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */; };
@@ -73,6 +74,7 @@
 		222CC7E219C372E000C4670D /* StarredPosts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarredPosts.swift; sourceTree = "<group>"; };
 		222CC7E419C3860700C4670D /* InfoText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoText.swift; sourceTree = "<group>"; };
 		222CC7E619C4DB2700C4670D /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		222CC7E819C4E67A00C4670D /* ParseAndMWFeedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseAndMWFeedItem.swift; sourceTree = "<group>"; };
 		222EA4DA1980634C00F9CE31 /* TopScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScrollable.swift; sourceTree = "<group>"; };
 		222EA53819809D1100F9CE31 /* EnlargedPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhoto.swift; sourceTree = "<group>"; };
 		222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhotoDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		22250D2C1989BB80006816C2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				222CC7E819C4E67A00C4670D /* ParseAndMWFeedItem.swift */,
 				22250D2D1989BB90006816C2 /* ZoomToPoint.swift */,
 			);
 			name = Extensions;
@@ -452,6 +455,7 @@
 				222EA53F1982014300F9CE31 /* GCD.swift in Sources */,
 				22C0102E194CEF3200704CD7 /* PostCell.swift in Sources */,
 				22250D301989DD03006816C2 /* PhotosFeedParserDelegate.swift in Sources */,
+				222CC7E919C4E67A00C4670D /* ParseAndMWFeedItem.swift in Sources */,
 				229B0587196886470091120C /* PhotoCell.swift in Sources */,
 				222EA4DB1980634C00F9CE31 /* TopScrollable.swift in Sources */,
 				22250D2E1989BB90006816C2 /* ZoomToPoint.swift in Sources */,

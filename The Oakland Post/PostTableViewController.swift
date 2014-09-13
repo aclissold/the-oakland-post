@@ -77,19 +77,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         starButton.selected = !starButton.selected
 
         if starButton.selected {
-
-            let object = PFObject(className: "Item", dictionary: [
-                "identifier": item.identifier,
-                "title": item.title,
-                "link": item.link,
-                "date": item.date,
-                "summary": item.summary,
-                "author": item.author,
-                "starred": starButton.selected])
-            if item.enclosures != nil {
-                object["enclosures"] = item.enclosures
-            }
-
+            let object = PFObject(item: item)
             object.saveEventually()
             starredPosts.append(object)
         } else {

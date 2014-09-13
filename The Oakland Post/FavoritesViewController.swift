@@ -31,14 +31,7 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
         starButton.selected = !starButton.selected
         if starButton.selected {
             // Send the new favorite to Parse.
-            let object = PFObject(className: "Item", dictionary: [
-                "identifier": item.identifier,
-                     "title": item.title,
-                      "link": item.link,
-                      "date": item.date,
-                   "summary": item.summary,
-                    "author": item.author,
-                "enclosures": item.enclosures])
+            let object = PFObject(item: item)
             object.saveEventually()
             starredPosts.append(object)
         } else {
@@ -53,18 +46,8 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
-        let item = MWFeedItem()
         let object = starredPosts[indexPath.row] as PFObject
-
-        item.identifier = object["identifier"] as String
-        item.title = object["title"] as String
-        item.link = object["link"] as String
-        item.date = object["date"] as NSDate
-        item.summary = object["summary"] as String
-        item.author = object["author"] as String
-        if object["enclosures"] != nil {
-            item.enclosures = object["enclosures"] as NSArray
-        }
+        let item = MWFeedItem(object: object)
 
         cell.delegate = self
         cell.indexPath = indexPath
