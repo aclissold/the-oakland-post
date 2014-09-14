@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         Parse.setApplicationId(keys["applicationId"] as String, clientKey: keys["clientKey"] as String)
         PFACL.setDefaultACL(PFACL.ACL(), withAccessForCurrentUser: true)
 
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+
         return true
     }
 
