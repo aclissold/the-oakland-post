@@ -272,7 +272,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uil-bG-3qQ">
-                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
+                                            <rect key="frame" x="124" y="88" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="7EW-hs-D0o"/>
+                                                <constraint firstAttribute="width" constant="30" id="Lgr-Nm-A0I"/>
+                                            </constraints>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -286,7 +290,7 @@
                                         <constraint firstItem="qF9-a1-kMm" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="2" id="8ID-TQ-FCv"/>
                                         <constraint firstItem="qF9-a1-kMm" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="LSn-Gd-yrf"/>
                                         <constraint firstAttribute="trailing" secondItem="Fhq-ey-HDh" secondAttribute="trailing" id="P5d-t0-b81"/>
-                                        <constraint firstItem="uil-bG-3qQ" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="8" id="cWa-1h-zLZ"/>
+                                        <constraint firstItem="uil-bG-3qQ" firstAttribute="leading" secondItem="RiT-iM-rcd" secondAttribute="trailing" constant="1" id="cWa-1h-zLZ"/>
                                         <constraint firstItem="RiT-iM-rcd" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" id="d29-of-7XE"/>
                                         <constraint firstItem="RiT-iM-rcd" firstAttribute="centerY" secondItem="qF9-a1-kMm" secondAttribute="centerY" constant="8.5" id="iiR-6V-1nA">
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
@@ -294,7 +298,7 @@
                                         <constraint firstAttribute="bottom" secondItem="Fhq-ey-HDh" secondAttribute="bottom" constant="4" id="izO-cN-7xN"/>
                                         <constraint firstAttribute="trailing" secondItem="qF9-a1-kMm" secondAttribute="trailing" id="jDG-B3-x2z"/>
                                         <constraint firstAttribute="bottom" secondItem="qF9-a1-kMm" secondAttribute="bottom" constant="20" id="lDm-8W-klT"/>
-                                        <constraint firstItem="Fhq-ey-HDh" firstAttribute="bottom" secondItem="uil-bG-3qQ" secondAttribute="bottom" id="nOo-U3-6bd"/>
+                                        <constraint firstItem="Fhq-ey-HDh" firstAttribute="bottom" secondItem="uil-bG-3qQ" secondAttribute="bottom" constant="-2" id="nOo-U3-6bd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -643,7 +647,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJS-g4-fU5">
-                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
+                                            <rect key="frame" x="124" y="88" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="3jU-Ul-w6n"/>
+                                                <constraint firstAttribute="height" constant="30" id="GHe-gX-Zho"/>
+                                            </constraints>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -654,8 +662,8 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="8FB-hD-v98" firstAttribute="bottom" secondItem="SJS-g4-fU5" secondAttribute="bottom" id="Th1-LG-tTZ"/>
-                                        <constraint firstItem="SJS-g4-fU5" firstAttribute="leading" secondItem="ifu-Jv-v72" secondAttribute="trailing" constant="8" id="Z3E-OG-LGF"/>
+                                        <constraint firstItem="8FB-hD-v98" firstAttribute="bottom" secondItem="SJS-g4-fU5" secondAttribute="bottom" constant="-2" id="Th1-LG-tTZ"/>
+                                        <constraint firstItem="SJS-g4-fU5" firstAttribute="leading" secondItem="ifu-Jv-v72" secondAttribute="trailing" constant="1" id="Z3E-OG-LGF"/>
                                         <constraint firstItem="lH2-Rl-1Ky" firstAttribute="leading" secondItem="ifu-Jv-v72" secondAttribute="trailing" constant="8" id="bI9-x2-6Ip"/>
                                         <constraint firstItem="ifu-Jv-v72" firstAttribute="centerY" secondItem="lH2-Rl-1Ky" secondAttribute="centerY" constant="8.5" id="bKL-Jy-2pk">
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
@@ -748,7 +756,11 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7i-3X-clt">
-                                            <rect key="frame" x="131" y="94" width="15" height="22"/>
+                                            <rect key="frame" x="124" y="88" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="CEe-S1-98K"/>
+                                                <constraint firstAttribute="height" constant="30" id="nxK-Rx-Eey"/>
+                                            </constraints>
                                             <state key="normal" image="StarHollow">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -763,10 +775,10 @@
                                             <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                         </constraint>
                                         <constraint firstAttribute="trailing" secondItem="0K2-As-kjH" secondAttribute="trailing" id="Bqm-dF-tAU"/>
-                                        <constraint firstItem="Z7i-3X-clt" firstAttribute="leading" secondItem="YOy-iJ-Qjb" secondAttribute="trailing" constant="8" id="Ksu-g8-KaL"/>
+                                        <constraint firstItem="Z7i-3X-clt" firstAttribute="leading" secondItem="YOy-iJ-Qjb" secondAttribute="trailing" constant="1" id="Ksu-g8-KaL"/>
                                         <constraint firstAttribute="bottom" secondItem="0K2-As-kjH" secondAttribute="bottom" constant="20" id="Owg-Dd-UrP"/>
                                         <constraint firstItem="YOy-iJ-Qjb" firstAttribute="leading" secondItem="HYt-3t-PER" secondAttribute="leading" id="alf-2f-3J1"/>
-                                        <constraint firstItem="Z7i-3X-clt" firstAttribute="bottom" secondItem="xft-xd-EWh" secondAttribute="bottom" id="fZq-S0-FJM"/>
+                                        <constraint firstItem="Z7i-3X-clt" firstAttribute="bottom" secondItem="xft-xd-EWh" secondAttribute="bottom" constant="2" id="fZq-S0-FJM"/>
                                         <constraint firstItem="0K2-As-kjH" firstAttribute="leading" secondItem="YOy-iJ-Qjb" secondAttribute="trailing" constant="8" id="jDW-Mr-Oii"/>
                                         <constraint firstAttribute="bottom" secondItem="xft-xd-EWh" secondAttribute="bottom" constant="4" id="qch-ZY-CEt"/>
                                         <constraint firstItem="0K2-As-kjH" firstAttribute="top" secondItem="HYt-3t-PER" secondAttribute="top" constant="2" id="sq8-dZ-GAA"/>
@@ -1048,7 +1060,7 @@ you need to reset your password.</string>
         <image name="StarSolid" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jUr-3t-vfg"/>
+        <segue reference="KNX-Iu-GcY"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
