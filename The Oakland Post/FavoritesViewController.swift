@@ -6,14 +6,10 @@
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
 
-class FavoritesViewController: UITableViewController, StarButtonDelegate {
-
-    var cellNib: UINib!
+class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
 
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: "logOut")
-        cellNib = UINib(nibName: "PostCell", bundle: nil)
-        tableView.registerNib(cellNib, forCellReuseIdentifier: cellID)
     }
 
     func logOut() {
@@ -61,6 +57,15 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
         cell.starButton.selected = true
 
         return cell
+    }
+
+    // MARK: Segues
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == readPostID {
+            let link = (sender as PostCell).item.link
+            (segue.destinationViewController as PostViewController).URL = link
+        }
     }
 
 }

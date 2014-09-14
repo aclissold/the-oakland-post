@@ -443,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3608" y="1328"/>
+            <point key="canvasLocation" x="3608" y="1319"/>
         </scene>
         <!--Themed Navigation Controller-->
         <scene sceneID="z9a-iA-lxi">
@@ -551,7 +551,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FC9-2L-h4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="397.5" y="1380.75"/>
+            <point key="canvasLocation" x="408" y="1319"/>
         </scene>
         <!--Photos-->
         <scene sceneID="4kL-8d-Jtv">
@@ -1014,6 +1014,72 @@ you need to reset your password.</string>
                                     <outlet property="usernameLabel" destination="E1K-nJ-G2u" id="zAb-9v-4ZX"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="120" id="8q7-oX-ieU" customClass="PostCell" customModule="The_Oakland_Post" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8q7-oX-ieU" id="rPw-f8-qvs">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CC3-q8-SgP">
+                                            <rect key="frame" x="0.0" y="-2" width="123" height="123"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="123" id="Xbp-ze-JLf"/>
+                                                <constraint firstAttribute="height" constant="123" id="elE-UB-k9S"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1h ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zcd-TM-1JR">
+                                            <rect key="frame" x="528" y="99" width="39" height="17"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="12"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="436" translatesAutoresizingMaskIntoConstraints="NO" id="Lty-ID-ABS">
+                                            <rect key="frame" x="131" y="2" width="436" height="98"/>
+                                            <string key="text">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</string>
+                                            <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T1k-D1-lsi">
+                                            <rect key="frame" x="124" y="88" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="9vw-vt-XVL"/>
+                                                <constraint firstAttribute="height" constant="30" id="AFI-wB-RNi"/>
+                                            </constraints>
+                                            <state key="normal" image="StarHollow">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="selected" image="StarSolid"/>
+                                            <connections>
+                                                <action selector="starButtonPressed:" destination="8q7-oX-ieU" eventType="touchUpInside" id="4Qz-Mn-bhV"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Lty-ID-ABS" secondAttribute="trailing" id="0dq-rA-1oO"/>
+                                        <constraint firstAttribute="trailing" secondItem="Zcd-TM-1JR" secondAttribute="trailing" id="FKw-qY-1UC"/>
+                                        <constraint firstItem="T1k-D1-lsi" firstAttribute="leading" secondItem="CC3-q8-SgP" secondAttribute="trailing" constant="1" id="LlA-IY-YAa"/>
+                                        <constraint firstItem="CC3-q8-SgP" firstAttribute="centerY" secondItem="Lty-ID-ABS" secondAttribute="centerY" constant="8.5" id="MSP-6O-k2C">
+                                            <variation key="heightClass=regular-widthClass=compact" constant="8"/>
+                                        </constraint>
+                                        <constraint firstAttribute="bottom" secondItem="Lty-ID-ABS" secondAttribute="bottom" constant="20" id="UsZ-YP-lDe"/>
+                                        <constraint firstItem="Lty-ID-ABS" firstAttribute="top" secondItem="rPw-f8-qvs" secondAttribute="top" constant="2" id="X8V-vo-PBa"/>
+                                        <constraint firstItem="Lty-ID-ABS" firstAttribute="leading" secondItem="CC3-q8-SgP" secondAttribute="trailing" constant="8" id="nss-Od-Ra3"/>
+                                        <constraint firstItem="Zcd-TM-1JR" firstAttribute="bottom" secondItem="T1k-D1-lsi" secondAttribute="bottom" constant="-2" id="ntv-gS-hEa"/>
+                                        <constraint firstAttribute="bottom" secondItem="Zcd-TM-1JR" secondAttribute="bottom" constant="4" id="tOv-iC-alq"/>
+                                        <constraint firstItem="CC3-q8-SgP" firstAttribute="leading" secondItem="rPw-f8-qvs" secondAttribute="leading" id="x6j-Uh-OGn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dateLabel" destination="Zcd-TM-1JR" id="ytj-Q6-NvU"/>
+                                    <outlet property="descriptionLabel" destination="Lty-ID-ABS" id="RVN-vO-qHE"/>
+                                    <outlet property="starButton" destination="T1k-D1-lsi" id="lVR-vj-baW"/>
+                                    <outlet property="thumbnail" destination="CC3-q8-SgP" id="Jdh-fD-q98"/>
+                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="readPost" id="M31-Pp-m52"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <sections/>
                         <variation key="heightClass=compact" ambiguous="YES">
@@ -1060,7 +1126,7 @@ you need to reset your password.</string>
         <image name="StarSolid" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KNX-Iu-GcY"/>
+        <segue reference="M31-Pp-m52"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

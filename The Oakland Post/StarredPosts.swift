@@ -28,7 +28,7 @@ func deleteStarredPostWithIdentifier(identifier: String) {
                 return
             }
 
-            objects.first!.deleteEventually()
+            objects.first?.deleteEventually()
             removeFromArray(identifier)
         }
     }
