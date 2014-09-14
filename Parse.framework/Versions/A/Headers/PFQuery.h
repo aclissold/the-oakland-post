@@ -27,23 +27,24 @@
 /*!
  Creates a PFQuery with the constraints given by predicate.
 
- @param className The class to query on.
- @param predicate The predicate to create conditions from.
-
  The following types of predicates are supported:
- * Simple comparisons such as =, !=, <, >, <=, >=, and BETWEEN with a key and a constant.
- * Containment predicates, such as "x IN {1, 2, 3}".
- * Key-existence predicates, such as "x IN SELF".
- * BEGINSWITH expressions.
- * Compound predicates with AND, OR, and NOT.
- * SubQueries with "key IN %@", subquery.
+
+ - Simple comparisons such as `=`, `!=`, `<`, `>`, `<=`, `>=`, and `BETWEEN` with a key and a constant.
+ - Containment predicates, such as "x IN {1, 2, 3}".
+ - Key-existence predicates, such as "x IN SELF".
+ - BEGINSWITH expressions.
+ - Compound predicates with `AND`, `OR`, and `NOT`.
+ - SubQueries with "key IN %@", subquery.
 
  The following types of predicates are NOT supported:
- * Aggregate operations, such as ANY, SOME, ALL, or NONE.
- * Regular expressions, such as LIKE, MATCHES, CONTAINS, or ENDSWITH.
- * Predicates comparing one key to another.
- * Complex predicates with many ORed clauses.
 
+ - Aggregate operations, such as `ANY`, `SOME`, `ALL`, or `NONE`.
+ - Regular expressions, such as `LIKE`, `MATCHES`, `CONTAINS`, or `ENDSWITH`.
+ - Predicates comparing one key to another.
+ - Complex predicates with many ORed clauses.
+
+ @param className The class to query on.
+ @param predicate The predicate to create conditions from.
  */
 + (PFQuery *)queryWithClassName:(NSString *)className predicate:(NSPredicate *)predicate;
 
@@ -214,9 +215,14 @@
 /*!
  Add a regular expression constraint for finding string values that match the provided regular expression.
  This may be slow for large datasets.
+
  @param key The key that the string to match is stored in.
  @param regex The regular expression pattern to match.
- @param modifiers Any of the following supported PCRE modifiers:<br><code>i</code> - Case insensitive search<br><code>m</code> - Search across multiple lines of input
+ @param modifiers Any of the following supported PCRE modifiers:
+
+ - `i` - Case insensitive search
+ - `m` - Search across multiple lines of input
+
  */
 - (void)whereKey:(NSString *)key matchesRegex:(NSString *)regex modifiers:(NSString *)modifiers;
 

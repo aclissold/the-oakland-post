@@ -12,6 +12,7 @@
 #import "PFAnonymousUtils.h"
 #import "PFCloud.h"
 #import "PFConstants.h"
+#import "PFConfig.h"
 #import "PFFile.h"
 #import "PFGeoPoint.h"
 #import "PFObject.h"

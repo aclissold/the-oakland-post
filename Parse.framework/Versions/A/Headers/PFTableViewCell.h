@@ -10,11 +10,17 @@
 #import "PFImageView.h"
 
 /*!
- The PFTableViewCell is a table view cell which can download and display remote images stored on Parse's server. When used in a PFQueryTableViewController, the downloading and displaying of the remote images are automatically managed by the PFQueryTableViewController.
+ The PFTableViewCell is a table view cell which can download and display remote images stored on Parse.
+
+ When used in a PFQueryTableViewController - downloading and displaying of the remote images
+ are automatically managed by the PFQueryTableViewController.
  */
 @interface PFTableViewCell : UITableViewCell
 
-/// The imageView of the table view cell. PFImageView supports remote image downloading.
+/*!
+ The imageView of the table view cell.
+ PFImageView supports remote image downloading.
+ */
 @property (nonatomic, strong, readonly) PFImageView *imageView;
 
-@end	
+@end

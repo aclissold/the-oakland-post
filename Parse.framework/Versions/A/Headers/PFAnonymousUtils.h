@@ -11,21 +11,20 @@
 #import "PFConstants.h"
 
 /*!
- Provides utility functions for working with Anonymously logged-in users.  Anonymous users have some unique characteristics:
- <ul>
-   <li>Anonymous users don't need a user name or password.</li>
-   <li>Once logged out, an anonymous user cannot be recovered.</li>
-   <li>When the current user is anonymous, the following methods can be used to switch to a different user or convert the
-     anonymous user into a regular one:
-     <ul>
-       <li>signUp converts an anonymous user to a standard user with the given username and password.
-           Data associated with the anonymous user is retained.</li>
-       <li>logIn switches users without converting the anonymous user.  Data associated with the anonymous user will be lost.</li>
-       <li>Service logIn (e.g. Facebook, Twitter) will attempt to convert the anonymous user into a standard user by linking it to the service.
-           If a user already exists that is linked to the service, it will instead switch to the existing user.</li>
-       <li>Service linking (e.g. Facebook, Twitter) will convert the anonymous user into a standard user by linking it to the service.</li>
-     </ul>
- </ul>
+ Provides utility functions for working with Anonymously logged-in users.
+ Anonymous users have some unique characteristics:
+
+ - Anonymous users don't need a user name or password.
+ - Once logged out, an anonymous user cannot be recovered.
+ - When the current user is anonymous,
+   the following methods can be used to switch to a different user or convert the anonymous user into a regular one:
+   - signUp converts an anonymous user to a standard user with the given username and password.<br/>
+     Data associated with the anonymous user is retained.
+   - logIn switches users without converting the anonymous user.<br/>
+     Data associated with the anonymous user will be lost.
+   - Service logIn (e.g. Facebook, Twitter) will attempt to convert the anonymous user into a standard user by linking it to the service.<br/>
+     If a user already exists that is linked to the service, it will instead switch to the existing user.
+   - Service linking (e.g. Facebook, Twitter) will convert the anonymous user into a standard user by linking it to the service.
  */
 @interface PFAnonymousUtils : NSObject
 
