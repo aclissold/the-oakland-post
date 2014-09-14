@@ -41,12 +41,18 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return starredPosts.count
+        return starredPosts.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier(favoritesHeaderViewID, forIndexPath: indexPath) as FavoritesHeaderView
+            cell.usernameLabel.text = PFUser.currentUser().username
+            return cell
+        }
+
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
-        let object = starredPosts[indexPath.row] as PFObject
+        let object = starredPosts[indexPath.row - 1] as PFObject
         let item = MWFeedItem(object: object)
 
         cell.delegate = self
@@ -55,15 +61,6 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
         cell.starButton.selected = true
 
         return cell
-
-    }
-
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return FavoritesHeaderView(frame: CGRectZero)
-    }
-
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
     }
 
 }

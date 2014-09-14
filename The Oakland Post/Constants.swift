@@ -21,7 +21,8 @@ let toolbarHeight: CGFloat = 64.0
 let infoContentViewControllerID = "infoContentViewController"
 
 // UITableViewCell identifiers
-let cellID = "cell", sectionsCellID = "sectionsCell", photoCellID = "photoCell"
+let cellID = "cell", sectionsCellID = "sectionsCell"
+let photoCellID = "photoCell", favoritesHeaderViewID = "favoritesHeaderView"
 
 // Storyboard identifiers
 let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"
