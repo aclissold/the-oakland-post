@@ -62,6 +62,7 @@
 		22EC39D519A979560058BD2E /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22EC39D419A979560058BD2E /* Keys.plist */; };
 		22EC39D719AA91950058BD2E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39D619AA91950058BD2E /* LoginViewController.swift */; };
 		22EC39DA19AA93F60058BD2E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39D919AA93F60058BD2E /* SignUpViewController.swift */; };
+		22FCAA1E19C52804004612C2 /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */; };
 		22FE3C8019B4BAD200171C7D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -126,6 +127,7 @@
 		22EC39D419A979560058BD2E /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		22EC39D619AA91950058BD2E /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		22EC39D919AA93F60058BD2E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
 		22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -220,6 +222,7 @@
 			children = (
 				227EFC4419723ECC00023C2A /* HomeViewController.swift */,
 				22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */,
+				22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				224F90FD197221C000A59278 /* BugFixTableViewController.swift in Sources */,
 				22250D321989DFB6006816C2 /* EnlargedPhotoGestureRecognizers.swift in Sources */,
 				22D6B39C1969A8AC00DD664E /* FeedParser.swift in Sources */,
+				22FCAA1E19C52804004612C2 /* FavoritesHeaderView.swift in Sources */,
 				222EA53B1980A96700F9CE31 /* EnlargedPhotoDelegate.swift in Sources */,
 				22464415194BE612000F5568 /* AppDelegate.swift in Sources */,
 				22512B3719AEB75300A511B7 /* Valid.swift in Sources */,

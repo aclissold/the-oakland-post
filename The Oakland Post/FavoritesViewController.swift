@@ -59,37 +59,7 @@ class FavoritesViewController: UITableViewController, StarButtonDelegate {
     }
 
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let usernameLabel = UILabel()
-        usernameLabel.text = PFUser.currentUser().username
-        usernameLabel.textAlignment = .Center
-        usernameLabel.textColor = oaklandPostBlue
-        usernameLabel.font = UIFont(name: boldSansSerifName, size: 34)
-        usernameLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        usernameLabel.sizeToFit()
-
-        let view = UITableViewHeaderFooterView()
-        view.contentView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-        view.contentView.addSubview(usernameLabel)
-
-        view.contentView.addConstraints([
-            NSLayoutConstraint(
-                item: usernameLabel,
-                attribute: .CenterX,
-                relatedBy: .Equal,
-                toItem: view.contentView,
-                attribute: .CenterX,
-                multiplier: 1,
-                constant: 0),
-            NSLayoutConstraint(
-                item: usernameLabel,
-                attribute: .CenterY,
-                relatedBy: .Equal,
-                toItem: view.contentView,
-                attribute: .CenterY,
-                multiplier: 1,
-                constant: 0)])
-
-        return view
+        return FavoritesHeaderView(frame: CGRectZero)
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
