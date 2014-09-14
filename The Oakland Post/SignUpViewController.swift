@@ -138,6 +138,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             user.signUpInBackgroundWithBlock {
                 (succeeded, error) in
                 if succeeded {
+                    homeViewController.reloadData()
+                    homeViewController.navigationItem.rightBarButtonItem =
+                        homeViewController.favoritesBarButtonItem
                     self.dismiss()
                 } else {
                     showAlertForErrorCode(error.code)
