@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
 
@@ -139,6 +139,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if textField.isFirstResponder() {
                 textField.resignFirstResponder()
                 return
+            }
+        }
+    }
+
+    @IBAction func forgotPasswordTapped(sender: UIButton) {
+        findAndResignFirstResponder()
+        let alertView = UIAlertView(title: "Forgot Password", message: "Please enter your " +
+            "email address. Instructions on how to reset your password will be sent there.",
+            delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Submit")
+        alertView.alertViewStyle = .PlainTextInput
+        alertView.textFieldAtIndex(0)!.keyboardType = .EmailAddress
+        alertView.show()
+    }
+
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            let email = alertView.textFieldAtIndex(0)!.text
+            PFUser.requestPasswordResetForEmailInBackground(email) { (success, error) in
+                if !success { showAlertForErrorCode(error.code) }
             }
         }
     }
