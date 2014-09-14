@@ -79,4 +79,9 @@ class HomeViewController: PostTableViewController, TopScrollable {
         navigationController!.pushViewController(favoritesViewController, animated: true)
     }
 
+    func unwindToHomeViewController() {
+        // Called from InfoViewController.
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+
 }

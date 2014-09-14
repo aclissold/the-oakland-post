@@ -89,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1k-T0-enR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="-1328"/>
+            <point key="canvasLocation" x="2788" y="-2179"/>
         </scene>
         <!--Info View Controller-->
         <scene sceneID="Kas-4h-lSp">
@@ -100,15 +100,43 @@
                         <viewControllerLayoutGuide type="bottom" id="rEw-aC-Tos"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Myp-mp-5pG">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qVo-iB-R5v">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8P7-nd-LOX"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="aOU-w2-fA0"/>
+                                    <barButtonItem title="Bios" id="4oB-8s-awl">
+                                        <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="I6N-jC-W1A" kind="show" identifier="bios" id="ZEl-5n-hMX"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="jIf-Kc-y5f"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
                         <color key="backgroundColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qVo-iB-R5v" secondAttribute="trailing" id="PSp-cD-tEt"/>
+                            <constraint firstItem="rEw-aC-Tos" firstAttribute="top" secondItem="qVo-iB-R5v" secondAttribute="bottom" id="etw-DB-3Se"/>
+                            <constraint firstItem="qVo-iB-R5v" firstAttribute="leading" secondItem="Myp-mp-5pG" secondAttribute="leading" id="v4F-TL-yoy"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1kh-MK-tqs"/>
+                    <connections>
+                        <outlet property="biosToolbar" destination="qVo-iB-R5v" id="xb6-xp-dTu"/>
+                        <outlet property="toolbarHeightConstraint" destination="8P7-nd-LOX" id="7il-FW-fPk"/>
+                        <outlet property="toolbarVerticalConstraint" destination="etw-DB-3Se" id="SgI-Do-6hy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zl-ON-BqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788" y="-600"/>
+            <point key="canvasLocation" x="2788" y="-1452"/>
         </scene>
         <!--Log In-->
         <scene sceneID="Wia-bl-drf">
@@ -236,7 +264,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sS4-as-muQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4420" y="-600"/>
+            <point key="canvasLocation" x="4420" y="-696"/>
+        </scene>
+        <!--Bios View Controller-->
+        <scene sceneID="ICr-lc-IhL">
+            <objects>
+                <viewController id="I6N-jC-W1A" customClass="BiosViewController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pX6-4R-sks"/>
+                        <viewControllerLayoutGuide type="bottom" id="A9d-Mt-Z3k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4L8-XK-NNU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert Bios Here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIg-NC-Y1i">
+                                <rect key="frame" x="239" y="288" width="124" height="24"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76p-9J-Y0m">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="4O1-qg-NVz"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4Zw-F5-oQM"/>
+                                    <barButtonItem title="Info" id="dm3-R0-zHe">
+                                        <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="eys-uC-Y46" kind="show" identifier="bios" id="7fO-3C-azN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vKF-gP-KTu"/>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="76p-9J-Y0m" secondAttribute="trailing" id="6Yb-aF-7w4"/>
+                            <constraint firstAttribute="centerX" secondItem="ZIg-NC-Y1i" secondAttribute="centerX" constant="-0.5" id="8D1-Ue-6To"/>
+                            <constraint firstItem="76p-9J-Y0m" firstAttribute="leading" secondItem="4L8-XK-NNU" secondAttribute="leading" id="Lki-HL-8iP"/>
+                            <constraint firstAttribute="centerY" secondItem="ZIg-NC-Y1i" secondAttribute="centerY" constant="0.5" id="Mzv-60-smi"/>
+                            <constraint firstItem="76p-9J-Y0m" firstAttribute="top" secondItem="4L8-XK-NNU" secondAttribute="top" id="OSt-HX-Vgo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="infoToolbar" destination="76p-9J-Y0m" id="dS5-ld-qnf"/>
+                        <outlet property="toolbarHeightConstraint" destination="4O1-qg-NVz" id="fwF-Wt-Qk5"/>
+                        <outlet property="toolbarVerticalConstraint" destination="OSt-HX-Vgo" id="Lv9-ZT-1Tf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TDL-Ty-YFf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2788" y="-696"/>
         </scene>
         <!--Home-->
         <scene sceneID="VgW-fR-Quf">
@@ -344,9 +426,7 @@
                     <navigationItem key="navigationItem" title="The Oakland Post" id="tQt-TN-PWz">
                         <barButtonItem key="leftBarButtonItem" image="Info" id="65R-Df-hsu">
                             <connections>
-                                <segue destination="eys-uC-Y46" kind="popoverPresentation" identifier="showInfo" popoverAnchorBarButtonItem="65R-Df-hsu" id="1vo-D7-D4Y">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="eys-uC-Y46" kind="presentation" identifier="showInfo" modalPresentationStyle="formSheet" id="1vo-D7-D4Y"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log In" id="F5Q-if-uHe">
@@ -847,7 +927,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5VZ-ss-n4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3608" y="-600"/>
+            <point key="canvasLocation" x="3608" y="-696"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="1AA-rx-Zou">
@@ -982,7 +1062,7 @@ you need to reset your password.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zoo-gs-Zdp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5238" y="-600"/>
+            <point key="canvasLocation" x="5238" y="-696"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="ByM-vw-KBK">
@@ -1129,7 +1209,8 @@ you need to reset your password.</string>
         <image name="StarSolid" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M31-Pp-m52"/>
+        <segue reference="jUr-3t-vfg"/>
+        <segue reference="7fO-3C-azN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

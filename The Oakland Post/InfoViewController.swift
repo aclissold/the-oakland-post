@@ -10,12 +10,17 @@ import UIKit
 
 class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
+    @IBOutlet weak var biosToolbar: UIToolbar!
+    @IBOutlet weak var toolbarVerticalConstraint: NSLayoutConstraint!
+    @IBOutlet weak var toolbarHeightConstraint: NSLayoutConstraint!
+
     let pageTitles = ["About Us", "Contact Us", "Staff"]
+    let transitionManager = InfoTransitionManager()
 
     var pageViewController: UIPageViewController!
     var viewControllers: [InfoContentViewController?] = [nil, nil, nil]
     var titleLabel: UILabel!
-    var toolbar: UIToolbar!
+    var topToolbar: UIToolbar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,36 +40,47 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         addChildViewController(pageViewController)
         pageViewController.didMoveToParentViewController(self)
         view.addSubview(pageViewController.view)
+        pageViewController.view.frame.size.height -= biosToolbar.frame.size.height
+
+        view.addSubview(biosToolbar)
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        addToolbar()
+        addTopToolbar()
     }
 
-    func addToolbar() {
-        toolbar = UIToolbar()
-        toolbar.frame.size.width = view.frame.size.width
-        toolbar.frame.size.height = toolbarHeight
-        view.addSubview(toolbar)
+    func addTopToolbar() {
+        topToolbar = UIToolbar()
+        topToolbar.frame.size.width = view.frame.size.width
+        topToolbar.frame.size.height = toolbarHeight
+        view.addSubview(topToolbar)
 
         let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
         doneButton.tintColor = oaklandPostBlue
-        toolbar.items = [doneButton]
+        topToolbar.items = [doneButton]
 
         titleLabel = UILabel()
-        titleLabel.frame = toolbar.frame
+        titleLabel.frame = topToolbar.frame
         titleLabel.frame.size.height -= 17
         titleLabel.frame.origin.y += 17
         let text = toolbarTitleText((viewControllerAtIndex(0) as InfoContentViewController).titleText)
         titleLabel.textAlignment = .Center
         titleLabel.attributedText = text
-        toolbar.addSubview(titleLabel)
+        topToolbar.addSubview(titleLabel)
     }
 
     func dismiss() {
         homeViewController.tableView.scrollsToTop = true
-        dismissViewControllerAnimated(true, completion: nil)
+        homeViewController.unwindToHomeViewController()
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == biosID {
+            let toViewController = segue.destinationViewController as UIViewController
+            toViewController.modalPresentationStyle = .CurrentContext
+            toViewController.transitioningDelegate = transitionManager
+        }
     }
 
     // MARK: UIPageViewControllerDataSource
