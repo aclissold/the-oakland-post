@@ -15,6 +15,11 @@ didSet {
         let ident = object["identifier"] as String
         starredPostIdentifiers.append(ident)
     }
+    starredPosts.sort {
+        let first = ($0 as PFObject)["date"] as NSDate
+        let second = ($1 as PFObject)["date"] as NSDate
+        return first.compare(second) == NSComparisonResult.OrderedDescending
+    }
 }
 }
 
