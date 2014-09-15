@@ -12,17 +12,60 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     @IBOutlet weak var toolbarVerticalConstraint: NSLayoutConstraint!
     @IBOutlet weak var toolbarHeightConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UITextView!
+
     @IBOutlet weak var carousel: iCarousel!
     override func viewDidLoad() {
         carousel.type = .Linear
         carousel.dataSource = self
         carousel.delegate = self
+
+        nameLabel.text = names[0]
+    }
+
+    // MARK: iCarouselDelegate
+
+    let names = ["Roy", "Oscar", "Yolanda", "Greta", "Bob", "Ignatius", "Veronica"]
+
+    var firstScroll = true
+    func carouselDidEndScrollingAnimation(carousel: iCarousel!) {
+        // Ignore the call to this method when the view first appears.
+        if firstScroll { firstScroll = false; return }
+
+        let index = carousel.currentItemIndex
+        updateContentForIndex(index)
+    }
+
+    func updateContentForIndex(index: Int) {
+        let originalX = nameLabel.frame.origin.x
+        let containerWidth = presentingViewController!.view.frame.size.width
+        let padding: CGFloat = 20
+        let duration = 0.4
+
+        func flyOut() {
+            nameLabel.frame.origin.x = containerWidth + nameLabel.frame.size.width + padding
+        }
+
+        func flyIn(finished: Bool) {
+            nameLabel.text = names[index]
+            nameLabel.frame.origin.x = -nameLabel.frame.size.width - padding
+            UIView.animateWithDuration(duration + 0.2, delay: 0,
+                usingSpringWithDamping: 0.7,
+                initialSpringVelocity: 0.2,
+                options: .CurveEaseOut,
+                animations: {
+                    self.nameLabel.frame.origin.x = originalX
+                }, completion: nil)
+        }
+
+        UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseIn, animations: flyOut, completion: flyIn)
     }
 
     // MARK: iCarouselDataSource
 
     func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
-        return 15
+        return names.count
     }
 
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
@@ -41,6 +84,8 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
         return view
     }
+
+    // MARK: Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == biosID {
