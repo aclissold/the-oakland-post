@@ -49,11 +49,16 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
         func flyOut() {
             nameLabel.frame.origin.x = containerWidth + nameLabel.frame.size.width + padding
+            descriptionTextView.alpha = 0
         }
 
         func flyIn(finished: Bool) {
             nameLabel.text = names[index]
             nameLabel.frame.origin.x = -nameLabel.frame.size.width - padding
+            // TODO: update descriptionTextView.text here
+            UIView.animateWithDuration(duration) {
+                self.descriptionTextView.alpha = 1
+            }
             UIView.animateWithDuration(duration + 0.2, delay: 0,
                 usingSpringWithDamping: 0.7,
                 initialSpringVelocity: 0.2,
