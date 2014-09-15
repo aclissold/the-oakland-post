@@ -43,6 +43,7 @@
 		229B0587196886470091120C /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B0586196886470091120C /* PhotoCell.swift */; };
 		229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229B2541194D1AF500975671 /* ImageIO.framework */; };
 		229B6CE119B3DF4E00827BEB /* ShowAlertForErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B6CE019B3DF4E00827BEB /* ShowAlertForErrorCode.swift */; };
+		22B3040119C6B2FA00C18C7A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22B3040019C6B2FA00C18C7A /* Settings.bundle */; };
 		22C0102E194CEF3200704CD7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0102D194CEF3200704CD7 /* PostCell.swift */; };
 		22CBE1F7197C92AF0069BB5F /* LinkAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */; };
 		22D6B39C1969A8AC00DD664E /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B39B1969A8AC00DD664E /* FeedParser.swift */; };
@@ -110,6 +111,7 @@
 		229B0586196886470091120C /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		229B2541194D1AF500975671 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		229B6CE019B3DF4E00827BEB /* ShowAlertForErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAlertForErrorCode.swift; sourceTree = "<group>"; };
+		22B3040019C6B2FA00C18C7A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		22C0102D194CEF3200704CD7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAlertDelegate.swift; sourceTree = "<group>"; };
 		22D6B39B1969A8AC00DD664E /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				22464435194BEC1A000F5568 /* Images.xcassets */,
 				2238EA8319C66E06008F897D /* Launch Screen.xib */,
 				2231F83E194CDBDA007C7467 /* The Oakland Post-Bridging-Header.h */,
+				22B3040019C6B2FA00C18C7A /* Settings.bundle */,
 				22EC39D419A979560058BD2E /* Keys.plist */,
 				22464413194BE612000F5568 /* Info.plist */,
 			);
@@ -415,6 +418,7 @@
 			files = (
 				22EC39D519A979560058BD2E /* Keys.plist in Resources */,
 				2238EA8419C66E06008F897D /* Launch Screen.xib in Resources */,
+				22B3040119C6B2FA00C18C7A /* Settings.bundle in Resources */,
 				2246441C194BE612000F5568 /* Main.storyboard in Resources */,
 				22464436194BEC1A000F5568 /* Images.xcassets in Resources */,
 			);
