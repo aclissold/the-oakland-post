@@ -28,13 +28,17 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
     let names = ["Roy", "Oscar", "Yolanda", "Greta", "Bob", "Ignatius", "Veronica"]
 
+    var previousIndex = 0
     var firstScroll = true
     func carouselDidEndScrollingAnimation(carousel: iCarousel!) {
         // Ignore the call to this method when the view first appears.
         if firstScroll { firstScroll = false; return }
 
         let index = carousel.currentItemIndex
-        updateContentForIndex(index)
+        if index != previousIndex {
+            updateContentForIndex(index)
+            previousIndex = index
+        }
     }
 
     func updateContentForIndex(index: Int) {
@@ -59,7 +63,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
                 }, completion: nil)
         }
 
-        UIView.animateWithDuration(duration, delay: 0, options: .CurveEaseIn, animations: flyOut, completion: flyIn)
+        UIView.animateWithDuration(duration - 0.1, delay: 0, options: .CurveEaseIn, animations: flyOut, completion: flyIn)
     }
 
     // MARK: iCarouselDataSource
