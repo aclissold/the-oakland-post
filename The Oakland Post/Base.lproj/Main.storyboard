@@ -278,12 +278,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert Bios Here" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZIg-NC-Y1i">
-                                <rect key="frame" x="239" y="288" width="124" height="24"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76p-9J-Y0m">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
                                 <constraints>
@@ -300,17 +294,26 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vKF-gP-KTu"/>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noG-m5-nJc" customClass="iCarousel">
+                                <rect key="frame" x="0.0" y="66" width="600" height="200"/>
+                                <color key="backgroundColor" white="0.14999999999999999" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="G9O-0m-Tjm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="76p-9J-Y0m" secondAttribute="trailing" id="6Yb-aF-7w4"/>
-                            <constraint firstAttribute="centerX" secondItem="ZIg-NC-Y1i" secondAttribute="centerX" constant="-0.5" id="8D1-Ue-6To"/>
+                            <constraint firstAttribute="trailing" secondItem="noG-m5-nJc" secondAttribute="trailing" id="EYC-Ew-ZyP"/>
                             <constraint firstItem="76p-9J-Y0m" firstAttribute="leading" secondItem="4L8-XK-NNU" secondAttribute="leading" id="Lki-HL-8iP"/>
-                            <constraint firstAttribute="centerY" secondItem="ZIg-NC-Y1i" secondAttribute="centerY" constant="0.5" id="Mzv-60-smi"/>
                             <constraint firstItem="76p-9J-Y0m" firstAttribute="top" secondItem="4L8-XK-NNU" secondAttribute="top" id="OSt-HX-Vgo"/>
+                            <constraint firstItem="noG-m5-nJc" firstAttribute="top" secondItem="76p-9J-Y0m" secondAttribute="bottom" id="aJ2-eC-Vkm"/>
+                            <constraint firstItem="noG-m5-nJc" firstAttribute="leading" secondItem="4L8-XK-NNU" secondAttribute="leading" id="pZR-H9-5IW"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="carousel" destination="noG-m5-nJc" id="2QD-dh-p3F"/>
                         <outlet property="infoToolbar" destination="76p-9J-Y0m" id="dS5-ld-qnf"/>
                         <outlet property="toolbarHeightConstraint" destination="4O1-qg-NVz" id="fwF-Wt-Qk5"/>
                         <outlet property="toolbarVerticalConstraint" destination="OSt-HX-Vgo" id="Lv9-ZT-1Tf"/>
@@ -1208,7 +1211,7 @@ you need to reset your password.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>
-        <segue reference="1vo-D7-D4Y"/>
+        <segue reference="7fO-3C-azN"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
