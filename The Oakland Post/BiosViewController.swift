@@ -26,7 +26,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
     // MARK: iCarouselDelegate
 
-    let names = ["Roy", "Oscar", "Yolanda", "Greta", "Bob", "Ignatius", "Veronica"]
+    let names = ["Roy", "Oscar", "Yolanda", "Greta", "Blob", "Ignatius", "Veronica"]
 
     var previousIndex = 0
     var firstScroll = true
@@ -45,7 +45,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         let originalX = nameLabel.frame.origin.x
         let containerWidth = presentingViewController!.view.frame.size.width
         let padding: CGFloat = 20
-        let duration = 0.4
+        let duration = 0.35
         let rightPosition = containerWidth + nameLabel.frame.size.width + padding
         let leftPosition = -nameLabel.frame.size.width - padding
 
