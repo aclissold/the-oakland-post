@@ -110,7 +110,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aOU-w2-fA0"/>
-                                    <barButtonItem title="Bios" id="4oB-8s-awl">
+                                    <barButtonItem title="▽  Bios  ▽" id="4oB-8s-awl">
                                         <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="I6N-jC-W1A" kind="show" identifier="bios" id="ZEl-5n-hMX"/>
@@ -285,7 +285,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="4Zw-F5-oQM"/>
-                                    <barButtonItem title="Info" id="dm3-R0-zHe">
+                                    <barButtonItem title="△  Info  △" id="dm3-R0-zHe">
                                         <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="eys-uC-Y46" kind="show" identifier="bios" id="7fO-3C-azN"/>
