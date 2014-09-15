@@ -13,7 +13,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     @IBOutlet weak var toolbarHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView!
 
     @IBOutlet weak var carousel: iCarousel!
     override func viewDidLoad() {

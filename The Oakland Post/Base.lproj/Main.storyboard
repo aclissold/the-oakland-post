@@ -332,7 +332,7 @@
                     </view>
                     <connections>
                         <outlet property="carousel" destination="noG-m5-nJc" id="2QD-dh-p3F"/>
-                        <outlet property="descriptionLabel" destination="cvy-dd-KNH" id="4Pl-6h-NXx"/>
+                        <outlet property="descriptionTextView" destination="cvy-dd-KNH" id="iPT-mp-fS7"/>
                         <outlet property="infoToolbar" destination="76p-9J-Y0m" id="dS5-ld-qnf"/>
                         <outlet property="nameLabel" destination="zfc-na-E5s" id="7FN-xt-8ZA"/>
                         <outlet property="toolbarHeightConstraint" destination="4O1-qg-NVz" id="fwF-Wt-Qk5"/>
