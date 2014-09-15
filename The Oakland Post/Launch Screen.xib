@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbq-zs-ngb">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="64" id="1Vt-0r-rRW"/>
+                    </constraints>
+                    <color key="barTintColor" red="0.45098039215686275" green="0.56862745098039214" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
+                </navigationBar>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Oakland Post" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wb8-yB-Ayd">
+                    <rect key="frame" x="172" y="31" width="137" height="24"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbt-mc-VHM">
+                    <rect key="frame" x="0.0" y="431" width="480" height="49"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="49" id="scz-aY-ink"/>
+                    </constraints>
+                    <items/>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Kbq-zs-ngb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jgf-ac-iN0"/>
+                <constraint firstAttribute="trailing" secondItem="Kbq-zs-ngb" secondAttribute="trailing" id="Skx-d0-zSI"/>
+                <constraint firstItem="Kbq-zs-ngb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="can-Xg-GBk"/>
+                <constraint firstItem="Wb8-yB-Ayd" firstAttribute="centerX" secondItem="Kbq-zs-ngb" secondAttribute="centerX" id="hca-aE-NSG"/>
+                <constraint firstItem="bbt-mc-VHM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kbQ-XU-zVb"/>
+                <constraint firstAttribute="trailing" secondItem="bbt-mc-VHM" secondAttribute="trailing" id="lfT-RG-kc6"/>
+                <constraint firstAttribute="bottom" secondItem="bbt-mc-VHM" secondAttribute="bottom" id="sgD-3M-Qou"/>
+                <constraint firstItem="Kbq-zs-ngb" firstAttribute="top" secondItem="Wb8-yB-Ayd" secondAttribute="bottom" constant="-55" id="uQz-Qv-WEF"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="404" y="445"/>
+        </view>
+    </objects>
+</document>
