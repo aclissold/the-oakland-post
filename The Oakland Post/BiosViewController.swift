@@ -36,25 +36,27 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
         let index = carousel.currentItemIndex
         if index != previousIndex {
-            updateContentForIndex(index)
+            updateContentForIndex(index, forward: index < previousIndex)
             previousIndex = index
         }
     }
 
-    func updateContentForIndex(index: Int) {
+    func updateContentForIndex(index: Int, forward: Bool) {
         let originalX = nameLabel.frame.origin.x
         let containerWidth = presentingViewController!.view.frame.size.width
         let padding: CGFloat = 20
         let duration = 0.4
+        let rightPosition = containerWidth + nameLabel.frame.size.width + padding
+        let leftPosition = -nameLabel.frame.size.width - padding
 
         func flyOut() {
-            nameLabel.frame.origin.x = containerWidth + nameLabel.frame.size.width + padding
+            nameLabel.frame.origin.x = forward ? rightPosition : leftPosition
             descriptionTextView.alpha = 0
         }
 
         func flyIn(finished: Bool) {
             nameLabel.text = names[index]
-            nameLabel.frame.origin.x = -nameLabel.frame.size.width - padding
+            nameLabel.frame.origin.x = forward ? leftPosition : rightPosition
             // TODO: update descriptionTextView.text here
             UIView.animateWithDuration(duration) {
                 self.descriptionTextView.alpha = 1
