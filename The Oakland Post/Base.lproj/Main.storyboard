@@ -154,7 +154,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ew5-my-Yhg">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="314"/>
+                                        <rect key="frame" x="0.0" y="35" width="600" height="314"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Hbh-Iz-hQY">
                                                 <rect key="frame" x="191" y="111" width="219" height="30"/>
@@ -237,7 +237,7 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ew5-my-Yhg" firstAttribute="top" secondItem="mf9-r7-MLY" secondAttribute="top" constant="64" id="0yv-zB-a76"/>
+                                    <constraint firstItem="ew5-my-Yhg" firstAttribute="top" secondItem="mf9-r7-MLY" secondAttribute="top" constant="35" id="0yv-zB-a76"/>
                                     <constraint firstItem="ew5-my-Yhg" firstAttribute="width" secondItem="mf9-r7-MLY" secondAttribute="width" id="6bs-8n-r99"/>
                                     <constraint firstAttribute="bottom" secondItem="ew5-my-Yhg" secondAttribute="bottom" constant="222" id="CnM-d4-sWa"/>
                                     <constraint firstItem="ew5-my-Yhg" firstAttribute="leading" secondItem="mf9-r7-MLY" secondAttribute="leading" id="Ddg-h9-jwC"/>
@@ -431,9 +431,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log In" id="F5Q-if-uHe">
                             <connections>
-                                <segue destination="Rvy-hN-ueu" kind="popoverPresentation" identifier="logIn" popoverAnchorBarButtonItem="F5Q-if-uHe" id="Y05-Ph-nir">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
+                                <segue destination="Rvy-hN-ueu" kind="presentation" identifier="logIn" modalPresentationStyle="formSheet" id="Y05-Ph-nir"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -945,7 +943,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EHF-Ps-rVa">
-                                        <rect key="frame" x="0.0" y="64" width="600" height="314"/>
+                                        <rect key="frame" x="0.0" y="35" width="600" height="314"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="udb-AO-hO9">
                                                 <rect key="frame" x="191" y="111" width="219" height="30"/>
@@ -1033,7 +1031,7 @@ you need to reset your password.</string>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="EHF-Ps-rVa" firstAttribute="top" secondItem="ZYu-yD-ZhO" secondAttribute="top" constant="64" id="65k-os-Aa2"/>
+                                    <constraint firstItem="EHF-Ps-rVa" firstAttribute="top" secondItem="ZYu-yD-ZhO" secondAttribute="top" constant="35" id="65k-os-Aa2"/>
                                     <constraint firstItem="EHF-Ps-rVa" firstAttribute="width" secondItem="ZYu-yD-ZhO" secondAttribute="width" id="if9-EK-Nnd"/>
                                     <constraint firstAttribute="bottom" secondItem="EHF-Ps-rVa" secondAttribute="bottom" constant="222" id="qEL-8D-M3o"/>
                                     <constraint firstAttribute="trailing" secondItem="EHF-Ps-rVa" secondAttribute="trailing" id="rmH-nL-viS"/>
@@ -1210,7 +1208,7 @@ you need to reset your password.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>
-        <segue reference="7fO-3C-azN"/>
+        <segue reference="1vo-D7-D4Y"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
