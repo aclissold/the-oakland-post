@@ -4,6 +4,7 @@
 
 #import <Parse/Parse.h>
 
+#import "iCarousel.h"
 #import "MWFeedParser.h"
 #import "NHBalancedFlowLayout.h"
 #import "NHLinearPartition.h"

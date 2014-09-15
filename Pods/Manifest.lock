@@ -1,5 +1,6 @@
 PODS:
   - hpple (0.2.0)
+  - iCarousel (1.8)
   - MWFeedParser (1.0.1):
     - MWFeedParser/FeedParser
     - MWFeedParser/NSDate+InternetDateTime
@@ -18,6 +19,7 @@ PODS:
 
 DEPENDENCIES:
   - hpple (~> 0.2.0)
+  - iCarousel (~> 1.8)
   - MWFeedParser (~> 1.0.1)
   - NHBalancedFlowLayout (~> 0.2)
   - SDWebImage (~> 3.6)
@@ -30,6 +32,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   hpple: f4eb7c21a8db83ec264e5d614ec7509e10e5adec
+  iCarousel: cf77aea48dfcde9a0cd85569a1d8a9b6dd543bd7
   MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
   NHBalancedFlowLayout: be3c297b54f74c27607aaa04563270ecbd2d8e38
   SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
