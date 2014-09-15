@@ -47,18 +47,18 @@ class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UI
         // Add the subviews so that the visible toolbar is on top.
         containerView.addSubview(fromView)
         containerView.addSubview(toView)
-        containerView.backgroundColor = presenting ? toView.backgroundColor : UIColor(white: 0.96, alpha: 1)
+        containerView.backgroundColor = presenting ? toView.backgroundColor : UIColor(white: translucentToolbarWhite, alpha: 1)
 
         // Prepare the views for animation.
         if presenting {
             toView.frame.origin.y += toView.frame.size.height
             infoToolbar.frame.origin.y -= infoToolbar.frame.size.height
-            toolbarHeightConstraint.constant = 44
+            toolbarHeightConstraint.constant = bottomToolbarHeight
             toolbarVerticalConstraint.constant = -toolbarHeightConstraint.constant
         } else {
             toView.frame.origin.y -= toView.frame.size.height
             infoToolbar.frame.origin.y += infoToolbar.frame.size.height
-            toolbarHeightConstraint.constant = 66
+            toolbarHeightConstraint.constant = topToolbarHeight
             toolbarVerticalConstraint.constant = -toolbarHeightConstraint.constant
         }
 
@@ -75,7 +75,7 @@ class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UI
                 toView.frame.origin.y += toView.frame.size.height
             }
             toolbarVerticalConstraint.constant = 0
-            toolbarHeightConstraint.constant = presenting ? 66 : 44
+            toolbarHeightConstraint.constant = presenting ? topToolbarHeight : bottomToolbarHeight
             toView.layoutIfNeeded()
         }) { finished in
             transitionContext.completeTransition(finished)

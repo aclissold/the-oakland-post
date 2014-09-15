@@ -16,7 +16,7 @@ class InfoContentViewController: UIViewController {
     var titleText: String!
 
     override func viewDidLoad() {
-        let insets = UIEdgeInsets(top: toolbarHeight, left: 0, bottom: 0, right: 0)
+        let insets = UIEdgeInsets(top: topToolbarHeight, left: 0, bottom: 0, right: 0)
         infoText.contentInset = insets
         infoText.scrollIndicatorInsets = insets
     }
@@ -53,7 +53,7 @@ class InfoContentViewController: UIViewController {
         if titleLabel != nil && titleLabel.text != titleText {
             UIView.animateWithDuration(0.15,
                 animations: {
-                    infoViewController.titleLabel.frame.origin.y -= toolbarHeight
+                    infoViewController.titleLabel.frame.origin.y -= topToolbarHeight
                 },
                 completion: { finished in
                     if !finished { return }
@@ -64,7 +64,7 @@ class InfoContentViewController: UIViewController {
                         initialSpringVelocity: 0.0,
                         options: .AllowUserInteraction,
                         animations: {
-                            infoViewController.titleLabel.frame.origin.y += toolbarHeight
+                            infoViewController.titleLabel.frame.origin.y += topToolbarHeight
                         }, completion: nil)
                 })
         }

@@ -53,7 +53,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     func addTopToolbar() {
         topToolbar = UIToolbar()
         topToolbar.frame.size.width = view.frame.size.width
-        topToolbar.frame.size.height = toolbarHeight
+        topToolbar.frame.size.height = topToolbarHeight
         view.addSubview(topToolbar)
 
         let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
