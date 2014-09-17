@@ -27,4 +27,5 @@ let photoCellID = "photoCell", favoritesHeaderViewID = "favoritesHeaderView"
 
 // Storyboard identifiers
 let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"
-let logInID = "logIn", favoritesID = "favoritesViewController", biosID = "bios"
+let logInID = "logIn", favoritesID = "favoritesViewController"
+let biosID1 = "bios1", biosID2 = "bios2", biosID3 = "bios3"

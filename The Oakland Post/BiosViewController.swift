@@ -99,10 +99,13 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     // MARK: Segues
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == biosID {
+        switch (segue.identifier) {
+        case biosID1, biosID2, biosID3:
             let toViewController = segue.destinationViewController as InfoViewController
             toViewController.modalPresentationStyle = .CurrentContext
             toViewController.transitioningDelegate = toViewController.transitionManager
+        default:
+            p("unknown segue identifier: \(segue.identifier)")
         }
     }
 
