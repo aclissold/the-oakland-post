@@ -14,9 +14,11 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     var loadCount = 0
     var finishedLoading = false
-    var URL: String? {
+    var originalURL: String!
+    var URL: String! {
         didSet {
-            URL = URL!.stringByReplacingOccurrencesOfString("//www", withString: "//m")
+            originalURL = URL
+            URL = URL.stringByReplacingOccurrencesOfString("//www", withString: "//m")
         }
     }
 
@@ -36,6 +38,23 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         webView.scrollView.delegate = self
 
         self.configureView()
+    }
+
+    @IBAction func shareButtonTapped(sender: UIBarButtonItem) {
+        let text = "Check out this awesome article! \(originalURL) #oaklandpost"
+        let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
+        activityViewController.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard]
+        presentViewController(activityViewController, animated: true, completion: nil)
+
+        if activityViewController.respondsToSelector("popoverPresentationController") {
+            // iOS 8+
+            let presentationController = activityViewController.popoverPresentationController
+            let rect = (navigationItem.rightBarButtonItem!.valueForKey("view") as UIView).frame
+            let origin = CGPoint(x: rect.origin.x, y: rect.origin.y + 2 * rect.size.height)
+
+            let view = UIView(frame: CGRect(origin: origin, size: rect.size))
+            presentationController?.sourceView = view
+        }
     }
 
     // MARK: SVProgressHUD management

@@ -560,7 +560,13 @@
                             <constraint firstItem="7aF-bh-BVf" firstAttribute="top" secondItem="MMQ-IT-qOo" secondAttribute="top" id="omp-u6-CGF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Post" id="cra-N8-TIN"/>
+                    <navigationItem key="navigationItem" title="Post" id="cra-N8-TIN">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="3cu-Nh-sVC">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="Ah7-4n-0Wa" id="8oI-w5-Szc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="webView" destination="7aF-bh-BVf" id="Ufo-Yz-WTL"/>
                     </connections>
@@ -1244,8 +1250,8 @@ you need to reset your password.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>
+        <segue reference="1vo-D7-D4Y"/>
         <segue reference="wSx-BV-JFe"/>
-        <segue reference="hHv-E6-eiQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

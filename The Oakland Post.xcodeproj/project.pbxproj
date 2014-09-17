@@ -135,7 +135,7 @@
 		22EC39D919AA93F60058BD2E /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
 		22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +180,6 @@
 			children = (
 				22464411194BE612000F5568 /* The Oakland Post */,
 				22464410194BE612000F5568 /* Products */,
-				29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */,
 				3AA6A21ECE254B94830EFC0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -221,6 +220,7 @@
 				22B3040019C6B2FA00C18C7A /* Settings.bundle */,
 				22EC39D419A979560058BD2E /* Keys.plist */,
 				22464413194BE612000F5568 /* Info.plist */,
+				29ECC3DB095E4BB8AC96EEB2 /* Pods.xcconfig */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
