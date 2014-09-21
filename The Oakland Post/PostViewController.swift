@@ -79,19 +79,23 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     // MARK: UIWebViewDelegate
 
-    // private
-    // TODO: break this into a multiline string once Swift doesn't crash trying to compile it
-    let script = "document.getElementById('mobile-header').style.display = 'none'; document.getElementById('mobile-search-bar').style.display = 'none'; document.getElementsByClassName('menu not-iphone')[0].style.display = 'none'; document.getElementsByTagName('h1')[1].style.fontFamily = 'Avenir Next'; document.getElementsByClassName('byline')[0].style.fontFamily = 'Avenir Next'; document.getElementById('blox-story-text').style.fontFamily = 'Palatino'; document.getElementById('blox-story-text').style.lineHeight = '150%';"
-
     func webViewDidFinishLoad(webView: UIWebView!) {
         --loadCount
         if loadCount == 0 {
             finishedLoading = true
 
-            // Hide the header and footer and style the text
+            // Hide the header and footer and style the text.
+            let script =
+                "document.getElementById('mobile-header').style.display = 'none'; " +
+                "document.getElementById('mobile-search-bar').style.display = 'none'; " +
+                "document.getElementsByClassName('menu not-iphone')[0].style.display = 'none'; " +
+                "document.getElementsByTagName('h1')[1].style.fontFamily = 'Avenir Next'; " +
+                "document.getElementsByClassName('byline')[0].style.fontFamily = 'Avenir Next'; " +
+                "document.getElementById('blox-story-text').style.fontFamily = 'Palatino'; " +
+                "document.getElementById('blox-story-text').style.lineHeight = '150%';"
             webView.stringByEvaluatingJavaScriptFromString(script)
 
-            // Emulate a callback waiting for the web view to finish drawing
+            // Emulate a callback waiting for the web view to finish drawing.
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 67_000_000), dispatch_get_main_queue()) {
                 UIView.animateWithDuration(0.15) { webView.alpha = 1 }
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false

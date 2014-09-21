@@ -17,13 +17,14 @@ class HighResImageDownloader {
 
         canceled = false // reset
 
-        // TODO: turn these let closures back into local functions? They broke in Beta 6.
-        let downloadProgressed: (Int, Int) -> Void = { (receivedSize: Int, expectedSize: Int) in
+        func downloadProgressed(receivedSize: Int, expectedSize: Int) {
             let progress = Float(receivedSize) / Float(expectedSize)
             onMain { SVProgressHUD.showProgress(progress) }
         }
 
-        let downloadFinished: (UIImage?, NSData?, NSError?, Bool) -> Void = { (image: UIImage?, data: NSData?, error: NSError?, _: Bool) in
+        // This is a let closure instead of a function because local functions cannot reference
+        // other local functions. Specifically, finished() can only be called this way.
+        let downloadFinished: (UIImage?, NSData?, NSError?, Bool) -> Void = { (image, data, error, _) in
             onMain {
                 SVProgressHUD.dismiss()
                 enlargedPhoto.imageView.image = image
