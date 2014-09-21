@@ -8,6 +8,9 @@
 
 import UIKit
 
+// TODO: xslckjv
+var postViewControllerShouldHideStatusBar = false
+
 class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
@@ -20,6 +23,10 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
             originalURL = URL
             URL = URL.stringByReplacingOccurrencesOfString("//www", withString: "//m")
         }
+    }
+
+    override func prefersStatusBarHidden() -> Bool {
+        return postViewControllerShouldHideStatusBar
     }
 
     func configureView() {
@@ -148,16 +155,26 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         if currentPosition < 0 {
             totalDelta = 0
         }
-
+        
         if overage < 0 {
             reachedBottom = false
         }
+        
+        if reachedBottom {
+            if (navigationController!.respondsToSelector("hidesBarsOnSwipe")) {
+                // iOS 8+
+                postViewControllerShouldHideStatusBar = false
+                UIView.animateWithDuration(0.2) {
+                    self.navigationController!.navigationBar.frame.origin.y = 20
+                    self.setNeedsStatusBarAppearanceUpdate()
+                }
+            }
 
-        if reachedBottom { return }
+            return
+        }
 
+        let tabBar = tabBarController!.tabBar
         if overage > 0 {
-            let tabBar = tabBarController!.tabBar
-
             if overage > tabBar.frame.size.height {
                 reachedBottom = true
             }
