@@ -68,7 +68,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         feedParser.parseMore()
     }
 
-    func didSelectStarButton(starButton: UIButton, withItem item: MWFeedItem, atIndexPath indexPath: NSIndexPath) {
+    func didSelectStarButton(starButton: UIButton, forItem item: MWFeedItem) {
         starButton.selected = !starButton.selected
 
         if starButton.selected {
@@ -124,7 +124,6 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
 
         cell.delegate = self
-        cell.indexPath = indexPath
         if indexPath.row <= countElements(parsedItems) {
             cell.item = parsedItems[indexPath.row] as MWFeedItem
             cell.starButton.hidden = PFUser.currentUser() == nil

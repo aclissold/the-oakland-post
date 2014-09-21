@@ -23,7 +23,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         homeViewController.tableView.reloadData()
     }
 
-    func didSelectStarButton(starButton: UIButton, withItem item: MWFeedItem, atIndexPath indexPath: NSIndexPath) {
+    func didSelectStarButton(starButton: UIButton, forItem item: MWFeedItem) {
         starButton.selected = !starButton.selected
         if starButton.selected {
             // Send the new favorite to Parse.
@@ -32,8 +32,25 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
             starredPosts.append(object)
         } else {
             deleteStarredPostWithIdentifier(item.identifier)
+            deleteTableViewRowWithItem(item)
             homeViewController.reloadData()
         }
+    }
+
+    func deleteTableViewRowWithItem(item: MWFeedItem) {
+        var indexPath: NSIndexPath!
+        loop: for cell in tableView.visibleCells() {
+            if let postCell = cell as? PostCell {
+                if postCell.item.identifier == item.identifier {
+                    indexPath = tableView.indexPathForCell(cell as UITableViewCell)!
+                    break loop
+                }
+            }
+        }
+
+        tableView.beginUpdates()
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        tableView.endUpdates()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,7 +69,6 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         let item = MWFeedItem(object: object)
 
         cell.delegate = self
-        cell.indexPath = indexPath
         cell.item = item
         cell.starButton.selected = true
 

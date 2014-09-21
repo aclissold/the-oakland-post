@@ -16,7 +16,6 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var starButton: UIButton!
 
     weak var delegate: StarButtonDelegate?
-    var indexPath: NSIndexPath!
     var item: MWFeedItem! {
         didSet {
             // Set the thumbnail image.
@@ -51,7 +50,7 @@ class PostCell: UITableViewCell {
     }
 
     @IBAction func starButtonPressed(sender: UIButton) {
-        delegate?.didSelectStarButton(sender, withItem: item, atIndexPath: indexPath)
+        delegate?.didSelectStarButton(sender, forItem: item)
     }
 
     override func prepareForReuse() {

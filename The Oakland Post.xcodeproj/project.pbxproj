@@ -83,7 +83,7 @@
 		222EA53A1980A96700F9CE31 /* EnlargedPhotoDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnlargedPhotoDelegate.swift; sourceTree = "<group>"; };
 		222EA53C1981DE9600F9CE31 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		222EA53E1982014300F9CE31 /* GCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCD.swift; sourceTree = "<group>"; };
-		222EA5581983E87700F9CE31 /* HighResImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighResImageDownloader.swift; sourceTree = "<group>"; };
+		222EA5581983E87700F9CE31 /* HighResImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HighResImageDownloader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2231F83E194CDBDA007C7467 /* The Oakland Post-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Oakland Post-Bridging-Header.h"; sourceTree = "<group>"; };
 		2238EA8319C66E06008F897D /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		2246440F194BE612000F5568 /* The Oakland Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oakland Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,7 +113,7 @@
 		229B6CE019B3DF4E00827BEB /* ShowAlertForErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowAlertForErrorCode.swift; sourceTree = "<group>"; };
 		22B3040019C6B2FA00C18C7A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		22C0102D194CEF3200704CD7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAlertDelegate.swift; sourceTree = "<group>"; };
+		22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LinkAlertDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		22D6B39B1969A8AC00DD664E /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarTitleText.swift; sourceTree = "<group>"; };
 		22EC39A219A9260C0058BD2E /* p.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = p.swift; sourceTree = "<group>"; };

@@ -7,5 +7,5 @@
 //
 
 @objc protocol StarButtonDelegate {
-    func didSelectStarButton(starButton: UIButton, withItem item: MWFeedItem, atIndexPath indexPath: NSIndexPath)
+    func didSelectStarButton(starButton: UIButton, forItem item: MWFeedItem)
 }

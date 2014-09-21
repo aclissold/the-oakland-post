@@ -24,6 +24,7 @@ didSet {
 }
 
 func deleteStarredPostWithIdentifier(identifier: String) {
+    removeFromArray(identifier)
     onMain {
         let query = PFQuery(className: "Item")
         query.whereKey("identifier", equalTo: identifier)
@@ -34,7 +35,6 @@ func deleteStarredPostWithIdentifier(identifier: String) {
             }
 
             objects.first?.deleteEventually()
-            removeFromArray(identifier)
         }
     }
 }
