@@ -16,8 +16,10 @@ extension PFObject {
             "link": item.link,
             "date": item.date,
             "summary": item.summary,
-            "author": item.author,
-            "enclosures": item.enclosures])
+            "author": item.author])
+        if item.enclosures != nil {
+            self["enclosures"] = item.enclosures
+        }
     }
 }
 
