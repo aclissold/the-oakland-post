@@ -46,6 +46,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     }
 
     func updateContentForIndex(index: Int, forward: Bool) {
+        if presentingViewController == nil { return } // user went back and dismissed the Info view
         let originalX = nameLabel.frame.origin.x
         let containerWidth = presentingViewController!.view.frame.size.width
         let padding: CGFloat = 20
