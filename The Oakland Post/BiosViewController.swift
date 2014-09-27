@@ -99,12 +99,12 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         mutableView.addSubview(imageView)
 
         // This seems to still stutter the UI thread a little because the image is drawn lazily.
-        onHigh {
+        onMain {
             let image = UIImage(named: self.names[index])
             imageView.contentMode = .ScaleAspectFill
             imageView.frame = CGRect(x: 15, y: 15, width: 130, height: 130)
             imageView.clipsToBounds = true
-            onMain { imageView.image = image }
+            imageView.image = image
         }
 
         return mutableView
