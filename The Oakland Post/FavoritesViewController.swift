@@ -15,6 +15,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
     func logOut() {
         PFUser.logOut()
         configureLogOutButton()
+        starredPosts.removeAll(keepCapacity: false)
         navigationController!.popViewControllerAnimated(true)
     }
 

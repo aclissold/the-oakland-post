@@ -126,6 +126,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
             if user != nil {
                 self.dismiss(nil)
                 homeViewController.tableView.reloadData()
+                homeViewController.findStarredPosts()
             } else {
                 showAlertForErrorCode(error.code)
                 self.logInButton.enabled = true
