@@ -28,10 +28,9 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     // MARK: iCarouselDelegate
 
     let names = ["Kaylee Kean", "Ali DeRees", "Jackson Gilbert", "Haley Kotwicki", "Sean Miller",
-        "Sélah Fischer", "Dani Cojocari", "Phillip Johnson", "Arkeem Thomas-Scott", "Jessie DiBattista",
-        "Megan Carson", "Oona Goodin-Smith", "Kaleigh Jerzykowski", "Josh Soltman", "Nicollete Brikho",
-        "Andrew Wernette", "Jasmine French", "Salwan Georges", "Jake Alsko"
-    ]
+        "Sélah Fischer", "Dani Cojocari", "Phillip Johnson", "Arkeem Thomas-Scott", "Jessie DiBattista",
+        "Megan Carson"] // TODO: , "Oona Goodin-Smith", "Kaleigh Jerzykowski", "Josh Soltman", "Nicollete Brikho",
+                        // "Andrew Wernette", "Jasmine French", "Salwan Georges", "Jake Alsko"
 
     var previousIndex = 0
     var firstScroll = true
@@ -86,20 +85,28 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     }
 
     func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        let hue = CGFloat(index)/CGFloat(numberOfItemsInCarousel(carousel))
+        var mutableView = view
 
-        if view == nil {
-            let newView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 160))
-            newView.backgroundColor = UIColor(white: 0.25, alpha: 1)
-            let subview = UIView(frame: CGRect(x: 15, y: 15, width: 130, height: 130))
-            subview.backgroundColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
-            newView.addSubview(subview)
-            return newView
+        if mutableView == nil {
+            mutableView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 160))
+            mutableView.backgroundColor = UIColor(white: 0.25, alpha: 1)
+        } else {
+            (mutableView.subviews.first as UIView).removeFromSuperview()
         }
 
-        (view.subviews.first as UIView).backgroundColor = UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 1)
+        let imageView = UIImageView()
+        mutableView.addSubview(imageView)
 
-        return view
+        // This seems to still stutter the UI thread a little because the image is drawn lazily.
+        onHigh {
+            let image = UIImage(named: self.names[index])
+            imageView.contentMode = .ScaleAspectFill
+            imageView.frame = CGRect(x: 15, y: 15, width: 130, height: 130)
+            imageView.clipsToBounds = true
+            onMain { imageView.image = image }
+        }
+
+        return mutableView
     }
 
     // MARK: Segues

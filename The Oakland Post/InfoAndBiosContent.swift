@@ -20,7 +20,7 @@ var biosTexts: [String: NSAttributedString] = [
     "Jackson Gilbert": gilbert,
     "Haley Kotwicki": kotwicki,
     "Sean Miller": miller,
-    "Sélah Fischer": fischer,
+    "Sélah Fischer": fischer,
     "Dani Cojocari": cojocari,
     "Phillip Johnson": johnson,
     "Arkeem Thomas-Scott": thomasScott,
