@@ -71,6 +71,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     }
 
     func dismiss() {
+        transitioningDelegate = nil // will crash if not nil
         homeViewController.tableView.scrollsToTop = true
         homeViewController.unwindToHomeViewController()
     }
