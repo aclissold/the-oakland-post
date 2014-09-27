@@ -22,11 +22,16 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         carousel.delegate = self
 
         nameLabel.text = names[0]
+        descriptionTextView.attributedText = biosTexts[names[0]]
     }
 
     // MARK: iCarouselDelegate
 
-    let names = ["Roy", "Oscar", "Yolanda", "Greta", "Blob", "Ignatius", "Veronica"]
+    let names = ["Kaylee Kean", "Ali DeRees", "Jackson Gilbert", "Haley Kotwicki", "Sean Miller",
+        "Sélah Fischer", "Dani Cojocari", "Phillip Johnson", "Arkeem Thomas-Scott", "Jessie DiBattista",
+        "Megan Carson", "Oona Goodin-Smith", "Kaleigh Jerzykowski", "Josh Soltman", "Nicollete Brikho",
+        "Andrew Wernette", "Jasmine French", "Salwan Georges", "Jake Alsko"
+    ]
 
     var previousIndex = 0
     var firstScroll = true
@@ -55,9 +60,10 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         }
 
         func flyIn(finished: Bool) {
+            let name = names[index]
             nameLabel.text = names[index]
             nameLabel.frame.origin.x = forward ? leftPosition : rightPosition
-            // TODO: update descriptionTextView.text here
+            descriptionTextView.attributedText = biosTexts[name]
             UIView.animateWithDuration(duration) {
                 self.descriptionTextView.alpha = 1
             }

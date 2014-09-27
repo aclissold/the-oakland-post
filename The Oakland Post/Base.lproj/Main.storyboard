@@ -35,7 +35,6 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tB7-FC-WLt">
                                 <rect key="frame" x="20" y="20" width="560" height="560"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -325,16 +324,18 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zfc-na-E5s">
-                                <rect key="frame" x="224" y="274" width="153" height="47"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="34"/>
+                                <rect key="frame" x="240" y="282" width="121" height="37"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="27"/>
                                 <color key="textColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvy-dd-KNH">
-                                <rect key="frame" x="16" y="329" width="568" height="251"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvy-dd-KNH">
+                                <rect key="frame" x="16" y="327" width="568" height="253"/>
+                                <color key="tintColor" red="0.45098039220000002" green="0.58039215690000001" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,7 +347,7 @@
                             <constraint firstAttribute="centerX" secondItem="zfc-na-E5s" secondAttribute="centerX" id="O90-60-UEg"/>
                             <constraint firstItem="76p-9J-Y0m" firstAttribute="top" secondItem="4L8-XK-NNU" secondAttribute="top" id="OSt-HX-Vgo"/>
                             <constraint firstItem="noG-m5-nJc" firstAttribute="top" secondItem="76p-9J-Y0m" secondAttribute="bottom" id="aJ2-eC-Vkm"/>
-                            <constraint firstItem="zfc-na-E5s" firstAttribute="top" secondItem="noG-m5-nJc" secondAttribute="bottom" constant="8" id="fZf-jb-KEj"/>
+                            <constraint firstItem="zfc-na-E5s" firstAttribute="top" secondItem="noG-m5-nJc" secondAttribute="bottom" constant="16" id="fZf-jb-KEj"/>
                             <constraint firstItem="cvy-dd-KNH" firstAttribute="leading" secondItem="4L8-XK-NNU" secondAttribute="leading" constant="16" id="iMu-vB-zmV"/>
                             <constraint firstAttribute="trailing" secondItem="cvy-dd-KNH" secondAttribute="trailing" constant="16" id="kk8-Rx-ggw"/>
                             <constraint firstItem="noG-m5-nJc" firstAttribute="leading" secondItem="4L8-XK-NNU" secondAttribute="leading" id="pZR-H9-5IW"/>
@@ -1250,7 +1251,7 @@ you need to reset your password.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jUr-3t-vfg"/>
-        <segue reference="1vo-D7-D4Y"/>
+        <segue reference="hHv-E6-eiQ"/>
         <segue reference="wSx-BV-JFe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
