@@ -9,23 +9,25 @@
 class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate {
 
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        // Retrieve references to the view controllers.
+        // Retrieve references to the views to animate.
         var biosViewController: BiosViewController!
         var infoViewController: InfoViewController!
         var presenting = true // true if showing, false if dismissing
+        var fromView: UIView!
+        var toView: UIView!
         if transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) is InfoViewController {
             biosViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as BiosViewController
             infoViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as InfoViewController
+            fromView = infoViewController.view
+            toView = biosViewController.view
         } else {
             presenting = false
             biosViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as BiosViewController
             infoViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as InfoViewController
+            fromView = biosViewController.view
+            toView = infoViewController.view
         }
-
-        // Retrieve references to the views to animate.
         let containerView = transitionContext.containerView()
-        let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
         let infoToolbar = biosViewController.infoToolbar
         let biosToolbar = infoViewController.biosToolbar
         var toolbarHeightConstraint: NSLayoutConstraint!
@@ -41,8 +43,8 @@ class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UI
         fromView.frame = containerView.frame
         toView.frame = containerView.frame
 
-        infoViewController.biosToolbar.hidden = presenting
-        biosViewController.infoToolbar.hidden = !presenting
+        biosToolbar.hidden = presenting
+        infoToolbar.hidden = !presenting
 
         // Add the subviews so that the visible toolbar is on top.
         containerView.addSubview(fromView)
