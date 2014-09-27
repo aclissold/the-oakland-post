@@ -87,17 +87,9 @@ private func contentFromComponents(components: [Component]) -> NSAttributedStrin
 
 private var aboutUs: NSAttributedString {
     let components: [Component] = [
-        (text, "The Oakland Post is the student-run newspaper at Oakland " +
-         "University in Rochester, Mich. Founded in 1973, The Post has provided " +
-         "an independent source of news for students, faculty and alumni for " +
-         "decades."),
-        (text, "Released every Wednesday throughout the fall and winter " +
-         "semesters (as well as monthly over the summer), The Post can be found " +
-         "in nearly all buildings on campus and in several off-campus locations " +
-         "in the surrounding area."),
-        (text, "The Post is located in the basement of the Oakland Center next " +
-         "to the radio station and the Student Congress office. Visitors can " +
-         "park at metered spots in parking lot 2 or along Wilson Boulevard."),
+        (text, "The Oakland Post is the student-run newspaper at Oakland University in Rochester, Mich. Founded in 1973, The Post has provided an independent source of news for students, faculty and alumni for decades."),
+        (text, "Released every Wednesday throughout the fall and winter semesters (as well as monthly over the summer), The Post can be found in nearly all buildings on campus and in several off-campus locations in the surrounding area."),
+        (text, "The Post is located in the basement of the Oakland Center next to the radio station and the Student Congress office. Visitors can park at metered spots in parking lot 2 or along Wilson Boulevard."),
 
         extraSpace,
 
@@ -107,22 +99,12 @@ private var aboutUs: NSAttributedString {
         extraSpace,
 
         (subheading, "Letter Policy"),
-        (text, "Writers must provide full name, class rank or " +
-         "university/community affiliation, phone number and field of study (if " +
-         "applicable). Please limit letters to 250 words or less. Letters may be " +
-         "edited for content, length and grammar."),
+        (text, "Writers must provide full name, class rank or university/community affiliation, phone number and field of study (if applicable). Please limit letters to 250 words or less. Letters may be edited for content, length and grammar."),
 
         extraSpace,
 
         (subheading, "Comment Policy"),
-        (text, "The Oakland Post welcomes comments from readers of the " +
-         "oaklandpostonline.com, but we want the site to be a place where people " +
-         "can debate issues vigorously and remain respectful. In that respect, " +
-         "we ask that commenters refrain from personal attacks and profanity or " +
-         "language offensive to ordinary sensibility. Just like our Letter " +
-         "Policy, we ask that you use your full name and email (OU address if " +
-         "you’re a student) when commenting. Comments close after 14 days of " +
-         "publication."),
+        (text, "The Oakland Post welcomes comments from readers of the oaklandpostonline.com, but we want the site to be a place where people can debate issues vigorously and remain respectful. In that respect, we ask that commenters refrain from personal attacks and profanity or language offensive to ordinary sensibility. Just like our Letter Policy, we ask that you use your full name and email (OU address if you’re a student) when commenting. Comments close after 14 days of publication."),
 
         extraSpace,
 
@@ -136,8 +118,7 @@ private var aboutUs: NSAttributedString {
         extraSpace,
 
         (heading, "Employment"),
-        (text, "Submit résumé, clips and cover letter to " +
-         "editor@oaklandpostonline.com and managing@oaklandpostonline.com.")
+        (text, "Submit résumé, clips and cover letter to editor@oaklandpostonline.com and managing@oaklandpostonline.com.")
      ]
 
     return contentFromComponents(components)
