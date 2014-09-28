@@ -45,6 +45,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
             userQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
                 if objects == nil { return }
                 for user in objects as [PFUser] {
+                    if PFUser.currentUser() == nil { return }
                     if user.username == PFUser.currentUser().username {
                         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
                         self.tableView.cellForRowAtIndexPath(indexPath)!.userInteractionEnabled = true
