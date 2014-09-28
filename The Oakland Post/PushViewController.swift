@@ -19,7 +19,8 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     }
 
     func confirmPush() {
-        let alertView = UIAlertView(title: "Are you sure?", message: "", delegate: self,
+        let alertView = UIAlertView(title: "Are you sure?",
+            message: "\n\(textView.text)", delegate: self,
             cancelButtonTitle: "Cancel", otherButtonTitles: "Send")
         alertView.show()
     }
@@ -44,24 +45,20 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
 
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+            self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(
             self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
     }
 
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardDidShow(notification: NSNotification) {
         let info = notification.userInfo!
         let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
         let navBarHeight = navigationController?.navigationBar.frame.size.height ?? 44
 
-        UIView.animateWithDuration(0.3) {
-            self.bottomLayoutConstraint.constant += (keyboardHeight - navBarHeight)
-        }
+        self.bottomLayoutConstraint.constant += (keyboardHeight - navBarHeight)
     }
 
     func keyboardWillHide(notification: NSNotification) {
-        UIView.animateWithDuration(0.3) {
-            self.bottomLayoutConstraint.constant = 20
-        }
+        self.bottomLayoutConstraint.constant = 20
     }
 }
