@@ -90,7 +90,8 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
-        if indexPath.row == 0 {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+        if indexPath.row == 0 && !cell.userInteractionEnabled {
             tableView.deselectRowAtIndexPath(indexPath, animated: false)
         }
     }

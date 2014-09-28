@@ -46,6 +46,7 @@
 		22B3040119C6B2FA00C18C7A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 22B3040019C6B2FA00C18C7A /* Settings.bundle */; };
 		22C0102E194CEF3200704CD7 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C0102D194CEF3200704CD7 /* PostCell.swift */; };
 		22CBE1F7197C92AF0069BB5F /* LinkAlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */; };
+		22D02BA219D7DE8500923FC5 /* PushViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D02BA119D7DE8500923FC5 /* PushViewController.swift */; };
 		22D6B39C1969A8AC00DD664E /* FeedParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B39B1969A8AC00DD664E /* FeedParser.swift */; };
 		22E3D5F7198DA75F00756ED7 /* ToolbarTitleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */; };
 		22EC39A319A9260C0058BD2E /* p.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39A219A9260C0058BD2E /* p.swift */; };
@@ -114,6 +115,7 @@
 		22B3040019C6B2FA00C18C7A /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		22C0102D194CEF3200704CD7 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		22CBE1F6197C92AF0069BB5F /* LinkAlertDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = LinkAlertDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		22D02BA119D7DE8500923FC5 /* PushViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushViewController.swift; sourceTree = "<group>"; };
 		22D6B39B1969A8AC00DD664E /* FeedParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedParser.swift; sourceTree = "<group>"; };
 		22E3D5F6198DA75F00756ED7 /* ToolbarTitleText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarTitleText.swift; sourceTree = "<group>"; };
 		22EC39A219A9260C0058BD2E /* p.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = p.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				227EFC4419723ECC00023C2A /* HomeViewController.swift */,
 				22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */,
 				22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */,
+				22D02BA119D7DE8500923FC5 /* PushViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				229B058519687EC70091120C /* PhotosViewController.swift in Sources */,
 				22464417194BE612000F5568 /* PostTableViewController.swift in Sources */,
 				224AA02219C607A500E0BC7B /* InfoTransitionManager.swift in Sources */,
+				22D02BA219D7DE8500923FC5 /* PushViewController.swift in Sources */,
 				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
 				22EC39A319A9260C0058BD2E /* p.swift in Sources */,
 				222CC7E319C372E000C4670D /* StarredPosts.swift in Sources */,
