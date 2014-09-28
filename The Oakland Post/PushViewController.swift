@@ -6,22 +6,34 @@
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
 
-class PushViewController: UIViewController {
+class PushViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
-        let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: "sendPush")
+        let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: "confirmPush")
         navigationItem.rightBarButtonItem = sendButton
         textView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         registerForKeyboardNotifications()
     }
 
+    func confirmPush() {
+        let alertView = UIAlertView(title: "Are you sure?", message: "", delegate: self,
+            cancelButtonTitle: "Cancel", otherButtonTitles: "Send")
+        alertView.show()
+    }
+
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if buttonIndex == 1 {
+            sendPush()
+            textView.resignFirstResponder()
+            navigationController!.popViewControllerAnimated(true)
+        }
+    }
+
     func sendPush() {
         p(textView.text)
-        textView.resignFirstResponder()
-        navigationController!.popViewControllerAnimated(true)
     }
 
     // MARK: Keyboard Handling
