@@ -1234,6 +1234,24 @@ you need to reset your password.</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qL1-8L-9ak" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="4420" y="122"/>
+        </scene>
+        <!--Themed Navigation Controller-->
+        <scene sceneID="Ygt-3p-WaM">
+            <objects>
+                <navigationController storyboardIdentifier="unused" automaticallyAdjustsScrollViewInsets="NO" id="DpF-El-OoJ" customClass="ThemedNavigationController" customModule="The_Oakland_Post" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wJ4-xg-lnX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="owN-Pf-9r1" kind="relationship" relationship="rootViewController" id="sGn-0B-3cD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SeM-sr-8wm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="3608" y="122"/>
         </scene>
     </scenes>
@@ -1250,9 +1268,9 @@ you need to reset your password.</string>
         <image name="StarSolid" width="15" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jUr-3t-vfg"/>
-        <segue reference="hHv-E6-eiQ"/>
+        <segue reference="M31-Pp-m52"/>
         <segue reference="wSx-BV-JFe"/>
+        <segue reference="hHv-E6-eiQ"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
