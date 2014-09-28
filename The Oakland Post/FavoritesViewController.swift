@@ -58,6 +58,10 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         return starredPosts.count + 1
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return indexPath.row == 0 ? tableViewHeaderHeight : tableViewRowHeight
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(favoritesHeaderViewID, forIndexPath: indexPath) as FavoritesHeaderView

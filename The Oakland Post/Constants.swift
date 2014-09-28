@@ -17,6 +17,7 @@ let oaklandPostBlue = UIColor(
 )
 let translucentToolbarWhite: CGFloat = 0.96
 
+let tableViewHeaderHeight: CGFloat = 80
 let tableViewRowHeight: CGFloat = 120
 let topToolbarHeight: CGFloat = 64, bottomToolbarHeight: CGFloat = 44
 let infoContentViewControllerID = "infoContentViewController"

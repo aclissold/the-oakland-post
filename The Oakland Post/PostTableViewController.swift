@@ -136,7 +136,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return tableViewRowHeight;
+        return tableViewRowHeight
     }
 
 }
