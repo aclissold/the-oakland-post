@@ -28,9 +28,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         Parse.setApplicationId(keys["applicationId"] as String, clientKey: keys["clientKey"] as String)
         PFACL.setDefaultACL(PFACL.ACL(), withAccessForCurrentUser: true)
 
+        registerForRemoteNotifications(application)
+
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
         return true
+    }
+
+    func registerForRemoteNotifications(application: UIApplication!) {
+        if application.respondsToSelector("registerUserNotificationSettings:") {
+            // iOS 8+
+            let userNotificationTypes = UIUserNotificationType.Alert | .Sound
+            let notificationSettings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+            application.registerUserNotificationSettings(notificationSettings)
+            application.registerForRemoteNotifications()
+        } else {
+            application.registerForRemoteNotificationTypes(.Alert | .Sound)
+        }
+    }
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let currentInstallation = PFInstallation.currentInstallation()
+        currentInstallation.setDeviceTokenFromData(deviceToken)
+        currentInstallation.channels = ["global"]
+        currentInstallation.saveInBackground()
+    }
+
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
     }
 
     func tabBarController(tabBarController: UITabBarController!, didSelectViewController viewController: UIViewController!) {
