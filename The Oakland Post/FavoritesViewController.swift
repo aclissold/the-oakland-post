@@ -24,9 +24,13 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         homeViewController.tableView.reloadData()
     }
 
+    var enabled = false
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        enableButtonForPushers()
+        if !enabled {
+            enabled = true
+            enableButtonForPushers()
+        }
     }
 
     func enableButtonForPushers() {
