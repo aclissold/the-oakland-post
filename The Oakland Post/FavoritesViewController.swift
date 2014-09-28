@@ -24,6 +24,32 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         homeViewController.tableView.reloadData()
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        enableButtonForPushers()
+    }
+
+    func enableButtonForPushers() {
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.tableView.cellForRowAtIndexPath(indexPath)!.userInteractionEnabled = false
+        let roleQuery = PFRole.query()
+        roleQuery.whereKey("name", equalTo: "pusher")
+        roleQuery.getFirstObjectInBackgroundWithBlock { (object, error) in
+            if object == nil { return }
+            let role = object as PFRole
+            let userQuery = role.users.query()
+            userQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
+                if objects == nil { return }
+                for user in objects as [PFUser] {
+                    if user.username == PFUser.currentUser().username {
+                        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+                        self.tableView.cellForRowAtIndexPath(indexPath)!.userInteractionEnabled = true
+                    }
+                }
+            })
+        }
+    }
+
     func didSelectStarButton(starButton: UIButton, forItem item: MWFeedItem) {
         starButton.selected = !starButton.selected
         if starButton.selected {
