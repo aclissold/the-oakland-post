@@ -52,7 +52,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     func keyboardWillShow(notification: NSNotification) {
         let info = notification.userInfo!
         let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
-        let navBarHeight = navigationController!.navigationBar.frame.size.height
+        let navBarHeight = navigationController?.navigationBar.frame.size.height ?? 44
 
         UIView.animateWithDuration(0.3) {
             self.bottomLayoutConstraint.constant += (keyboardHeight - navBarHeight)
