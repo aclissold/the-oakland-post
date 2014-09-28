@@ -15,8 +15,10 @@ extension PFObject {
             "title": item.title,
             "link": item.link,
             "date": item.date,
-            "summary": item.summary,
-            "author": item.author])
+            "summary": item.summary])
+        if item.author != nil {
+            self["author"] = item.author
+        }
         if item.enclosures != nil {
             self["enclosures"] = item.enclosures
         }
@@ -31,7 +33,9 @@ extension MWFeedItem {
         link = object["link"] as String
         date = object["date"] as NSDate
         summary = object["summary"] as String
-        author = object["author"] as String
+        if object["author"] != nil {
+            author = object["author"] as String
+        }
         if object["enclosures"] != nil {
             enclosures = object["enclosures"] as NSArray
         }
