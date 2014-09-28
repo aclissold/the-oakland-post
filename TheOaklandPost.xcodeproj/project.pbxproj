@@ -86,7 +86,7 @@
 		222EA5581983E87700F9CE31 /* HighResImageDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = HighResImageDownloader.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		2231F83E194CDBDA007C7467 /* The Oakland Post-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Oakland Post-Bridging-Header.h"; sourceTree = "<group>"; };
 		2238EA8319C66E06008F897D /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
-		2246440F194BE612000F5568 /* The Oakland Post.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oakland Post.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2246440F194BE612000F5568 /* TheOaklandPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheOaklandPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22464413194BE612000F5568 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22464414194BE612000F5568 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22464416194BE612000F5568 /* PostTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		22464410194BE612000F5568 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2246440F194BE612000F5568 /* The Oakland Post.app */,
+				2246440F194BE612000F5568 /* TheOaklandPost.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,9 +360,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2246440E194BE612000F5568 /* The Oakland Post */ = {
+		2246440E194BE612000F5568 /* TheOaklandPost */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2246442D194BE612000F5568 /* Build configuration list for PBXNativeTarget "The Oakland Post" */;
+			buildConfigurationList = 2246442D194BE612000F5568 /* Build configuration list for PBXNativeTarget "TheOaklandPost" */;
 			buildPhases = (
 				4A3E2DEF214F4AD48C3C6176 /* Check Pods Manifest.lock */,
 				2246440B194BE612000F5568 /* Sources */,
@@ -374,9 +374,9 @@
 			);
 			dependencies = (
 			);
-			name = "The Oakland Post";
+			name = TheOaklandPost;
 			productName = "The Oakland Post";
-			productReference = 2246440F194BE612000F5568 /* The Oakland Post.app */;
+			productReference = 2246440F194BE612000F5568 /* TheOaklandPost.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -393,7 +393,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2246440A194BE612000F5568 /* Build configuration list for PBXProject "The Oakland Post" */;
+			buildConfigurationList = 2246440A194BE612000F5568 /* Build configuration list for PBXProject "TheOaklandPost" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -406,7 +406,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2246440E194BE612000F5568 /* The Oakland Post */,
+				2246440E194BE612000F5568 /* TheOaklandPost */,
 			);
 		};
 /* End PBXProject section */
@@ -611,7 +611,7 @@
 				INFOPLIST_FILE = "The Oakland Post/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheOaklandPost;
 				SWIFT_OBJC_BRIDGING_HEADER = "The Oakland Post/The Oakland Post-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -632,7 +632,7 @@
 				INFOPLIST_FILE = "The Oakland Post/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TheOaklandPost;
 				SWIFT_OBJC_BRIDGING_HEADER = "The Oakland Post/The Oakland Post-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -641,7 +641,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2246440A194BE612000F5568 /* Build configuration list for PBXProject "The Oakland Post" */ = {
+		2246440A194BE612000F5568 /* Build configuration list for PBXProject "TheOaklandPost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2246442B194BE612000F5568 /* Debug */,
@@ -650,7 +650,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2246442D194BE612000F5568 /* Build configuration list for PBXNativeTarget "The Oakland Post" */ = {
+		2246442D194BE612000F5568 /* Build configuration list for PBXNativeTarget "TheOaklandPost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2246442E194BE612000F5568 /* Debug */,
