@@ -155,6 +155,12 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView!,
         layout collectionViewLayout: NHBalancedFlowLayout!,
         preferredSizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+            if UIScreen.mainScreen().scale == 1.0 {
+                var size = photos[indexPath.item].size
+                size.width /= 2
+                size.height /= 2
+                return size
+            }
             return photos[indexPath.item].size
     }
 
