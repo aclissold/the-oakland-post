@@ -62,10 +62,18 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         return indexPath.row == 0 ? tableViewHeaderHeight : tableViewRowHeight
     }
 
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        super.tableView(tableView, didSelectRowAtIndexPath: indexPath)
+        if indexPath.row == 0 {
+            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        }
+    }
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(favoritesHeaderViewID, forIndexPath: indexPath) as FavoritesHeaderView
             cell.usernameLabel.text = PFUser.currentUser().username
+            cell.userInteractionEnabled = false
             return cell
         }
 
