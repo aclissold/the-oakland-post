@@ -33,7 +33,11 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     }
 
     func sendPush() {
-        p(textView.text)
+        PFCloud.callFunctionInBackground("push", withParameters: ["text": textView.text]) { (result, error) in
+            if error != nil {
+                showAlertForErrorCode(error.code)
+            }
+        }
     }
 
     // MARK: Keyboard Handling
