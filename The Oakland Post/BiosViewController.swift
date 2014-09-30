@@ -29,8 +29,9 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
     let names = ["Kaylee Kean", "Ali DeRees", "Jackson Gilbert", "Haley Kotwicki", "Sean Miller",
         "Sélah Fischer", "Dani Cojocari", "Phillip Johnson", "Arkeem Thomas-Scott", "Jessie DiBattista",
-        "Megan Carson"] // TODO: , "Oona Goodin-Smith", "Kaleigh Jerzykowski", "Josh Soltman", "Nicollete Brikho",
-                        // "Andrew Wernette", "Jasmine French", "Salwan Georges", "Jake Alsko"
+        "Megan Carson", "Jake Alsko", "Kaleigh Jerzykowski", "Andrew Wernette", "Jasmine French",
+        "Scott Davis", "Morgan Dean"]
+        // TODO: "Oona Goodin-Smith", "Josh Soltman", "Nicollete Brikho", "Salwan Georges"
 
     var previousIndex = 0
     var firstScroll = true
