@@ -29,7 +29,7 @@ var biosTexts: [String: NSAttributedString] = [
     "Oona Goodin-Smith": goodinSmith,
     "Kaleigh Jerzykowski": jerzykowski,
     "Josh Soltman": soltman,
-    "Nicollete Brikho": brikho,
+    "Nicolette Brikho": brikho,
     "Andrew Wernette": wernette,
     "Jasmine French": french,
     "Salwan Georges": georges,
@@ -329,9 +329,9 @@ private var carson: NSAttributedString {
 
 private var goodinSmith: NSAttributedString {
     let components: [Component] = [
-        (subheading, "TODO"),
-        (text, "TODO"),
-        (text, "Contact me at: TODO"),
+        (subheading, "Editor-in-Chief, junior, communication and journalism double major"),
+        (text, "I've been telling stories long before I could walk (seriously, my baby steps were more like toddler steps by the time I learned to put one foot in front of the other) and writing since I could hold a crayon, but my journey in journalism truly started when I joined the Oakland Post as a reporter last fall. I became Editor-in-Chief in April 2014 and am so proud of our paper's collective team, from advertising to reporting, and excited to continue to grow and bring Oakland University its weekly news. Outside of writing, I enjoy running, traveling, being outdoors, and all things mango-flavored."),
+        (text, "Contact me at: editor@oakland.edu"),
     ]
     return contentFromComponents(components)
 }
@@ -339,7 +339,8 @@ private var goodinSmith: NSAttributedString {
 private var jerzykowski: NSAttributedString {
     let components: [Component] = [
         (subheading, "Staff Reporter, junior journalism major"),
-        (text, "I've been with the Oakland Post since fall of 2014 and I love the fast-paced environment. Yoga and writing are my passions in life, and I'm so lucky that I get to do both every single day!")
+        (text, "I've been with the Oakland Post since fall of 2014 and I love the fast-paced environment. Yoga and writing are my passions in life, and I'm so lucky that I get to do both every single day!"),
+        (text, "Contact me at: memekaleigh@gmail.com")
     ]
     return contentFromComponents(components)
 }
@@ -355,9 +356,9 @@ private var soltman: NSAttributedString {
 
 private var brikho: NSAttributedString {
     let components: [Component] = [
-        (subheading, "TODO"),
-        (text, "TODO"),
-        (text, "Contact me at: TODO"),
+        (subheading, "Copy Editor"),
+        (text, "I'm a copy editor that started over the summer. I really enjoy gaining career experience by working for the Post! I love world travel, a good book, art and, lately, training for races like Tough Mudder, Warrior Dash, etc."),
+        (text, "Contact me at: nwbrikho@oakland.edu"),
     ]
     return contentFromComponents(components)
 }
@@ -366,6 +367,7 @@ private var wernette: NSAttributedString {
     let components: [Component] = [
         (subheading, "Life, Arts & Entertainment Editor"),
         (text, "Hello! I’m Andrew Wernette, the Life, Arts & Entertainment Editor at The Oakland Post. I oversee the section of the Post that strives to capture an intimate look at OU’s people and culture. I’m a senior English major with minors in journalism and Chinese, and I like to read. When not helping to put the paper together, I like to relax, go on adventures and ponder life’s questions. One day, I will go off to travel the world and never stop."),
+        (text, "Contact me at: atwernet@oakland.edu")
     ]
     return contentFromComponents(components)
 }
@@ -374,6 +376,7 @@ private var french: NSAttributedString {
     let components: [Component] = [
         (subheading, "Staff Reporter, senior journalism major, communication minor"),
         (text, "Writing for the Oakland Post has been such a refreshing experience as a student. I've been granted the opportunity to do something I enjoy apart from daily responsibilities, while connecting with great people. I call it a splash of color on a blank page."),
+        (text, "Contact me at: jefrench@oakland.edu")
     ]
     return contentFromComponents(components)
 }
@@ -391,6 +394,7 @@ private var alsko: NSAttributedString {
     let components: [Component] = [
         (subheading, "Web Editor, journalism major, PR minor"),
         (text, "Jake enjoys being around his family and friends, listening to music, playing sports and having civil arguments. "),
+        (text, "Contact me at: jpalsko@oakland.edu")
     ]
     return contentFromComponents(components)
 }
@@ -398,7 +402,8 @@ private var alsko: NSAttributedString {
 private var davis: NSAttributedString {
     let components: [Component] = [
         (subheading, "Staff Reporter, junior journalism major"),
-        (text, "Hey! I have been writing for the Oakland Post since April 2014 and have had a blast so far. Along with my journalism major, I am a Cinema Studies minor so film is a huge passion of mine. Christopher Nolan is my idol.")
+        (text, "Hey! I have been writing for the Oakland Post since April 2014 and have had a blast so far. Along with my journalism major, I am a Cinema Studies minor so film is a huge passion of mine. Christopher Nolan is my idol."),
+        (text, "Contact me at: sddavis@oakland.edu")
     ]
     return contentFromComponents(components)
 }
@@ -406,7 +411,8 @@ private var davis: NSAttributedString {
 private var bach: NSAttributedString {
     let components: [Component] = [
         (subheading, "Staff Intern, junior journalism major"),
-        (text, "Joe Bach was raised in Birmingham Michigan and attended Birmingham Seaholm before graduating from Troy High School in 2009. He originally accepted a rugby athletic scholarship to Davenport University winning D1-AA National Championship in 2011 and a D1 National Championship in 2012 before transferring to Oakland University to study journalism and broadcasting.")
+        (text, "Joe Bach was raised in Birmingham Michigan and attended Birmingham Seaholm before graduating from Troy High School in 2009. He originally accepted a rugby athletic scholarship to Davenport University winning D1-AA National Championship in 2011 and a D1 National Championship in 2012 before transferring to Oakland University to study journalism and broadcasting."),
+        (text, "Contact me at: jpbach@oakland.edu")
     ]
     return contentFromComponents(components)
 }
@@ -414,7 +420,8 @@ private var bach: NSAttributedString {
 private var dean: NSAttributedString {
     let components: [Component] = [
         (subheading, "Copy Editor, Cinema Studies and Creative Writing double major"),
-        (text, "I studied for a year at Kalamazoo College for biology and European history than took a few years off from school, in which time I participated in the Disney College Program internship at Disneyland and California and worked at Disneyland for two years. I also studied abroad in Oxford, England this past summer and absolutely LOVED it! I love Thai and Indian food, mint chocolate chip ice cream, fantasy adventure and historical fiction books, James Cagney movies, my cat Minerva, and my dream is to travel around the world and be a story creator for Pixar.")
+        (text, "I studied for a year at Kalamazoo College for biology and European history than took a few years off from school, in which time I participated in the Disney College Program internship at Disneyland and California and worked at Disneyland for two years. I also studied abroad in Oxford, England this past summer and absolutely LOVED it! I love Thai and Indian food, mint chocolate chip ice cream, fantasy adventure and historical fiction books, James Cagney movies, my cat Minerva, and my dream is to travel around the world and be a story creator for Pixar."),
+        (text, "Contact me at: mhdean23@oakland.edu")
     ]
     return contentFromComponents(components)
 }
