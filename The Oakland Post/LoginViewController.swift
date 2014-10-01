@@ -114,10 +114,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
 
     @IBAction func hideKeyboardAndLogIn() {
-        findAndResignFirstResponder()
-
         logInButton.enabled = false
+        navigationItem.rightBarButtonItem!.enabled = false
+
         logInActivityIndicator.startAnimating()
+        findAndResignFirstResponder()
 
         let username = usernameTextField.text
         let password = passwordTextField.text
@@ -130,6 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
             } else {
                 showAlertForErrorCode(error.code)
                 self.logInButton.enabled = true
+                self.navigationItem.rightBarButtonItem!.enabled = true
                 self.logInActivityIndicator.stopAnimating()
             }
         }
