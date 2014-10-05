@@ -6,6 +6,11 @@
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
 
+private enum AlertPurpose: Int {
+    case PushConfirmation = 0
+    case PasswordConfirmation = 1
+}
+
 class PushViewController: UIViewController, UIAlertViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
@@ -13,30 +18,79 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
 
     override func viewDidLoad() {
         let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: "confirmPush")
+        sendButton.enabled = false
+        textView.editable = false
+        textView.selectable = false
         navigationItem.rightBarButtonItem = sendButton
+
         textView.textContainerInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+
         registerForKeyboardNotifications()
+        confirmPassword("Please re-type your\npassword to continue.")
     }
 
-    func confirmPush() {
-        let alertView = UIAlertView(title: "Are you sure?",
-            message: "\n\(textView.text)", delegate: self,
-            cancelButtonTitle: "Cancel", otherButtonTitles: "Send")
+    // MARK: Password Confirmation
+
+    func confirmPassword(message: String) {
+        let alertView = UIAlertView(title: "Confirm Password",
+            message: message, delegate: self,
+            cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm")
+        alertView.alertViewStyle = .PlainTextInput
+        alertView.textFieldAtIndex(0)!.secureTextEntry = true
+        alertView.tag = AlertPurpose.PasswordConfirmation.toRaw()
         alertView.show()
     }
 
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        if buttonIndex == 1 {
-            sendPush()
-            textView.resignFirstResponder()
-            navigationController!.popViewControllerAnimated(true)
+    func checkPassword(password: String) {
+        let currentUser = PFUser.currentUser()
+        PFUser.logInWithUsernameInBackground(currentUser.username, password: password) { (user, error) in
+            if error != nil {
+                self.confirmPassword("Confirmation failed. Please try again.")
+            } else {
+                self.navigationItem.rightBarButtonItem!.enabled = true
+                self.textView.editable = true
+                self.textView.selectable = true
+            }
         }
     }
 
+    // MARK: Push Confirmation
+
+    func confirmPush() {
+        let alertView = UIAlertView(title: "Are you sure?",
+            message: "\(textView.text)", delegate: self,
+            cancelButtonTitle: "Cancel", otherButtonTitles: "Send")
+        alertView.tag = AlertPurpose.PushConfirmation.toRaw()
+        alertView.show()
+    }
+
     func sendPush() {
-        PFCloud.callFunctionInBackground("push", withParameters: ["text": textView.text]) { (result, error) in
+        PFCloud.callFunctionInBackground("push", withParameters: ["message": textView.text]) { (result, error) in
             if error != nil {
                 showAlertForErrorCode(error.code)
+            } else {
+                self.textView.resignFirstResponder()
+                self.navigationController!.popViewControllerAnimated(true)
+            }
+        }
+    }
+
+    // MARK: UIAlertViewDelegate
+
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        let alertPurpose = AlertPurpose.fromRaw(alertView.tag)!
+        switch alertPurpose {
+        case .PushConfirmation:
+            if buttonIndex == 1 {
+                sendPush()
+            }
+        case .PasswordConfirmation:
+            let passwordTextField = alertView.textFieldAtIndex(0)!
+            passwordTextField.resignFirstResponder()
+            if buttonIndex == 0 {
+                navigationController!.popViewControllerAnimated(true)
+            } else if buttonIndex == 1 {
+                checkPassword(passwordTextField.text)
             }
         }
     }
