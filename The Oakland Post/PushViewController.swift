@@ -65,8 +65,10 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     }
 
     func sendPush() {
+        self.navigationItem.rightBarButtonItem!.enabled = false
         PFCloud.callFunctionInBackground("push", withParameters: ["message": textView.text]) { (result, error) in
             if error != nil {
+                self.navigationItem.rightBarButtonItem!.enabled = true
                 showAlertForErrorCode(error.code)
             } else {
                 self.textView.resignFirstResponder()
