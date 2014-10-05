@@ -2,11 +2,12 @@
 //  PFFile.h
 //  Parse
 //
-//  Created by Ilya Sukhar on 10/11/11.
-//  Copyright 2011 Ping Labs, Inc. All rights reserved.
+//  Created by Nikita Lutsenko on 8/14/14.
+//  Copyright (c) 2014 Parse Inc. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+
 #import "PFConstants.h"
 
 /*!
@@ -14,6 +15,7 @@
  that an application needs to reference in a non-relational way.
  */
 @interface PFFile : NSObject
+
 /** @name Creating a PFFile */
 
 /*!
@@ -69,12 +71,12 @@
  the user. After save is called, that name gets prefixed with a unique
  identifier.
  */
-@property (nonatomic, strong, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *name;
 
 /*!
  The url of the file.
  */
-@property (nonatomic, strong, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *url;
 
 /** @name Storing Data with Parse */
 

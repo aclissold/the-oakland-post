@@ -24,7 +24,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 /*!
  Returns the most recently fetched config.
  If there was no config fetched - this method will return an empty instance of PFConfig.
- @return Current, last fetched instance of PFConfig
+ @return Current, last fetched instance of PFConfig.
  */
 + (PFConfig *)currentConfig;
 
@@ -47,7 +47,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 /*!
  Gets the PFConfig asynchronously and executes the given callback block.
  @param block The block to execute.
- The block should have the following argument signature: (PFConfig *config, NSError *error)
+ The block should have the following argument signature: (PFConfig *config, NSError *error).
  */
 + (void)getConfigInBackgroundWithBlock:(PFConfigResultBlock)block;
 
@@ -56,7 +56,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 
 /*!
  Returns the object associated with a given key.
- @param The key for which to return the corresponding configuration value.
+ @param key The key for which to return the corresponding configuration value.
  @return The value associated with `key`, or nil if there is no such value.
  */
 - (id)objectForKey:(NSString *)key;
@@ -64,7 +64,7 @@ typedef void(^PFConfigResultBlock)(PFConfig *config, NSError *error);
 /*!
  Returns the object associated with a given key.
  This method behaves the same as `objectForKey:`.
- @param The key for which to return the corresponding configuration value.
+ @param keyedSubscript The key for which to return the corresponding configuration value.
  @return The value associated with `key`, or nil if there is no such value.
  */
 - (id)objectForKeyedSubscript:(NSString *)keyedSubscript;
