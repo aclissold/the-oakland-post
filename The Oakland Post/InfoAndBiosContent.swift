@@ -32,7 +32,6 @@ var biosTexts: [String: NSAttributedString] = [
     "Nicolette Brikho": brikho,
     "Andrew Wernette": wernette,
     "Jasmine French": french,
-    "Salwan Georges": georges,
     "Jake Alsko": alsko,
     "Scott Davis": davis,
     "Morgan Dean": dean
@@ -347,9 +346,9 @@ private var jerzykowski: NSAttributedString {
 
 private var soltman: NSAttributedString {
     let components: [Component] = [
-        (subheading, "TODO"),
-        (text, "TODO"),
-        (text, "Contact me at: TODO"),
+        (subheading, "Copy Editor, journalism major"),
+        (text, "I've been copy editing for The Post for quite some time now and also like writing Mouthing Offs, our paper's version of satire. I am a nice guy but enjoy being sarcastic. Females, I do take numbers."),
+        (text, "Contact me at: jmsoltma@oakland.edu"),
     ]
     return contentFromComponents(components)
 }
@@ -377,15 +376,6 @@ private var french: NSAttributedString {
         (subheading, "Staff Reporter, senior journalism major, communication minor"),
         (text, "Writing for the Oakland Post has been such a refreshing experience as a student. I've been granted the opportunity to do something I enjoy apart from daily responsibilities, while connecting with great people. I call it a splash of color on a blank page."),
         (text, "Contact me at: jefrench@oakland.edu")
-    ]
-    return contentFromComponents(components)
-}
-
-private var georges: NSAttributedString {
-    let components: [Component] = [
-        (subheading, "TODO"),
-        (text, "TODO"),
-        (text, "Contact me at: TODO"),
     ]
     return contentFromComponents(components)
 }
