@@ -53,6 +53,7 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
                 if completed {
                     self.insertedIndexPaths += indexPaths.count
                 }
+                self.delegator.tabBarController!.tabBar.userInteractionEnabled = true
             })
 
         delegator.collectionView!.infiniteScrollingView.stopAnimating()
@@ -62,6 +63,7 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
         showAlertForErrorCode(feedParserDidFailErrorCode)
         delegator.finishedParsing = true
         delegator.collectionView!.infiniteScrollingView.stopAnimating()
+        delegator.tabBarController!.tabBar.userInteractionEnabled = true
     }
 
 }

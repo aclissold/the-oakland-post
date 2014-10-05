@@ -77,6 +77,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     func parseMore() {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        tabBarController!.tabBar.userInteractionEnabled = false
         feedParser.parseMore()
     }
 
