@@ -15,7 +15,7 @@ Screenshots
 Compiling
 ---------
 
-Just clone, open `The Oakland Post.xcworkspace`, and build & run. A CocoaPods
+Just clone, open `TheOaklandPost.xcworkspace`, and build & run. A CocoaPods
 installation is not necessary since the dependencies are vendored in
 `Pods/`.
 
