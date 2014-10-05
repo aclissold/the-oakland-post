@@ -103,8 +103,9 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             enlargedPhoto = EnlargedPhoto(image: highResPhoto, index: index)
         } else {
             enlargedPhoto = EnlargedPhoto(image: photos[index], index: index)
-            HighResImageDownloader.downloadFromURL(URLs[index],
-                forEnlargedPhoto: enlargedPhoto!, sender: sender, finished: self.receivePhoto)
+            downloadHighResImageFromURL(URLs[index],
+                forEnlargedPhoto: enlargedPhoto!,
+                sender: sender, finished: self.receivePhoto)
         }
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 

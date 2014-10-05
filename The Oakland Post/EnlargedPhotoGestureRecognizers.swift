@@ -92,7 +92,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
                 self.photo.backgroundColor = nil
             },
             completion: { _ in
-                HighResImageDownloader.cancel()
+                cancelDownloadingHighResImage()
                 photoCell.hidden = false
                 self.photo.removeFromSuperview()
                 self.photo = nil
