@@ -51,9 +51,10 @@ class InfoContentViewController: UIViewController {
         let infoViewController = (parentViewController!.parentViewController as InfoViewController)
         let titleLabel = infoViewController.titleLabel
         if titleLabel != nil && titleLabel.text != titleText {
+            let originalY = infoViewController.titleLabel.frame.origin.y
             UIView.animateWithDuration(0.15,
                 animations: {
-                    infoViewController.titleLabel.frame.origin.y -= topToolbarHeight
+                    infoViewController.titleLabel.frame.origin.y = originalY - topToolbarHeight
                 },
                 completion: { finished in
                     if !finished { return }
@@ -64,7 +65,7 @@ class InfoContentViewController: UIViewController {
                         initialSpringVelocity: 0.0,
                         options: .AllowUserInteraction,
                         animations: {
-                            infoViewController.titleLabel.frame.origin.y += topToolbarHeight
+                            infoViewController.titleLabel.frame.origin.y = originalY
                         }, completion: nil)
                 })
         }
