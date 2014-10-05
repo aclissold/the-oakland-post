@@ -40,6 +40,12 @@ func downloadHighResImageFromURL(URL: String,
         let hpple = TFHpple(HTMLData: HTMLData)
         let XPathQuery = "//meta[@property='og:image']"
         let elements = hpple.searchWithXPathQuery(XPathQuery) as [TFHppleElement]
+
+        if elements.count == 0 {
+            cancelDownloadingHighResImage()
+            return
+        }
+
         let imageURL = elements[0].objectForKey("content")
 
         // Download the image at that URL
@@ -53,7 +59,7 @@ func downloadHighResImageFromURL(URL: String,
 }
 
 func cancelDownloadingHighResImage() {
-    SVProgressHUD.dismiss()
+    onMain { SVProgressHUD.dismiss() }
     downloadOperation?.cancel()
     canceled = true
 }

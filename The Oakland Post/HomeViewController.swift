@@ -46,10 +46,12 @@ class HomeViewController: PostTableViewController, TopScrollable {
             } else {
                 starredPosts = objects
                 self.tableView.reloadData()
+
+                // Only for FavoritesViewController to reload its data if it was on-screen before starred posts were found.
+                NSNotificationCenter.defaultCenter().postNotificationName(foundStarredPostsNotification, object: nil)
             }
         }
     }
-
 
     override func viewDidLayoutSubviews() {
         if logInBarButtonItem == nil && navigationItem.rightBarButtonItem?.title == "Log In" {

@@ -22,6 +22,12 @@ let tableViewRowHeight: CGFloat = 120
 let topToolbarHeight: CGFloat = 64, bottomToolbarHeight: CGFloat = 44
 let infoContentViewControllerID = "infoContentViewController"
 
+// NSNotificationCenter
+let foundStarredPostsNotification = "foundStarredPosts"
+
+// See ShowAlertForErrorCode.swift
+let feedParserDidFailErrorCode = 0
+
 // UITableViewCell identifiers
 let cellID = "cell", sectionsCellID = "sectionsCell"
 let photoCellID = "photoCell", favoritesHeaderViewID = "favoritesHeaderView"

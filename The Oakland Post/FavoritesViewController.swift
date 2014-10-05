@@ -12,6 +12,17 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: "logOut")
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(tableView, selector: "reloadData",
+            name: foundStarredPostsNotification, object: nil)
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSNotificationCenter.defaultCenter().removeObserver(tableView)
+    }
+
     func logOut() {
         PFUser.logOut()
         configureLogOutButton()

@@ -91,6 +91,12 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         reloadData()
     }
 
+    func feedParser(parser: MWFeedParser!, didFailWithError error: NSError!) {
+        showAlertForErrorCode(feedParserDidFailErrorCode)
+        finishedParsing = true
+        reloadData()
+    }
+
     func reloadData() {
         tableView.reloadData()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false

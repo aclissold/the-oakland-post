@@ -14,6 +14,8 @@ func showAlertForErrorCode(code: Int) {
 // description. The other errors are provided for debugging purposes, but are kept generic in case
 // they find their way into the app.
 private let messages = [
+    feedParserDidFailErrorCode: "Could not download posts. Please check your Internet connection and try again.", // For MWFeedParser
+
     kPFErrorAccountAlreadyLinked: "An error has occured. (\(kPFErrorAccountAlreadyLinked))",
     kPFErrorCacheMiss: "An error has occured. (\(kPFErrorCacheMiss))",
     kPFErrorCommandUnavailable: "An error has occured. (\(kPFErrorCommandUnavailable))",

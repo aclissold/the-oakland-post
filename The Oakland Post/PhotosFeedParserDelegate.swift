@@ -58,4 +58,10 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
         delegator.collectionView!.infiniteScrollingView.stopAnimating()
     }
 
+    func feedParser(parser: MWFeedParser!, didFailWithError error: NSError!) {
+        showAlertForErrorCode(feedParserDidFailErrorCode)
+        delegator.finishedParsing = true
+        delegator.collectionView!.infiniteScrollingView.stopAnimating()
+    }
+
 }

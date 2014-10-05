@@ -46,7 +46,10 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         canScrollToTop = true
-        if !finishedParsing {
+        if photos.count == 0 && finishedParsing {
+            // Initial parse failed; try again.
+            feedParser.parseInitial()
+        } else if !finishedParsing {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             SVProgressHUD.show()
         }
