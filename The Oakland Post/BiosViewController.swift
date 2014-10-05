@@ -2,6 +2,8 @@
 //  BiosViewController.swift
 //  The Oakland Post
 //
+//  Content view controller for staff bios.
+//
 //  Created by Andrew Clissold on 9/14/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -98,7 +100,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         let imageView = UIImageView()
         mutableView.addSubview(imageView)
 
-        // This seems to still stutter the UI thread a little because the image is drawn lazily.
+        // This seems to still stutter the UI thread a little, possibly due to images being drawn lazily.
         onMain {
             let image = UIImage(named: self.names[index])
             imageView.contentMode = .ScaleAspectFill

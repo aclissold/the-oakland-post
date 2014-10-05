@@ -2,6 +2,8 @@
 //  LinkAlertDelegate.swift
 //  The Oakland Post
 //
+//  Confirmation before opening a link in Safari.
+//
 //  Created by Andrew Clissold on 7/20/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

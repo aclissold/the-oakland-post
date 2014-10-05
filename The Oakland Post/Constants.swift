@@ -2,6 +2,8 @@
 //  Constants.swift
 //  The Oakland Post
 //
+//  Global constants.
+//
 //  Created by Andrew Clissold on 6/13/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -20,19 +22,21 @@ let translucentToolbarWhite: CGFloat = 0.96
 let tableViewHeaderHeight: CGFloat = 80
 let tableViewRowHeight: CGFloat = 120
 let topToolbarHeight: CGFloat = 64, bottomToolbarHeight: CGFloat = 44
-let infoContentViewControllerID = "infoContentViewController"
 
 // NSNotificationCenter
 let foundStarredPostsNotification = "foundStarredPosts"
 
-// See ShowAlertForErrorCode.swift
+// For ShowAlertForErrorCode.swift
 let feedParserDidFailErrorCode = 0
 
 // UITableViewCell identifiers
 let cellID = "cell", sectionsCellID = "sectionsCell"
 let photoCellID = "photoCell", favoritesHeaderViewID = "favoritesHeaderView"
 
-// Storyboard identifiers
+// Segue identifiers
 let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"
 let logInID = "logIn", favoritesID = "favoritesViewController"
 let biosID1 = "bios1", biosID2 = "bios2", biosID3 = "bios3"
+
+// Restoration identifiers
+let infoContentViewControllerID = "infoContentViewController"

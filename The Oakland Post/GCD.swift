@@ -4,7 +4,7 @@
 //
 //  Helper functions for Grand Central Dispatch.
 //
-//  Example usage:
+//  Usage:
 //
 //      onDefault {
 //          println("hello, asynchronous world")

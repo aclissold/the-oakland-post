@@ -2,6 +2,8 @@
 //  SignUpViewController.swift
 //  The Oakland Post
 //
+//  A simple signup form.
+//
 //  Created by Andrew Clissold on 8/24/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

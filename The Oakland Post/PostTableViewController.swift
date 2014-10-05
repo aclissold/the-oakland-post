@@ -2,6 +2,8 @@
 //  PostTableViewController.swift
 //  The Oakland Post
 //
+//  The main feature of the app: a table view of posts.
+//
 //  Created by Andrew Clissold on 6/13/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -18,18 +20,14 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
     var feedParser: FeedParser!
     var parsedItems = [MWFeedItem]()
     var finishedParsing = false
-    var dateFormatter: NSDateFormatter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Pull to refresh
+        // Pull to refresh.
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
-
-        dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
 
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)
         feedParser.parseInitial()
@@ -68,10 +66,13 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         feedParser.parseMore()
     }
 
+    // MARK: StarButtonDelegate
+
     func didSelectStarButton(starButton: UIButton, forItem item: MWFeedItem) {
         starButton.selected = !starButton.selected
 
         if starButton.selected {
+            // Persist the new favorite.
             let object = PFObject(item: item)
             object.saveEventually()
             starredPosts.append(object)
@@ -80,7 +81,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         }
     }
 
-    // MARK: MWFeedParserDelegate methods
+    // MARK: MWFeedParserDelegate
 
     func feedParser(parser: MWFeedParser!, didParseFeedItem item: MWFeedItem!) {
         parsedItems.append(item)

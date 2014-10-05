@@ -2,6 +2,8 @@
 //  FavoritesViewController.swift
 //  The Oakland Post
 //
+//  A table view of starred posts for logged-in users, as well as profile information and a log out button.
+//
 //  Created by Andrew Clissold on 9/1/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -45,14 +47,17 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
     }
 
     func enableButtonForPushers() {
+        // Not a security feature--just meant to keep otherwise dead UI disabled.
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.cellForRowAtIndexPath(indexPath)!.userInteractionEnabled = false
         let roleQuery = PFRole.query()
         roleQuery.whereKey("name", equalTo: "pusher")
+
         roleQuery.getFirstObjectInBackgroundWithBlock { (object, error) in
             if object == nil { return }
             let role = object as PFRole
             let userQuery = role.users.query()
+
             userQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
                 if objects == nil { return }
                 for user in objects as [PFUser] {
@@ -65,6 +70,8 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
             })
         }
     }
+
+    // MARK: StarButtonDelegate
 
     func didSelectStarButton(starButton: UIButton, forItem item: MWFeedItem) {
         starButton.selected = !starButton.selected
@@ -95,6 +102,8 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         tableView.endUpdates()
     }
+
+    // UITableView
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return starredPosts.count + 1

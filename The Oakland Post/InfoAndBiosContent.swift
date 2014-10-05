@@ -84,7 +84,7 @@ private func contentFromComponents(components: [Component]) -> NSAttributedStrin
     return attributedString
 }
 
-// MARK: Info
+// MARK: Info Content
 
 private var aboutUs: NSAttributedString {
     let components: [Component] = [
@@ -225,7 +225,7 @@ private var staff: NSAttributedString {
     return contentFromComponents(components)
 }
 
-// MARK: Bios
+// MARK: Bios Content
 
 private var kean: NSAttributedString {
     let components: [Component] = [

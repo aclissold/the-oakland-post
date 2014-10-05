@@ -2,6 +2,10 @@
 //  PhotosViewController.swift
 //  The Oakland Post
 //
+//  Tab 3.
+//
+//  A grid view of tappable photos from posts.
+//
 //  Created by Andrew Clissold on 7/5/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -98,6 +102,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         highResPhotos[index] = photo
     }
 
+    // Displays a full-screen, high-res version of the tapped photo cell, with a link to its respective post.
     @IBAction func addEnlargedPhoto(sender: UIButton) {
         if enlargedPhoto != nil { return } // the user probably tapped two at once
 

@@ -2,6 +2,10 @@
 //  ShowAlertForErrorCode.swift
 //  The Oakland Post
 //
+//  UIAlertView messages for errors found in PFConstants.h. User-facing errors have a detailed
+//  description. The other errors are provided for debugging purposes, but are kept generic in case
+//  they find their way into the app.
+//
 //  Created by Andrew Clissold on 8/31/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -10,11 +14,8 @@ func showAlertForErrorCode(code: Int) {
     UIAlertView(title: "Error", message: messages[code], delegate: nil, cancelButtonTitle: "OK").show()
 }
 
-// UIAlertView messages for errors found in PFConstants.h. User-facing errors have a detailed
-// description. The other errors are provided for debugging purposes, but are kept generic in case
-// they find their way into the app.
 private let messages = [
-    feedParserDidFailErrorCode: "Could not download posts. Please check your Internet connection and try again.", // For MWFeedParser
+    feedParserDidFailErrorCode: "Could not download posts. Please check your Internet connection and try again.", // for MWFeedParser
 
     kPFErrorAccountAlreadyLinked: "An error has occured. (\(kPFErrorAccountAlreadyLinked))",
     kPFErrorCacheMiss: "An error has occured. (\(kPFErrorCacheMiss))",

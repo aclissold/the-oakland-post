@@ -1,6 +1,10 @@
 //
-//  Test.swift
+//  HomeViewController.swift
 //  The Oakland Post
+//
+//  Tab 1.
+//
+//  The entry point for the app. Contains the main newsfeed.
 //
 //  Created by Andrew Clissold on 7/13/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
@@ -8,6 +12,8 @@
 
 import UIKit
 
+// Provides global access to this instance as an alternative to NSNotificationCenter broadcasts,
+// since it's around for the lifetime of the app anyway.
 var homeViewController: HomeViewController!
 
 class HomeViewController: PostTableViewController, TopScrollable {
@@ -59,19 +65,6 @@ class HomeViewController: PostTableViewController, TopScrollable {
         }
     }
 
-    override func viewDidAppear(animated: Bool) {
-        canScrollToTop = true
-    }
-
-    override func viewDidDisappear(animated: Bool) {
-        canScrollToTop = false
-    }
-
-    func scrollToTop() {
-        let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
-        tableView.scrollRectToVisible(rect, animated: true)
-    }
-
     func logIn() {
         performSegueWithIdentifier(logInID, sender: self)
     }
@@ -84,6 +77,21 @@ class HomeViewController: PostTableViewController, TopScrollable {
     func unwindToHomeViewController() {
         // Called from InfoViewController.
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    // MARK: TopScrollable
+
+    override func viewDidAppear(animated: Bool) {
+        canScrollToTop = true
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        canScrollToTop = false
+    }
+
+    func scrollToTop() {
+        let rect = CGRect(origin: CGPointZero, size: CGSize(width: 1, height: 1))
+        tableView.scrollRectToVisible(rect, animated: true)
     }
 
 }

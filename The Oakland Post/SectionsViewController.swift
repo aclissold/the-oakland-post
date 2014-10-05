@@ -2,6 +2,10 @@
 //  SectionsViewController.swift
 //  The Oakland Post
 //
+//  Tab 2.
+//
+//  A simple list of sections leading to their respective PostTableViewController instances.
+//
 //  Created by Andrew Clissold on 7/12/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

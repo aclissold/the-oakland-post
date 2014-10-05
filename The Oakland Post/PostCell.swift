@@ -2,6 +2,8 @@
 //  PostCell.swift
 //  The Oakland Post
 //
+//  Custom UITableViewCell for posts.
+//
 //  Created by Andrew Clissold on 6/14/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -16,6 +18,7 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var starButton: UIButton!
 
     weak var delegate: StarButtonDelegate?
+
     var item: MWFeedItem! {
         didSet {
             // Set the thumbnail image.

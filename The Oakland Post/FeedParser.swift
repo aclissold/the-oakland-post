@@ -2,13 +2,14 @@
 //  FeedParser.swift
 //  The Oakland Post
 //
+//  Wraps MWFeedParser with a default configuration and "parseMore" functionality.
+//
 //  Created by Andrew Clissold on 7/6/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
 
 import UIKit
 
-// Wraps MWFeedParser with a default configuration and "parseMore" functionality.
 class FeedParser {
 
     let length: Int

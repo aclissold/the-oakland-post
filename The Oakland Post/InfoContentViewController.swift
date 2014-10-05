@@ -2,6 +2,8 @@
 //  InfoContentViewController.swift
 //  The Oakland Post
 //
+//  Content view controller containing one of About Us, Contact Us, or Staff.
+//
 //  Created by Andrew Clissold on 7/2/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -47,6 +49,7 @@ class InfoContentViewController: UIViewController {
         infoText.frame.origin.y = 20 // bugfix for it jumping from 0 to this value on-screen
     }
 
+    // Animates changing the title label.
     func swapOutTitleLabel() {
         let infoViewController = (parentViewController!.parentViewController as InfoViewController)
         let titleLabel = infoViewController.titleLabel
@@ -72,6 +75,7 @@ class InfoContentViewController: UIViewController {
     }
 
     deinit {
+        // Workaround for autolayout constraints causing EXC_BAD_ACCESS by still being accessed after deinit.
         view.removeFromSuperview()
     }
 

@@ -2,6 +2,10 @@
 //  BlogsViewController.swift
 //  The Oakland Post
 //
+//  Tab 4.
+//
+//  Similar to HomeViewController but without additional functionality.
+//
 //  Created by Andrew Clissold on 7/16/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

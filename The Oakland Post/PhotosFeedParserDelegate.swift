@@ -2,6 +2,8 @@
 //  PhotosFeedParserDelegate.swift
 //  The Oakland Post
 //
+//  Translates RSS to content for the Photos view.
+//
 //  Created by Andrew Clissold on 7/30/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

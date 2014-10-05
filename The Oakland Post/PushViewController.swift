@@ -2,6 +2,8 @@
 //  PushViewController.swift
 //  TheOaklandPost
 //
+//  Push functionality for authenticated users.
+//
 //  Created by Andrew Clissold on 9/28/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

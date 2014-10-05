@@ -2,6 +2,8 @@
 //  EnlargedPhotoDelegate.swift
 //  The Oakland Post
 //
+//  Observes the EnlargedPhoto's scroll view to show or hide the link button.
+//
 //  Created by Andrew Clissold on 7/23/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

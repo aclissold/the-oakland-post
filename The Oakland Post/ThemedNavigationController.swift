@@ -2,6 +2,8 @@
 //  ThemedNavigationController.swift
 //  The Oakland Post
 //
+//  Theming that might otherwise have been performed in each of the many UINavigationController subclasses.
+//
 //  Created by Andrew Clissold on 7/12/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

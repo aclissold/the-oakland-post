@@ -2,6 +2,8 @@
 //  EnlargedPhotoGestureRecognizers.swift
 //  The Oakland Post
 //
+//  EnlargedPhoto dismissal and related gesture recognizers.
+//
 //  Created by Andrew Clissold on 7/30/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -16,6 +18,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         super.init()
     }
 
+    // Creates and adds all gestures to an EnlargedPhoto instance.
     func addToEnlargedPhoto(enlargedPhoto: EnlargedPhoto) {
         photo = enlargedPhoto
 
@@ -36,6 +39,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
     }
 
 
+    // Zooms out if zoomed and dismisses if zoomed out.
     func singleTapReceived(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .Ended {
             if photo.scrollView.zoomScale == 1.0 {
@@ -46,6 +50,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         }
     }
 
+    // Zooms out if zoomed in and vice versa.
     func doubleTapReceived(recognizer: UITapGestureRecognizer) {
         if recognizer.state == .Ended {
             switch photo.scrollView.zoomScale {
@@ -58,6 +63,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
         }
     }
 
+    // Dismisses.
     func swipeReceived(recognizer: UISwipeGestureRecognizer) {
         if recognizer.state == .Ended {
             removeEnlargedPhoto()
@@ -65,23 +71,31 @@ class EnlargedPhotoGestureRecognizers: NSObject {
     }
 
     func removeEnlargedPhoto() {
+        // Remove all gesture recognizers.
         for recognizer in photo.gestureRecognizers as [UIGestureRecognizer] {
             photo.removeGestureRecognizer(recognizer)
         }
+
+        // Find the photo cell.
         let indexPath = NSIndexPath(forItem: photo.index, inSection: 0)
         let photoCell = photosViewController.collectionView!.cellForItemAtIndexPath(indexPath)!
+
+        // Compute the frame.
         let attributes = photosViewController.collectionView!.layoutAttributesForItemAtIndexPath(indexPath)!
         var frame = photosViewController.view.convertRect(attributes.frame, fromView: photosViewController.collectionView)
         let navigationBarHeight = photosViewController.navigationController!.navigationBar.frame.size.height
         let statusBarHeight: CGFloat = 20 // hard-coded because it's invisible at this point, i.e. 0.0
         frame.origin.y += (navigationBarHeight + statusBarHeight)
 
+        // Prepare for animation.
+
         photosViewController.shouldHideStatusBar = false
         photosViewController.setNeedsStatusBarAppearanceUpdate()
         photosViewController.navigationController!.setNavigationBarHidden(false, animated: false)
-
         photoCell.hidden = true
         photo.imageView.backgroundColor = nil
+
+        // Animate dismissal.
         UIView.animateWithDuration(0.4,
             delay: 0,
             usingSpringWithDamping: 0.8,
@@ -99,6 +113,8 @@ class EnlargedPhotoGestureRecognizers: NSObject {
                 self.photosViewController.enlargedPhoto = nil
             }
         )
+
+        // Un-hide the tab bar.
         UIView.animateWithDuration(0.15) {
             self.photosViewController.tabBarController!.tabBar.frame.origin.y -=
                 self.photosViewController.tabBarController!.tabBar.frame.size.height

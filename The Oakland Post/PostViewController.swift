@@ -2,6 +2,8 @@
 //  PostViewController.swift
 //  The Oakland Post
 //
+//  The content view controller to display a post in.
+//
 //  Created by Andrew Clissold on 6/13/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -12,21 +14,14 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     @IBOutlet weak var webView: UIWebView!
 
-    var loadCount = 0
+    var loadCount = 0 // to track when the web view is REALLY finished loading
     var finishedLoading = false
-    var originalURL: String!
+    var originalURL: String! // for sharing the post
     var URL: String! {
         didSet {
+            // Mobilize.
             originalURL = URL
             URL = URL.stringByReplacingOccurrencesOfString("//www", withString: "//m")
-        }
-    }
-
-    func configureView() {
-        if let string = self.URL {
-            let URL = NSURL(string: string)
-            let request = NSURLRequest(URL: URL)
-            self.webView.loadRequest(request)
         }
     }
 
@@ -37,9 +32,18 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         webView.alpha = 0
         webView.scrollView.delegate = self
 
-        self.configureView()
+        configureView()
     }
 
+    func configureView() {
+        if let string = self.URL {
+            let URL = NSURL(string: string)
+            let request = NSURLRequest(URL: URL)
+            self.webView.loadRequest(request)
+        }
+    }
+
+    // Sets up and displays the share sheet.
     @IBAction func shareButtonTapped(sender: UIBarButtonItem) {
         let text = "Check out this awesome article! \(originalURL) #oaklandpost"
         let activityViewController = UIActivityViewController(activityItems: [text], applicationActivities: nil)
@@ -104,24 +108,44 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         }
     }
 
-    // MARK: Bar Hiding Animations
+    // MARK: Handling External Links
 
-    var didAppear = false
+    var delegate: LinkAlertDelegate!
 
-    var minDelta: CGFloat = 0
-    var maxDelta: CGFloat = 0
-    var previousPosition: CGFloat = 0
-    var totalDelta: CGFloat = 0
-    var originalY: CGFloat = 0
+    func webView(webView: UIWebView!,
+        shouldStartLoadWithRequest request: NSURLRequest!,
+        navigationType: UIWebViewNavigationType) -> Bool {
+            if !finishedLoading {
+                return true
+            } else {
+                delegate = LinkAlertDelegate(URL: request.URL)
+                UIAlertView(title: "Open External Link?",
+                    message: request.URL.absoluteString!,
+                    delegate: delegate,
+                    cancelButtonTitle: "No",
+                    otherButtonTitles: "Yes").show()
+                return false
+            }
+    }
 
-    var wasDecelerating = false
-    var reachedBottom = false
+    // MARK: Tab Bar Hiding Animations
 
-    var overage: CGFloat {
+    private var didAppear = false
+
+    private var minDelta: CGFloat = 0
+    private var maxDelta: CGFloat = 0
+    private var previousPosition: CGFloat = 0
+    private var totalDelta: CGFloat = 0
+    private var originalY: CGFloat = 0
+
+    private var wasDecelerating = false
+    private var reachedBottom = false
+
+    private var overage: CGFloat {
         return webView.scrollView.contentOffset.y - (webView.scrollView.contentSize.height - view.frame.size.height)
     }
 
-    var retainedTabBarController: UITabBarController!
+    private var retainedTabBarController: UITabBarController!
 
     override func viewDidAppear(animated: Bool) {
         didAppear = true
@@ -226,26 +250,6 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         UIView.animateWithDuration(duration) {
             self.retainedTabBarController.tabBar.frame.origin.y = y
         }
-    }
-
-    // MARK: Handling External Links
-
-    var delegate: LinkAlertDelegate!
-
-    func webView(webView: UIWebView!,
-        shouldStartLoadWithRequest request: NSURLRequest!,
-        navigationType: UIWebViewNavigationType) -> Bool {
-            if !finishedLoading {
-                return true
-            } else {
-                delegate = LinkAlertDelegate(URL: request.URL)
-                UIAlertView(title: "Open External Link?",
-                    message: request.URL.absoluteString!,
-                    delegate: delegate,
-                    cancelButtonTitle: "No",
-                    otherButtonTitles: "Yes").show()
-                return false
-            }
     }
 
 }

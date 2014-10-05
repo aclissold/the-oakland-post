@@ -2,6 +2,9 @@
 //  Valid.swift
 //  The Oakland Post
 //
+//  User input validation to be called before registering a new user. Not meant to be comprehensive,
+//  just meant to catch common mistakes.
+//
 //  Created by Andrew Clissold on 8/27/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

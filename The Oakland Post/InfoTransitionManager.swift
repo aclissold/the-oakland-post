@@ -2,6 +2,8 @@
 //  InfoTransitionManager.swift
 //  The Oakland Post
 //
+//  Custom animations between Info and Bios.
+//
 //  Created by Andrew Clissold on 9/14/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //

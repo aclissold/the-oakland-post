@@ -2,6 +2,8 @@
 //  InfoViewController.swift
 //  The Oakland Post
 //
+//  Content view controller for About Us, Contact Us, and Staff.
+//
 //  Created by Andrew Clissold on 7/2/14.
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
@@ -101,8 +103,11 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
             return viewControllerAtIndex(index - 1)
     }
 
+    // Returns one of the content view controllers for About Us, Contact Us, or Staff,
+    // initializing it if necessary.
     func viewControllerAtIndex(index: Int) -> UIViewController! {
         if index < 0 || index >= pageTitles.count {
+            // Out of bounds.
             return nil
         }
 
