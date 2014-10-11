@@ -39,12 +39,18 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         homeViewController.tableView.reloadData()
     }
 
-    var enabled = false
+    private var firstCheck = false
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if !enabled {
-            enabled = true
-            enableButtonForPushers()
+
+        if !firstCheck {
+            firstCheck = true
+
+            // Avoid redundant API requests by checking PFUser first.
+            let canPush = PFUser.currentUser()["canPush"] as? Bool
+            if canPush != nil && canPush! {
+                enableButtonForPushers()
+            }
         }
     }
 
