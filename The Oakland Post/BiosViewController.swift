@@ -29,7 +29,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
 
     // MARK: iCarouselDelegate
 
-    let names = ["Kaylee Kean", "Oona Goodin-Smith", "Ali DeRees", "Jackson Gilbert", "Haley Kotwicki",
+    let names = ["Oona Goodin-Smith", "Kaylee Kean", "Ali DeRees", "Jackson Gilbert", "Haley Kotwicki",
         "Sean Miller", "Sélah Fischer", "Dani Cojocari", "Phillip Johnson", "Arkeem Thomas-Scott",
         "Jessie DiBattista", "Megan Carson", "Jake Alsko", "Kaleigh Jerzykowski", "Andrew Wernette",
         "Jasmine French", "Scott Davis", "Morgan Dean", "Nicolette Brikho", "Josh Soltman"]
