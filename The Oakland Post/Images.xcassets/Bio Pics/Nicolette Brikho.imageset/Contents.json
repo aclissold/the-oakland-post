@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Nicolette Brikho.pdf"
+      "scale" : "1x",
+      "filename" : "image19.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "image19@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "image19@3x.png"
     }
   ],
   "info" : {

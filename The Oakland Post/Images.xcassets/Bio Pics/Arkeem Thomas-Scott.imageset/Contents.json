@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Arkeem Thomas-Scott.pdf"
+      "scale" : "1x",
+      "filename" : "image09.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "image09@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "image09@3x.png"
     }
   ],
   "info" : {

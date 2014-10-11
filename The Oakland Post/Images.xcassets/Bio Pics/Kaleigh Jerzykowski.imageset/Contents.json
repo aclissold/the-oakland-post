@@ -2,7 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Kaleigh Jerzykowski.pdf"
+      "scale" : "1x",
+      "filename" : "image13.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x",
+      "filename" : "image13@2x.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x",
+      "filename" : "image13@3x.png"
     }
   ],
   "info" : {

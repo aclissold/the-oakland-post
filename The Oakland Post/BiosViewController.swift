@@ -100,8 +100,9 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         let imageView = UIImageView()
         mutableView.addSubview(imageView)
 
-        // This seems to still stutter the UI thread a little, possibly due to images being drawn lazily.
         onMain {
+            // Even though we're on the main queue at this point, dispatching to it will cause
+            // mutableView to be returned BEFORE loading the image file, reducing FPS lag.
             let image = UIImage(named: self.names[index])
             imageView.contentMode = .ScaleAspectFill
             imageView.frame = CGRect(x: 15, y: 15, width: 130, height: 130)
