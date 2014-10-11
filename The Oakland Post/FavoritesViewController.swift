@@ -10,6 +10,8 @@
 
 class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
 
+    private var didEnableButtonForPushers = false
+
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: "logOut")
     }
@@ -63,8 +65,8 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
                 for user in objects as [PFUser] {
                     if PFUser.currentUser() == nil { return }
                     if user.username == PFUser.currentUser().username {
-                        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-                        self.tableView.cellForRowAtIndexPath(indexPath)!.userInteractionEnabled = true
+                        self.didEnableButtonForPushers = true
+                        self.tableView.reloadData()
                     }
                 }
             })
@@ -125,7 +127,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(favoritesHeaderViewID, forIndexPath: indexPath) as FavoritesHeaderView
             cell.usernameLabel.text = PFUser.currentUser().username
-            cell.userInteractionEnabled = false
+            cell.userInteractionEnabled = didEnableButtonForPushers
             return cell
         }
 
