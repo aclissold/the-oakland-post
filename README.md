@@ -1,3 +1,5 @@
+Now available on the App Store! [Check it out](https://appsto.re/us/5geG3.i)!
+
 The Oakland Post App
 ====================
 
