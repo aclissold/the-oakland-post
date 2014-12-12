@@ -11,21 +11,21 @@
 private(set) var starredPostIdentifiers: [String] = [String]()
 
 var starredPosts: [AnyObject] = [AnyObject]() {
-didSet {
-    // Compute starredPostIdentifiers.
-    starredPostIdentifiers = [String]()
-    for object in starredPosts {
-        let ident = object["identifier"] as String
-        starredPostIdentifiers.append(ident)
-    }
+    didSet {
+        // Compute starredPostIdentifiers.
+        starredPostIdentifiers = [String]()
+        for object in starredPosts {
+            let ident = object["identifier"] as String
+            starredPostIdentifiers.append(ident)
+        }
 
-    // Sort self.
-    starredPosts.sort {
-        let first = ($0 as PFObject)["date"] as NSDate
-        let second = ($1 as PFObject)["date"] as NSDate
-        return first.compare(second) == NSComparisonResult.OrderedDescending
+        // Sort self.
+        starredPosts.sort {
+            let first = ($0 as PFObject)["date"] as NSDate
+            let second = ($1 as PFObject)["date"] as NSDate
+            return first.compare(second) == NSComparisonResult.OrderedDescending
+        }
     }
-}
 }
 
 func deleteStarredPostWithIdentifier(identifier: String) {

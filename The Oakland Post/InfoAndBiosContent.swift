@@ -120,7 +120,7 @@ private var aboutUs: NSAttributedString {
 
         (heading, "Employment"),
         (text, "Submit résumé, clips and cover letter to editor@oaklandpostonline.com and managing@oaklandpostonline.com.")
-     ]
+    ]
 
     return contentFromComponents(components)
 }
@@ -135,7 +135,7 @@ private var contactUs: NSAttributedString {
 
         (subheading, "Phone"),
         (text, "(248) 370-4268\n(248) 370-2537")
-     ]
+    ]
 
     return contentFromComponents(components)
 }
@@ -220,7 +220,7 @@ private var staff: NSAttributedString {
          "Don Ritenburgh\n" +
          "(248) 370-2533\n" +
          "ritenbur@oakland.edu")
-     ]
+    ]
 
     return contentFromComponents(components)
 }
@@ -284,7 +284,7 @@ private var fischer: NSAttributedString {
 private var cojocari: NSAttributedString {
     let components: [Component] = [
         (subheading, "Photographer, creative writing major"),
-            (text, "I started working for The Oakland Post in May 2014. Although I love taking photographs, my passion is for writing fiction and reading. One day, I hope to publish a novel that everyone will enjoy."),
+        (text, "I started working for The Oakland Post in May 2014. Although I love taking photographs, my passion is for writing fiction and reading. One day, I hope to publish a novel that everyone will enjoy."),
         (text, "Contact me at: dmcojoca@oakland.edu")
     ]
     return contentFromComponents(components)
@@ -293,7 +293,7 @@ private var cojocari: NSAttributedString {
 private var johnson: NSAttributedString {
     let components: [Component] = [
         (subheading, "Reporter, senior finance major"),
-            (text, "Since starting for The Oakland Post, Phillip has a new found appreciation for journalism and news media. Outside of writing Phillip enjoys kayaking, yoga and helping people."),
+        (text, "Since starting for The Oakland Post, Phillip has a new found appreciation for journalism and news media. Outside of writing Phillip enjoys kayaking, yoga and helping people."),
         (text, "Contact me at: pajohns4@oakland.edu")
     ]
     return contentFromComponents(components)

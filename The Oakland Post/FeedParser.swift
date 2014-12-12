@@ -19,9 +19,9 @@ class FeedParser {
     private var delegate: MWFeedParserDelegate
     private var parser: MWFeedParser!
     private var feedURL: NSURL {
-    get {
-        return NSURL(string: "\(baseURL)&o=\(offset)&l=\(length)&f=rss")
-    }
+        get {
+            return NSURL(string: "\(baseURL)&o=\(offset)&l=\(length)&f=rss")
+        }
     }
 
     init(baseURL: String, length: Int, delegate: MWFeedParserDelegate) {

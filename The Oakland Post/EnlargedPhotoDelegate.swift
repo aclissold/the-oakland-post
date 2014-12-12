@@ -25,15 +25,15 @@ class EnlargedPhotoDelegate: NSObject, UIScrollViewDelegate {
             if delegator.enlargedPhoto == nil || delegator.enlargedPhoto!.linkButton.alpha == 1 {
                 return
             }
-            
+
             UIView.animateWithDuration(0.15) {
                 self.delegator.enlargedPhoto!.linkButton.alpha = 1
             }
         }
-        
+
         func hideLinkButton() {
             if delegator.enlargedPhoto!.linkButton.alpha == 0 { return }
-            
+
             UIView.animateWithDuration(0.15) {
                 self.delegator.enlargedPhoto!.linkButton.alpha = 0
             }
@@ -45,5 +45,5 @@ class EnlargedPhotoDelegate: NSObject, UIScrollViewDelegate {
             hideLinkButton()
         }
     }
-    
+
 }
