@@ -17,9 +17,9 @@ class ThemedNavigationController: UINavigationController {
 
         navigationBar.barTintColor = oaklandPostBlue
         navigationBar.barStyle = .Black
-        navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: sansSerifName, size: 17)]
+        navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: sansSerifName, size: 17)!]
         UIBarButtonItem.appearance().setTitleTextAttributes(
-            [NSFontAttributeName: UIFont(name: sansSerifName, size: 17)],
+            [NSFontAttributeName: UIFont(name: sansSerifName, size: 17)!],
             forState: .Normal)
     }
 

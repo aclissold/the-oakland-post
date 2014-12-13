@@ -37,7 +37,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     func configureView() {
         if let string = self.URL {
-            let URL = NSURL(string: string)
+            let URL = NSURL(string: string)!
             let request = NSURLRequest(URL: URL)
             self.webView.loadRequest(request)
         }

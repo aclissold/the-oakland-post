@@ -39,7 +39,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
             cancelButtonTitle: "Cancel", otherButtonTitles: "Confirm")
         alertView.alertViewStyle = .PlainTextInput
         alertView.textFieldAtIndex(0)!.secureTextEntry = true
-        alertView.tag = AlertPurpose.PasswordConfirmation.toRaw()
+        alertView.tag = AlertPurpose.PasswordConfirmation.rawValue
         alertView.show()
     }
 
@@ -62,7 +62,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
         let alertView = UIAlertView(title: "Are you sure?",
             message: "\(textView.text)", delegate: self,
             cancelButtonTitle: "Cancel", otherButtonTitles: "Send")
-        alertView.tag = AlertPurpose.PushConfirmation.toRaw()
+        alertView.tag = AlertPurpose.PushConfirmation.rawValue
         alertView.show()
     }
 
@@ -82,7 +82,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     // MARK: UIAlertViewDelegate
 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-        let alertPurpose = AlertPurpose.fromRaw(alertView.tag)!
+        let alertPurpose = AlertPurpose(rawValue: alertView.tag)!
         switch alertPurpose {
         case .PushConfirmation:
             if buttonIndex == 1 {

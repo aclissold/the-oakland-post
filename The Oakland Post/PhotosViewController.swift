@@ -143,7 +143,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     func showPost(sender: UIButton) {
-        performSegueWithIdentifier("showPost", sender: NSNumber.numberWithInt(Int32(sender.tag)))
+        performSegueWithIdentifier("showPost", sender: NSNumber(int: Int32(sender.tag)))
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

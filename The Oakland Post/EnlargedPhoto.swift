@@ -20,7 +20,7 @@ class EnlargedPhoto: UIView {
     var index: Int!
     private let text = NSAttributedString(string: "View post ➔",
         attributes: [
-            NSFontAttributeName: UIFont(name: sansSerifName, size: 17),
+            NSFontAttributeName: UIFont(name: sansSerifName, size: 17)!,
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ])
 

@@ -27,9 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
         // Configure Parse.
         let file = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!
-        let keys = NSDictionary(contentsOfFile: file)
+        let keys = NSDictionary(contentsOfFile: file)!
         Parse.setApplicationId(keys["applicationId"] as String, clientKey: keys["clientKey"] as String)
-        PFACL.setDefaultACL(PFACL.ACL(), withAccessForCurrentUser: true)
+        PFACL.setDefaultACL(PFACL(), withAccessForCurrentUser: true)
 
         registerForRemoteNotifications(application)
 

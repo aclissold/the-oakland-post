@@ -52,24 +52,24 @@ private func lineSpacingParagraphStyle() -> NSMutableParagraphStyle {
 }
 
 private let heading = [
-    NSFontAttributeName: UIFont(name: boldSansSerifName, size: CGFloat(24.0)),
+    NSFontAttributeName: UIFont(name: boldSansSerifName, size: CGFloat(24.0))!,
     NSForegroundColorAttributeName: oaklandPostBlue,
     NSParagraphStyleAttributeName: centeredParagraphStyle()
 ]
 
 private let subheading = [
-    NSFontAttributeName: UIFont(name: boldSansSerifName, size: CGFloat(18.0))
+    NSFontAttributeName: UIFont(name: boldSansSerifName, size: CGFloat(18.0))!
 ]
 
 private let text = [
-    NSFontAttributeName: UIFont(name: serifName, size: CGFloat(16.0)),
+    NSFontAttributeName: UIFont(name: serifName, size: CGFloat(16.0))!,
     NSParagraphStyleAttributeName: lineSpacingParagraphStyle()
 ]
 
 // MARK: Helpers
 
 // An ordered array of (style, text) tuples.
-typealias Component = (attributes: [NSObject: AnyObject], string: String)
+typealias Component = (attributes: [NSString: AnyObject], string: String)
 
 private let extraSpace: Component = (text, "")
 

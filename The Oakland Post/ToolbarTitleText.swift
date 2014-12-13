@@ -11,7 +11,7 @@
 func toolbarTitleText(string: String) -> NSAttributedString {
     return NSAttributedString(string: string,
         attributes: [
-            NSFontAttributeName: UIFont(name: boldSansSerifName, size: 25),
+            NSFontAttributeName: UIFont(name: boldSansSerifName, size: 25)!,
             NSForegroundColorAttributeName: oaklandPostBlue
         ])
 }

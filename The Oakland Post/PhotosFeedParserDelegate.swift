@@ -27,9 +27,9 @@ class PhotosFeedParserDelegate: NSObject, MWFeedParserDelegate {
         if cache.diskImageExistsWithKey(URLString) {
             delegator.photos.append(cache.imageFromDiskCacheForKey(URLString))
         } else {
-            let URL = NSURL(string: URLString)
-            let data = NSData(contentsOfURL: URL)
-            let image = UIImage(data: data)
+            let URL = NSURL(string: URLString)!
+            let data = NSData(contentsOfURL: URL)!
+            let image = UIImage(data: data)!
             cache.storeImage(image, forKey: URLString)
             delegator.photos.append(image)
         }
