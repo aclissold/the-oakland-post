@@ -1,42 +1,38 @@
 PODS:
   - hpple (0.2.0)
-  - iCarousel (1.8)
+  - iCarousel (1.8.1)
   - MWFeedParser (1.0.1):
-    - MWFeedParser/FeedParser
-    - MWFeedParser/NSDate+InternetDateTime
-    - MWFeedParser/NSString+HTML
+    - MWFeedParser/FeedParser (= 1.0.1)
+    - MWFeedParser/NSDate+InternetDateTime (= 1.0.1)
+    - MWFeedParser/NSString+HTML (= 1.0.1)
   - MWFeedParser/FeedParser (1.0.1):
     - MWFeedParser/NSDate+InternetDateTime
     - MWFeedParser/NSString+HTML
   - MWFeedParser/NSDate+InternetDateTime (1.0.1)
   - MWFeedParser/NSString+HTML (1.0.1)
   - NHBalancedFlowLayout (0.2)
-  - SDWebImage (3.6):
-    - SDWebImage/Core
-  - SDWebImage/Core (3.6)
-  - SVProgressHUD (1.0)
+  - SDWebImage (3.7.1):
+    - SDWebImage/Core (= 3.7.1)
+  - SDWebImage/Core (3.7.1)
+  - SVProgressHUD (1.1.2)
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - hpple (~> 0.2.0)
-  - iCarousel (~> 1.8)
+  - iCarousel (~> 1.8.1)
   - MWFeedParser (~> 1.0.1)
   - NHBalancedFlowLayout (~> 0.2)
-  - SDWebImage (~> 3.6)
-  - SVProgressHUD (from `https://github.com/dkasper/SVProgressHUD`)
+  - SDWebImage (~> 3.7.1)
+  - SVProgressHUD (~> 1.1.2)
   - SVPullToRefresh (~> 0.4.1)
-
-EXTERNAL SOURCES:
-  SVProgressHUD:
-    :git: https://github.com/dkasper/SVProgressHUD
 
 SPEC CHECKSUMS:
   hpple: f4eb7c21a8db83ec264e5d614ec7509e10e5adec
-  iCarousel: cf77aea48dfcde9a0cd85569a1d8a9b6dd543bd7
+  iCarousel: 5acab560f10dc13da2440c89f35a0ad278b5147d
   MWFeedParser: 003cbf5398e99a7f2057fbe9583054fd1b84be72
   NHBalancedFlowLayout: be3c297b54f74c27607aaa04563270ecbd2d8e38
-  SDWebImage: c6989652c1cdf27cbdf3f56957e2030f825af5bc
-  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SVProgressHUD: da7a49e789af645d9279ffbca62318945a832438
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.35.0

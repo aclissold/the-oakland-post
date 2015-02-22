@@ -27,7 +27,7 @@ class PostCell: UITableViewCell {
                     let dict = item.enclosures[0] as NSDictionary
                     if (dict["type"] as String).hasPrefix("image") {
                         let URL = NSURL(string: dict["url"] as String)
-                        thumbnail.setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
+                        thumbnail.sd_setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
                     }
                 }
             } else {

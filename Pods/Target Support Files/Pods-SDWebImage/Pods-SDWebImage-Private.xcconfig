@@ -1,0 +1,5 @@
+#include "Pods-SDWebImage.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/SDWebImage" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/MWFeedParser" "${PODS_ROOT}/Headers/Public/NHBalancedFlowLayout" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/SVProgressHUD" "${PODS_ROOT}/Headers/Public/SVPullToRefresh" "${PODS_ROOT}/Headers/Public/hpple" "${PODS_ROOT}/Headers/Public/iCarousel"
+OTHER_LDFLAGS = ${PODS_SDWEBIMAGE_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}

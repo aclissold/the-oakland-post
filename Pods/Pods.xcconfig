@@ -1,5 +1,0 @@
-GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/MWFeedParser" "${PODS_ROOT}/Headers/NHBalancedFlowLayout" "${PODS_ROOT}/Headers/SDWebImage" "${PODS_ROOT}/Headers/SVProgressHUD" "${PODS_ROOT}/Headers/SVPullToRefresh" "${PODS_ROOT}/Headers/hpple" "${PODS_ROOT}/Headers/iCarousel" $(SDKROOT)/usr/include/libxml2
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/MWFeedParser" -isystem "${PODS_ROOT}/Headers/NHBalancedFlowLayout" -isystem "${PODS_ROOT}/Headers/SDWebImage" -isystem "${PODS_ROOT}/Headers/SVProgressHUD" -isystem "${PODS_ROOT}/Headers/SVPullToRefresh" -isystem "${PODS_ROOT}/Headers/hpple" -isystem "${PODS_ROOT}/Headers/iCarousel"
-OTHER_LDFLAGS = -ObjC -lxml2 -framework ImageIO -framework QuartzCore
-PODS_ROOT = ${SRCROOT}/Pods
