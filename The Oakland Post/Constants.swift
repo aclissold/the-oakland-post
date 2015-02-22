@@ -35,7 +35,7 @@ let photoCellID = "photoCell", favoritesHeaderViewID = "favoritesHeaderView"
 
 // Segue identifiers
 let readPostID = "readPost", showSectionID = "showSection", signUpID = "signUp"
-let logInID = "logIn", favoritesID = "favoritesViewController"
+let logInID = "logIn", favoritesID = "favoritesViewController", searchResultsID = "searchResultsViewController"
 let biosID1 = "bios1", biosID2 = "bios2", biosID3 = "bios3"
 
 // Restoration identifiers

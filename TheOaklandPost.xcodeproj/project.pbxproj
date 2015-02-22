@@ -69,6 +69,7 @@
 		22FCAA1E19C52804004612C2 /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */; };
 		22FE3C8019B4BAD200171C7D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */; };
 		B57FB9F71A9A917F003FB6A9 /* SearchBarThemer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57FB9F61A9A917F003FB6A9 /* SearchBarThemer.m */; };
+		B57FB9F91A9A9985003FB6A9 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57FB9F81A9A9985003FB6A9 /* SearchResultsViewController.swift */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		859AFBB753CC9F57422B0F32 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B57FB9F51A9A917F003FB6A9 /* SearchBarThemer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarThemer.h; sourceTree = "<group>"; };
 		B57FB9F61A9A917F003FB6A9 /* SearchBarThemer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarThemer.m; sourceTree = "<group>"; };
+		B57FB9F81A9A9985003FB6A9 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		F9A19CA68DDB08469032569E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -233,6 +235,7 @@
 		22471943195A62FE0054D887 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				B57FB9F81A9A9985003FB6A9 /* SearchResultsViewController.swift */,
 				227EFC4419723ECC00023C2A /* HomeViewController.swift */,
 				22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */,
 				22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */,
@@ -501,6 +504,7 @@
 				229B058519687EC70091120C /* PhotosViewController.swift in Sources */,
 				22464417194BE612000F5568 /* PostTableViewController.swift in Sources */,
 				224AA02219C607A500E0BC7B /* InfoTransitionManager.swift in Sources */,
+				B57FB9F91A9A9985003FB6A9 /* SearchResultsViewController.swift in Sources */,
 				22D02BA219D7DE8500923FC5 /* PushViewController.swift in Sources */,
 				22464438194BEE6C000F5568 /* Constants.swift in Sources */,
 				22EC39A319A9260C0058BD2E /* p.swift in Sources */,

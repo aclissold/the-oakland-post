@@ -78,6 +78,12 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
         navigationController!.pushViewController(favoritesViewController, animated: true)
     }
 
+    func showSearchResults(searchText: String) {
+        let searchResultsViewController = storyboard!.instantiateViewControllerWithIdentifier(searchResultsID) as SearchResultsViewController
+        searchResultsViewController.searchText = searchText
+        navigationController!.pushViewController(searchResultsViewController, animated: true)
+    }
+
     func unwindToHomeViewController() {
         // Called from InfoViewController.
         dismissViewControllerAnimated(true, completion: nil)
@@ -96,7 +102,7 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
-        p("Should search for \(searchBar.text)")
+        showSearchResults(searchBar.text)
     }
 
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
