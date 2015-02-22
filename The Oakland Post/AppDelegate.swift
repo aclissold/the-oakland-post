@@ -19,23 +19,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
         var tabBarController = window!.rootViewController as UITabBarController
         tabBarController.delegate = self
 
-        // Theme.
+        theme()
+        configureParse()
+        registerForRemoteNotifications(application)
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+
+        return true
+    }
+
+    func theme() {
         UITabBar.appearance().tintColor = oaklandPostBlue
         SVProgressHUD.setBackgroundColor(UIColor.clearColor())
         SVProgressHUD.setForegroundColor(oaklandPostBlue)
         SVProgressHUD.setRingThickness(5)
+        SearchBarThemer.theme()
+    }
 
-        // Configure Parse.
+    func configureParse() {
         let file = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist")!
         let keys = NSDictionary(contentsOfFile: file)!
         Parse.setApplicationId(keys["applicationId"] as String, clientKey: keys["clientKey"] as String)
         PFACL.setDefaultACL(PFACL(), withAccessForCurrentUser: true)
-
-        registerForRemoteNotifications(application)
-
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-
-        return true
     }
 
     func registerForRemoteNotifications(application: UIApplication!) {

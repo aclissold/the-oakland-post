@@ -16,13 +16,17 @@ import UIKit
 // since it's around for the lifetime of the app anyway.
 var homeViewController: HomeViewController!
 
-class HomeViewController: PostTableViewController, TopScrollable {
+class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrollable {
+
+    @IBOutlet weak var searchBar: UISearchBar!
 
     var canScrollToTop = false
     var logInBarButtonItem, favoritesBarButtonItem: UIBarButtonItem!
 
     override func viewDidLoad() {
         SVProgressHUD.show()
+
+        searchBar.delegate = self
 
         baseURL = "http://www.oaklandpostonline.com/search/?t=article"
 
@@ -77,6 +81,28 @@ class HomeViewController: PostTableViewController, TopScrollable {
     func unwindToHomeViewController() {
         // Called from InfoViewController.
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    // MARK: UISearchBarDelegate
+
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        p("Should search for \(searchBar.text)")
+    }
+
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.setShowsCancelButton(false, animated: true)
+        searchBar.text = ""
     }
 
     // MARK: TopScrollable

@@ -4,6 +4,8 @@
 
 #import <Parse/Parse.h>
 
+#import "SearchBarThemer.h"
+
 #import "iCarousel.h"
 #import "MWFeedParser.h"
 #import "NHBalancedFlowLayout.h"
