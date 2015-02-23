@@ -71,7 +71,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     override func viewWillLayoutSubviews() {
-        let window = UIApplication.sharedApplication().windows[0] as UIWindow
+        let window = UIApplication.sharedApplication().windows[0] as! UIWindow
         if let photo = enlargedPhoto {
             photo.frame = window.frame
         }
@@ -148,11 +148,11 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showPost" {
-            let themedNavigationController = (segue.destinationViewController as ThemedNavigationController)
-            let postViewController = (themedNavigationController.childViewControllers[0] as PostViewController)
+            let themedNavigationController = (segue.destinationViewController as! ThemedNavigationController)
+            let postViewController = (themedNavigationController.childViewControllers[0] as! PostViewController)
             postViewController.navigationItem.rightBarButtonItem =
                 UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismissModalPost")
-            postViewController.URL = URLs[(sender as NSNumber).integerValue]
+            postViewController.URL = URLs[(sender as! NSNumber).integerValue]
         }
     }
 
@@ -188,7 +188,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     override func collectionView(collectionView: UICollectionView,
         cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier(photoCellID,
-                forIndexPath: indexPath) as PhotoCell
+                forIndexPath: indexPath) as! PhotoCell
             if let highResPhoto = highResPhotos[indexPath.item] {
                 cell.imageButton.setBackgroundImage(highResPhoto, forState: .Normal)
             } else {

@@ -16,11 +16,11 @@ class EnlargedPhotoDelegate: NSObject, UIScrollViewDelegate {
         self.delegator = delegator
     }
 
-    func viewForZoomingInScrollView(scrollView: UIScrollView!) -> UIView! {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return delegator.enlargedPhoto?.imageView
     }
 
-    func scrollViewDidEndZooming(scrollView: UIScrollView!, withView view: UIView!, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
         func showLinkButton() {
             if delegator.enlargedPhoto == nil || delegator.enlargedPhoto!.linkButton.alpha == 1 {
                 return

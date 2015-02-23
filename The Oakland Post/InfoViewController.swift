@@ -66,7 +66,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         titleLabel.frame = topToolbar.frame
         titleLabel.frame.size.height -= 17
         titleLabel.frame.origin.y += 17
-        let text = toolbarTitleText((viewControllerAtIndex(0) as InfoContentViewController).titleText)
+        let text = toolbarTitleText((viewControllerAtIndex(0) as! InfoContentViewController).titleText)
         titleLabel.textAlignment = .Center
         titleLabel.attributedText = text
         topToolbar.addSubview(titleLabel)
@@ -81,7 +81,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier!) {
         case biosID1, biosID2, biosID3:
-            let toViewController = segue.destinationViewController as UIViewController
+            let toViewController = segue.destinationViewController as! UIViewController
             toViewController.modalPresentationStyle = .CurrentContext
             toViewController.transitioningDelegate = transitionManager
         default:
@@ -93,13 +93,13 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-            let index = (viewController as InfoContentViewController).pageIndex
+            let index = (viewController as! InfoContentViewController).pageIndex
             return viewControllerAtIndex(index + 1)
     }
 
     func pageViewController(pageViewController: UIPageViewController,
         viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-            let index = (viewController as InfoContentViewController).pageIndex
+            let index = (viewController as! InfoContentViewController).pageIndex
             return viewControllerAtIndex(index - 1)
     }
 
@@ -113,7 +113,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
 
         if viewControllers[index] == nil {
             let infoContentViewController = storyboard!.instantiateViewControllerWithIdentifier(
-                infoContentViewControllerID) as InfoContentViewController
+                infoContentViewControllerID) as! InfoContentViewController
             infoContentViewController.pageIndex = index
             infoContentViewController.titleText = pageTitles[index]
 
@@ -128,7 +128,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     }
 
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return (pageViewController.viewControllers[0] as InfoContentViewController).pageIndex;
+        return (pageViewController.viewControllers[0] as! InfoContentViewController).pageIndex;
     }
 
 }

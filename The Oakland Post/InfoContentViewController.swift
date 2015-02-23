@@ -51,7 +51,7 @@ class InfoContentViewController: UIViewController {
 
     // Animates changing the title label.
     func swapOutTitleLabel() {
-        let infoViewController = (parentViewController!.parentViewController as InfoViewController)
+        let infoViewController = (parentViewController!.parentViewController as! InfoViewController)
         let titleLabel = infoViewController.titleLabel
         if titleLabel != nil && titleLabel.text != titleText {
             let originalY = infoViewController.titleLabel.frame.origin.y

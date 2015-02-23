@@ -27,9 +27,9 @@ class SectionsViewController: BugFixTableViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == showSectionID {
-            let postTableViewController = segue.destinationViewController as PostTableViewController
+            let postTableViewController = segue.destinationViewController as! PostTableViewController
 
-            let section = (sender as SectionsCell).titleLabel.text!
+            let section = (sender as! SectionsCell).titleLabel.text!
             postTableViewController.baseURL = baseURLs[section]
             postTableViewController.navigationItem.title = section
         }
@@ -46,7 +46,7 @@ class SectionsViewController: BugFixTableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(sectionsCellID, forIndexPath: indexPath) as SectionsCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(sectionsCellID, forIndexPath: indexPath) as! SectionsCell
 
         cell.titleLabel.text = titles[indexPath.row]
 

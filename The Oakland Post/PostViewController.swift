@@ -53,7 +53,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         if activityViewController.respondsToSelector("popoverPresentationController") {
             // iOS 8+
             let presentationController = activityViewController.popoverPresentationController
-            let rect = (navigationItem.rightBarButtonItem!.valueForKey("view") as UIView).frame
+            let rect = (navigationItem.rightBarButtonItem!.valueForKey("view") as! UIView).frame
             let origin = CGPoint(x: rect.origin.x, y: rect.origin.y + 2 * rect.size.height)
 
             let view = UIView(frame: CGRect(origin: origin, size: rect.size))
@@ -70,11 +70,11 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         resetTabBarPosition(.Original) // see the Bar Hiding Animations MARK
     }
 
-    func webView(webView: UIWebView!, didFailLoadWithError error: NSError!) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         --loadCount
     }
 
-    func webViewDidStartLoad(webView: UIWebView!) {
+    func webViewDidStartLoad(webView: UIWebView) {
         if ++loadCount == 1 {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             SVProgressHUD.show()
@@ -83,7 +83,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     // MARK: UIWebViewDelegate
 
-    func webViewDidFinishLoad(webView: UIWebView!) {
+    func webViewDidFinishLoad(webView: UIWebView) {
         --loadCount
         if loadCount == 0 {
             finishedLoading = true
@@ -112,15 +112,15 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
 
     var delegate: LinkAlertDelegate!
 
-    func webView(webView: UIWebView!,
-        shouldStartLoadWithRequest request: NSURLRequest!,
+    func webView(webView: UIWebView,
+        shouldStartLoadWithRequest request: NSURLRequest,
         navigationType: UIWebViewNavigationType) -> Bool {
             if !finishedLoading {
                 return true
             } else {
-                delegate = LinkAlertDelegate(URL: request.URL)
+                delegate = LinkAlertDelegate(URL: request.URL!)
                 UIAlertView(title: "Open External Link?",
-                    message: request.URL.absoluteString!,
+                    message: request.URL!.absoluteString!,
                     delegate: delegate,
                     cancelButtonTitle: "No",
                     otherButtonTitles: "Yes").show()
@@ -156,7 +156,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         }
     }
 
-    func scrollViewDidScroll(scrollView: UIScrollView!) {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
         if didAppear { // ignore scrolling that occurs between willAppear and didAppear.
             updateTabBarPosition(scrollView)
         }
@@ -201,7 +201,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         }
     }
 
-    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate && minDelta < totalDelta && totalDelta < maxDelta {
             resetTabBarPosition(.Nearest)
         }
@@ -213,7 +213,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         wasDecelerating = decelerate
     }
 
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         if wasDecelerating && (minDelta < totalDelta && totalDelta < maxDelta) {
             if overage > 0 {
                 resetTabBarPosition(.Original)

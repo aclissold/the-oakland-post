@@ -21,7 +21,7 @@ class LinkAlertDelegate: NSObject, UIAlertViewDelegate {
         self.URL = URL
     }
 
-    func alertView(alertView: UIAlertView!, didDismissWithButtonIndex buttonIndex: Int) {
+    func alertView(alertView: UIAlertView, didDismissWithButtonIndex buttonIndex: Int) {
         if Button(rawValue: buttonIndex)! == .Yes {
             UIApplication.sharedApplication().openURL(URL)
         }

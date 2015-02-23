@@ -72,7 +72,7 @@ class EnlargedPhotoGestureRecognizers: NSObject {
 
     func removeEnlargedPhoto() {
         // Remove all gesture recognizers.
-        for recognizer in photo.gestureRecognizers as [UIGestureRecognizer] {
+        for recognizer in photo.gestureRecognizers as! [UIGestureRecognizer] {
             photo.removeGestureRecognizer(recognizer)
         }
 
