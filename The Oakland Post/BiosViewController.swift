@@ -57,15 +57,15 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         let leftPosition = -nameLabel.frame.size.width - padding
 
         func flyOut() {
-            nameLabel.frame.origin.x = forward ? rightPosition : leftPosition
-            descriptionTextView.alpha = 0
+            self.nameLabel.frame.origin.x = forward ? rightPosition : leftPosition
+            self.descriptionTextView.alpha = 0
         }
 
         func flyIn(finished: Bool) {
-            let name = names[index]
-            nameLabel.text = names[index]
-            nameLabel.frame.origin.x = forward ? leftPosition : rightPosition
-            descriptionTextView.attributedText = biosTexts[name]
+            let name = self.names[index]
+            self.nameLabel.text = self.names[index]
+            self.nameLabel.frame.origin.x = forward ? leftPosition : rightPosition
+            self.descriptionTextView.attributedText = biosTexts[name]
             UIView.animateWithDuration(duration) {
                 self.descriptionTextView.alpha = 1
             }
