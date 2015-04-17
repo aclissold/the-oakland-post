@@ -12,7 +12,7 @@ import UIKit
 
 class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, StarButtonDelegate {
 
-    override init(coder aDecoder: NSCoder) {
+    required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 
@@ -75,7 +75,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
             // Persist the new favorite.
             let object = PFObject(item: item)
             object.saveEventually()
-            starredPosts.append(object)
+            BugFixWrapper.starredPosts.append(object)
         } else {
             deleteStarredPostWithIdentifier(item.identifier)
         }
@@ -113,7 +113,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         if segue.identifier == readPostID {
             let indexPath = self.tableView.indexPathForSelectedRow()!
             let item = parsedItems[indexPath.row] as MWFeedItem
-            (segue.destinationViewController as PostViewController).URL = item.link
+            (segue.destinationViewController as! PostViewController).URL = item.link
         }
     }
 
@@ -128,10 +128,10 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as PostCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! PostCell
 
         cell.delegate = self
-        if indexPath.row <= countElements(parsedItems) {
+        if indexPath.row <= count(parsedItems) {
             cell.item = parsedItems[indexPath.row] as MWFeedItem
             cell.starButton.hidden = PFUser.currentUser() == nil
             if !cell.starButton.hidden {

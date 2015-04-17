@@ -75,7 +75,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
         let info = notification.userInfo!
-        let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
+        let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size.height
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         let navBarHeight = navigationController!.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
@@ -115,7 +115,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
     }
 
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let nextResponder = textField.superview?.viewWithTag(textField.tag + 1) {
             nextResponder.becomeFirstResponder()
         } else if textField === emailTextField {

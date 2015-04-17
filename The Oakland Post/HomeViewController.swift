@@ -54,7 +54,7 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
             if error != nil {
                 showAlertForErrorCode(error.code)
             } else {
-                starredPosts = objects
+                BugFixWrapper.starredPosts = objects
                 self.tableView.reloadData()
 
                 // Only for FavoritesViewController to reload its data if it was on-screen before starred posts were found.
@@ -74,12 +74,12 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
     }
 
     func showFavorites() {
-        let favoritesViewController = storyboard!.instantiateViewControllerWithIdentifier(favoritesID) as FavoritesViewController
+        let favoritesViewController = storyboard!.instantiateViewControllerWithIdentifier(favoritesID) as! FavoritesViewController
         navigationController!.pushViewController(favoritesViewController, animated: true)
     }
 
     func showSearchResults(searchText: String) {
-        let searchResultsViewController = storyboard!.instantiateViewControllerWithIdentifier(searchResultsID) as SearchResultsViewController
+        let searchResultsViewController = storyboard!.instantiateViewControllerWithIdentifier(searchResultsID) as! SearchResultsViewController
         searchResultsViewController.searchText = searchText
         navigationController!.pushViewController(searchResultsViewController, animated: true)
     }

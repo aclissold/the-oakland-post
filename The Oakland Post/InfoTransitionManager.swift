@@ -18,14 +18,14 @@ class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UI
         var fromView: UIView!
         var toView: UIView!
         if transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) is InfoViewController {
-            biosViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as BiosViewController
-            infoViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as InfoViewController
+            biosViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! BiosViewController
+            infoViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! InfoViewController
             fromView = infoViewController.view
             toView = biosViewController.view
         } else {
             presenting = false
-            biosViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as BiosViewController
-            infoViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as InfoViewController
+            biosViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey) as! BiosViewController
+            infoViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey) as! InfoViewController
             fromView = biosViewController.view
             toView = infoViewController.view
         }

@@ -15,7 +15,7 @@ class EnlargedPhoto: UIView {
 
     let imageView: UIImageView
     let scrollView: UIScrollView
-    let highResImageView: UIImageView!
+    var highResImageView: UIImageView!
     var linkButton: UIButton!
     var index: Int!
     private let text = NSAttributedString(string: "View post ➔",
@@ -25,7 +25,7 @@ class EnlargedPhoto: UIView {
         ])
 
     init(image: UIImage!, index: Int) {
-        let window = UIApplication.sharedApplication().windows[0] as UIWindow
+        let window = UIApplication.sharedApplication().windows[0] as! UIWindow
 
         imageView = UIImageView(image: image)
         scrollView = UIScrollView(frame: window.frame)

@@ -28,16 +28,16 @@ extension PFObject {
 extension MWFeedItem {
     convenience init(object: PFObject) {
         self.init()
-        identifier = object["identifier"] as String
-        title = object["title"] as String
-        link = object["link"] as String
-        date = object["date"] as NSDate
-        summary = object["summary"] as String
+        identifier = object["identifier"] as! String
+        title = object["title"] as! String
+        link = object["link"] as! String
+        date = object["date"] as! NSDate
+        summary = object["summary"] as! String
         if object["author"] != nil {
-            author = object["author"] as String
+            author = object["author"] as! String
         }
         if object["enclosures"] != nil {
-            enclosures = object["enclosures"] as NSArray
+            enclosures = object["enclosures"] as! [AnyObject]
         }
     }
 }

@@ -42,7 +42,7 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
         let dataString = NSString(data: HTMLData, encoding: NSUTF8StringEncoding)
         let hpple = TFHpple(HTMLData: HTMLData)
         let XPathQuery = "//meta[@property='og:image']"
-        let elements = hpple.searchWithXPathQuery(XPathQuery) as [TFHppleElement]
+        let elements = hpple.searchWithXPathQuery(XPathQuery) as! [TFHppleElement]
 
         if elements.count == 0 {
             cancelDownloadingHighResImage()

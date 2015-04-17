@@ -57,15 +57,15 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         let leftPosition = -nameLabel.frame.size.width - padding
 
         func flyOut() {
-            nameLabel.frame.origin.x = forward ? rightPosition : leftPosition
-            descriptionTextView.alpha = 0
+            self.nameLabel.frame.origin.x = forward ? rightPosition : leftPosition
+            self.descriptionTextView.alpha = 0
         }
 
         func flyIn(finished: Bool) {
-            let name = names[index]
-            nameLabel.text = names[index]
-            nameLabel.frame.origin.x = forward ? leftPosition : rightPosition
-            descriptionTextView.attributedText = biosTexts[name]
+            let name = self.names[index]
+            self.nameLabel.text = self.names[index]
+            self.nameLabel.frame.origin.x = forward ? leftPosition : rightPosition
+            self.descriptionTextView.attributedText = biosTexts[name]
             UIView.animateWithDuration(duration) {
                 self.descriptionTextView.alpha = 1
             }
@@ -94,7 +94,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
             mutableView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 160))
             mutableView.backgroundColor = UIColor(white: 0.25, alpha: 1)
         } else {
-            (mutableView.subviews.first as UIView).removeFromSuperview()
+            (mutableView.subviews.first as! UIView).removeFromSuperview()
         }
 
         let imageView = UIImageView()
@@ -118,7 +118,7 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier!) {
         case biosID1, biosID2, biosID3:
-            let toViewController = segue.destinationViewController as InfoViewController
+            let toViewController = segue.destinationViewController as! InfoViewController
             toViewController.modalPresentationStyle = .CurrentContext
             toViewController.transitioningDelegate = toViewController.transitionManager
         default:

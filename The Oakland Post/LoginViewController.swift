@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
             return
         }
         let info = notification.userInfo!
-        let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as NSValue).CGRectValue().size.height
+        let keyboardHeight = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue().size.height
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
         let navBarHeight = navigationController!.navigationBar.frame.size.height
         let top = statusBarHeight + navBarHeight
@@ -105,7 +105,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         }
     }
 
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         if let nextResponder = textField.superview?.viewWithTag(textField.tag + 1) {
             nextResponder.becomeFirstResponder()
         } else if textField === passwordTextField {
@@ -177,16 +177,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     }
 
     func configureFavoritesButton() {
-        let tabBarController = presentingViewController as UITabBarController
-        let navigationController = tabBarController.viewControllers![0] as UINavigationController
-        let homeViewController = navigationController.childViewControllers[0] as HomeViewController
+        let tabBarController = presentingViewController as! UITabBarController
+        let navigationController = tabBarController.viewControllers![0] as! UINavigationController
+        let homeViewController = navigationController.childViewControllers[0] as! HomeViewController
         homeViewController.navigationItem.rightBarButtonItem = homeViewController.favoritesBarButtonItem
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == signUpID {
             if notification != nil && UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-                let signUpViewController = segue.destinationViewController as SignUpViewController
+                let signUpViewController = segue.destinationViewController as! SignUpViewController
                 signUpViewController.keyboardWasPresent = true
             }
         }

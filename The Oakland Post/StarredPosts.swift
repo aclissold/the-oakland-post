@@ -10,20 +10,22 @@
 
 private(set) var starredPostIdentifiers: [String] = [String]()
 
-var starredPosts: [AnyObject] = [AnyObject]() {
-    didSet {
-        // Compute starredPostIdentifiers.
-        starredPostIdentifiers = [String]()
-        for object in starredPosts {
-            let ident = object["identifier"] as String
-            starredPostIdentifiers.append(ident)
-        }
+class BugFixWrapper { // vars defined globally segfault the compiler in Xcode 6.3 Beta 1
+    static var starredPosts: [AnyObject] = [AnyObject]() {
+        didSet {
+            // Compute starredPostIdentifiers.
+            starredPostIdentifiers = [String]()
+            for object in starredPosts {
+                let ident = object["identifier"] as! String
+                starredPostIdentifiers.append(ident)
+            }
 
-        // Sort self.
-        starredPosts.sort {
-            let first = ($0 as PFObject)["date"] as NSDate
-            let second = ($1 as PFObject)["date"] as NSDate
-            return first.compare(second) == NSComparisonResult.OrderedDescending
+            // Sort self.
+            starredPosts.sort {
+                let first = ($0 as! PFObject)["date"] as! NSDate
+                let second = ($1 as! PFObject)["date"] as! NSDate
+                return first.compare(second) == NSComparisonResult.OrderedDescending
+            }
         }
     }
 }
@@ -46,9 +48,9 @@ func deleteStarredPostWithIdentifier(identifier: String) {
 }
 
 private func removeFromArray(identifier: String) {
-    for (index, object) in enumerate(starredPosts as [PFObject]) {
-        if object["identifier"] as String == identifier {
-            starredPosts.removeAtIndex(index)
+    for (index, object) in enumerate(BugFixWrapper.starredPosts as! [PFObject]) {
+        if object["identifier"] as! String == identifier {
+            BugFixWrapper.starredPosts.removeAtIndex(index)
             break
         }
     }

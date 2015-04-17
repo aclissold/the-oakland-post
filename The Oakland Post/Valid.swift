@@ -43,7 +43,7 @@ private extension NSString {
 
 private func validEmail(email: String) -> Bool {
     let regex = "[^\\s]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*"
-    let predicate = NSPredicate(format: "SELF MATCHES %@", regex)!
+    let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
     return predicate.evaluateWithObject(email)
 }
 
