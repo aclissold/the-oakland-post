@@ -38,11 +38,11 @@ func deleteStarredPostWithIdentifier(identifier: String) {
         query.whereKey("identifier", equalTo: identifier)
         query.findObjectsInBackgroundWithBlock { (objects, error) in
             if error != nil {
-                showAlertForErrorCode(error.code)
+                showAlertForErrorCode(error!.code)
                 return
             }
 
-            objects.first?.deleteEventually()
+            objects!.first?.deleteEventually()
         }
     }
 }

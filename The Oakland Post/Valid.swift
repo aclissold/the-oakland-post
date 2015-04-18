@@ -10,22 +10,22 @@
 //
 
 func valid(user: PFUser, confirmPassword: String) -> Bool {
-    if (user.username as NSString).length < 6 {
+    if count(user.username!) < 6 {
         return error("Your username must be at least six characters. Please choose a new one and try again.")
     }
-    if user.username.containsWhitespace {
+    if user.username!.containsWhitespace {
         return error("Usernames cannot contain spaces. Please choose a new one and try again.")
     }
-    if (user.password as NSString).length < 6 {
+    if count(user.password!) < 6 {
         return error("Your password must be at least six characters. Please choose a new one and try again.")
     }
-    if user.password.containsWhitespace {
+    if user.password!.containsWhitespace {
         return error("Passwords cannot contain spaces. Please choose a new one and try again.")
     }
-    if user.password != confirmPassword {
+    if user.password! != confirmPassword {
         return error("Your passwords must match. Please retype them and try again.")
     }
-    if !validEmail(user.email) {
+    if !validEmail(user.email!) {
         return error("Your email address appears to be invalid. Please correct any typos and try again.")
     }
 

@@ -52,9 +52,9 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
         query.limit = maxQueryLimit
         query.findObjectsInBackgroundWithBlock { (objects, error) in
             if error != nil {
-                showAlertForErrorCode(error.code)
+                showAlertForErrorCode(error!.code)
             } else {
-                BugFixWrapper.starredPosts = objects
+                BugFixWrapper.starredPosts = objects!
                 self.tableView.reloadData()
 
                 // Only for FavoritesViewController to reload its data if it was on-screen before starred posts were found.

@@ -131,7 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
                 homeViewController.tableView.reloadData()
                 homeViewController.findStarredPosts()
             } else {
-                showAlertForErrorCode(error.code)
+                showAlertForErrorCode(error!.code)
                 self.logInButton.enabled = true
                 self.navigationItem.rightBarButtonItem!.enabled = true
                 self.logInActivityIndicator.stopAnimating()
@@ -162,7 +162,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         if buttonIndex == 1 {
             let email = alertView.textFieldAtIndex(0)!.text
             PFUser.requestPasswordResetForEmailInBackground(email) { (success, error) in
-                if !success { showAlertForErrorCode(error.code) }
+                if !success { showAlertForErrorCode(error!.code) }
             }
         }
     }

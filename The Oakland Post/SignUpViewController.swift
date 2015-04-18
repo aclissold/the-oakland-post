@@ -145,7 +145,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         homeViewController.favoritesBarButtonItem
                     self.dismiss()
                 } else {
-                    showAlertForErrorCode(error.code)
+                    showAlertForErrorCode(error!.code)
                     self.signUpActivityIndicator.stopAnimating()
                     self.signUpButton.enabled = true
                 }

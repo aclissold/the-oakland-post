@@ -47,7 +47,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
             firstCheck = true
 
             // Avoid redundant API requests by checking PFUser first.
-            let canPush = PFUser.currentUser()["canPush"] as? Bool
+            let canPush = PFUser.currentUser()?["canPush"] as? Bool
             if canPush != nil && canPush! {
                 enableButtonForPushers()
             }
@@ -58,19 +58,19 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
         // Not a security feature--just meant to keep otherwise dead UI disabled.
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         self.tableView.cellForRowAtIndexPath(indexPath)!.userInteractionEnabled = false
-        let roleQuery = PFRole.query()
+        let roleQuery = PFRole.query()!
         roleQuery.whereKey("name", equalTo: "pusher")
 
         roleQuery.getFirstObjectInBackgroundWithBlock { (object, error) in
             if object == nil { return }
             let role = object as! PFRole
-            let userQuery = role.users.query()
+            let userQuery = role.users.query()!
 
             userQuery.findObjectsInBackgroundWithBlock({ (objects, error) in
                 if objects == nil { return }
                 for user in objects as! [PFUser] {
                     if PFUser.currentUser() == nil { return }
-                    if user.username == PFUser.currentUser().username {
+                    if user.username == PFUser.currentUser()!.username {
                         self.didEnableButtonForPushers = true
                         self.tableView.reloadData()
                     }
@@ -132,7 +132,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier(favoritesHeaderViewID, forIndexPath: indexPath) as! FavoritesHeaderView
-            cell.usernameLabel.text = PFUser.currentUser().username
+            cell.usernameLabel.text = PFUser.currentUser()!.username
             cell.userInteractionEnabled = didEnableButtonForPushers
             return cell
         }

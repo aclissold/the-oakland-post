@@ -44,8 +44,8 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     }
 
     func checkPassword(password: String) {
-        let currentUser = PFUser.currentUser()
-        PFUser.logInWithUsernameInBackground(currentUser.username, password: password) { (user, error) in
+        let currentUser = PFUser.currentUser()!
+        PFUser.logInWithUsernameInBackground(currentUser.username!, password: password) { (user, error) in
             if error != nil {
                 self.confirmPassword("Confirmation failed. Please try again.")
             } else {
@@ -71,7 +71,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
         PFCloud.callFunctionInBackground("push", withParameters: ["message": textView.text]) { (result, error) in
             if error != nil {
                 self.navigationItem.rightBarButtonItem!.enabled = true
-                showAlertForErrorCode(error.code)
+                showAlertForErrorCode(error!.code)
             } else {
                 self.textView.resignFirstResponder()
                 self.navigationController!.popViewControllerAnimated(true)
