@@ -419,7 +419,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Andrew Clissold";
 				TargetAttributes = {
 					2246440E194BE612000F5568 = {
@@ -577,6 +577,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -648,6 +649,7 @@
 				INFOPLIST_FILE = "The Oakland Post/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oaklandpostonline.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = TheOaklandPost;
 				SWIFT_OBJC_BRIDGING_HEADER = "The Oakland Post/The Oakland Post-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -669,6 +671,7 @@
 				INFOPLIST_FILE = "The Oakland Post/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oaklandpostonline.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = TheOaklandPost;
 				SWIFT_OBJC_BRIDGING_HEADER = "The Oakland Post/The Oakland Post-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
