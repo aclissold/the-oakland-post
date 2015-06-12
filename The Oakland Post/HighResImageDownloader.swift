@@ -12,7 +12,7 @@ private var downloadOperation: SDWebImageOperation?
 private var canceled = false
 
 func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: EnlargedPhoto,
-    #sender: UIButton, #finished: (UIImage, Int) -> ()) {
+    sender: UIButton, finished: (UIImage, Int) -> ()) {
 
     canceled = false // reset
 
@@ -39,7 +39,6 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
     onDefault {
         // Find the image URL.
         let HTMLData = NSData(contentsOfURL: NSURL(string: URL)!)!
-        let dataString = NSString(data: HTMLData, encoding: NSUTF8StringEncoding)
         let hpple = TFHpple(HTMLData: HTMLData)
         let XPathQuery = "//meta[@property='og:image']"
         let elements = hpple.searchWithXPathQuery(XPathQuery) as! [TFHppleElement]

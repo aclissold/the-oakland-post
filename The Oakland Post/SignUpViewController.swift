@@ -130,13 +130,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         signUpButton.enabled = false
         signUpActivityIndicator.startAnimating()
 
-        var user = PFUser()
+        let user = PFUser()
         user.username = usernameTextField.text
         user.password = passwordTextField.text
         user.email = emailTextField.text
-        let confirmPassword = confirmPasswordTextField.text
+        let confirmPassword = confirmPasswordTextField.text ?? ""
 
-        if valid(user, confirmPassword) {
+        if valid(user, confirmPassword: confirmPassword) {
             user.signUpInBackgroundWithBlock {
                 (succeeded, error) in
                 if succeeded {

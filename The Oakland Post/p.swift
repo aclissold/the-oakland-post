@@ -6,6 +6,6 @@
 //  Copyright (c) 2014 Andrew Clissold. All rights reserved.
 //
 
-func p<T>(object: T) {
-    println(object)
+func p<T>(value: T) {
+    print(value)
 }

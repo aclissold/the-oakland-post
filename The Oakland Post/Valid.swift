@@ -10,13 +10,13 @@
 //
 
 func valid(user: PFUser, confirmPassword: String) -> Bool {
-    if count(user.username!) < 6 {
+    if (user.username!).characters.count < 6 {
         return error("Your username must be at least six characters. Please choose a new one and try again.")
     }
     if user.username!.containsWhitespace {
         return error("Usernames cannot contain spaces. Please choose a new one and try again.")
     }
-    if count(user.password!) < 6 {
+    if (user.password!).characters.count < 6 {
         return error("Your password must be at least six characters. Please choose a new one and try again.")
     }
     if user.password!.containsWhitespace {

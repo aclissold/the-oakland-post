@@ -34,7 +34,7 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
         favoritesBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites"), style: .Bordered, target: self, action: "showFavorites")
 
         homeViewController = self
-        if let user = PFUser.currentUser() {
+        if PFUser.currentUser() != nil {
             navigationItem.rightBarButtonItem = favoritesBarButtonItem
         } else {
             navigationItem.rightBarButtonItem = logInBarButtonItem
@@ -102,7 +102,7 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchBar.setShowsCancelButton(false, animated: true)
-        showSearchResults(searchBar.text)
+        showSearchResults(searchBar.text ?? "")
     }
 
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {

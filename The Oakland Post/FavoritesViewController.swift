@@ -97,10 +97,10 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
 
     func deleteTableViewRowWithItem(item: MWFeedItem) {
         var indexPath: NSIndexPath!
-        loop: for cell in tableView.visibleCells() {
+        loop: for cell in tableView.visibleCells {
             if let postCell = cell as? PostCell {
                 if postCell.item.identifier == item.identifier {
-                    indexPath = tableView.indexPathForCell(cell as! UITableViewCell)!
+                    indexPath = tableView.indexPathForCell(cell as UITableViewCell)!
                     break loop
                 }
             }

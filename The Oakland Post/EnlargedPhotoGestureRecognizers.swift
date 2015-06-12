@@ -72,8 +72,10 @@ class EnlargedPhotoGestureRecognizers: NSObject {
 
     func removeEnlargedPhoto() {
         // Remove all gesture recognizers.
-        for recognizer in photo.gestureRecognizers as! [UIGestureRecognizer] {
-            photo.removeGestureRecognizer(recognizer)
+        if let recognizers = photo.gestureRecognizers {
+            for recognizer in recognizers {
+                photo.removeGestureRecognizer(recognizer)
+            }
         }
 
         // Find the photo cell.
