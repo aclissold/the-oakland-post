@@ -25,7 +25,7 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
     // Download finished callback.
     // This is a let closure instead of a function because local functions cannot reference
     // other local functions. Specifically, finished() can only be called this way.
-    let downloadFinished: (UIImage?, NSData?, NSError?, Bool) -> Void = { (image, data, error, _) in
+    let downloadFinished: (UIImage!, NSData!, NSError!, ObjCBool) -> Void = { (image, data, error, _) in
         onMain {
             SVProgressHUD.dismiss()
             enlargedPhoto.imageView.image = image

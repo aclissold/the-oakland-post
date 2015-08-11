@@ -12,10 +12,6 @@ import UIKit
 
 class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, StarButtonDelegate {
 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
     var baseURL: String!
     var feedParser: FeedParser!
     var parsedItems = [MWFeedItem]()

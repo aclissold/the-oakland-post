@@ -11,8 +11,6 @@
 
 class EnlargedPhoto: UIView {
 
-    required init(coder aDecoder: NSCoder) { fatalError("wrong initializer") }
-
     let imageView: UIImageView
     let scrollView: UIScrollView
     var highResImageView: UIImageView!
@@ -54,6 +52,10 @@ class EnlargedPhoto: UIView {
         self.index = index
         addSubview(scrollView)
         addSubview(linkButton)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
