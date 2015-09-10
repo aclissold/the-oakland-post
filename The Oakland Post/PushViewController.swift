@@ -94,7 +94,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
             if buttonIndex == 0 {
                 navigationController!.popViewControllerAnimated(true)
             } else if buttonIndex == 1 {
-                checkPassword(passwordTextField.text)
+                checkPassword(passwordTextField.text ?? "")
             }
         }
     }

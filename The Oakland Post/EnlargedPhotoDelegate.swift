@@ -20,7 +20,7 @@ class EnlargedPhotoDelegate: NSObject, UIScrollViewDelegate {
         return delegator.enlargedPhoto?.imageView
     }
 
-    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView!, atScale scale: CGFloat) {
+    func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         func showLinkButton() {
             if self.delegator.enlargedPhoto == nil || self.delegator.enlargedPhoto!.linkButton.alpha == 1 {
                 return

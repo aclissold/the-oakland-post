@@ -29,7 +29,7 @@ class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UI
             fromView = biosViewController.view
             toView = infoViewController.view
         }
-        let containerView = transitionContext.containerView()
+        let containerView = transitionContext.containerView()!
         let infoToolbar = biosViewController.infoToolbar
         let biosToolbar = infoViewController.biosToolbar
         var toolbarHeightConstraint: NSLayoutConstraint!
@@ -86,7 +86,7 @@ class InfoTransitionManager: NSObject, UIViewControllerAnimatedTransitioning, UI
         }
     }
 
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         return 0.5
     }
 

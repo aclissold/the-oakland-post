@@ -12,10 +12,6 @@ import UIKit
 
 class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, StarButtonDelegate {
 
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
     var baseURL: String!
     var feedParser: FeedParser!
     var parsedItems = [MWFeedItem]()
@@ -111,7 +107,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == readPostID {
-            let indexPath = self.tableView.indexPathForSelectedRow()!
+            let indexPath = self.tableView.indexPathForSelectedRow!
             let item = parsedItems[indexPath.row] as MWFeedItem
             (segue.destinationViewController as! PostViewController).URL = item.link
         }
@@ -131,11 +127,11 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
         let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! PostCell
 
         cell.delegate = self
-        if indexPath.row <= count(parsedItems) {
+        if indexPath.row <= parsedItems.count {
             cell.item = parsedItems[indexPath.row] as MWFeedItem
             cell.starButton.hidden = PFUser.currentUser() == nil
             if !cell.starButton.hidden {
-                cell.starButton.selected = contains(starredPostIdentifiers, cell.item.identifier)
+                cell.starButton.selected = starredPostIdentifiers.contains(cell.item.identifier)
             }
         }
 

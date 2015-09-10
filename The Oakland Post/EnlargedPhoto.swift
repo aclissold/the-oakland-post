@@ -11,8 +11,6 @@
 
 class EnlargedPhoto: UIView {
 
-    required init(coder aDecoder: NSCoder) { fatalError("wrong initializer") }
-
     let imageView: UIImageView
     let scrollView: UIScrollView
     var highResImageView: UIImageView!
@@ -25,7 +23,7 @@ class EnlargedPhoto: UIView {
         ])
 
     init(image: UIImage!, index: Int) {
-        let window = UIApplication.sharedApplication().windows[0] as! UIWindow
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
 
         imageView = UIImageView(image: image)
         scrollView = UIScrollView(frame: window.frame)
@@ -54,6 +52,10 @@ class EnlargedPhoto: UIView {
         self.index = index
         addSubview(scrollView)
         addSubview(linkButton)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

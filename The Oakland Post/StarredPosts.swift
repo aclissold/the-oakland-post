@@ -21,7 +21,7 @@ class BugFixWrapper { // vars defined globally segfault the compiler in Xcode 6.
             }
 
             // Sort self.
-            starredPosts.sort {
+            starredPosts.sortInPlace {
                 let first = ($0 as! PFObject)["date"] as! NSDate
                 let second = ($1 as! PFObject)["date"] as! NSDate
                 return first.compare(second) == NSComparisonResult.OrderedDescending
@@ -48,7 +48,7 @@ func deleteStarredPostWithIdentifier(identifier: String) {
 }
 
 private func removeFromArray(identifier: String) {
-    for (index, object) in enumerate(BugFixWrapper.starredPosts as! [PFObject]) {
+    for (index, object) in (BugFixWrapper.starredPosts as! [PFObject]).enumerate() {
         if object["identifier"] as! String == identifier {
             BugFixWrapper.starredPosts.removeAtIndex(index)
             break

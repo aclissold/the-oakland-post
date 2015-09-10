@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     var window: UIWindow?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        var tabBarController = window!.rootViewController as! UITabBarController
+        let tabBarController = window!.rootViewController as! UITabBarController
         tabBarController.delegate = self
 
         theme()
@@ -43,14 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
     }
 
     func registerForRemoteNotifications(application: UIApplication!) {
-        if application.respondsToSelector("registerUserNotificationSettings:") {
-            // iOS 8+
-            let userNotificationTypes = UIUserNotificationType.Alert | .Sound
+        if #available(iOS 8.0, *) {
+            let userNotificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, .Sound]
             let notificationSettings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
             application.registerUserNotificationSettings(notificationSettings)
             application.registerForRemoteNotifications()
         } else {
-            application.registerForRemoteNotificationTypes(.Alert | .Sound)
+            application.registerForRemoteNotificationTypes([.Alert, .Sound])
         }
     }
 
@@ -69,7 +68,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UITabBarControllerDelegat
 
     // Scroll-to-top for child view controllers of the tab bar controller.
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        let childViewController = viewController.childViewControllers[0] as! UIViewController
+        let childViewController = viewController.childViewControllers[0] as UIViewController
 
         if let topScrollable = childViewController as? TopScrollable {
             if topScrollable.canScrollToTop {

@@ -13,7 +13,7 @@
 import UIKit
 
 class PhotosViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout,
-    NHBalancedFlowLayoutDelegate, UICollectionViewDataSource, TopScrollable {
+    NHBalancedFlowLayoutDelegate, TopScrollable {
 
     let baseURL = "http://www.oaklandpostonline.com/search/?t=article"
 
@@ -71,7 +71,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
     }
 
     override func viewWillLayoutSubviews() {
-        let window = UIApplication.sharedApplication().windows[0] as! UIWindow
+        let window = UIApplication.sharedApplication().windows[0] as UIWindow
         if let photo = enlargedPhoto {
             photo.frame = window.frame
         }
@@ -129,7 +129,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
 
         UIView.animateWithDuration(0.15,
             delay: 0,
-            options: nil,
+            options: [],
             animations: {
                 self.enlargedPhoto!.alpha = 1
                 self.navigationController!.navigationBar.frame.origin.y -=

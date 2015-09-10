@@ -69,12 +69,12 @@ private let text = [
 // MARK: Helpers
 
 // An ordered array of (style, text) tuples.
-typealias Component = (attributes: [NSString: AnyObject], string: String)
+typealias Component = (attributes: [String: AnyObject]?, string: String)
 
 private let extraSpace: Component = (text, "")
 
 private func contentFromComponents(components: [Component]) -> NSAttributedString {
-    var attributedString = NSMutableAttributedString()
+    let attributedString = NSMutableAttributedString()
 
     for component in components {
         let substring = NSMutableAttributedString(string: "\(component.string)\n\n", attributes: component.attributes)

@@ -50,15 +50,13 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         activityViewController.excludedActivityTypes = [UIActivityTypeAirDrop, UIActivityTypeCopyToPasteboard]
         presentViewController(activityViewController, animated: true, completion: nil)
 
-        if activityViewController.respondsToSelector("popoverPresentationController") {
-            // iOS 8+
-            let presentationController = activityViewController.popoverPresentationController
-            let rect = (navigationItem.rightBarButtonItem!.valueForKey("view") as! UIView).frame
-            let origin = CGPoint(x: rect.origin.x, y: rect.origin.y + 2 * rect.size.height)
+        guard #available(iOS 8.0, *) else { return }
+        let presentationController = activityViewController.popoverPresentationController
+        let rect = (navigationItem.rightBarButtonItem!.valueForKey("view") as! UIView).frame
+        let origin = CGPoint(x: rect.origin.x, y: rect.origin.y + 2 * rect.size.height)
 
-            let view = UIView(frame: CGRect(origin: origin, size: rect.size))
-            presentationController?.sourceView = view
-        }
+        let view = UIView(frame: CGRect(origin: origin, size: rect.size))
+        presentationController?.sourceView = view
     }
 
     // MARK: SVProgressHUD management
@@ -70,7 +68,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
         resetTabBarPosition(.Original) // see the Bar Hiding Animations MARK
     }
 
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
         --loadCount
     }
 
@@ -120,7 +118,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
             } else {
                 delegate = LinkAlertDelegate(URL: request.URL!)
                 UIAlertView(title: "Open External Link?",
-                    message: request.URL!.absoluteString!,
+                    message: request.URL!.absoluteString,
                     delegate: delegate,
                     cancelButtonTitle: "No",
                     otherButtonTitles: "Yes").show()

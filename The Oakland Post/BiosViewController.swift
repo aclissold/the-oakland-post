@@ -93,8 +93,8 @@ class BiosViewController: UIViewController, iCarouselDataSource, iCarouselDelega
         if mutableView == nil {
             mutableView = UIView(frame: CGRect(x: 0, y: 0, width: 160, height: 160))
             mutableView.backgroundColor = UIColor(white: 0.25, alpha: 1)
-        } else {
-            (mutableView.subviews.first as! UIView).removeFromSuperview()
+        } else if let first = mutableView.subviews.first {
+            first.removeFromSuperview()
         }
 
         let imageView = UIImageView()

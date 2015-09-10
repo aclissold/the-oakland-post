@@ -81,7 +81,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier!) {
         case biosID1, biosID2, biosID3:
-            let toViewController = segue.destinationViewController as! UIViewController
+            let toViewController = segue.destinationViewController as UIViewController
             toViewController.modalPresentationStyle = .CurrentContext
             toViewController.transitioningDelegate = transitionManager
         default:
@@ -128,7 +128,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
     }
 
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return (pageViewController.viewControllers[0] as! InfoContentViewController).pageIndex;
+        return (pageViewController.viewControllers!.first as! InfoContentViewController).pageIndex
     }
 
 }

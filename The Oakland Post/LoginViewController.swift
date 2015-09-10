@@ -122,8 +122,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         logInActivityIndicator.startAnimating()
         findAndResignFirstResponder()
 
-        let username = usernameTextField.text
-        let password = passwordTextField.text
+        let username = usernameTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
         PFUser.logInWithUsernameInBackground(username, password: password) {
             (user, error) in
             if user != nil {
@@ -160,7 +160,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
 
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if buttonIndex == 1 {
-            let email = alertView.textFieldAtIndex(0)!.text
+            let email = alertView.textFieldAtIndex(0)!.text ?? ""
             PFUser.requestPasswordResetForEmailInBackground(email) { (success, error) in
                 if !success { showAlertForErrorCode(error!.code) }
             }
