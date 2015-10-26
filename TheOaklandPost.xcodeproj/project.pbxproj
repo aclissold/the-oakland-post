@@ -54,7 +54,6 @@
 		22EC39BD19A96A0A0058BD2E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39BC19A96A0A0058BD2E /* CFNetwork.framework */; };
 		22EC39BF19A96A0E0058BD2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39BE19A96A0E0058BD2E /* CoreGraphics.framework */; };
 		22EC39C119A96A130058BD2E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39C019A96A130058BD2E /* CoreLocation.framework */; };
-		22EC39C319A96A170058BD2E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39C219A96A170058BD2E /* libz.dylib */; };
 		22EC39C519A96A1B0058BD2E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39C419A96A1B0058BD2E /* MobileCoreServices.framework */; };
 		22EC39C719A96A260058BD2E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39C619A96A260058BD2E /* Security.framework */; };
 		22EC39C919A96A2C0058BD2E /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22EC39C819A96A2C0058BD2E /* StoreKit.framework */; };
@@ -66,12 +65,13 @@
 		22EC39DA19AA93F60058BD2E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EC39D919AA93F60058BD2E /* SignUpViewController.swift */; };
 		22FCAA1E19C52804004612C2 /* FavoritesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */; };
 		22FE3C8019B4BAD200171C7D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */; };
-		B55B71161AE1D592004C06D1 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55B71131AE1D592004C06D1 /* Bolts.framework */; };
-		B55B71171AE1D592004C06D1 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55B71141AE1D592004C06D1 /* Parse.framework */; };
 		B55B71181AE1D592004C06D1 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55B71151AE1D592004C06D1 /* ParseCrashReporting.framework */; };
-		B55B711A1AE1DEB2004C06D1 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B55B71191AE1DEB2004C06D1 /* libsqlite3.dylib */; };
 		B57FB9F71A9A917F003FB6A9 /* SearchBarThemer.m in Sources */ = {isa = PBXBuildFile; fileRef = B57FB9F61A9A917F003FB6A9 /* SearchBarThemer.m */; };
 		B57FB9F91A9A9985003FB6A9 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57FB9F81A9A9985003FB6A9 /* SearchResultsViewController.swift */; };
+		B595FEB91BDDA44600E59C69 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B595FEB71BDDA44600E59C69 /* Bolts.framework */; };
+		B595FEBA1BDDA44600E59C69 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B595FEB81BDDA44600E59C69 /* Parse.framework */; };
+		B595FEBC1BDDA47D00E59C69 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B595FEBB1BDDA47D00E59C69 /* libz.tbd */; };
+		B595FEBE1BDDA4A000E59C69 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B595FEBD1BDDA4A000E59C69 /* libsqlite3.tbd */; };
 		B5C60F911AE1E1C00094F41B /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C60F901AE1E1C00094F41B /* libstdc++.6.dylib */; };
 		DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 08AAF408A02D41FBBE1EBE82 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -141,13 +141,15 @@
 		22FCAA1D19C52804004612C2 /* FavoritesHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesHeaderView.swift; sourceTree = "<group>"; };
 		22FE3C7F19B4BAD200171C7D /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		859AFBB753CC9F57422B0F32 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		B55B71131AE1D592004C06D1 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		B55B71141AE1D592004C06D1 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		B55B71151AE1D592004C06D1 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
 		B55B71191AE1DEB2004C06D1 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B57FB9F51A9A917F003FB6A9 /* SearchBarThemer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarThemer.h; sourceTree = "<group>"; };
 		B57FB9F61A9A917F003FB6A9 /* SearchBarThemer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarThemer.m; sourceTree = "<group>"; };
 		B57FB9F81A9A9985003FB6A9 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		B595FEB71BDDA44600E59C69 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		B595FEB81BDDA44600E59C69 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		B595FEBB1BDDA47D00E59C69 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		B595FEBD1BDDA4A000E59C69 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B5C60F901AE1E1C00094F41B /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		F9A19CA68DDB08469032569E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,8 +159,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B595FEBE1BDDA4A000E59C69 /* libsqlite3.tbd in Frameworks */,
+				B595FEBC1BDDA47D00E59C69 /* libz.tbd in Frameworks */,
 				B5C60F911AE1E1C00094F41B /* libstdc++.6.dylib in Frameworks */,
-				B55B711A1AE1DEB2004C06D1 /* libsqlite3.dylib in Frameworks */,
+				B595FEB91BDDA44600E59C69 /* Bolts.framework in Frameworks */,
 				22EC39D319A976350058BD2E /* Social.framework in Frameworks */,
 				B55B71181AE1D592004C06D1 /* ParseCrashReporting.framework in Frameworks */,
 				22EC39D119A976300058BD2E /* Accounts.framework in Frameworks */,
@@ -166,17 +170,15 @@
 				22EC39C919A96A2C0058BD2E /* StoreKit.framework in Frameworks */,
 				22EC39C719A96A260058BD2E /* Security.framework in Frameworks */,
 				22EC39C519A96A1B0058BD2E /* MobileCoreServices.framework in Frameworks */,
-				B55B71171AE1D592004C06D1 /* Parse.framework in Frameworks */,
-				22EC39C319A96A170058BD2E /* libz.dylib in Frameworks */,
 				22EC39C119A96A130058BD2E /* CoreLocation.framework in Frameworks */,
 				22EC39BF19A96A0E0058BD2E /* CoreGraphics.framework in Frameworks */,
 				22EC39BD19A96A0A0058BD2E /* CFNetwork.framework in Frameworks */,
+				B595FEBA1BDDA44600E59C69 /* Parse.framework in Frameworks */,
 				22EC39BB19A96A000058BD2E /* AudioToolbox.framework in Frameworks */,
 				222EA53D1981DE9600F9CE31 /* libxml2.dylib in Frameworks */,
 				22940C0319730CCF00C14046 /* QuartzCore.framework in Frameworks */,
 				229B2542194D1AF500975671 /* ImageIO.framework in Frameworks */,
 				DAC128EBE22A4105A5D862FE /* libPods.a in Frameworks */,
-				B55B71161AE1D592004C06D1 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,10 +368,12 @@
 		3AA6A21ECE254B94830EFC0F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B595FEBD1BDDA4A000E59C69 /* libsqlite3.tbd */,
+				B595FEBB1BDDA47D00E59C69 /* libz.tbd */,
 				B5C60F901AE1E1C00094F41B /* libstdc++.6.dylib */,
 				B55B71191AE1DEB2004C06D1 /* libsqlite3.dylib */,
-				B55B71131AE1D592004C06D1 /* Bolts.framework */,
-				B55B71141AE1D592004C06D1 /* Parse.framework */,
+				B595FEB71BDDA44600E59C69 /* Bolts.framework */,
+				B595FEB81BDDA44600E59C69 /* Parse.framework */,
 				B55B71151AE1D592004C06D1 /* ParseCrashReporting.framework */,
 				22EC39D219A976350058BD2E /* Social.framework */,
 				22EC39D019A976300058BD2E /* Accounts.framework */,

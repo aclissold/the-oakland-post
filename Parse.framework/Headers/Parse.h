@@ -1,12 +1,13 @@
-//
-//  Parse.h
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 #import <Foundation/Foundation.h>
-
-#if TARGET_OS_IPHONE
 
 #import <Parse/PFACL.h>
 #import <Parse/PFAnalytics.h>
@@ -24,33 +25,21 @@
 #import <Parse/PFSession.h>
 #import <Parse/PFSubclassing.h>
 #import <Parse/PFUser.h>
-#import <Parse/PFInstallation.h>
-#import <Parse/PFNetworkActivityIndicatorManager.h>
+#import <Parse/PFUserAuthenticationDelegate.h>
 #import <Parse/PFNullability.h>
+
+#if !TARGET_OS_WATCH
+
+#import <Parse/PFInstallation.h>
+#import <Parse/PFPush.h>
+
+#endif
+
+#if TARGET_OS_IOS
+
+#import <Parse/PFNetworkActivityIndicatorManager.h>
 #import <Parse/PFProduct.h>
 #import <Parse/PFPurchase.h>
-#import <Parse/PFPush.h>
-#import <Parse/PFTwitterUtils.h>
-
-#else
-
-#import <ParseOSX/PFACL.h>
-#import <ParseOSX/PFAnalytics.h>
-#import <ParseOSX/PFAnonymousUtils.h>
-#import <ParseOSX/PFCloud.h>
-#import <ParseOSX/PFConfig.h>
-#import <ParseOSX/PFConstants.h>
-#import <ParseOSX/PFFile.h>
-#import <ParseOSX/PFGeoPoint.h>
-#import <ParseOSX/PFNullability.h>
-#import <ParseOSX/PFObject+Subclass.h>
-#import <ParseOSX/PFObject.h>
-#import <ParseOSX/PFQuery.h>
-#import <ParseOSX/PFRelation.h>
-#import <ParseOSX/PFRole.h>
-#import <ParseOSX/PFSession.h>
-#import <ParseOSX/PFSubclassing.h>
-#import <ParseOSX/PFUser.h>
 
 #endif
 
@@ -99,6 +88,51 @@ PF_ASSUME_NONNULL_BEGIN
  @returns `YES` if Local Datastore is enabled, otherwise `NO`.
  */
 + (BOOL)isLocalDatastoreEnabled;
+
+///--------------------------------------
+/// @name Enabling Extensions Data Sharing
+///--------------------------------------
+
+/*!
+ @abstract Enables data sharing with an application group identifier.
+
+ @discussion After enabling - Local Datastore, `currentUser`, `currentInstallation` and all eventually commands
+ are going to be available to every application/extension in a group that have the same Parse applicationId.
+
+ @warning This method is required to be called before <setApplicationId:clientKey:>.
+
+ @param groupIdentifier Application Group Identifier to share data with.
+ */
++ (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier PF_EXTENSION_UNAVAILABLE("Use `enableDataSharingWithApplicationGroupIdentifier:containingApplication:`.") PF_WATCH_UNAVAILABLE;
+
+/*!
+ @abstract Enables data sharing with an application group identifier.
+
+ @discussion After enabling - Local Datastore, `currentUser`, `currentInstallation` and all eventually commands
+ are going to be available to every application/extension in a group that have the same Parse applicationId.
+
+ @warning This method is required to be called before <setApplicationId:clientKey:>.
+ This method can only be used by application extensions.
+
+ @param groupIdentifier Application Group Identifier to share data with.
+ @param bundleIdentifier Bundle identifier of the containing application.
+ */
++ (void)enableDataSharingWithApplicationGroupIdentifier:(NSString *)groupIdentifier
+                                  containingApplication:(NSString *)bundleIdentifier PF_WATCH_UNAVAILABLE;
+
+/*!
+ @abstract Application Group Identifier for Data Sharing
+
+ @returns `NSString` value if data sharing is enabled, otherwise `nil`.
+ */
++ (NSString *)applicationGroupIdentifierForDataSharing PF_WATCH_UNAVAILABLE;
+
+/*!
+ @abstract Containing application bundle identifier.
+
+ @returns `NSString` value if data sharing is enabled, otherwise `nil`.
+ */
++ (NSString *)containingApplicationBundleIdentifierForDataSharing PF_WATCH_UNAVAILABLE;
 
 #if PARSE_IOS_ONLY
 
