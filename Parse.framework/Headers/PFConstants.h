@@ -1,13 +1,15 @@
-// PFConstants.h
-// Copyright 2011 Parse, Inc. All rights reserved.
+/**
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 #import <Foundation/Foundation.h>
 
-#if TARGET_OS_IPHONE
 #import <Parse/PFNullability.h>
-#else
-#import <ParseOSX/PFNullability.h>
-#endif
 
 @class PFObject;
 @class PFUser;
@@ -16,7 +18,7 @@
 /// @name Version
 ///--------------------------------------
 
-#define PARSE_VERSION @"1.7.1"
+#define PARSE_VERSION @"1.9.0"
 
 extern NSInteger const PARSE_API_VERSION;
 
@@ -33,9 +35,6 @@ extern NSString *const PF_NONNULL_S kPFDeviceType;
 #import <UIKit/UIKit.h>
 #else
 #import <Cocoa/Cocoa.h>
-@compatibility_alias UIImage NSImage;
-@compatibility_alias UIColor NSColor;
-@compatibility_alias UIView NSView;
 #endif
 
 ///--------------------------------------
@@ -382,9 +381,43 @@ typedef void (^PFSetResultBlock)(NSSet *PF_NULLABLE_S channels, NSError *PF_NULL
 typedef void (^PFUserResultBlock)(PFUser *PF_NULLABLE_S user, NSError *PF_NULLABLE_S error);
 typedef void (^PFDataResultBlock)(NSData *PF_NULLABLE_S data, NSError *PF_NULLABLE_S error);
 typedef void (^PFDataStreamResultBlock)(NSInputStream *PF_NULLABLE_S stream, NSError *PF_NULLABLE_S error);
+typedef void (^PFFilePathResultBlock)(NSString *PF_NULLABLE_S filePath, NSError *PF_NULLABLE_S error);
 typedef void (^PFStringResultBlock)(NSString *PF_NULLABLE_S string, NSError *PF_NULLABLE_S error);
 typedef void (^PFIdResultBlock)(PF_NULLABLE_S id object, NSError *PF_NULLABLE_S error);
 typedef void (^PFProgressBlock)(int percentDone);
+
+///--------------------------------------
+/// @name Network Notifications
+///--------------------------------------
+
+/*!
+ @abstract The name of the notification that is going to be sent before any URL request is sent.
+ */
+extern NSString *const PF_NONNULL_S PFNetworkWillSendURLRequestNotification;
+
+/*!
+ @abstract The name of the notification that is going to be sent after any URL response is received.
+ */
+extern NSString *const PF_NONNULL_S PFNetworkDidReceiveURLResponseNotification;
+
+/*!
+ @abstract The key of request(NSURLRequest) in the userInfo dictionary of a notification.
+ @note This key is populated in userInfo, only if `PFLogLevel` on `Parse` is set to `PFLogLevelDebug`.
+ */
+extern NSString *const PF_NONNULL_S PFNetworkNotificationURLRequestUserInfoKey;
+
+/*!
+ @abstract The key of response(NSHTTPURLResponse) in the userInfo dictionary of a notification.
+ @note This key is populated in userInfo, only if `PFLogLevel` on `Parse` is set to `PFLogLevelDebug`.
+ */
+extern NSString *const PF_NONNULL_S PFNetworkNotificationURLResponseUserInfoKey;
+
+/*!
+ @abstract The key of repsonse body (usually `NSString` with JSON) in the userInfo dictionary of a notification.
+ @note This key is populated in userInfo, only if `PFLogLevel` on `Parse` is set to `PFLogLevelDebug`.
+ */
+extern NSString *const PF_NONNULL_S PFNetworkNotificationURLResponseBodyUserInfoKey;
+
 
 ///--------------------------------------
 /// @name Deprecated Macros
@@ -399,5 +432,78 @@ typedef void (^PFProgressBlock)(int percentDone);
 #    else
 #      define PARSE_DEPRECATED(_MSG)
 #    endif
+#  endif
+#endif
+
+///--------------------------------------
+/// @name Extensions Macros
+///--------------------------------------
+
+#ifndef PF_EXTENSION_UNAVAILABLE
+#  if PARSE_IOS_ONLY
+#    ifdef NS_EXTENSION_UNAVAILABLE_IOS
+#      define PF_EXTENSION_UNAVAILABLE(_msg) NS_EXTENSION_UNAVAILABLE_IOS(_msg)
+#    else
+#      define PF_EXTENSION_UNAVAILABLE(_msg)
+#    endif
+#  else
+#    ifdef NS_EXTENSION_UNAVAILABLE_MAC
+#      define PF_EXTENSION_UNAVAILABLE(_msg) NS_EXTENSION_UNAVAILABLE_MAC(_msg)
+#    else
+#      define PF_EXTENSION_UNAVAILABLE(_msg)
+#    endif
+#  endif
+#endif
+
+///--------------------------------------
+/// @name Swift Macros
+///--------------------------------------
+
+#ifndef PF_SWIFT_UNAVAILABLE
+#  ifdef NS_SWIFT_UNAVAILABLE
+#    define PF_SWIFT_UNAVAILABLE NS_SWIFT_UNAVAILABLE("")
+#  else
+#    define PF_SWIFT_UNAVAILABLE
+#  endif
+#endif
+
+///--------------------------------------
+/// @name Obj-C Generics Macros
+///--------------------------------------
+
+#if __has_feature(objc_generics) || __has_extension(objc_generics)
+#  define PF_GENERIC(...) <__VA_ARGS__>
+#else
+#  define PF_GENERIC(...)
+#  define PFGenericObject PFObject *
+#endif
+
+///--------------------------------------
+/// @name Platform Availability Defines
+///--------------------------------------
+
+#ifndef TARGET_OS_IOS
+#  define TARGET_OS_IOS TARGET_OS_IPHONE
+#endif
+#ifndef TARGET_OS_WATCH
+#  define TARGET_OS_WATCH 0
+#endif
+#ifndef TARGET_OS_TV
+#  define TARGET_OS_TV 0
+#endif
+
+#ifndef PF_TARGET_OS_OSX
+#  define PF_TARGET_OS_OSX TARGET_OS_MAC && !TARGET_OS_IOS && !TARGET_OS_WATCH && !TARGET_OS_TV
+#endif
+
+///--------------------------------------
+/// @name Avaiability Macros
+///--------------------------------------
+
+#ifndef PF_WATCH_UNAVAILABLE
+#  ifdef __WATCHOS_UNAVAILABLE
+#    define PF_WATCH_UNAVAILABLE __WATCHOS_UNAVAILABLE
+#  else
+#    define PF_WATCH_UNAVAILABLE
 #  endif
 #endif

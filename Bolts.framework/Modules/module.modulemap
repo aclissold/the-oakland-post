@@ -3,4 +3,13 @@ framework module Bolts {
 
   export *
   module * { export * }
+
+  explicit module BFAppLinkResolving {
+    header "BFAppLinkResolving.h"
+    export *
+  }
+  explicit module BFWebViewAppLinkResolver {
+    header "BFWebViewAppLinkResolver.h"
+    export *
+  }
 }

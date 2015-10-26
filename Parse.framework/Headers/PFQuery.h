@@ -1,35 +1,44 @@
-//
-//  PFQuery.h
-//
-//  Copyright 2011-present Parse Inc. All rights reserved.
-//
+/**
+ * Copyright (c) 2015-present, Parse, LLC.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
 
 #import <Foundation/Foundation.h>
 
-#if TARGET_OS_IPHONE
+#import <Bolts/BFTask.h>
+
 #import <Parse/PFConstants.h>
 #import <Parse/PFGeoPoint.h>
 #import <Parse/PFObject.h>
 #import <Parse/PFUser.h>
-#else
-#import <ParseOSX/PFConstants.h>
-#import <ParseOSX/PFGeoPoint.h>
-#import <ParseOSX/PFObject.h>
-#import <ParseOSX/PFUser.h>
-#endif
 
 PF_ASSUME_NONNULL_BEGIN
-
-@class BFTask;
 
 /*!
  The `PFQuery` class defines a query that is used to query for <PFObject>s.
  */
-@interface PFQuery : NSObject <NSCopying>
+@interface PFQuery PF_GENERIC(PFGenericObject : PFObject *) : NSObject<NSCopying>
+
+///--------------------------------------
+/// @name Blocks
+///--------------------------------------
+
+typedef void (^PFQueryArrayResultBlock)(NSArray PF_GENERIC(PFGenericObject) * PF_NULLABLE_S objects, NSError * PF_NULLABLE_S error);
 
 ///--------------------------------------
 /// @name Creating a Query for a Class
 ///--------------------------------------
+
+/*!
+ @abstract Initializes the query with a class name.
+
+ @param className The class name.
+ */
+- (instancetype)initWithClassName:(NSString *)className;
 
 /*!
  @abstract Returns a `PFQuery` for a given class.
@@ -65,13 +74,7 @@ PF_ASSUME_NONNULL_BEGIN
 + (instancetype)queryWithClassName:(NSString *)className predicate:(PF_NULLABLE NSPredicate *)predicate;
 
 /*!
- Initializes the query with a class name.
- @param newClassName The class name.
- */
-- (instancetype)initWithClassName:(NSString *)newClassName;
-
-/*!
- The class name to query for
+ The class name to query for.
  */
 @property (nonatomic, strong) NSString *parseClassName;
 
@@ -100,7 +103,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The same instance of `PFQuery` as the receiver. This allows method chaining.
  */
-- (instancetype)selectKeys:(NSArray *)keys;
+- (instancetype)selectKeys:(NSArray PF_GENERIC(NSString *) *)keys;
 
 /*!
  @abstract Add a constraint that requires a particular key exists.
@@ -376,7 +379,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns An instance of `PFQuery` that is the `or` of the passed in queries.
  */
-+ (instancetype)orQueryWithSubqueries:(NSArray *)queries;
++ (instancetype)orQueryWithSubqueries:(NSArray PF_GENERIC(PFQuery *) *)queries;
 
 /*!
  @abstract Adds a constraint that requires that a key's value matches a value in another key
@@ -473,6 +476,8 @@ PF_ASSUME_NONNULL_BEGIN
 /*!
  @abstract Sort the results using a given sort descriptor.
 
+ @warning If a `sortDescriptor` has custom `selector` or `comparator` - they aren't going to be used.
+
  @param sortDescriptor The `NSSortDescriptor` to use to sort the results of the query.
 
  @returns The same instance of `PFQuery` as the receiver. This allows method chaining.
@@ -482,11 +487,13 @@ PF_ASSUME_NONNULL_BEGIN
 /*!
  @abstract Sort the results using a given array of sort descriptors.
 
+ @warning If a `sortDescriptor` has custom `selector` or `comparator` - they aren't going to be used.
+
  @param sortDescriptors An array of `NSSortDescriptor` objects to use to sort the results of the query.
 
  @returns The same instance of `PFQuery` as the receiver. This allows method chaining.
  */
-- (instancetype)orderBySortDescriptors:(PF_NULLABLE NSArray *)sortDescriptors;
+- (instancetype)orderBySortDescriptors:(PF_NULLABLE NSArray PF_GENERIC(NSSortDescriptor *) *)sortDescriptors;
 
 ///--------------------------------------
 /// @name Getting Objects by ID
@@ -500,7 +507,8 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The <PFObject> if found. Returns `nil` if the object isn't found, or if there was an error.
  */
-+ (PF_NULLABLE PFObject *)getObjectOfClass:(NSString *)objectClass objectId:(NSString *)objectId;
++ (PF_NULLABLE PFGenericObject)getObjectOfClass:(NSString *)objectClass
+                                       objectId:(NSString *)objectId PF_SWIFT_UNAVAILABLE;
 
 /*!
  @abstract Returns a <PFObject> with a given class and id and sets an error if necessary.
@@ -511,9 +519,9 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The <PFObject> if found. Returns `nil` if the object isn't found, or if there was an `error`.
  */
-+ (PF_NULLABLE PFObject *)getObjectOfClass:(NSString *)objectClass
-                                  objectId:(NSString *)objectId
-                                     error:(NSError **)error;
++ (PF_NULLABLE PFGenericObject)getObjectOfClass:(NSString *)objectClass
+                                       objectId:(NSString *)objectId
+                                          error:(NSError **)error;
 
 /*!
  @abstract Returns a <PFObject> with the given id.
@@ -525,7 +533,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The <PFObject> if found. Returns nil if the object isn't found, or if there was an error.
  */
-- (PF_NULLABLE PFObject *)getObjectWithId:(NSString *)objectId;
+- (PF_NULLABLE PFGenericObject)getObjectWithId:(NSString *)objectId PF_SWIFT_UNAVAILABLE;
 
 /*!
  @abstract Returns a <PFObject> with the given id and sets an error if necessary.
@@ -538,7 +546,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The <PFObject> if found. Returns nil if the object isn't found, or if there was an error.
  */
-- (PF_NULLABLE PFObject *)getObjectWithId:(NSString *)objectId error:(NSError **)error;
+- (PF_NULLABLE PFGenericObject)getObjectWithId:(NSString *)objectId error:(NSError **)error;
 
 /*!
  @abstract Gets a <PFObject> asynchronously and calls the given block with the result.
@@ -550,7 +558,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The task, that encapsulates the work being done.
  */
-- (BFTask *)getObjectInBackgroundWithId:(NSString *)objectId;
+- (BFTask PF_GENERIC(PFGenericObject) *)getObjectInBackgroundWithId:(NSString *)objectId;
 
 /*!
  @abstract Gets a <PFObject> asynchronously and calls the given block with the result.
@@ -563,7 +571,7 @@ PF_ASSUME_NONNULL_BEGIN
  The block should have the following argument signature: `^(NSArray *object, NSError *error)`
  */
 - (void)getObjectInBackgroundWithId:(NSString *)objectId
-                              block:(PF_NULLABLE PFObjectResultBlock)block;
+                              block:(PF_NULLABLE void(^)(PFGenericObject PF_NULLABLE_S object, NSError *PF_NULLABLE_S error))block;
 
 /*
  @abstract Gets a <PFObject> asynchronously.
@@ -591,7 +599,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The PFUser if found. Returns nil if the object isn't found, or if there was an error.
  */
-+ (PF_NULLABLE PFUser *)getUserObjectWithId:(NSString *)objectId;
++ (PF_NULLABLE PFUser *)getUserObjectWithId:(NSString *)objectId PF_SWIFT_UNAVAILABLE;
 
 /*!
  Returns a PFUser with a given class and id and sets an error if necessary.
@@ -599,8 +607,7 @@ PF_ASSUME_NONNULL_BEGIN
  @param error Pointer to an NSError that will be set if necessary.
  @result The PFUser if found. Returns nil if the object isn't found, or if there was an error.
  */
-+ (PF_NULLABLE PFUser *)getUserObjectWithId:(NSString *)objectId
-                                      error:(NSError **)error;
++ (PF_NULLABLE PFUser *)getUserObjectWithId:(NSString *)objectId error:(NSError **)error;
 
 /*!
  @deprecated Please use [PFUser query] instead.
@@ -616,7 +623,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns Returns an array of <PFObject> objects that were found.
  */
-- (PF_NULLABLE NSArray *)findObjects;
+- (PF_NULLABLE NSArray PF_GENERIC(PFGenericObject) *)findObjects PF_SWIFT_UNAVAILABLE;
 
 /*!
  @abstract Finds objects *synchronously* based on the constructed query and sets an error if there was one.
@@ -625,14 +632,14 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns Returns an array of <PFObject> objects that were found.
  */
-- (PF_NULLABLE NSArray *)findObjects:(NSError **)error;
+- (PF_NULLABLE NSArray PF_GENERIC(PFGenericObject) *)findObjects:(NSError **)error;
 
 /*!
  @abstract Finds objects *asynchronously* and sets the `NSArray` of <PFObject> objects as a result of the task.
 
  @returns The task, that encapsulates the work being done.
  */
-- (BFTask *)findObjectsInBackground;
+- (BFTask PF_GENERIC(NSArray<PFGenericObject> *)*)findObjectsInBackground;
 
 /*!
  @abstract Finds objects *asynchronously* and calls the given block with the results.
@@ -640,7 +647,7 @@ PF_ASSUME_NONNULL_BEGIN
  @param block The block to execute.
  It should have the following argument signature: `^(NSArray *objects, NSError *error)`
  */
-- (void)findObjectsInBackgroundWithBlock:(PF_NULLABLE PFArrayResultBlock)block;
+- (void)findObjectsInBackgroundWithBlock:(PF_NULLABLE PFQueryArrayResultBlock)block;
 
 /*
  @abstract Finds objects *asynchronously* and calls the given callback with the results.
@@ -663,7 +670,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns Returns a <PFObject>, or `nil` if none was found.
  */
-- (PF_NULLABLE PFObject *)getFirstObject;
+- (PF_NULLABLE PFGenericObject)getFirstObject PF_SWIFT_UNAVAILABLE;
 
 /*!
  @abstract Gets an object *synchronously* based on the constructed query and sets an error if any occurred.
@@ -674,7 +681,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns Returns a <PFObject>, or `nil` if none was found.
  */
-- (PF_NULLABLE PFObject *)getFirstObject:(NSError **)error;
+- (PF_NULLABLE PFGenericObject)getFirstObject:(NSError **)error;
 
 /*!
  @abstract Gets an object *asynchronously* and sets it as a result of the task.
@@ -683,7 +690,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The task, that encapsulates the work being done.
  */
-- (BFTask *)getFirstObjectInBackground;
+- (BFTask PF_GENERIC(PFGenericObject) *)getFirstObjectInBackground;
 
 /*!
  @abstract Gets an object *asynchronously* and calls the given block with the result.
@@ -695,7 +702,7 @@ PF_ASSUME_NONNULL_BEGIN
  `result` will be `nil` if `error` is set OR no object was found matching the query.
  `error` will be `nil` if `result` is set OR if the query succeeded, but found no results.
  */
-- (void)getFirstObjectInBackgroundWithBlock:(PF_NULLABLE PFObjectResultBlock)block;
+- (void)getFirstObjectInBackgroundWithBlock:(PF_NULLABLE void(^)(PFGenericObject PF_NULLABLE_S object, NSError *PF_NULLABLE_S error))block;
 
 /*
  @abstract Gets an object *asynchronously* and calls the given callback with the results.
@@ -719,7 +726,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns Returns the number of <PFObject> objects that match the query, or `-1` if there is an error.
  */
-- (NSInteger)countObjects;
+- (NSInteger)countObjects PF_SWIFT_UNAVAILABLE;
 
 /*!
  @abstract Counts objects *synchronously* based on the constructed query and sets an error if there was one.
@@ -735,7 +742,7 @@ PF_ASSUME_NONNULL_BEGIN
 
  @returns The task, that encapsulates the work being done.
  */
-- (BFTask *)countObjectsInBackground;
+- (BFTask PF_GENERIC(NSNumber *)*)countObjectsInBackground;
 
 /*!
  @abstract Counts objects *asynchronously* and calls the given block with the counts.
@@ -795,7 +802,7 @@ PF_ASSUME_NONNULL_BEGIN
  */
 @property (assign, readwrite) PFCachePolicy cachePolicy;
 
-/* !
+/*!
  @abstract The age after which a cached value will be ignored
  */
 @property (assign, readwrite) NSTimeInterval maxCacheAge;
