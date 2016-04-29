@@ -15,10 +15,10 @@ class BugFixWrapper { // vars defined globally segfault the compiler in Xcode 6.
         didSet {
             // Compute starredPostIdentifiers.
             starredPostIdentifiers = [String]()
-            for object in starredPosts {
-                let ident = object["identifier"] as! String
-                starredPostIdentifiers.append(ident)
-            }
+			for object in starredPosts as! [PFObject] {
+				let ident = object.objectId
+				starredPostIdentifiers.append(ident!)
+			}
 
             // Sort self.
             starredPosts.sortInPlace {

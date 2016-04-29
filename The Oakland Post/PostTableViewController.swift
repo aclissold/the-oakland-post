@@ -22,7 +22,7 @@ class PostTableViewController: BugFixTableViewController, MWFeedParserDelegate, 
 
         // Pull to refresh.
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        refreshControl.addTarget(self, action: #selector(PostTableViewController.refresh), forControlEvents: UIControlEvents.ValueChanged)
         self.refreshControl = refreshControl
 
         feedParser = FeedParser(baseURL: baseURL, length: 15, delegate: self)

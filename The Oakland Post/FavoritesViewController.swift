@@ -13,7 +13,7 @@ class FavoritesViewController: BugFixTableViewController, StarButtonDelegate {
     private var didEnableButtonForPushers = false
 
     override func viewDidLoad() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: "logOut")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .Bordered, target: self, action: #selector(FavoritesViewController.logOut))
     }
 
     override func viewWillAppear(animated: Bool) {

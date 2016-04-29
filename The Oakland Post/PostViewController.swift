@@ -69,11 +69,11 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     }
 
     func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        --loadCount
+        loadCount -= 1
     }
 
     func webViewDidStartLoad(webView: UIWebView) {
-        if ++loadCount == 1 {
+        if (loadCount.advancedBy(1)) == 1 {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             SVProgressHUD.show()
         }
@@ -82,7 +82,7 @@ class PostViewController: UIViewController, UIWebViewDelegate, UIScrollViewDeleg
     // MARK: UIWebViewDelegate
 
     func webViewDidFinishLoad(webView: UIWebView) {
-        --loadCount
+        loadCount -= 1
         if loadCount == 0 {
             finishedLoading = true
 

@@ -19,7 +19,7 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
-        let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: "confirmPush")
+        let sendButton = UIBarButtonItem(title: "Send", style: .Done, target: self, action: #selector(PushViewController.confirmPush))
         sendButton.enabled = false
         textView.editable = false
         textView.selectable = false
@@ -103,9 +103,9 @@ class PushViewController: UIViewController, UIAlertViewDelegate {
 
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+            self, selector: #selector(PushViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+            self, selector: #selector(PushViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
     func keyboardDidShow(notification: NSNotification) {

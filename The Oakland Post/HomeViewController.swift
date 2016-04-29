@@ -30,8 +30,8 @@ class HomeViewController: PostTableViewController, UISearchBarDelegate, TopScrol
 
         baseURL = "http://www.oaklandpostonline.com/search/?t=article"
 
-        logInBarButtonItem = UIBarButtonItem(title: "Log In", style: .Bordered, target: self, action: "logIn")
-        favoritesBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites"), style: .Bordered, target: self, action: "showFavorites")
+        logInBarButtonItem = UIBarButtonItem(title: "Log In", style: .Bordered, target: self, action: #selector(HomeViewController.logIn))
+        favoritesBarButtonItem = UIBarButtonItem(image: UIImage(named: "Favorites"), style: .Bordered, target: self, action: #selector(HomeViewController.showFavorites))
 
         homeViewController = self
         if PFUser.currentUser() != nil {

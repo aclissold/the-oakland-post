@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss:")
+            UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(LoginViewController.dismiss(_:)))
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -51,9 +51,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
 
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+            self, selector: #selector(LoginViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+            self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
     func keyboardDidShow(notification: NSNotification) {
@@ -91,7 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, UIAlertViewDel
     var count = 0
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if (++count == 2) {
+        if (count.advancedBy(1) == 2) {
             let viewHeight = view.frame.size.height
             let viewWidth = view.frame.size.width
             var navBarHeight = navigationController!.navigationBar.frame.size.height

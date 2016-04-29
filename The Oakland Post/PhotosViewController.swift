@@ -118,7 +118,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
         }
         enlargedPhoto!.scrollView.delegate = enlargedPhotoDelegate
 
-        enlargedPhoto!.linkButton.addTarget(self, action: "showPost:", forControlEvents: .TouchUpInside)
+        enlargedPhoto!.linkButton.addTarget(self, action: #selector(PhotosViewController.showPost(_:)), forControlEvents: .TouchUpInside)
         gestureRecognizers.addToEnlargedPhoto(enlargedPhoto!)
 
         navigationController!.view.addSubview(enlargedPhoto!)
@@ -151,7 +151,7 @@ class PhotosViewController: UICollectionViewController, UICollectionViewDelegate
             let themedNavigationController = (segue.destinationViewController as! ThemedNavigationController)
             let postViewController = (themedNavigationController.childViewControllers[0] as! PostViewController)
             postViewController.navigationItem.rightBarButtonItem =
-                UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismissModalPost")
+                UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(PhotosViewController.dismissModalPost))
             postViewController.URL = URLs[(sender as! NSNumber).integerValue]
         }
     }
