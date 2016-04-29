@@ -28,7 +28,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         navigationItem.rightBarButtonItem =
-            UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
+            UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(SignUpViewController.dismiss))
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
@@ -60,9 +60,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     func registerForKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
+            self, selector: #selector(SignUpViewController.keyboardDidShow(_:)), name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(
-            self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+            self, selector: #selector(SignUpViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
     }
 
     var insets = UIEdgeInsetsZero
@@ -98,10 +98,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         scrollView.scrollIndicatorInsets = insets
     }
 
-    var count = 0
+	var count: Int = 0
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        if ++count == 2 || (count == 4 && keyboardWasPresent) {
+        if count.advancedBy(1) == 2 || (count == 4 && keyboardWasPresent) {
             let viewHeight = view.frame.size.height
             let viewWidth = view.frame.size.width
             var navBarHeight = navigationController!.navigationBar.frame.size.height

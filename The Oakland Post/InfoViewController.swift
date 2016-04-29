@@ -58,7 +58,7 @@ class InfoViewController: UIViewController, UIPageViewControllerDataSource {
         topToolbar.frame.size.height = topToolbarHeight
         view.addSubview(topToolbar)
 
-        let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: "dismiss")
+        let doneButton = UIBarButtonItem(title: "Done", style: .Done, target: self, action: #selector(InfoViewController.dismiss))
         doneButton.tintColor = oaklandPostBlue
         topToolbar.items = [doneButton]
 

@@ -22,10 +22,10 @@ class EnlargedPhotoGestureRecognizers: NSObject {
     func addToEnlargedPhoto(enlargedPhoto: EnlargedPhoto) {
         photo = enlargedPhoto
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "singleTapReceived:")
-        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "doubleTapReceived:")
-        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeReceived:")
-        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeReceived:")
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EnlargedPhotoGestureRecognizers.singleTapReceived(_:)))
+        let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EnlargedPhotoGestureRecognizers.doubleTapReceived(_:)))
+        let swipeUpGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(EnlargedPhotoGestureRecognizers.swipeReceived(_:)))
+        let swipeDownGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(EnlargedPhotoGestureRecognizers.swipeReceived(_:)))
 
         doubleTapGestureRecognizer.numberOfTapsRequired = 2
         tapGestureRecognizer.requireGestureRecognizerToFail(doubleTapGestureRecognizer)
