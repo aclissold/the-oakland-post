@@ -22,16 +22,17 @@ class PostCell: UITableViewCell {
     var item: MWFeedItem! {
         didSet {
             // Set the thumbnail image.
+            let placeholder = UIImage(named: "Placeholder")
             if let enclosures = item.enclosures {
-                if enclosures[0] is NSDictionary {
-                    let dict = item.enclosures[0] as! NSDictionary
-                    if (dict["type"] as! String).hasPrefix("image") {
-                        let URL = NSURL(string: dict["url"] as! String)
-                        thumbnail.sd_setImageWithURL(URL, placeholderImage: UIImage(named: "Placeholder"))
-                    }
+                let dict = enclosures[0] as! NSDictionary
+                if let type = dict["type"] as? String where type.hasPrefix("image") {
+                    let URL = NSURL(string: dict["url"] as! String)
+                    thumbnail.sd_setImageWithURL(URL, placeholderImage: placeholder)
+                } else {
+                    thumbnail.image = placeholder
                 }
             } else {
-                thumbnail.image = UIImage(named: "Placeholder")
+                thumbnail.image = placeholder
             }
 
             descriptionLabel.text = item.title

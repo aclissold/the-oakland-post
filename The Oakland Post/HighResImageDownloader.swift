@@ -18,6 +18,7 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
 
     // Download progressed callback.
     func downloadProgressed(receivedSize: Int, expectedSize: Int) {
+        if expectedSize <= 0 { return }
         let progress = Float(receivedSize) / Float(expectedSize)
         onMain { SVProgressHUD.showProgress(progress) }
     }
@@ -28,9 +29,10 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
     let downloadFinished: SDWebImageDownloaderCompletedBlock = { (image, data, error, _) in
         onMain {
             SVProgressHUD.dismiss()
+            guard !canceled, let image = image else { return }
             enlargedPhoto.imageView.image = image
             sender.setBackgroundImage(image, forState: .Normal)
-            finished(image!, sender.tag)
+            finished(image, sender.tag)
         }
     }
 
@@ -38,7 +40,11 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
 
     onDefault {
         // Find the image URL.
-        let HTMLData = NSData(contentsOfURL: NSURL(string: URL)!)!
+        guard let pageURL = NSURL(string: URL),
+            let HTMLData = NSData(contentsOfURL: pageURL) else {
+                cancelDownloadingHighResImage()
+                return
+        }
         let hpple = TFHpple(HTMLData: HTMLData)
         let XPathQuery = "//meta[@property='og:image']"
         let elements = hpple.searchWithXPathQuery(XPathQuery) as! [TFHppleElement]
@@ -48,13 +54,16 @@ func downloadHighResImageFromURL(URL: String, forEnlargedPhoto enlargedPhoto: En
             return
         }
 
-        let imageURL = elements[0].objectForKey("content")
+        guard let imageURLString = elements[0].objectForKey("content") as? String,
+            let imageURL = NSURL(string: imageURLString) else {
+                cancelDownloadingHighResImage()
+                return
+        }
 
         // Download the image at that URL.
-        let URL = NSURL(string: imageURL)
         if !canceled {
             downloadOperation = SDWebImageDownloader.sharedDownloader().downloadImageWithURL(
-                URL, options: SDWebImageDownloaderOptions(rawValue: 0),
+                imageURL, options: SDWebImageDownloaderOptions(rawValue: 0),
                 progress: downloadProgressed, completed: downloadFinished)
         }
     }
